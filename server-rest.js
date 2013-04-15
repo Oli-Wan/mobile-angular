@@ -21,7 +21,7 @@ app.get('/missions', function(req, res){
 			res.send("500", "Could not get connection. "+err)
 		}
 		else {
-			connection.query('SELECT * FROM missions', function(err, rows){
+			connection.query('SELECT * FROM missions, responsibles WHERE missions.responsible_id = responsibles.id', function(err, rows){
 				res.send(rows);
 			});
 			connection.end();	
