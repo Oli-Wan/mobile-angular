@@ -1,7 +1,7 @@
 <h1>Missions</h1>
 
 <table class="table">
-	<td>
+	<tr>
 		<th>Heure</th>
 		<th>ID</th>
 		<th>Type</th>
@@ -10,5 +10,17 @@
 		<th>Victimes</th>
 		<th>Observations</th>
 		<th></th>
-	</td>
+	</tr>
+	<tr ng-repeat="mission in missions">
+		<td>{{mission.created_at}}</td>
+		<td>{{mission.id}}</td>
+		<td>{{mission.type}}</td>
+		<td>{{mission.destination}}</td>
+		<td>{{mission.responsible}}</td>
+		<td>{{mission.victims}}</td>
+		<td>{{mission.observation}}</td>
+		<td>
+			
+		</td>
+	</tr>
 </table>

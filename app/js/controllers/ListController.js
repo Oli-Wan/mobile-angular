@@ -1,5 +1,7 @@
 
 smurAngular.controller('ListController', 
-	function ListController(){
-		console.log("Hello world");
+	function ListController($scope, Mission){
+		$scope.missions = Mission.query(function(){
+			console.log("done");
+		});
 	});
