@@ -1,0 +1,9 @@
+{
+  "name": "SMUR_REST",
+  "description": "REST API and smur angular mobile app",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "3.x",
+    "mysql": "2.0.0-alpha7"
+  }
+}

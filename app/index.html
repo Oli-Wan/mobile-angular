@@ -1,17 +1,27 @@
 <!doctype html>
 <html lang="en" ng-app="smurAngular">
 <head>
-  <meta charset="utf-8">
-  <title>My AngularJS App</title>
-  <link rel="stylesheet" href="css/app.css"/>
-  <link rel="stylesheet" href="css/bootstrap-responsive.min.css"/>
-  <link rel="stylesheet" href="css/bootstrap.min.css"/>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SMUR Mobile</title>
+	<link rel="stylesheet" href="css/app.css"/>
+	<link rel="stylesheet" href="css/bootstrap-responsive.min.css"/>
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
 </head>
 <body>
+	<div class="container-fluid">	
+		<ng-view></ng-view>
 
-  <div ng-view></div>
-  
-  <script src="lib/angular/angular.js"></script>
-  <script src="js/app.js"></script>
+	</div>
+
+	<script src="lib/jquery-1.9.1.min.js"></script>
+	<script src="lib/bootstrap.min.js"></script>
+	<script src="lib/angular/angular.js"></script>
+	<script src="lib/angular-strap.js"></script>
+	<script src="lib/angular/angular-resource.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controllers/MissionsController.js"></script>
+	<script src="js/controllers/NewMissionController.js"></script>
+	<script src="js/services/Mission.js"></script>
 </body>
 </html>
