@@ -45,28 +45,28 @@ app.get('/api/person/:id', function(req, res){
 		connection.end();
 	});
 });
-app.post('/api/person', function(req, res){
-	var person = req.body;
-	person.created_at = new Date();
-	person.created_at.setMilliseconds(0); // saving as datetime, msec have no meaning
-	person.modified_at = person.created_at;
+app.post('/mission', function(req, res){
+	var mission = req.body;
+	mission.created_at = new Date();
+	mission.created_at.setMilliseconds(0); // saving as datetime, msec have no meaning
+	mission.modified_at = mission.created_at;
 	connectionPool.getConnection(function(err, connection){
 		if(err) {
 			console.log(err);
 			res.send("500", "Could not get connection. "+err);
 			return;
 		}
-		var query = connection.query('INSERT INTO persons SET ?', person, function(err, result){
+		var query = connection.query('INSERT INTO missions SET ?', mission, function(err, result){
 			if(err){
 				console.log(err);
 				res.send(500, err);
 				return;
 			}
-			res.send(person); 
+			res.send(mission); 
 		});
 		connection.end();	
 	});
-});
+});/*
 app.put('/api/person/:id', function(req, res){
 	var person = req.body;
 	person.modified_at = new Date();
