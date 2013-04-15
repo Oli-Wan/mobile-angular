@@ -1,5 +1,13 @@
-<h1>Missions</h1>
-
+<div class="row-fluid">
+	<div class="span3">
+		<h1>Missions</h1>
+	</div>
+	<div class="offset6 span3">
+		<a href="#newMission" role="button" class="btn btn-primary btn-add" data-toggle="modal">
+			Ajouter une nouvelle mission
+		</a>
+	</div>
+</div>
 <table class="table">
 	<tr>
 		<th>Heure</th>
@@ -20,7 +28,48 @@
 		<td>{{mission.victims}}</td>
 		<td>{{mission.observation}}</td>
 		<td>
-			
+			<button class="btn btn-danger">
+				<i class="icon-trash icon-white"></i>
+			</button>
 		</td>
 	</tr>
 </table>
+
+<!-- New mission modal -->
+<div id="newMission" class="modal hide fade" tabindex="-1" role="dialog" 
+	aria-labelledby="Ajouter une nouvelle mission" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">Ajouter une nouvelle mission</h3>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal">
+			<div class="control-group">
+				<div class="row">
+					<div class="span3">
+						<select size="10" ng-model="vehicle">
+							<option ng-repeat="vehicle in vehicles" value="{{vehicle.id}}">{{vehicle.name}}</option>
+						</select>
+					</div>
+					<div class="span3">
+						<select size="10" class="span3" ng-model="responsible">
+							<option ng-repeat="responsible in responsibles" value="{{responsible.id}}">
+								{{responsible.lastname}} {{responsible.firstname}}
+							</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="control-group">
+				 <label class="control-label" for="password">Mot de passe</label>
+				 <div class="controls">
+					<input type="password" id="password" ng-model="password" class="input-normal" />
+				 </div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
+		<button class="btn btn-primary" ng-click="add()">Ajouter</button>
+	</div>
+</div>
