@@ -3,15 +3,21 @@
 <div class="row-fluid">
 	<div class="span3">
 		<ul class="nav nav-list bs-docs-sidenav">
-			<li><a href=""><i class="icon-chevron-right"></i>Mission</a></li>
-			<li><a href=""><i class="icon-chevron-right"></i>Personel</a></li>
-			<li><a href=""><i class="icon-chevron-right"></i>Evènements</a></li>
-			<li><a href=""><i class="icon-chevron-right"></i>Victimes</a></li>
-			<li><a href=""><i class="icon-chevron-right"></i>Véhicules</a></li>
-			<li><a href=""><i class="icon-chevron-right"></i>Retour à la liste</a></li>
+			<li ng-repeat="menuItem in menuItems" ng-class="{active: includeUrlIs(menuItem.templateUrl)}">
+				<a ng-click="navigate(menuItem.templateUrl)">
+					<i class="icon-chevron-right"></i>
+					{{menuItem.name}}
+				</a>
+			</li>
+			<li>
+				<a href="/">
+					<i class="icon-chevron-right"></i>
+					Retour à la liste
+				</a>
+			</li>
 		</ul>
 	</div>
 	<div class="span9">
-		<ng-include src="'/partials/mission/mission.html'"></ng-include>
+		<ng-include src="includedUrl"></ng-include>
 	</div>
 </div>

@@ -13,7 +13,7 @@ smurAngular.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/mission/:missionId', 
     	{
     		templateUrl: 'partials/mission-container.html', 
-			controller: 'MissionController'
+			controller: 'MissionContainerController'
     	});
     $routeProvider.otherwise({redirectTo: '/'});
   }]);
