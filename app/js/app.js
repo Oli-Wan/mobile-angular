@@ -17,3 +17,10 @@ smurAngular.config(['$routeProvider', function($routeProvider) {
     	});
     $routeProvider.otherwise({redirectTo: '/'});
   }]);
+
+//default for datepicker
+smurAngular.value('$strap.config', {
+    datepicker: {
+        format: 'dd/mm/yyyy'
+    }
+});

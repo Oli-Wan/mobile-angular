@@ -1,0 +1,26 @@
+[
+	{
+		"id":"mballouz",
+		"firstname":"Michel",
+		"lastname":"Ballouz",
+		"function":"1"
+	},
+	{
+		"id":"jdoe",
+		"firstname":"John",
+		"lastname":"Doe",
+		"function":"1"
+	},
+	{
+		"id":"fenstein",
+		"firstname":"Frank",
+		"lastname":"Enstein",
+		"function":"2"
+	},
+	{
+		"id":"pandre",
+		"firstname":"Pierre",
+		"lastname":"Andre",
+		"function":"2"
+	}
+]

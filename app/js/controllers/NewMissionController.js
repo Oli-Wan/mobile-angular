@@ -7,7 +7,7 @@ smurAngular.controller('NewMissionController',
 			$scope.vehicles = data;
 		});
 
-		$http.get("/resources/responsibles.json").success(function(data){
+		$http.get("/resources/persons.json").success(function(data){
 			$scope.responsibles = data;
 		});
 		
