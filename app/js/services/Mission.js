@@ -12,7 +12,8 @@ smurAngular.factory("Mission", function Mission($http, localStorage){
 			});
 		},
 		create: function(data) {
-			this.list.push(data);$this.sync();
+			this.list.push(data);
+			this.sync();
 		},
 		delete: function(id) {
 			for(var i = 0; i < this.list.length; i++) {
