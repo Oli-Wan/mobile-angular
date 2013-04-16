@@ -1,0 +1,36 @@
+<div class="row-fluid">
+	<div class="span3">
+		<h1>Missions</h1>
+	</div>
+	<div class="offset6 span3">
+		<button type="button" class="btn btn-primary btn-add" ng-controller="NewMissionController" bs-modal="'partials/newMission.html'">
+			Ajouter une nouvelle mission
+		</button>
+	</div>
+</div>
+<table class="table">
+	<tr>
+		<th>Heure</th>
+		<th>ID</th>
+		<th>Type</th>
+		<th>Destination</th>
+		<th>Responsable</th>
+		<th>Victimes</th>
+		<th>Observations</th>
+		<th></th>
+	</tr>
+	<tr ng-repeat="mission in missions">
+		<td>{{mission.created_at}}</td>
+		<td>{{mission.id}}</td>
+		<td>{{mission.type}}</td>
+		<td>{{mission.destination}}</td>
+		<td>{{mission.responsible}}</td>
+		<td>{{mission.victims}}</td>
+		<td>{{mission.observation}}</td>
+		<td>
+			<button class="btn btn-danger">
+				<i class="icon-trash icon-white"></i>
+			</button>
+		</td>
+	</tr>
+</table>

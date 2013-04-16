@@ -12,7 +12,7 @@ var app = express();
 app.use(express.bodyParser());
 
 app.use(express.static(__dirname + '/app'));
-
+/*
 app.get('/missions', function(req, res){
 	var data;
 	connectionPool.getConnection(function(err, connection){
