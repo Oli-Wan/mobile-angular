@@ -6,5 +6,6 @@ var smurAngular = angular.module('smurAngular', ['ngResource', '$strap.directive
 
 smurAngular.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {templateUrl: 'partials/missions.html', controller: 'MissionsController'});
+    $routeProvider.when('/mission/:missionId', {templateUrl: 'partials/mission.html', controller: 'MissionController'});
     $routeProvider.otherwise({redirectTo: '/'});
   }]);
