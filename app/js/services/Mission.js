@@ -16,17 +16,20 @@ smurAngular.factory("Mission", function Mission($http, localStorage){
 			this.sync();
 		},
 		delete: function(id) {
-			for(var i = 0; i < this.list.length; i++) {
-				var newList = [];
-				if(this.list[i].id == id)
+			var currentList = this.list;
+			this.list = [];
+			for(var i = 0; i < currentList.length; i++) {
+				if(currentList[i].id == id) {
+					console.log("deleting "+currentList[i])
 					continue;
+				}
 
-				newList.push(this.list[i]);
+				this.list.push(currentList[i]);
 			}
-			this.list = newList;
 			this.sync();
 		},
 		sync: function() {
+			console.log(this.list);
 			localStorage['MISSIONS'] = JSON.stringify(this.list);
 		}
 	}
