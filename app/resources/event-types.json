@@ -1,0 +1,14 @@
+[
+	{
+		"id":"1",
+		"name":"intervention"
+	},
+	{
+		"id":"2",
+		"name":"hsopitalisation"
+	},
+	{
+		"id":"3",
+		"name":"retour base"
+	}
+]

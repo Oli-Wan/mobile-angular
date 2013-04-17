@@ -1,37 +1,40 @@
-
-<h1 class="pull-left">Missions</h1>
-<button type="button" class="btn btn-primary btn-add pull-right" ng-controller="NewMissionController" 
+<div>
+	<h1 class="pull-left">Missions</h1>
+	
+	<button type="button" class="btn btn-primary btn-add pull-right" ng-controller="NewMissionController" 
 		bs-modal="'partials/newMission.html'">
-	Ajouter une nouvelle mission
-</button>
-<div class="clearfix"></div>
-<table class="table table-hover table-clickable">
-	<thead>
-		<tr>
-			<th>Heure</th>
-			<th class="hidden-phone">ID</th>
-			<th class="hidden-phone">Type</th>
-			<th>Destination</th>
-			<th class="hidden-phone">Responsable</th>
-			<th class="hidden-phone">Victimes</th>
-			<th class="hidden-phone">Observations</th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr ng-repeat="mission in missions" ng-click="navigateTo(mission)" >
-			<td>{{mission.created_at}}</td>
-			<td class="hidden-phone">{{mission.id}}</td>
-			<td class="hidden-phone">{{mission.type}}</td>
-			<td>{{mission.destination}}</td>
-			<td class="hidden-phone">{{mission.responsible}}</td>
-			<td class="hidden-phone">{{mission.victims}}</td>
-			<td class="hidden-phone">{{mission.observation}}</td>
-			<td>
-				<button class="btn btn-danger" ng-click="delete(mission.id)">
-					<i class="icon-trash icon-white"></i>
-				</button>
-			</td>
-		</tr>
-	</tbody>
-</table>
+		Ajouter une nouvelle mission
+	</button>
+
+	<div class="clearfix"></div>
+	<table class="table table-hover table-clickable">
+		<thead>
+			<tr>
+				<th>Heure</th>
+				<th class="hidden-phone">ID</th>
+				<th class="hidden-phone">Type</th>
+				<th>Destination</th>
+				<th class="hidden-phone">Responsable</th>
+				<th class="hidden-phone">Victimes</th>
+				<th class="hidden-phone">Observations</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="mission in missions" ng-click="navigateTo(mission)" >
+				<td>{{mission.created_at}}</td>
+				<td class="hidden-phone">{{mission.id}}</td>
+				<td class="hidden-phone">{{mission.type}}</td>
+				<td>{{mission.destination}}</td>
+				<td class="hidden-phone">{{mission.responsible}}</td>
+				<td class="hidden-phone">{{mission.victims}}</td>
+				<td class="hidden-phone">{{mission.observation}}</td>
+				<td>
+					<button class="btn btn-danger" ng-click="delete(mission.id)">
+						<i class="icon-trash icon-white"></i>
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+<div>

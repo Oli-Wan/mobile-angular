@@ -1,24 +1,29 @@
-<h3>Evènements</h3>
+<div class="mission-description-part">
+	<div ng-controller="EventController">
+		<h3 class="pull-left">Evènements</h3>
 
-<table class="table table-hover">
-	<tr>
-		<td>Ballouz Michel</td>
-		<td>Médecin</td>
-		<td>13h37</td>
-		<td>
-			<button class="btn btn-danger">
-				<i class="icon-trash icon-white"></i>
-			</button>				
-		</td>
-	</tr>
-	<tr>
-		<td>Maller Jean-Pierre</td>
-		<td>Ambulancier</td>
-		<td>13h37</td>
-		<td>
-			<button class="btn btn-danger">
-				<i class="icon-trash icon-white"></i>
-			</button>
-		</td>
-	</tr>
-</table>
+		<button type="button" class="btn btn-primary btn-add pull-right" 
+			ng-click="createModal()">
+			Ajouter un évènement
+		</button>
+
+		<div class="clearfix" />
+
+		<table class="table table-hover">
+			<tr>
+				<th>Type</th>
+				<th>Début</th>
+				<th>Fin</th>
+				<th>Véhicule</th>
+				<th>Destination</th>
+			</tr>
+			<tr>
+				<td>Intervention</td>
+				<td>16/04/2013 <br /> 23h05</td>
+				<td>16/04/2013 <br /> 23h19</td>
+				<td>UMH2</td>
+				<td>1337 Avenue des Champs-Elysées <br /> 75000 Paris</td>
+			</tr>
+		</table>
+	</div>
+</div>
