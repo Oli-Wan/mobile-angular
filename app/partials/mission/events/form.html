@@ -1,9 +1,9 @@
-<form class="form form-horizontal">
+<form class="form form-horizontal" ng-controller="NewEventController">
 	<div class="control-group">
 		<label for="type" class="control-label">Type</label>
 		<div class="controls">
-			<select class="input-xlarge">
-				<option ng-repeat="type in types">{{type.name}}</option>
+			<select class="input-xlarge" ng-model="destinationType">
+				<option ng-repeat="type in types" value="{{type.id}}">{{type.name}}</option>
 			</select>
 		</div>
 	</div>
@@ -55,7 +55,6 @@
 	</div>
 	
 	<h4>Destination</h4>
-
-	<ng-include src="getDestinationType()"></ng-include>
+	<ng-include src="destination"></ng-include>
 
 </form>
