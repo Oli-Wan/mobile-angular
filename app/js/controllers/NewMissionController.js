@@ -1,6 +1,6 @@
 
 smurAngular.controller('NewMissionController', 
-	function NewMissionController($scope, $http, Mission){
+	function NewMissionController($scope, $http, $location, Mission){
 		$scope.alerts = [];
 
 		$http.get("/resources/vehicles.json").success(function(data){
@@ -19,7 +19,7 @@ smurAngular.controller('NewMissionController',
 				mission.created_at = currentTime.getDate()+"/"+currentTime.getMonth()+"/"+currentTime.getFullYear()+" "+
 					currentTime.getHours()+"h"+currentTime.getMinutes();
 				Mission.create(mission);
-				$scope.dismiss();
+				$location.url("/");
 			} else {
 				$scope.alerts.push({
 					"type": "error",
@@ -27,5 +27,9 @@ smurAngular.controller('NewMissionController',
 					"content": "Essayez 1234"
 				});
 			}
+		};
+
+		$scope.back = function() {
+			$location.url("/");
 		};
 	});

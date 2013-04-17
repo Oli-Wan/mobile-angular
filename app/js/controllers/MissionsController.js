@@ -11,4 +11,8 @@ smurAngular.controller('MissionsController',
 		$scope.navigateTo = function(mission) {
 			$location.url("/mission/"+mission.id);
 		};
+
+		$scope.goToNewMission = function(){
+			$location.url("/mission/new");
+		};
 	});

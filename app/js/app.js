@@ -10,6 +10,11 @@ smurAngular.config(['$routeProvider', function($routeProvider) {
     		templateUrl: 'partials/missions.html', 
     		controller: 'MissionsController'
     	});
+    $routeProvider.when('/mission/new', 
+        {
+            templateUrl: 'partials/missions/new.html', 
+            controller: 'NewMissionController'
+        });
     $routeProvider.when('/mission/:missionId', 
     	{
     		templateUrl: 'partials/mission-container.html', 
