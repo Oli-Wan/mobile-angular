@@ -22,7 +22,7 @@ smurAngular.controller("EventController",
 		$scope.createModal = function() {
 			var modal = $modal({
 				scope: $scope,
-				template: 'partials/mission/eventForm.html', 
+				template: 'partials/mission/events/dialog.html', 
 				show: true, 
 				backdrop: 'static',
 				modalClass:'wide-modal'

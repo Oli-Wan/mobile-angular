@@ -4,19 +4,19 @@
 		"templateUrl":"/partials/mission/mission.html"
 	},
 	{
-		"name":"Personel",
-		"templateUrl":"/partials/mission/personal.html"
+		"name":"Personnel",
+		"templateUrl":"/partials/mission/staff/staff.html"
 	},
 	{
 		"name":"Evènements",
-		"templateUrl":"/partials/mission/events.html"
+		"templateUrl":"/partials/mission/events/events.html"
 	},
 	{
 		"name":"Victimes",
-		"templateUrl":"/partials/mission/victims.html"
+		"templateUrl":"/partials/mission/victims/victims.html"
 	},
 	{
 		"name":"Véhicules",
-		"templateUrl":"/partials/mission/vehicles.html"
+		"templateUrl":"/partials/mission/vehicles/vehicles.html"
 	}
 ]
