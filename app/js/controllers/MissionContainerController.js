@@ -1,6 +1,6 @@
 
 smurAngular.controller("MissionContainerController", 
-		function MissionContainerController($scope, $routeParams, $http, $location, Mission){
+		function MissionContainerController($scope, $routeParams, $http, $location, Mission, $window){
 			$scope.mission = Mission.get($routeParams.missionId);
 
 			 $http.get("/resources/mission-menu.json").success(function(data){
@@ -14,6 +14,7 @@ smurAngular.controller("MissionContainerController",
 
 			$scope.navigate = function(url) {
 				$scope.includedUrl = url;
+				$window.scrollTo(0,0);
 			};
 
 			$scope.back = function() {
