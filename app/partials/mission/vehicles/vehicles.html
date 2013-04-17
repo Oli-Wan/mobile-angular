@@ -1,3 +1,24 @@
-<div  class="mission-description-part">
-	<h3>Véhicules</h3>
+<div class="mission-description-part">
+	<div ng-controller="VehicleController">
+		<h3 class="pull-left">Véhicules</h3>
+
+		<button type="button" class="btn btn-primary btn-add pull-right" 
+			bs-modal="'partials/mission/vehicles/vehicleForm.html'">
+			Ajouter un véhicule
+		</button>
+
+		<div class="clearfix" />
+
+		<table class="table table-hover">
+			<tr>
+				<td>Hélico gendarmerie</td>
+				<td>13h37</td>
+				<td>
+					<button class="btn btn-danger">
+						<i class="icon-trash icon-white"></i>
+					</button>				
+				</td>
+			</tr>
+		</table>
+	</div>
 </div>

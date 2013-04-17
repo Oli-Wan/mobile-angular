@@ -41,6 +41,15 @@
 	z-index: 1000;
 }
 
+.centered-content {
+	width:480px;
+	margin:auto;
+}
+
+.modal-body .not-modal {
+	display:none;
+}
+
 /* Transitions
 -------------------------------------------------- */
 
@@ -92,11 +101,11 @@
  }
 
 .inclusion-leave-setup {
+	position: absolute;
+	width:100%;
 }
 
 .inclusion-leave-setup.inclusion-leave-start {
-	position: absolute;
-	width:100%;
  }
 
 /* Sidenav

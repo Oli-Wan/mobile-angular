@@ -9,7 +9,7 @@ smurAngular.controller('MissionsController',
 		};
 
 		$scope.navigateTo = function(mission) {
-			$location.url("/mission/"+mission.id);
+			$location.url("/mission/"+mission.id).search({page: "mission"});
 		};
 
 		$scope.goToNewMission = function(){
