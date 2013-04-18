@@ -31,6 +31,11 @@ smurAngular.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'partials/mission/staff/new.html', 
       controller: 'NewStaffController'
     });
+    $routeProvider.when('/mission/:missionId/vehicles/new', 
+    {
+      templateUrl: 'partials/mission/vehicles/new.html', 
+      controller: 'NewVehicleController'
+    });
     $routeProvider.otherwise({redirectTo: '/'});
 }]);
 
