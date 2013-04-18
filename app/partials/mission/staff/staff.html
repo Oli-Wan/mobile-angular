@@ -1,9 +1,9 @@
 <div class="mission-description-part">
-	<div ng-controller="PersonalController">
+	<div ng-controller="StaffController">
 		<h3 class="pull-left">Personnel</h3>
 
 		<button type="button" class="btn btn-primary btn-add pull-right" 
-			bs-modal="'partials/mission/staff/staffForm.html'">
+			ng-click="goToNewStaff()">
 			Ajouter une personne
 		</button>
 

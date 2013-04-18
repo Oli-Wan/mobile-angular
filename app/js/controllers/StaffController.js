@@ -1,16 +1,9 @@
 
-smurAngular.controller("PersonalController", 
-	function PersonalController($scope, $http) {
-		$http.get('/resources/functions.json').success(function(data){
-			$scope.functions = data;
-		});
-
-		$http.get('/resources/persons.json').success(function(data){
-			$scope.persons = data;
-		});
-
-		var currentTime = new Date();
-
-		$scope.date = currentTime.getDate()+"/"+currentTime.getMonth()+"/"+currentTime.getFullYear();
-		$scope.time = currentTime.getHours()+":"+currentTime.getMinutes();
+smurAngular.controller("StaffController", 
+	function StaffController($scope, $routeParams, $location, Mission){
+		$scope.mission = Mission.get($routeParams.missionId);
+		
+		$scope.goToNewStaff = function() {
+			$location.url("/mission/"+$scope.mission.id+"/staff/new");
+		}
 	});

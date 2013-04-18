@@ -21,12 +21,16 @@ smurAngular.config(['$routeProvider', function($routeProvider) {
       controller: 'MissionContainerController',
       reloadOnSearch: false
     });
-        $routeProvider.when('/mission/:missionId/events/new', 
+    $routeProvider.when('/mission/:missionId/events/new', 
     {
       templateUrl: 'partials/mission/events/new.html', 
       controller: 'NewEventController'
     });
-
+    $routeProvider.when('/mission/:missionId/staff/new', 
+    {
+      templateUrl: 'partials/mission/staff/new.html', 
+      controller: 'NewStaffController'
+    });
     $routeProvider.otherwise({redirectTo: '/'});
 }]);
 

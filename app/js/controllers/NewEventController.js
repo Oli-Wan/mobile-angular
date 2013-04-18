@@ -24,11 +24,11 @@ smurAngular.controller('NewEventController',
 
 		$scope.back = function() {
 			$location.url("/mission/"+$scope.mission.id).search({page: "event"});
-		}
+		};
 
 		$scope.add = function() {
 			$scope.back();
-		}
+		};
 	});
 
 function getCurrentDateAndTime(){
