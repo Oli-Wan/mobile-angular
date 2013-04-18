@@ -14,7 +14,6 @@ smurAngular.controller('NewEventController',
 		$scope.end  = getCurrentDateAndTime();
 
 		$scope.$watch('destinationType', function(current, old) {
-			console.log(current);
 			if(current == "1")
 				$scope.destination = "/partials/mission/events/address.html";
 			else if(current == "2")
