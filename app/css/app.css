@@ -53,7 +53,8 @@
 /* Transitions
 -------------------------------------------------- */
 
-.view-enter-setup, .view-leave-setup, .inclusion-enter-setup, .inclusion-leave-setup {
+.view-enter-setup, .view-leave-setup, .inclusion-enter-setup, .inclusion-leave-setup,
+	.page-leave-setup, .page-enter-setup {
 	-webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
 	-moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
 	-ms-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
@@ -86,7 +87,7 @@
 }
 
 .view-leave-setup.view-leave-start {
-	left:-100%;
+	left:-120%;
 }
 
 /*inclusion*/
@@ -107,6 +108,27 @@
 
 .inclusion-leave-setup.inclusion-leave-start {
  }
+
+ /* show */
+ .page-enter-setup {
+ 	position:absolute;
+	width: 100%;
+	left: 100%;
+ }
+
+.page-enter-setup.page-enter-start {
+	left:0;
+}
+
+.page-leave-setup {
+ 	position: absolute;
+	width: 100%;
+	left:0;
+ }
+
+.page-leave-setup.page-leave-start {
+	left:100%;
+}
 
 /* Sidenav
 -------------------------------------------------- */

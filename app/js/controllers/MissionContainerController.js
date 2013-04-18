@@ -1,7 +1,8 @@
 
 smurAngular.controller("MissionContainerController", 
-	function MissionContainerController($scope, $routeParams, $http, $location, Mission, $window){
+	function MissionContainerController($scope, $rootScope, $routeParams, $http, $location, Mission, $window, mobile){
 		$scope.mission = Mission.get($routeParams.missionId);
+		$scope.mobile = mobile;
 
 		$http.get("/resources/mission-menu.json").success(function(data){
 			$scope.menuItems = data;
@@ -27,10 +28,41 @@ smurAngular.controller("MissionContainerController",
 				if($scope.menuItems[i].id == currentPage) 
 					return $scope.menuItems[i].templateUrl;
 			};
+
 			return "";
 		};
 
 		$scope.back = function() {
 			$location.url("/");
 		};
+
+		$scope.showMenu = function() {
+			$scope.includedUrl = "";
+			$location.url("/mission/"+$scope.mission.id);
+		}
+
+		$scope.renderMenu = function() {			
+			if(!$scope.mobile)
+				return true;
+
+			if($location.search().page)
+				return false;
+			else
+				return true;
+		};
+
+		$scope.renderPage = function() {
+			if(!$scope.mobile)
+				return true;
+
+			return !$scope.renderMenu();
+		};
+
+		$rootScope.$watch('windowWidth',function(newVal, oldVal) {
+			if(newVal < 768 && !$scope.mobile) {
+				$scope.mobile = true;
+			} else if (newVal >= 768 && $scope.mobile) {
+				$scope.mobile = false;
+			}
+		});
 	});

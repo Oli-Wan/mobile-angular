@@ -10,6 +10,22 @@
 			</div>
 		</div>
 		<div class="control-group">
+			<label for="type-autocomplete" class="control-label">Type autocomplete</label>
+			<div class="controls">
+				<input type="text"  class="input-xlarge" id="type-autocomplete" ng-model="searchName" bs-typeahead="typeNames" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label for="" class="control-label">Resource</label>
+			<div class="controls">
+				<select class="input-xlarge">
+					<option ng-repeat="vehicle in vehicles  | filter:search">
+						{{vehicle.name}}
+					</option>
+				</select>
+			</div>
+		</div>
+		<div class="control-group">
 			<label for="" class="control-label">Resource</label>
 			<div class="controls">
 				<select class="input-xlarge">

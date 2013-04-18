@@ -1,5 +1,14 @@
 <div class="mission-description-part">
 	<div ng-controller="EventController">
+		
+		<div class="visible-phone">
+			<button type="button" class="btn btn-primary"
+				ng-click="showMenu()">
+				<i class="icon-arrow-left icon-white" />
+			</button>
+			<div class="clearfix" ></div>
+		</div>
+
 		<h3 class="pull-left">Evènements</h3>
 
 		<button type="button" class="btn btn-primary btn-add pull-right" 
@@ -7,7 +16,7 @@
 			Ajouter un évènement
 		</button>
 
-		<div class="clearfix" />
+		<div class="clearfix" /><i class="icon-arrow-left icon-white" />
 
 		<table class="table table-hover">
 			<tr>
@@ -27,6 +36,9 @@
 				<td>
 					<button class="btn btn-primary" ng-click="goToNewEvent()">
 						<i class="icon-pencil icon-white"></i>
+					</button>
+					<button class="btn btn-danger" bs-modal="'/partials/misc/deleteConfirmation.html'">
+						<i class="icon-trash icon-white"></i>
 					</button>
 				</td>
 			</tr>

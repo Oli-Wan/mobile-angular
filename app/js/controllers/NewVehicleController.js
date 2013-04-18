@@ -5,6 +5,10 @@ smurAngular.controller("NewVehicleController",
 
 		$http.get('/resources/vehicle-types.json').success(function(data){
 			$scope.types = data;
+			$scope.typeNames = [];
+			$scope.types.forEach(function(element, index, array) {
+				$scope.typeNames.push(element.name);
+			});
 		});
 
 		$http.get('/resources/vehicles.json').success(function(data){
