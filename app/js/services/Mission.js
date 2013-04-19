@@ -6,10 +6,12 @@ smurAngular.factory("Mission", function Mission($http, localStorage){
 			return this.list;
 		},
 		get: function(id) {
-			this.list.foreach(function(element, index, array){
-				if(element.id === id)
-					return id;
+			var foundElement;
+			this.list.forEach(function(element, index, array){
+				if(element.id == id)
+					foundElement = element;
 			});
+			return foundElement;
 		},
 		create: function(data) {
 			this.list.push(data);

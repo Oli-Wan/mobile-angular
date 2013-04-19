@@ -1,0 +1,27 @@
+[
+	{
+		"id":"mission",
+		"name":"Mission",
+		"templateUrl":"/partials/mission/mission.html"
+	},
+	{
+		"id":"staff",
+		"name":"Personnel",
+		"templateUrl":"/partials/mission/staff/staff.html"
+	},
+	{
+		"id":"event",
+		"name":"Evènements",
+		"templateUrl":"/partials/mission/events/events.html"
+	},
+	{
+		"id":"victim",
+		"name":"Victimes",
+		"templateUrl":"/partials/mission/victims/victims.html"
+	},
+	{
+		"id":"vehicle",
+		"name":"Véhicules",
+		"templateUrl":"/partials/mission/vehicles/vehicles.html"
+	}
+]

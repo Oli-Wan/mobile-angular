@@ -2,21 +2,25 @@
 	{
 		"id":"mballouz",
 		"firstname":"Michel",
-		"lastname":"Ballouz"
+		"lastname":"Ballouz",
+		"function":"1"
 	},
 	{
 		"id":"jdoe",
 		"firstname":"John",
-		"lastname":"Doe"
+		"lastname":"Doe",
+		"function":"1"
 	},
 	{
 		"id":"fenstein",
 		"firstname":"Frank",
-		"lastname":"Enstein"
+		"lastname":"Enstein",
+		"function":"2"
 	},
 	{
 		"id":"pandre",
 		"firstname":"Pierre",
-		"lastname":"Andre"
+		"lastname":"Andre",
+		"function":"2"
 	}
 ]
