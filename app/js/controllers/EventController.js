@@ -1,9 +1,11 @@
 
 smurAngular.controller("EventController", 
 	function EventController($scope, $http, $modal, $routeParams, $location, Mission){		
-		Mission.store.get(parseInt($routeParams.missionId), function(data) {
-			$scope.mission = data;
-			$scope.$apply();
+		Mission.getStore().then(function(store){
+			store.get(parseInt($routeParams.missionId), function(data) {
+				$scope.mission = data;
+				$scope.$apply();
+			});
 		});
 
 		$scope.goToNewEvent = function() {

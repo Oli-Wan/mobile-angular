@@ -1,10 +1,11 @@
 smurAngular.controller('NewEventController', 
-	function NewEventController($scope, $http, $location, $routeParams, Mission) {		
-		Mission.store.get(parseInt($routeParams.missionId), function(data) {
-			$scope.mission = data;
-			$scope.$apply();
+	function NewEventController($scope, $http, $location, $routeParams, Mission, Utils) {		
+		Mission.getStore().then(function(store){
+			store.get(parseInt($routeParams.missionId), function(data) {
+				$scope.mission = data;
+				$scope.$apply();
+			});
 		});
-		
 		
 		$http.get("/resources/event-types.json").success(function(data){
 			$scope.types = data;
@@ -14,8 +15,8 @@ smurAngular.controller('NewEventController',
 			$scope.vehicles = data;
 		});
 
-		$scope.start = getCurrentDateAndTime();
-		$scope.end  = getCurrentDateAndTime();
+		$scope.start = Utils.getCurrentDateAndTime();
+		$scope.end  = Utils.getCurrentDateAndTime();
 
 		$scope.$watch('destinationType', function(current, old) {
 			if(current == "1")
@@ -34,11 +35,3 @@ smurAngular.controller('NewEventController',
 			$scope.back();
 		};
 	});
-
-function getCurrentDateAndTime(){
-	var currentTime = new Date();
-	return {
-		date: currentTime.getDate()+"/"+currentTime.getMonth()+"/"+currentTime.getFullYear(),
-		time: currentTime.getHours()+":"+currentTime.getMinutes()
-	}
-}
