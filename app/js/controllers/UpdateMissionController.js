@@ -7,7 +7,7 @@ smurAngular.controller("UpdateMissionController", function UpdateMissionControll
 	});
 
 	$scope.save = function() {
-		Mission.getStore.then(function(store){
+		Mission.getStore().then(function(store){
 			store.put($scope.mission, function() {
 				$scope.alerts = [];
 				$scope.alerts.push({
