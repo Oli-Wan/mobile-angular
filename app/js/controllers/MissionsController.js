@@ -1,33 +1,22 @@
 
 smurAngular.controller('MissionsController', 
 	function MissionsController($scope, Mission, $location, $modal, $rootScope, $timeout){
-		
-		// polling needed due to IDB async behavior
-		$timeout(function pollDB() {
-			console.log("Checking");
-			if(Mission.ready) {
-				console.log("Ready!")
-				Mission.store.getAll(function(data) {
-					console.log(data);
-					$scope.missions = data;
-					$scope.$apply();	
-				}, function(error) {
-					console.log("An error occured : "+error);
-				});
-			} else {
-				$timeout(pollDB, 100);
-			}
-		}, 100);
+		Mission.getStore().then(function(store){
+			store.getAll(function(data){
+				$scope.missions = data;
+				$scope.$apply();
+			});
+		});
 
 		$scope.delete = function(id) {
-			Mission.store.remove(id, function() {
-				Mission.store.getAll(function(data) {
-					$scope.missions = data;
-					$scope.$apply();
-				}, function(error) {
-					console.log("An error occured : "+error);
+			Mission.getStore().then(function(store) {
+				store.remove(id, function() {
+					store.getAll(function(data) {
+						$scope.missions = data;
+						$scope.$apply();
+					});
+					$scope.dismiss();
 				});
-				$scope.dismiss();
 			});
 		};
 
