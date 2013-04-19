@@ -20,16 +20,16 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="mission in missions" ng-click="passwordModal(mission)" >
-				<td>{{mission.created_at}}</td>
-				<td class="hidden-phone">{{mission.id}}</td>
-				<td class="hidden-phone">{{mission.type}}</td>
-				<td>{{mission.destination}}</td>
-				<td class="hidden-phone">{{mission.responsible}}</td>
-				<td class="hidden-phone">{{mission.victims}}</td>
-				<td class="hidden-phone">{{mission.observation}}</td>
+			<tr ng-repeat="mission in missions" >
+				<td ng-click="passwordModal(mission)">{{mission.created_at}}</td>
+				<td ng-click="passwordModal(mission)" class="hidden-phone">{{mission.id}}</td>
+				<td ng-click="passwordModal(mission)" class="hidden-phone">{{mission.type}}</td>
+				<td ng-click="passwordModal(mission)">{{mission.destination}}</td>
+				<td ng-click="passwordModal(mission)" class="hidden-phone">{{mission.responsible}}</td>
+				<td ng-click="passwordModal(mission)" class="hidden-phone">{{mission.victims}}</td>
+				<td ng-click="passwordModal(mission)" class="hidden-phone">{{mission.observation}}</td>
 				<td>
-					<button class="btn btn-danger" ng-click="delete(mission.id)">
+					<button class="btn btn-danger" ng-click="deleteModal(mission.id)">
 						<i class="icon-trash icon-white"></i>
 					</button>
 				</td>

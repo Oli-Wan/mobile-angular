@@ -18,7 +18,7 @@ smurAngular.controller('NewMissionController',
 				mission.id = currentTime.getTime();
 				mission.created_at = currentTime.getDate()+"/"+currentTime.getMonth()+"/"+currentTime.getFullYear()+" "+
 					currentTime.getHours()+"h"+currentTime.getMinutes();
-				Mission.create(mission);
+				Mission.store.put(mission);
 				$location.url("/");
 			} else {
 				$scope.alerts.push({

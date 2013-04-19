@@ -1,11 +1,25 @@
 
 smurAngular.controller('MissionsController', 
-	function MissionsController($scope, Mission, $location, $modal){
-		$scope.missions = Mission.getAll();
+	function MissionsController($scope, Mission, $location, $modal, $rootScope, $timeout){
+		
+		$timeout(function() {
+			if(Mission.ready) {
+				$timeout.cancel();
+				Mission.store.getAll(function(data) {
+					$scope.missions = data;
+					$scope.$apply();	
+				});
+			}
+		}, 100);
 
 		$scope.delete = function(id) {
-			Mission.delete(id);
-			$scope.missions = Mission.getAll();
+			Mission.store.remove(id, function() {
+				Mission.store.getAll(function(data) {
+					$scope.missions = data;
+					$scope.$apply();
+				});
+				$scope.dismiss();
+			});
 		};
 
 		$scope.navigateTo = function(mission) {
@@ -31,6 +45,16 @@ smurAngular.controller('MissionsController',
 			return $modal({
 				scope: $scope,
 				template: '/partials/missions/password.html', 
+				show: true, 
+				backdrop: 'static'
+			});
+		};
+
+		$scope.deleteModal = function(id) {
+			$scope.id = id;
+			return $modal({
+				scope: $scope,
+				template: '/partials/misc/deleteConfirmation.html', 
 				show: true, 
 				backdrop: 'static'
 			});
