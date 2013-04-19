@@ -1,7 +1,11 @@
 
 smurAngular.controller("NewStaffController", 
 	function NewStaffController($scope, $http, $location, $routeParams, Mission) {
-		$scope.mission = Mission.get($routeParams.missionId);
+		Mission.store.get(parseInt($routeParams.missionId), function(data) {
+			$scope.mission = data;
+			$scope.$apply();
+		});
+	
 
 		$http.get('/resources/functions.json').success(function(data){
 			$scope.functions = data;

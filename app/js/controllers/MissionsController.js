@@ -2,10 +2,12 @@
 smurAngular.controller('MissionsController', 
 	function MissionsController($scope, Mission, $location, $modal, $rootScope, $timeout){
 		
+		// polling needed due to IDB async behavior
 		$timeout(function() {
 			if(Mission.ready) {
 				$timeout.cancel();
 				Mission.store.getAll(function(data) {
+					console.log(data);
 					$scope.missions = data;
 					$scope.$apply();	
 				});

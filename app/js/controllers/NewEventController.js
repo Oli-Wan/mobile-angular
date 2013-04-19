@@ -1,6 +1,10 @@
 smurAngular.controller('NewEventController', 
-	function NewEventController($scope, $http, $location, $routeParams, Mission) {
-		$scope.mission = Mission.get($routeParams.missionId);
+	function NewEventController($scope, $http, $location, $routeParams, Mission) {		
+		Mission.store.get(parseInt($routeParams.missionId), function(data) {
+			$scope.mission = data;
+			$scope.$apply();
+		});
+		
 		
 		$http.get("/resources/event-types.json").success(function(data){
 			$scope.types = data;

@@ -1,8 +1,12 @@
 
 smurAngular.controller("StaffController", 
 	function StaffController($scope, $routeParams, $location, Mission){
-		$scope.mission = Mission.get($routeParams.missionId);
-		
+		Mission.store.get(parseInt($routeParams.missionId), function(data) {
+			$scope.mission = data;
+			$scope.$apply();
+		});
+
+
 		$scope.goToNewStaff = function() {
 			$location.url("/mission/"+$scope.mission.id+"/staff/new");
 		}
