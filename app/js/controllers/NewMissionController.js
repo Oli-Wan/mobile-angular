@@ -1,19 +1,21 @@
 
 smurAngular.controller('NewMissionController', 
-	function NewMissionController($scope, $http, $location, Mission, Utils){
+	function NewMissionController($scope, $http, $location, Mission, Staff, Utils){
 		$scope.alerts = [];
 
 		$http.get("/resources/vehicles.json").success(function(data){
 			$scope.vehicles = data;
 		});
 
-		$http.get("/resources/persons.json").success(function(data){
-			$scope.responsibles = data;
+		Staff.getStore().then(function(store){
+			store.getAll(function(data){
+				$scope.responsibles = data;
+			});
 		});
 		
 		$scope.add = function(){
 			if($scope.password == "1234") {
-				var formattedDate = Utils.getCurrentDateAndTime():
+				var formattedDate = Utils.getCurrentDateAndTime();
 				$scope.mission.created_at = formattedDate.date+" "+formattedDate.time;
 				Mission.getStore().then(function(store){
 					store.put($scope.mission);
