@@ -1,12 +1,13 @@
 
 smurAngular.controller("NewVehicleController", 
 	function NewVehicleController($scope, $http, $location, $routeParams, Mission) {
-		Mission.store.get(parseInt($routeParams.missionId), function(data) {
-			$scope.mission = data;
-			$scope.$apply();
+		Mission.getStore().then(function(store){
+			store.get(parseInt($routeParams.missionId), function(data) {
+				$scope.mission = data;
+				$scope.$apply();
+			});
 		});
-	
-
+		
 		$http.get('/resources/vehicle-types.json').success(function(data){
 			$scope.types = data;
 			$scope.typeNames = [];

@@ -1,11 +1,13 @@
 
 smurAngular.controller("NewStaffController", 
-	function NewStaffController($scope, $http, $location, $routeParams, Mission) {
-		Mission.store.get(parseInt($routeParams.missionId), function(data) {
-			$scope.mission = data;
-			$scope.$apply();
+	function NewStaffController($scope, $http, $location, $routeParams, Mission, Utils) {
+		Mission.getStore().then(function(store){
+			store.get(parseInt($routeParams.missionId), function(data) {
+				$scope.mission = data;
+				$scope.$apply();
+			});
 		});
-	
+
 
 		$http.get('/resources/functions.json').success(function(data){
 			$scope.functions = data;
@@ -15,10 +17,10 @@ smurAngular.controller("NewStaffController",
 			$scope.persons = data;
 		});
 
-		var currentTime = new Date();
+		var formattedDate = Utils.getCurrentDateAndTime;
 
-		$scope.date = currentTime.getDate()+"/"+currentTime.getMonth()+"/"+currentTime.getFullYear();
-		$scope.time = currentTime.getHours()+":"+currentTime.getMinutes();
+		$scope.date = formattedDate.date;
+		$scope.time = formattedDate.time;
 
 		$scope.back = function() {
 			$location.url("/mission/"+$scope.mission.id).search({page: "staff"});
