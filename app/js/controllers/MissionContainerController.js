@@ -4,6 +4,8 @@ smurAngular.controller("MissionContainerController",
 		Mission.store.get(parseInt($routeParams.missionId), function(data) {
 			$scope.mission = data;
 			$scope.$apply();
+		}, function(error) {
+			console.log("An error occured : "+error);
 		});
 
 		$scope.mobile = mobile;
@@ -22,7 +24,6 @@ smurAngular.controller("MissionContainerController",
 			$location.url("/mission/"+$scope.mission.id).search({page: id});
 			$scope.includedUrl = $scope.getPathFromParams();
 			$window.scrollTo(0,0);
-			console.log("Redirecting took "+(new Date() - date));
 		};
 
 		$scope.getPathFromParams = function() {
