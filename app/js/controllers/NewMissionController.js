@@ -10,6 +10,7 @@ smurAngular.controller('NewMissionController',
 		Staff.getStore().then(function(store){
 			store.getAll(function(data){
 				$scope.responsibles = data;
+				$scope.$apply();
 			});
 		});
 		

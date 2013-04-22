@@ -15,22 +15,8 @@ smurAngular.controller("NewStaffController",
 
 		Staff.getStore().then(function(store){
 			store.getAll(function(data) {
-				$scope.persons = [];
-				if(!$scope.mission.staff || $scope.mission.staff.length == 0) {
-					$scope.persons = data;
-					$scope.$apply();
-					return;
-				}
-
-				for(var i = 0; i < data.length; i++) {
-					for(var j = 0; j < $scope.mission.staff.length; j++) {
-						if($scope.mission.staff[j].id != data[i].id) {
-							$scope.persons.push(data[i]);
-							$scope.$apply();
-							break;
-						}
-					}
-				}
+				$scope.persons = data;
+				$scope.$apply();
 			});
 		});
 

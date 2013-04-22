@@ -36,7 +36,7 @@ smurAngular.controller('NewEventController',
 			$scope.event.missionId = $scope.mission.id;
 			Event.getStore().then(function(store) {
 				store.put($scope.event);
-				$scop.back():
+				$scope.back();
 			});
 		};
 	});
