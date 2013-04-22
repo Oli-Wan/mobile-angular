@@ -1,0 +1,38 @@
+<div>
+	<div class="centered-content">
+		<h1>Ajouter une nouvelle mission</h1>
+		<form class="form-horizontal" novalidate name="form">
+			<div class="alert fade" ng-repeat="alert in alerts" bs-alert="alert"></div>
+			<div class="control-group">
+				<div class="row">
+					<div class="span3">
+						<select size="10" ng-model="mission.vehicle" required>
+							<option ng-repeat="vehicle in vehicles" value="{{vehicle.name}}">
+								{{vehicle.name}}
+							</option>
+						</select>
+					</div>
+					<div class="span3">
+						<select size="10" class="span3" ng-model="mission.responsible"
+						required>
+							<option ng-repeat="responsible in responsibles" 
+							value="{{responsible.lastname}} {{responsible.firstname}}">
+								{{responsible.lastname}} {{responsible.firstname}}
+							</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="password">Mot de passe</label>
+				<div class="controls">
+					<input type="password" id="password" ng-model="password" class="input-normal" required/>
+				</div>
+			</div>
+			<div class="form-actions">
+				<button class="btn" ng-click="back()">Annuler</button>
+				<button class="btn btn-primary" ng-click="add()" ng-disabled="form.$invalid">Ajouter</button>
+			</div>
+		</form>
+	</div>
+</div>

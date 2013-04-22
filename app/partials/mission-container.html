@@ -1,0 +1,22 @@
+<div>
+	<div class="mission-name affix">
+		<h1> Mission {{mission.id}} </h1>
+	</div>
+	<div class="row-fluid mission-description-row">
+		<div ng-show="renderMenu()" ng-class="{true:'span10', false:'span3'}[mobile]">
+			<ul class="nav nav-list bs-docs-sidenav affix">
+				<li ng-repeat="menuItem in menuItems" ng-class="{active: includeUrlIs(menuItem.templateUrl)}">
+					<a ng-click="navigate(menuItem.id)">
+						<i class="icon-chevron-right"></i>
+						{{menuItem.name}}
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="mission-description" ng-show="renderPage()"
+			ng-class="{true:'span12', false:'span9'}[mobile]">
+			<div ng-include="includedUrl" 
+				ng-animate="{enter: 'inclusion-enter', leave: 'inclusion-leave'}"></div>
+		</div>
+	</div>
+</div>
