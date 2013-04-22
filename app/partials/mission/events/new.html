@@ -4,7 +4,7 @@
 		<div class="control-group">
 			<label for="type" class="control-label">Type</label>
 			<div class="controls">
-				<select class="input-xlarge" ng-model="destinationType">
+				<select class="input-xlarge" ng-model="event.type">
 					<option ng-repeat="type in types" value="{{type.id}}">{{type.name}}</option>
 				</select>
 			</div>
@@ -14,14 +14,14 @@
 			<div class="controls">
 				<div class="input-append">
 					<input  class="input-small" type="text" id="start-datepicker"
-					ng-model="start.date" bs-datepicker></input>
+					ng-model="event.start.date" bs-datepicker></input>
 					<button type="button" class="btn" data-toggle="datepicker">
 						<i class="icon-calendar"></i>
 					</button>
 				</div>
 				<div class="input-append">
 					<input  class="input-small" type="text" data-show-meridian="false" data-template="modal" 
-					ng-model="start.time" bs-timepicker></input>
+					ng-model="event.start.time" bs-timepicker></input>
 					<button type="button" class="btn" data-toggle="timepicker">
 						<i class="icon-time"></i>
 					</button>
@@ -33,14 +33,14 @@
 			<div class="controls">
 				<div class="input-append">
 					<input  class="input-small" type="text" id="end-datepicker"
-					ng-model="end.date" bs-datepicker></input>
+					ng-model="event.end.date" bs-datepicker></input>
 					<button type="button" class="btn" data-toggle="datepicker">
 						<i class="icon-calendar"></i>
 					</button>
 				</div>
 				<div class="input-append">
 					<input  class="input-small" type="text" data-show-meridian="false" data-template="modal" 
-					ng-model="end.time" bs-timepicker></input>
+					ng-model="event.end.time" bs-timepicker></input>
 					<button type="button" class="btn" data-toggle="timepicker">
 						<i class="icon-time"></i>
 					</button>
@@ -50,7 +50,7 @@
 		<div class="control-group">
 			<label for="type" class="control-label">Véhicule</label>
 			<div class="controls">
-				<select class="input-xlarge">
+				<select class="input-xlarge" ng-model="event.vehicle">
 					<option ng-repeat="vehicle in vehicles">{{vehicle.name}}</option>
 				</select>
 			</div>

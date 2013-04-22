@@ -1,5 +1,9 @@
 smurAngular.controller('NewEventController', 
-	function NewEventController($scope, $http, $location, $routeParams, Mission, Utils) {		
+	function NewEventController($scope, $http, $location, $routeParams, Mission, Event, Utils) {		
+		$scope.event = {};
+		$scope.event.start = Utils.getCurrentDateAndTime();
+		$scope.event.end  = Utils.getCurrentDateAndTime();
+
 		Mission.getStore().then(function(store){
 			store.get(parseInt($routeParams.missionId), function(data) {
 				$scope.mission = data;
@@ -15,10 +19,7 @@ smurAngular.controller('NewEventController',
 			$scope.vehicles = data;
 		});
 
-		$scope.start = Utils.getCurrentDateAndTime();
-		$scope.end  = Utils.getCurrentDateAndTime();
-
-		$scope.$watch('destinationType', function(current, old) {
+		$scope.$watch('event.type', function(current, old) {
 			if(current == "1")
 				$scope.destination = "/partials/mission/events/address.html";
 			else if(current == "2")
@@ -32,6 +33,10 @@ smurAngular.controller('NewEventController',
 		};
 
 		$scope.add = function() {
-			$scope.back();
+			$scope.event.missionId = $scope.mission.id;
+			Event.getStore().then(function(store) {
+				store.put($scope.event);
+				$scop.back():
+			});
 		};
 	});
