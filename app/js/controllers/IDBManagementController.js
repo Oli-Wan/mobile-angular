@@ -60,6 +60,7 @@ smurAngular.controller("IDBManagementController",
 					};
 					Staff.getStore().then(function(store){
 						store.put(dbObject, function(){
+							console.log("PUT")
 							count++;
 							if(count < data.length)
 								recursivePut(count, data);
