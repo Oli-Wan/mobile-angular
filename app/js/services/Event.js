@@ -15,7 +15,10 @@ smurAngular.factory("Event", function Event($timeout){
 			autoIncrement: true,
 			onStoreReady: function() {
 				storeWrapper.setReady();
-			}
+			},
+			indexed: [
+				{ name: "missionId" }
+			]
 		})
 	};
 
