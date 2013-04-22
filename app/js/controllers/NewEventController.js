@@ -1,9 +1,9 @@
 smurAngular.controller('NewEventController', 
-	function NewEventController($scope, $http, $location, $routeParams, Mission, Utils) {		
+	function NewEventController($scope, $http, $location, $routeParams, Mission, Event, Utils) {		
 		$scope.event = {};
 		$scope.event.start = Utils.getCurrentDateAndTime();
 		$scope.event.end  = Utils.getCurrentDateAndTime();
-		
+
 		Mission.getStore().then(function(store){
 			store.get(parseInt($routeParams.missionId), function(data) {
 				$scope.mission = data;
@@ -33,6 +33,10 @@ smurAngular.controller('NewEventController',
 		};
 
 		$scope.add = function() {
-			console.log($scope.event);
+			$scope.event.missionId = $scope.mission.id;
+			Event.getStore().then(function(store) {
+				store.put($scope.event);
+				$scop.back():
+			});
 		};
 	});
