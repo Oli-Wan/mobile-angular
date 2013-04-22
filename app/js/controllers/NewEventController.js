@@ -13,15 +13,6 @@ smurAngular.controller('NewEventController',
 		$scope.start = getCurrentDateAndTime();
 		$scope.end  = getCurrentDateAndTime();
 
-		$scope.$watch('destinationType', function(current, old) {
-			if(current == "1")
-				$scope.destination = "/partials/mission/events/address.html";
-			else if(current == "2")
-				$scope.destination = "/partials/mission/events/service.html";
-			else
-				$scope.destination = "";
-		});
-
 		$scope.back = function() {
 			$location.url("/mission/"+$scope.mission.id).search({page: "event"});
 		};
