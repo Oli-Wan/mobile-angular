@@ -1,6 +1,6 @@
 
 smurAngular.controller("NewStaffController", 
-	function NewStaffController($scope, $http, $location, $routeParams, Mission, Utils) {
+	function NewStaffController($scope, $http, $location, $routeParams, Mission, Staff, Utils) {
 		Mission.getStore().then(function(store){
 			store.get(parseInt($routeParams.missionId), function(data) {
 				$scope.mission = data;
@@ -8,13 +8,16 @@ smurAngular.controller("NewStaffController",
 			});
 		});
 
+		Staff.getStore().then(function(store){
+			store.getAll(function(data) {
+				console.log(data);
+				$scope.persons = data;
+				$scope.$apply();
+			});
+		});
 
 		$http.get('/resources/functions.json').success(function(data){
 			$scope.functions = data;
-		});
-
-		$http.get('/resources/persons.json').success(function(data){
-			$scope.persons = data;
 		});
 
 		var formattedDate = Utils.getCurrentDateAndTime;

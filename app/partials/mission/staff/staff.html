@@ -18,26 +18,21 @@
 		<div class="clearfix" />
 
 		<table class="table table-hover">
-			<tr>
-				<td>Ballouz Michel</td>
-				<td>Médecin</td>
-				<td>13h37</td>
+			<tr ng-repeat="person in mission.staff">
+				<td>{{person.lastname}} {{person.firstname}}</td>
+				<td>{{person.function.name}}</td>
+				<td>{{person.hour}}</td>
 				<td>
 					<button class="btn btn-danger" bs-modal="'/partials/misc/deleteConfirmation.html'">
 						<i class="icon-trash icon-white"></i>
 					</button>				
 				</td>
 			</tr>
-			<tr>
-				<td>Maller Jean-Pierre</td>
-				<td>Ambulancier</td>
-				<td>13h37</td>
-				<td>
-					<button class="btn btn-danger" bs-modal="'/partials/misc/deleteConfirmation.html'">
-						<i class="icon-trash icon-white"></i>
-					</button>
-				</td>
-			</tr>
 		</table>
+
+		<button type="button" class="btn btn-primary btn-add pull-right" 
+			ng-click="populate()">
+			Mettre des données en base
+		</button>
 	</div>
 </div>

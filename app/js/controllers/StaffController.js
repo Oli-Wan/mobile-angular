@@ -1,7 +1,7 @@
 
 smurAngular.controller("StaffController", 
-	function StaffController($scope, $routeParams, $location, Mission){
-		Mission.getStore().then(function(store){
+	function StaffController($scope, $routeParams, $http, $location, Mission, Staff){
+		Mission.getStore().then(function(store){ 
 			store.get(parseInt($routeParams.missionId), function(data) {
 				$scope.mission = data;
 				$scope.$apply();
@@ -11,4 +11,26 @@ smurAngular.controller("StaffController",
 		$scope.goToNewStaff = function() {
 			$location.url("/mission/"+$scope.mission.id+"/staff/new");
 		}
+
+		$scope.populate = function() {
+			$http.get('/resources/persons.json').success(function(data){
+				var count = 0;
+				var recursivePut = function(count, data){
+					var element = data[count];
+					var dbObject = {
+						firstname: element.firstname,
+						lastname: element.lastname
+					};
+					Staff.getStore().then(function(store){
+						store.put(dbObject, function(){
+							console.log("Put!")
+							count++;
+							if(count < data.length)
+								recursivePut(count, data);
+						});
+					});
+				};
+				recursivePut(count, data);
+			});
+		};
 	});
