@@ -31,6 +31,9 @@ smurAngular.controller("NewStaffController",
 
 		$scope.add = function() {
 			$scope.staff.store="staff";
+			if($scope.mission.staff === undefined)
+				$scope.mission.staff = [];
+			
 			$scope.mission.staff.push($scope.staff);
 
 			Mission.getStore().then(function(store){

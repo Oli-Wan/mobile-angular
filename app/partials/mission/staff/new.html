@@ -1,5 +1,6 @@
 <div>
 	<h1>Ajouter une personne</h1>
+	<div class="alert fade" ng-repeat="alert in alerts" bs-alert="alert"></div>
 	<form class="form form-horizontal">
 		<div class="control-group">
 			<label for="" class="control-label">Fonction</label>
@@ -12,15 +13,15 @@
 		<div class="control-group">
 			<label for="" class="control-label">Resource</label>
 			<div class="controls">
-				<select class="input-xlarge">
-					<option ng-repeat="person in persons  | filter:search">
+				<select class="input-xlarge" ng-model="staff.id">
+					<option ng-repeat="person in persons  | filter:search" value="{{person.id}}">
 						{{person.lastname}} {{person.firstname}}
 					</option>
 				</select>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="datepicker">Heure</label>
+			<label class="control-label" for="datepicker" ng-model="staff.date">Heure</label>
 			<div class="controls">
 				<div class="input-append">
 					<input  class="input-normal" type="text" id="datepicker"
@@ -32,7 +33,7 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="timepicker">Heure</label>
+			<label class="control-label" for="timepicker" ng-model="staff.time">Heure</label>
 			<div class="controls">
 				<div class="input-append">
 					<input  class="input-normal" type="text" id="timepicker" data-show-meridian="false" data-template="modal" 

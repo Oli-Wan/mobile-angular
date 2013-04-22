@@ -24,7 +24,7 @@ smurAngular.controller("StaffController",
 						"firstname": element.firstname,
 						"lastname": element.lastname,
 						"function": {
-							store: "functionStore",
+							store: "function",
 							id: element.function
 						}  
 					};
