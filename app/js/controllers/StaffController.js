@@ -46,6 +46,9 @@ smurAngular.controller("StaffController",
 		};
 
 		$scope.refreshStaff = function() {
+			if($scope.mission.staff === undefined)
+				return;
+			
 			$scope.staff = [];
 			$scope.mission.staff.forEach(function(element, index, array) {
 				Staff.getStore().then(function(staffStore){

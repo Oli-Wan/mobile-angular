@@ -14,7 +14,8 @@ smurAngular.controller("EventController",
 				upper: $scope.mission.id
 			});
 			store.query(function(data) {
-				console.log(data);
+				$scope.events = data;
+				$scope.$apply();
 			}, {
 				"index":"missionId",
 				"keyRange":keyRange

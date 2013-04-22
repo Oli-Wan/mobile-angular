@@ -1,5 +1,5 @@
 smurAngular.controller('NewEventController', 
-	function NewEventController($scope, $http, $location, $routeParams, Mission, Event, Utils) {		
+	function NewEventController($scope, $http, $location, $routeParams, Mission, Event, Utils) {
 		$scope.event = {};
 		$scope.event.start = Utils.getCurrentDateAndTime();
 		$scope.event.end  = Utils.getCurrentDateAndTime();
@@ -20,9 +20,9 @@ smurAngular.controller('NewEventController',
 		});
 
 		$scope.$watch('event.type', function(current, old) {
-			if(current == "1")
+			if(current == "intervention")
 				$scope.destination = "/partials/mission/events/address.html";
-			else if(current == "2")
+			else if(current == "hospitalisation")
 				$scope.destination = "/partials/mission/events/service.html";
 			else
 				$scope.destination = "";

@@ -5,7 +5,7 @@
 			<label for="type" class="control-label">Type</label>
 			<div class="controls">
 				<select class="input-xlarge" ng-model="event.type">
-					<option ng-repeat="type in types" value="{{type.id}}">{{type.name}}</option>
+					<option ng-repeat="type in types" >{{type.name}}</option>
 				</select>
 			</div>
 		</div>
@@ -61,6 +61,6 @@
 
 		<div class="form-actions not-modal">
 			<button class="btn" ng-click="back()">Annuler</button>
-			<button class="btn btn-primary" ng-click="add()" ng-disabled="form.$invalid">Ajouter</button>
+			<button class="btn btn-primary" ng-click="add()">Ajouter</button>
 		</div>
 	</form></div>

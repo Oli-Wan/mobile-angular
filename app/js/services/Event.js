@@ -16,8 +16,8 @@ smurAngular.factory("Event", function Event($timeout){
 			onStoreReady: function() {
 				storeWrapper.setReady();
 			},
-			indexed: [
-				{ name: "missionId" }
+			indexes: [
+			{ name: "missionId" }
 			]
 		})
 	};
