@@ -2,7 +2,7 @@
 <div class="control-group">
 	<label for="city" class="control-label">Ville</label>
 	<div class="controls">
-		<select id="city">
+		<select id="city" ng-model="event.service.city">
 			<option>Paris</option>
 			<option>Strasbourg</option>
 		</select>
@@ -10,7 +10,7 @@
 </div>
 <div class="control-group">
 	<label for="hospital" class="control-label">Hopital</label>
-	<div class="controls">
+	<div class="controls" ng-model="event.service.hospital">
 		<select id="hospital">
 			<option>Hopital 1</option>
 			<option>Hopital 2</option>
@@ -18,7 +18,7 @@
 	</div>
 </div>
 <div class="control-group">
-	<label for="service" class="control-label">Service</label>
+	<label for="service" class="control-label"ng-model="event.service.name">Service</label>
 	<div class="controls">
 		<select id="service">
 			<option>Cardiologie</option>
