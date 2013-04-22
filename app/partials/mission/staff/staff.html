@@ -18,9 +18,9 @@
 		<div class="clearfix" />
 
 		<table class="table table-hover">
-			<tr ng-repeat="person in mission.staff">
+			<tr ng-repeat="person in staff">
 				<td>{{person.lastname}} {{person.firstname}}</td>
-				<td>{{person.function.name}}</td>
+				<td>{{functions[person.function.id]}}</td>
 				<td>{{person.hour}}</td>
 				<td>
 					<button class="btn btn-danger" bs-modal="'/partials/misc/deleteConfirmation.html'">

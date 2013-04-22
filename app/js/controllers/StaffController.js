@@ -1,10 +1,27 @@
 
 smurAngular.controller("StaffController", 
 	function StaffController($scope, $routeParams, $http, $location, Mission, Staff){
-		Mission.getStore().then(function(store){ 
+		Mission.getStore().then(function(store){
 			store.get(parseInt($routeParams.missionId), function(data) {
 				$scope.mission = data;
-				$scope.$apply();
+				$scope.staff = [];
+				$scope.mission.staff.forEach(function(element, index, array) {
+					Staff.getStore().then(function(staffStore){
+						staffStore.get(parseInt(element.id), function(data){
+							$scope.staff.push(data);
+							$scope.$apply();
+						});
+					});
+				});
+			});
+		});
+
+		$http.get('/resources/functions.json').success(function(data){
+			$scope.functions = [];
+			data.forEach(function(element, index, array) {
+				console.log(element);
+				$scope.functions[element.id] = element.name;
+				console.log($scope.functions);
 			});
 		});
 
