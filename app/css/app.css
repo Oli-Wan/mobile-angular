@@ -54,7 +54,7 @@
 -------------------------------------------------- */
 
 .view-enter-setup, .view-leave-setup, .inclusion-enter-setup, .inclusion-leave-setup,
-	.page-leave-setup, .page-enter-setup {
+.page-leave-setup, .page-enter-setup {
 	-webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.25s;
 	-moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.25s;
 	-ms-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.25s;
@@ -98,8 +98,8 @@
 }
 
 .inclusion-enter-setup.inclusion-enter-start {
- 	left:0;
- }
+	left:0;
+}
 
 .inclusion-leave-setup {
 	position: absolute;
@@ -107,24 +107,24 @@
 }
 
 .inclusion-leave-setup.inclusion-leave-start {
- }
+}
 
- /* show */
- .page-enter-setup {
- 	position:absolute;
+/* show */
+.page-enter-setup {
+	position:absolute;
 	width: 100%;
 	left: 100%;
- }
+}
 
 .page-enter-setup.page-enter-start {
 	left:0;
 }
 
 .page-leave-setup {
- 	position: absolute;
+	position: absolute;
 	width: 100%;
 	left:0;
- }
+}
 
 .page-leave-setup.page-leave-start {
 	left:100%;
@@ -133,7 +133,10 @@
 /* Sidenav
 -------------------------------------------------- */
 
+
 .bs-docs-sidenav {
+	width: inherit;
+	margin: 30px 0 0;
 	padding: 0;
 	background-color: #fff;
 	-webkit-border-radius: 6px;
@@ -145,7 +148,6 @@
 }
 .bs-docs-sidenav > li > a {
 	display: block;
-	width: 190px \9;
 	margin: 0 0 -1px;
 	padding: 8px 14px;
 	border: 1px solid #e5e5e5;
@@ -155,11 +157,13 @@
 	-moz-border-radius: 6px 6px 0 0;
 	border-radius: 6px 6px 0 0;
 }
+
 .bs-docs-sidenav > li:last-child > a {
 	-webkit-border-radius: 0 0 6px 6px;
 	-moz-border-radius: 0 0 6px 6px;
 	border-radius: 0 0 6px 6px;
 }
+
 .bs-docs-sidenav > .active > a {
 	position: relative;
 	z-index: 2;
@@ -189,7 +193,7 @@
 	opacity: 1;
 }
 .bs-docs-sidenav.affix {
-	width:inherit;
+	top: 40px;
 }
 .bs-docs-sidenav.affix-bottom {
 	position: absolute;
