@@ -26,6 +26,7 @@ smurAngular.controller("NewStaffController",
 		$scope.time = formattedDate.time;
 
 		$scope.back = function() {
+
 			$location.url("/mission/"+$scope.mission.id).search({page: "staff"});
 		};
 
@@ -37,14 +38,8 @@ smurAngular.controller("NewStaffController",
 			$scope.mission.staff.push($scope.staff);
 
 			Mission.getStore().then(function(store){
-				store.put($scope.mission, function(){
-					$scope.alerts = [];
-					$scope.alerts.push({
-						type: "success",
-						title: "Succès",
-						content: "Mission mise à jour avec succès"
-					});
-				});
+				store.put($scope.mission);
 			});
+			$scope.back();
 		};
 	});
