@@ -50,10 +50,8 @@ smurAngular.controller("StaffController",
 			$scope.mission.staff.forEach(function(element, index, array) {
 				Staff.getStore().then(function(staffStore){
 					staffStore.get(parseInt(element.id), function(data){
-						console.log(element);
 						data.time = element.time;
 						$scope.staff.push(data);
-						console.log($scope.staff);
 						$scope.$apply();
 					});
 				});
@@ -78,7 +76,6 @@ smurAngular.controller("StaffController",
 					};
 					Staff.getStore().then(function(store){
 						store.put(dbObject, function(){
-							console.log("Put!")
 							count++;
 							if(count < data.length)
 								recursivePut(count, data);

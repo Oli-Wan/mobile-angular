@@ -6,8 +6,6 @@ smurAngular.controller("NewStaffController",
 		$scope.staff.date = formattedDate.date;
 		$scope.staff.time = formattedDate.time;
 		
-		console.log($scope.staff);
-
 		Mission.getStore().then(function(store){
 			store.get(parseInt($routeParams.missionId), function(data) {
 				$scope.mission = data;
@@ -19,7 +17,6 @@ smurAngular.controller("NewStaffController",
 			store.getAll(function(data) {
 				$scope.persons = [];
 				if(!$scope.mission.staff || $scope.mission.staff.length == 0) {
-					console.log("No staff")
 					$scope.persons = data;
 					$scope.$apply();
 					return;
@@ -52,8 +49,6 @@ smurAngular.controller("NewStaffController",
 			if($scope.mission.staff === undefined)
 				$scope.mission.staff = [];
 			
-			console.log("Staff : "+$scope.staff);
-
 			$scope.mission.staff.push($scope.staff);
 
 			Mission.getStore().then(function(store){
