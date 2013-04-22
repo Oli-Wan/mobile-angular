@@ -15,11 +15,18 @@ smurAngular.controller("StaffController",
 		$scope.populate = function() {
 			$http.get('/resources/persons.json').success(function(data){
 				var count = 0;
+				Staff.getStore().then(function(store){
+					store.clear();
+				});
 				var recursivePut = function(count, data){
 					var element = data[count];
 					var dbObject = {
-						firstname: element.firstname,
-						lastname: element.lastname
+						"firstname": element.firstname,
+						"lastname": element.lastname,
+						"function": {
+							store: "functionStore",
+							id: element.function
+						}  
 					};
 					Staff.getStore().then(function(store){
 						store.put(dbObject, function(){
