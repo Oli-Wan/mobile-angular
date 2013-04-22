@@ -36,6 +36,11 @@ smurAngular.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/mission/vehicles/new.html', 
     controller: 'NewVehicleController'
   });
+  $routeProvider.when('/idbmanagement', 
+  {
+    templateUrl: 'partials/misc/dbManagement.html', 
+    controller: 'IDBManagementController'
+  });
   $routeProvider.otherwise({redirectTo: '/'});
 }]);
 
