@@ -43,12 +43,16 @@ smurAngular.controller("IDBManagementController",
 		};
 
 		$scope.populateStaff = function() {
+			console.log("Populating");
 			$http.get('/resources/persons.json').success(function(data){
+				console.log(data);
 				var count = 0;
 				Staff.getStore().then(function(store){
 					store.clear();
 				});
+				console.log("Cleared");
 				var recursivePut = function(count, data){
+					console.log("#"+count+" "+data[count]);
 					var element = data[count];
 					var dbObject = {
 						"firstname": element.firstname,
@@ -58,12 +62,16 @@ smurAngular.controller("IDBManagementController",
 							id: element.function
 						}  
 					};
+					console.log(dbObject);
 					Staff.getStore().then(function(store){
+						console.log("store ok")
 						store.put(dbObject, function(){
-							console.log("PUT")
+							console.log("PUT");
 							count++;
 							if(count < data.length)
 								recursivePut(count, data);
+						}, function(error) {
+							console.log(error);
 						});
 					});
 				};

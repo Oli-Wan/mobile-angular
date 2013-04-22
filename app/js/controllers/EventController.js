@@ -8,7 +8,18 @@ smurAngular.controller("EventController",
 			});
 		});
 
-		
+		Event.getStore().then(function(store){
+			var keyRange = store.makeKeyRange({
+				lower: $scope.mission.id,
+				upper: $scope.mission.id
+			});
+			store.query(function(data) {
+				console.log(data);
+			}, {
+				"index":"missionId",
+				"keyRange":keyRange
+			});
+		});
 
 		$scope.goToNewEvent = function() {
 			$location.url("/mission/"+$scope.mission.id+"/events/new");
