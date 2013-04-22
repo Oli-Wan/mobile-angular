@@ -16,28 +16,25 @@
 		</button>
 
 		<div class="clearfix" />
-
+		
+		<div class="alert fade" ng-repeat="alert in alerts" bs-alert="alert"></div>
+		
 		<table class="table table-hover">
-			<tr>
-				<td>Ballouz Michel</td>
-				<td>Médecin</td>
-				<td>13h37</td>
+			<tr ng-repeat="person in staff">
+				<td>{{person.lastname}} {{person.firstname}}</td>
+				<td>{{functions[person.function.id]}}</td>
+				<td>{{person.time}}</td>
 				<td>
-					<button class="btn btn-danger" bs-modal="'/partials/misc/deleteConfirmation.html'">
+					<button class="btn btn-danger" ng-click="deleteModal(person.id)">
 						<i class="icon-trash icon-white"></i>
 					</button>				
 				</td>
 			</tr>
-			<tr>
-				<td>Maller Jean-Pierre</td>
-				<td>Ambulancier</td>
-				<td>13h37</td>
-				<td>
-					<button class="btn btn-danger" bs-modal="'/partials/misc/deleteConfirmation.html'">
-						<i class="icon-trash icon-white"></i>
-					</button>
-				</td>
-			</tr>
 		</table>
+
+		<button type="button" class="btn btn-primary btn-add pull-right" 
+			ng-click="populate()">
+			Mettre des données en base
+		</button>
 	</div>
 </div>

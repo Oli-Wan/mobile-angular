@@ -1,14 +1,16 @@
 
 smurAngular.controller('NewMissionController', 
-	function NewMissionController($scope, $http, $location, Mission, Utils){
+	function NewMissionController($scope, $http, $location, Mission, Staff, Utils){
 		$scope.alerts = [];
 
 		$http.get("/resources/vehicles.json").success(function(data){
 			$scope.vehicles = data;
 		});
 
-		$http.get("/resources/persons.json").success(function(data){
-			$scope.responsibles = data;
+		Staff.getStore().then(function(store){
+			store.getAll(function(data){
+				$scope.responsibles = data;
+			});
 		});
 		
 		$scope.add = function(){

@@ -1,5 +1,6 @@
 <div>
 	<h1>Ajouter une personne</h1>
+	<div class="alert fade" ng-repeat="alert in alerts" bs-alert="alert"></div>
 	<form class="form form-horizontal">
 		<div class="control-group">
 			<label for="" class="control-label">Fonction</label>
@@ -12,19 +13,19 @@
 		<div class="control-group">
 			<label for="" class="control-label">Resource</label>
 			<div class="controls">
-				<select class="input-xlarge">
-					<option ng-repeat="person in persons  | filter:search">
+				<select class="input-xlarge" ng-model="staff.id">
+					<option ng-repeat="person in persons  | filter:search" value="{{person.id}}">
 						{{person.lastname}} {{person.firstname}}
 					</option>
 				</select>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="datepicker">Heure</label>
+			<label class="control-label" for="datepicker">Jour</label>
 			<div class="controls">
 				<div class="input-append">
 					<input  class="input-normal" type="text" id="datepicker"
-							ng-model="date" bs-datepicker></input>
+							ng-model="staff.date" bs-datepicker></input>
 					<button type="button" class="btn" data-toggle="datepicker">
 						<i class="icon-calendar"></i>
 					</button>
@@ -36,7 +37,7 @@
 			<div class="controls">
 				<div class="input-append">
 					<input  class="input-normal" type="text" id="timepicker" data-show-meridian="false" data-template="modal" 
-							ng-model="time" bs-timepicker></input>
+							ng-model="staff.time" bs-timepicker></input>
 					<button type="button" class="btn" data-toggle="timepicker">
 						<i class="icon-time"></i>
 					</button>

@@ -20,10 +20,13 @@ smurAngular.controller("MissionContainerController",
 		};
 
 		$scope.navigate = function(id) {
-			var date = new Date();
-			$location.url("/mission/"+$scope.mission.id).search({page: id});
-			$scope.includedUrl = $scope.getPathFromParams();
-			$window.scrollTo(0,0);
+			if(id == "back")
+				$scope.back();
+			else {
+				$location.url("/mission/"+$scope.mission.id).search({page: id});
+				$scope.includedUrl = $scope.getPathFromParams();
+				$window.scrollTo(0,0);
+			}
 		};
 
 		$scope.getPathFromParams = function() {
