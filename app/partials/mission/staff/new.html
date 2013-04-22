@@ -1,7 +1,7 @@
 <div>
 	<h1>Ajouter une personne</h1>
 	<div class="alert fade" ng-repeat="alert in alerts" bs-alert="alert"></div>
-	<form class="form form-horizontal">
+	<form class="form form-horizontal" novalidate name="form">
 		<div class="control-group">
 			<label for="" class="control-label">Fonction</label>
 			<div class="controls">
@@ -11,9 +11,9 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label for="" class="control-label">Resource</label>
+			<label for="" class="control-label">Resource*</label>
 			<div class="controls">
-				<select class="input-xlarge" ng-model="staff.id">
+				<select class="input-xlarge" ng-model="staff.id" required>
 					<option ng-repeat="person in persons  | filter:search" value="{{person.id}}">
 						{{person.lastname}} {{person.firstname}}
 					</option>
@@ -21,11 +21,11 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="datepicker">Jour</label>
+			<label class="control-label" for="datepicker">Jour*</label>
 			<div class="controls">
 				<div class="input-append">
 					<input  class="input-normal" type="text" id="datepicker"
-							ng-model="staff.date" bs-datepicker></input>
+							ng-model="staff.date" bs-datepicker required></input>
 					<button type="button" class="btn" data-toggle="datepicker">
 						<i class="icon-calendar"></i>
 					</button>
@@ -33,11 +33,11 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="timepicker">Heure</label>
+			<label class="control-label" for="timepicker">Heure*</label>
 			<div class="controls">
 				<div class="input-append">
 					<input  class="input-normal" type="text" id="timepicker" data-show-meridian="false" data-template="modal" 
-							ng-model="staff.time" bs-timepicker></input>
+							ng-model="staff.time" bs-timepicker required></input>
 					<button type="button" class="btn" data-toggle="timepicker">
 						<i class="icon-time"></i>
 					</button>
@@ -46,7 +46,7 @@
 		</div>
 		<div class="form-actions">
 			<button class="btn" ng-click="back()">Annuler</button>
-			<button class="btn btn-primary" ng-click="add()">Ajouter</button>
+			<button class="btn btn-primary" ng-disabled="form.$invalid" ng-click="add()">Ajouter</button>
 		</div>
 	</form>
 </div>
