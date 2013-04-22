@@ -21,6 +21,18 @@ smurAngular.controller("NewStaffController",
 		};
 
 		$scope.add = function() {
-			$scope.back();
+			$scope.staff.store="staff";
+			$scope.mission.staff.push($scope.staff);
+
+			Mission.getStore().then(function(store){
+				store.put($scope.mission, function(){
+					$scope.alerts = [];
+					$scope.alerts.push({
+						type: "success",
+						title: "Succès",
+						content: "Mission mise à jour avec succès"
+					});
+				});
+			});
 		};
 	});
