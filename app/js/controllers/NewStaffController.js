@@ -10,9 +10,25 @@ smurAngular.controller("NewStaffController",
 
 		Staff.getStore().then(function(store){
 			store.getAll(function(data) {
-				console.log(data);
-				$scope.persons = data;
-				$scope.$apply();
+				$scope.persons = [];
+				if(!$scope.mission.staff || $scope.mission.staff.length == 0) {
+					console.log("No staff")
+					$scope.persons = data;
+					$scope.$apply();
+					return;
+				}
+
+				console.log("Staff exist : "+$scope.mission.staff);
+
+				for(var i = 0; i < data.length; i++) {
+					for(var j = 0; j < $scope.mission.staff.length; j++) {
+						if($scope.mission.staff[j].id != data[i].id) {
+							$scope.persons.push(data[i]);
+							$scope.$apply();
+							break;
+						}
+					}
+				}
 			});
 		});
 
@@ -35,6 +51,8 @@ smurAngular.controller("NewStaffController",
 			if($scope.mission.staff === undefined)
 				$scope.mission.staff = [];
 			
+			console.log("Staff : "+$scope.staff);
+
 			$scope.mission.staff.push($scope.staff);
 
 			Mission.getStore().then(function(store){

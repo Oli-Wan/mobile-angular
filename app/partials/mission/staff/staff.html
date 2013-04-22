@@ -23,7 +23,7 @@
 			<tr ng-repeat="person in staff">
 				<td>{{person.lastname}} {{person.firstname}}</td>
 				<td>{{functions[person.function.id]}}</td>
-				<td>{{person.hour}}</td>
+				<td>{{person.time}}</td>
 				<td>
 					<button class="btn btn-danger" ng-click="deleteModal(person.id)">
 						<i class="icon-trash icon-white"></i>
