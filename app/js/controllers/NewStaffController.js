@@ -1,6 +1,13 @@
 
 smurAngular.controller("NewStaffController", 
 	function NewStaffController($scope, $http, $location, $routeParams, Mission, Staff, Utils) {
+		$scope.staff = {};
+		var formattedDate = Utils.getCurrentDateAndTime();
+		$scope.staff.date = formattedDate.date;
+		$scope.staff.time = formattedDate.time;
+		
+		console.log($scope.staff);
+
 		Mission.getStore().then(function(store){
 			store.get(parseInt($routeParams.missionId), function(data) {
 				$scope.mission = data;
@@ -18,8 +25,6 @@ smurAngular.controller("NewStaffController",
 					return;
 				}
 
-				console.log("Staff exist : "+$scope.mission.staff);
-
 				for(var i = 0; i < data.length; i++) {
 					for(var j = 0; j < $scope.mission.staff.length; j++) {
 						if($scope.mission.staff[j].id != data[i].id) {
@@ -36,10 +41,6 @@ smurAngular.controller("NewStaffController",
 			$scope.functions = data;
 		});
 
-		var formattedDate = Utils.getCurrentDateAndTime;
-
-		$scope.date = formattedDate.date;
-		$scope.time = formattedDate.time;
 
 		$scope.back = function() {
 
