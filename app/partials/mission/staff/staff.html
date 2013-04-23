@@ -20,6 +20,10 @@
 		<div class="alert fade" ng-repeat="alert in alerts" bs-alert="alert"></div>
 		
 		<table class="table table-hover">
+			<tr ng-hide="staff.length">
+				<td colspan="4">Aucun personnel</td>
+			</tr>
+
 			<tr ng-repeat="person in staff">
 				<td>{{person.lastname}} {{person.firstname}}</td>
 				<td>{{functions[person.function.id]}}</td>
