@@ -29,8 +29,8 @@ smurAngular.controller("NewVehicleController",
 
 		$scope.add = function() {
 			$scope.vehicle.store = "vehicle";
-			$scope.vehicle.time = Utils.getCurrentDateAndTime():
-			
+			$scope.vehicle.time = Utils.getCurrentDateAndTime();
+
 			if($scope.mission.vehicles === undefined)
 				$scope.mission.vehicles = [];
 			

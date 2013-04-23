@@ -4,6 +4,7 @@ smurAngular.controller("VehicleController",
 		Mission.getStore().then(function(store){
 			store.get(parseInt($routeParams.missionId), function(data) {
 				$scope.mission = data;
+				$scope.refreshVehicles();
 				$scope.$apply();
 			});
 		});
