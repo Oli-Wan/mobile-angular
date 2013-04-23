@@ -1,5 +1,5 @@
 smurAngular.controller("IDBManagementController", 
-	function IDBManagementController($scope, $http, Mission, Staff, Event) {
+	function IDBManagementController($scope, $http, Mission, Staff, Event, Vehicle) {
 		$scope.deleteMission = function() {
 			Mission.getStore().then(function(store) {
 				store.deleteDatabase();
@@ -14,6 +14,12 @@ smurAngular.controller("IDBManagementController",
 
 		$scope.deleteEvent = function() {
 			Event.getStore().then(function(store) {
+				store.deleteDatabase();
+			});
+		};
+
+		$scope.deleteVehicle = function() {
+			Vehicle.getStore().then(function(store) {
 				store.deleteDatabase();
 			});
 		};
@@ -42,17 +48,21 @@ smurAngular.controller("IDBManagementController",
 			});
 		};
 
+		$scope.clearVehicle = function() {
+			Vehicle.getStore().then(function(store){
+				store.clear(function() {
+					console.log("Vehicle cleared");
+				});
+			});
+		};
+
 		$scope.populateStaff = function() {
-			console.log("Populating");
 			$http.get('/resources/persons.json').success(function(data){
-				console.log(data);
 				var count = 0;
 				Staff.getStore().then(function(store){
 					store.clear();
 				});
-				console.log("Cleared");
 				var recursivePut = function(count, data){
-					console.log("#"+count+" "+data[count]);
 					var element = data[count];
 					var dbObject = {
 						"firstname": element.firstname,
@@ -62,16 +72,35 @@ smurAngular.controller("IDBManagementController",
 							id: element.function
 						}  
 					};
-					console.log(dbObject);
 					Staff.getStore().then(function(store){
-						console.log("store ok")
 						store.put(dbObject, function(){
-							console.log("PUT");
 							count++;
 							if(count < data.length)
 								recursivePut(count, data);
-						}, function(error) {
-							console.log(error);
+						});
+					});
+				};
+				recursivePut(count, data);
+			});
+		};
+
+		$scope.populateVehicle = function() {
+			$http.get('/resources/vehicles.json').success(function(data){
+				var count = 0;
+				Vehicle.getStore().then(function(store){
+					store.clear();
+				});
+				var recursivePut = function(count, data){
+					var element = data[count];
+					var dbObject = {
+						"name": element.name,
+						"type": element.type
+					}  
+					Vehicle.getStore().then(function(store){
+						store.put(dbObject, function(){
+							count++;
+							if(count < data.length)
+								recursivePut(count, data);
 						});
 					});
 				};

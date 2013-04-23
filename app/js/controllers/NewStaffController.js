@@ -26,7 +26,6 @@ smurAngular.controller("NewStaffController",
 
 
 		$scope.back = function() {
-
 			$location.url("/mission/"+$scope.mission.id).search({page: "staff"});
 		};
 

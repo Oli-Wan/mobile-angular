@@ -1,5 +1,5 @@
 smurAngular.controller('EditEventController', 
-	function EditEventController($scope, $http, $location, $routeParams, Mission, Event, Utils) {
+	function EditEventController($scope, $http, $location, $routeParams, Mission, Event, Vehicle, Utils) {
 		Mission.getStore().then(function(store){
 			store.get(parseInt($routeParams.missionId), function(data) {
 				$scope.mission = data;
@@ -20,12 +20,15 @@ smurAngular.controller('EditEventController',
 			});
 		});
 		
-		$http.get("/resources/event-types.json").success(function(data){
-			$scope.types = data;
+		Vehicle.getStore().then(function(store) {
+			store.getAll(function(data) {
+				$scope.vehicles = data;
+				$scope.$apply();
+			});
 		});
 
-		$http.get("/resources/vehicles.json").success(function(data){
-			$scope.vehicles = data;
+		$http.get("/resources/event-types.json").success(function(data){
+			$scope.types = data;
 		});
 
 		$scope.back = function() {
