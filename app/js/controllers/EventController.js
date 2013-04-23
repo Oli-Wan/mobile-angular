@@ -1,6 +1,6 @@
 
 smurAngular.controller("EventController", 
-	function EventController($scope, $http, $modal, $routeParams, $location, Mission, Event){	
+	function EventController($scope, $http, $modal, $routeParams, $location, Mission, Event){
 		Mission.getStore().then(function(store){
 			store.get(parseInt($routeParams.missionId), function(data) {
 				$scope.mission = data;
@@ -8,20 +8,11 @@ smurAngular.controller("EventController",
 			});
 		});
 
-		$scope.loadEvents = function() {	
-			Event.getStore().then(function(store){
-				var keyRange = store.makeKeyRange({
-					lower: $scope.mission.id,
-					upper: $scope.mission.id
-				});
-				store.query(function(data) {
-					$scope.events = data;
-					$scope.$apply();
-				}, {
-					"index":"missionId",
-					"keyRange":keyRange
-				});
-			});
+		$scope.loadEvents = function() {
+			Event.getByMissionId($scope.mission.id).then(function(data){
+				$scope.events = data;
+				$scope.$apply();
+			})
 		};
 
 		$scope.delete = function(id) {

@@ -1,5 +1,5 @@
 
-smurAngular.factory("Event", function Event($timeout){
+smurAngular.factory("Event", function Event($timeout, $q){
 	var storeWrapper = {
 		ready:false,
 		setReady: function() {
@@ -19,7 +19,24 @@ smurAngular.factory("Event", function Event($timeout){
 			indexes: [
 			{ name: "missionId" }
 			]
-		})
+		}),
+		getByMissionId: function(id){
+			var deffered = $q.defer();
+
+			storeWrapper.getStore().then(function(store){
+				var keyRange = store.makeKeyRange({
+					lower: id,
+					upper: id
+				});
+				store.query(function(data) {
+					deffered.resolve(data);
+				}, {
+					"index":"missionId",
+					"keyRange":keyRange
+				});
+			});
+			return deffered.promise;
+		}
 	};
 
 	function waitForStore() {
