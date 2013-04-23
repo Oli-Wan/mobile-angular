@@ -1,9 +1,9 @@
 
 smurAngular.controller("EventController", 
 	function EventController($scope, $http, $modal, $routeParams, $location, Mission, Event){
-
+		$scope.missionId = $routeParams.missionId;
 		$scope.fetchEvents = function() {
-			Event.getByMissionId($routeParams.missionId).then(function(data) {
+			Event.getByMissionId($scope.missionId).then(function(data) {
 				$scope.events = data;
 			});
 		};
@@ -15,14 +15,6 @@ smurAngular.controller("EventController",
 				});
 				$scope.dismiss();
 			});
-		};
-
-		$scope.goToNewEvent = function() {
-			$location.url("/mission/"+$routeParams.missionId+"/events/new");
-		};
-
-		$scope.goToEdit = function(id) {
-			$location.url("/mission/"+$routeParams.missionId+"/event/"+id+"/edit");
 		};
 
 		$scope.deleteModal = function(id) {

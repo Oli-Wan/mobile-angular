@@ -11,10 +11,10 @@
 
 		<h3 class="pull-left">Evènements</h3>
 
-		<button type="button" class="btn btn-primary btn-add pull-right" 
-			ng-click="goToNewEvent()">
+		<a class="btn btn-primary btn-add pull-right" 
+			ng-href="#/mission/{{missionId}}/events/new">
 			Ajouter un évènement
-		</button>
+		</a>
 
 		<div class="clearfix"></div>
 
@@ -49,9 +49,10 @@
 						</ng-switch>
 					</td>
 					<td>
-						<button class="btn btn-primary" ng-click="goToEdit(event.id)">
+						<a ng-href="#/mission/{{missionId}}/event/{{event.id}}/edit"
+							class="btn btn-primary">
 							<i class="icon-pencil icon-white"></i>
-						</button>
+						</a>
 						<button class="btn btn-danger" ng-click="deleteModal(event.id)">
 							<i class="icon-trash icon-white"></i>
 						</button>
