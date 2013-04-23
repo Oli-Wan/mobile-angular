@@ -15,10 +15,7 @@ smurAngular.factory("Vehicle", function Vehicle($timeout){
 			autoIncrement: true,
 			onStoreReady: function() {
 				storeWrapper.setReady();
-			},
-			indexes: [
-			{ name: "missionId" }
-			]
+			}	
 		})
 	};
 
