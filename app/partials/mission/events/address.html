@@ -1,24 +1,32 @@
 <div class="control-group">
-	<label for="street-number" class="control-label">Address</label>
+	<label for="street-number" class="control-label">Adresse*</label>
 	<div class="controls controls-row">
-		<input ng-model="event.address.number" type="text" class="span2" placeholder="Numéro"/>
-		<select ng-model="event.address.streetType" class="span3">
+		<input ng-model="event.address.number" type="text" class="span2" 
+			placeholder="Numéro" required/>
+		<select ng-model="event.address.streetType" class="span3" required>
 			<option>Rue</option>
 			<option>Avenue</option>
 			<option>Chemin</option>
 		</select>
 	</div>
 	<div class="controls controls-row">
-		<input ng-model="event.address.streetName" type="text" class="span5" placeholder="Nom"/>
+		<input ng-model="event.address.streetName" type="text" class="span5" 
+			placeholder="Nom" required/>
 	</div>
 	<div class="controls controls-row">
-		<input type="text" class="span2" ng-model="event.address.zipCode" placeholder="Code postal"/>
-		<input type="text" class="span3" ng-model="event.address.city" placeholder="Ville"/>
+		<input type="text" class="span2" ng-model="event.address.zipCode"
+			placeholder="Code postal" required/>
+		<input type="text" class="span3" ng-model="event.address.city" 
+			placeholder="Ville" required/>
 	</div>
 	<div class="controls controls-row">
-		<input type="text" class="span1" ng-model="event.address.building" placeholder="Immeuble"/>
-		<input type="text" class="span1" ng-model="event.address.stairs" placeholder="Escalier"/>
-		<input type="text" class="span1" ng-model="event.address.roof" placeholder="Etage"/>
-		<input type="text" class="span1" ng-model="event.address.code" placeholder="Code"/>
+		<input type="text" class="span1" ng-model="event.address.building" 
+			placeholder="Immeuble"/>
+		<input type="text" class="span1" ng-model="event.address.stairs"
+			placeholder="Escalier"/>
+		<input type="text" class="span1" ng-model="event.address.roof" 
+			placeholder="Etage"/>
+		<input type="text" class="span1" ng-model="event.address.code" 
+			placeholder="Code"/>
 	</div>
 </div>
