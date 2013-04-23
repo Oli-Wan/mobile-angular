@@ -2,14 +2,16 @@
 smurAngular.controller("EventController", 
 	function EventController($scope, $http, $modal, $routeParams, $location, Mission, Event){
 
-		Event.getByMissionId($routeParams.missionId).then(function(data) {
-			$scope.events = data;
-		});
+		$scope.fetchEvents = function() {
+			Event.getByMissionId($routeParams.missionId).then(function(data) {
+				$scope.events = data;
+			});
+		};
 
 		$scope.delete = function(id) {
 			Event.getStore().then(function(store) {
 				store.remove(id, function() {
-					$scope.loadEvents();
+					$scope.fetchEvents();
 				});
 				$scope.dismiss();
 			});
@@ -24,7 +26,7 @@ smurAngular.controller("EventController",
 		};
 
 		$scope.deleteModal = function(id) {
-			$scope.id = id;
+			$scope.element = id;
 			return $modal({
 				scope: $scope,
 				template: '/partials/misc/deleteConfirmation.html', 
@@ -32,4 +34,6 @@ smurAngular.controller("EventController",
 				backdrop: 'static'
 			});
 		};
+
+		$scope.fetchEvents();
 	});

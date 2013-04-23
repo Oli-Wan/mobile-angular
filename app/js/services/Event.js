@@ -22,7 +22,6 @@ smurAngular.factory("Event", function Event($timeout, $q, $rootScope){
 		}),
 		getByMissionId: function(missionId){
 			var id = parseInt(missionId);
-			console.log(id);
 			var deffered = $q.defer();
 			storeWrapper.getStore().then(function(store){
 				var keyRange = store.makeKeyRange({
