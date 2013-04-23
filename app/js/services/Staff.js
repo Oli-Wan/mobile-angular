@@ -6,7 +6,6 @@ smurAngular.factory("Staff", function Staff($timeout){
 			this.ready = true;
 		},
 		getStore: function() {
-			console.log("Getting store");
 			return $timeout(waitForStore);
 		},
 		store: new IDBStore({
@@ -21,9 +20,7 @@ smurAngular.factory("Staff", function Staff($timeout){
 	};
 
 	function waitForStore() {
-		console.log("Wait for store");
 		if(storeWrapper.ready) {
-			console.log("Store : "+storeWrapper);
 			return storeWrapper.store;
 		}
 		else {
