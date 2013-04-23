@@ -14,9 +14,7 @@ smurAngular.controller("VehicleController",
 
 		$scope.delete = function(elementToDelete) {
 			var newVehicles = [];
-			console.log(elementToDelete);
 			$scope.mission.vehicles.forEach(function(element, index, array){
-				console.log(element)
 				if(element.id != elementToDelete.id || 
 					element.time.date != elementToDelete.time.date ||
 					element.time.time != elementToDelete.time.time )

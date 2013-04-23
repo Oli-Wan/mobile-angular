@@ -2,9 +2,7 @@
 smurAngular.controller("NewStaffController", 
 	function NewStaffController($scope, $http, $location, $routeParams, Mission, Staff, Utils) {
 		$scope.staff = {};
-		var formattedDate = Utils.getCurrentDateAndTime();
-		$scope.staff.date = formattedDate.date;
-		$scope.staff.time = formattedDate.time;
+		$scope.staff.time = Utils.getCurrentDateAndTime();
 		
 		Mission.getStore().then(function(store){
 			store.get(parseInt($routeParams.missionId), function(data) {
