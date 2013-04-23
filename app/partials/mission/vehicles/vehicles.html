@@ -18,11 +18,14 @@
 		<div class="clearfix" />
 
 		<table class="table table-hover">
-			<tr>
-				<td>Hélico gendarmerie</td>
-				<td>13h37</td>
+			<tr ng-hide="vehicles.length">
+				<td colspan="4">Aucun véhicule</td>
+			</tr>
+			<tr ng-repeat="vehicle in vehicles">
+				<td>{{vehicle.name}}</td>
+				<td>{{vehicle.time.time}}</td>
 				<td>
-					<button class="btn btn-danger" bs-modal="'/partials/misc/deleteConfirmation.html'">
+					<button class="btn btn-danger" ng-click="deleteModal(person.id)">
 						<i class="icon-trash icon-white"></i>
 					</button>				
 				</td>
