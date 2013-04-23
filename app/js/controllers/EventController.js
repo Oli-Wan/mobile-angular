@@ -22,7 +22,7 @@ smurAngular.controller("EventController",
 					"keyRange":keyRange
 				});
 			});
-		}
+		};
 
 		$scope.delete = function(id) {
 			Event.getStore().then(function(store) {
@@ -35,7 +35,11 @@ smurAngular.controller("EventController",
 
 		$scope.goToNewEvent = function() {
 			$location.url("/mission/"+$scope.mission.id+"/events/new");
-		}
+		};
+
+		$scope.goToEdit = function(id) {
+			$location.url("/mission/"+$scope.mission.id+"/event/"+id+"/edit");
+		};
 
 		$scope.deleteModal = function(id) {
 			$scope.id = id;

@@ -4,8 +4,8 @@ smurAngular.controller('EditEventController',
 			store.get(parseInt($routeParams.missionId), function(data) {
 				$scope.mission = data;
 				if($routeParams.eventId) {
-					Event.getStore().then(function(store){
-						store.get(parseInt($routeParams.missionId), function(data){
+					Event.getStore().then(function(eventStore){
+						eventStore.get(parseInt($routeParams.eventId), function(data){
 							$scope.event = data;
 							$scope.$apply();
 						});
@@ -20,8 +20,6 @@ smurAngular.controller('EditEventController',
 			});
 		});
 		
-
-		
 		$http.get("/resources/event-types.json").success(function(data){
 			$scope.types = data;
 		});
@@ -35,7 +33,6 @@ smurAngular.controller('EditEventController',
 		};
 
 		$scope.save = function() {
-			console.log($scope.event);
 			Event.getStore().then(function(store) {
 				store.put($scope.event);
 			});
