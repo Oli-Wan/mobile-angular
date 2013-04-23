@@ -30,6 +30,9 @@
 				</tr>
 			</thead>
 			<tbody>	
+				<tr ng-hide="events.length">
+					<td colspan="6">Aucun évènement</td>
+				</tr>
 				<tr ng-repeat="event in events">
 					<td>{{event.type}}</td>
 					<td>{{event.start.date}} <br /> {{event.start.time}}</td>
@@ -49,7 +52,7 @@
 						<button class="btn btn-primary" ng-click="goToNewEvent()">
 							<i class="icon-pencil icon-white"></i>
 						</button>
-						<button class="btn btn-danger" bs-modal="'/partials/misc/deleteConfirmation.html'">
+						<button class="btn btn-danger" ng-click="deleteModal(event.id)">
 							<i class="icon-trash icon-white"></i>
 						</button>
 					</td>
