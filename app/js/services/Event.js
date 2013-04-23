@@ -9,7 +9,7 @@ smurAngular.factory("Event", function Event($timeout){
 			return $timeout(waitForStore);
 		},
 		store: new IDBStore({
-			dbVersion: 1,
+			dbVersion: 2,
 			storeName: 'event',
 			keyPath: 'id',
 			autoIncrement: true,
