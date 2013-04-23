@@ -23,9 +23,15 @@ smurAngular.config(['$routeProvider', function($routeProvider) {
   });
   $routeProvider.when('/mission/:missionId/events/new', 
   {
-    templateUrl: 'partials/mission/events/new.html', 
-    controller: 'NewEventController'
+    templateUrl: 'partials/mission/events/form.html', 
+    controller: 'EditEventController'
   });
+  $routeProvider.when('/mission/:missionId/event/:eventId/edit', 
+  {
+    templateUrl: 'partials/mission/events/form.html', 
+    controller: 'EditEventController'
+  });
+
   $routeProvider.when('/mission/:missionId/staff/new', 
   {
     templateUrl: 'partials/mission/staff/new.html', 

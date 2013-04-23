@@ -1,27 +1,26 @@
 <div>
 	<h1>Ajouter un nouvel évènement</h1>
-	<form class="form form-horizontal" >
+	<form class="form form-horizontal" name="form">
 		<div class="control-group">
-			<label for="type" class="control-label">Type</label>
+			<label for="type" class="control-label">Type*</label>
 			<div class="controls">
-				<select class="input-xlarge" ng-model="event.type">
+				<select class="input-xlarge" ng-model="event.type" required>
 					<option ng-repeat="type in types" >{{type.name}}</option>
 				</select>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="start-datepicker">Début</label>
+			<label class="control-label" for="start-datepicker">Début*</label>
 			<div class="controls">
 				<div class="input-append">
 					<input  class="input-small" type="text" id="start-datepicker"
-					ng-model="event.start.date" bs-datepicker></input>
+					ng-model="event.start.date" bs-datepicker ></input>
 					<button type="button" class="btn" data-toggle="datepicker">
 						<i class="icon-calendar"></i>
 					</button>
 				</div>
 				<div class="input-append">
-					<input  class="input-small" type="text" data-show-meridian="false" data-template="modal" 
-					ng-model="event.start.time" bs-timepicker></input>
+					<input  class="input-small" type="text" data-show-meridian="false" ng-model="event.start.time" bs-timepicker />
 					<button type="button" class="btn" data-toggle="timepicker">
 						<i class="icon-time"></i>
 					</button>
@@ -29,7 +28,7 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="end-datepicker">Fin</label>
+			<label class="control-label" for="end-datepicker">Fin*</label>
 			<div class="controls">
 				<div class="input-append">
 					<input  class="input-small" type="text" id="end-datepicker"
@@ -39,8 +38,7 @@
 					</button>
 				</div>
 				<div class="input-append">
-					<input  class="input-small" type="text" data-show-meridian="false" data-template="modal" 
-					ng-model="event.end.time" bs-timepicker></input>
+					<input  class="input-small" type="text" data-show-meridian="false" ng-model="event.end.time" bs-timepicker />
 					<button type="button" class="btn" data-toggle="timepicker">
 						<i class="icon-time"></i>
 					</button>
@@ -48,19 +46,19 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label for="type" class="control-label">Véhicule</label>
+			<label for="type" class="control-label">Véhicule*</label>
 			<div class="controls">
-				<select class="input-xlarge" ng-model="event.vehicle">
+				<select class="input-xlarge" ng-model="event.vehicle" required>
 					<option ng-repeat="vehicle in vehicles">{{vehicle.name}}</option>
 				</select>
 			</div>
 		</div>
 		
 		<h4>Destination</h4>
-		<ng-include src="destination"></ng-include>
+		<ng-include src="event.type|eventDestination"></ng-include>
 
 		<div class="form-actions not-modal">
 			<button class="btn" ng-click="back()">Annuler</button>
-			<button class="btn btn-primary" ng-click="add()">Ajouter</button>
+			<button class="btn btn-primary" ng-disabled="form.$invalid" ng-click="save()">Sauvegarder</button>
 		</div>
 	</form></div>
