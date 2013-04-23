@@ -5,7 +5,6 @@ smurAngular.controller("VehicleController",
 			store.get(parseInt($routeParams.missionId), function(data) {
 				$scope.mission = data;
 				$scope.refreshVehicles();
-				$scope.$apply();
 			});
 		});
 
@@ -13,10 +12,14 @@ smurAngular.controller("VehicleController",
 			$location.url("/mission/"+$scope.mission.id+"/vehicles/new");
 		};
 
-		$scope.delete = function(id) {
+		$scope.delete = function(elementToDelete) {
 			var newVehicles = [];
+			console.log(elementToDelete);
 			$scope.mission.vehicles.forEach(function(element, index, array){
-				if(element.id != id)
+				console.log(element)
+				if(element.id != elementToDelete.id || 
+					element.time.date != elementToDelete.time.date ||
+					element.time.time != elementToDelete.time.time )
 					newVehicles.push(element);
 			});
 			$scope.mission.vehicles = newVehicles;
@@ -29,8 +32,8 @@ smurAngular.controller("VehicleController",
 			$scope.dismiss();
 		};
 
-		$scope.deleteModal = function(id) {
-			$scope.id = id;
+		$scope.deleteModal = function(element) {
+			$scope.element = element;
 			return $modal({
 				scope: $scope,
 				template: '/partials/misc/deleteConfirmation.html', 
@@ -42,7 +45,7 @@ smurAngular.controller("VehicleController",
 		$scope.refreshVehicles = function() {
 			if($scope.mission.vehicles === undefined)
 				return;
-			
+
 			$scope.vehicles = [];
 			$scope.mission.vehicles.forEach(function(element, index, array) {
 				Vehicle.getStore().then(function(store){
