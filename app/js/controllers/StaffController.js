@@ -52,7 +52,6 @@ smurAngular.controller("StaffController",
 			if($scope.mission.staff === undefined)
 				return;
 
-			var startTime = new Date();
 			$scope.staff = [];
 			$scope.mission.staff.forEach(function(element, index, array) {
 				Staff.getStore().then(function(staffStore){
@@ -60,7 +59,6 @@ smurAngular.controller("StaffController",
 						data.time = element.time;
 						$scope.staff.push(data);
 						$scope.$apply();
-						console.log(new Date()-startTime);
 					});
 				});
 			});
