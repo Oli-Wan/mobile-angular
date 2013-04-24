@@ -1,8 +1,8 @@
 
-smurAngular.factory("Mission", function Mission($http){
+smurAngular.factory("Mission", function Mission($http, $rootScope){
 	var Mission = {
 		list: [],
-		getAll: function() {
+		getAll: function() {	
 			return this.list;
 		},
 		get: function(id) {
@@ -28,11 +28,10 @@ smurAngular.factory("Mission", function Mission($http){
 				this.list.push(currentList[i]);
 			}
 		},
+		setList: function(data) {
+			this.list = data;
+		}
 	}
 
-	$http.get("/resources/missions.json").success(function(data){
-		Mission.list = data;
-	});
-	
 	return Mission;
 });

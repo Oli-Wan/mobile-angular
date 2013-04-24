@@ -1,7 +1,14 @@
 
 smurAngular.controller('MissionsController', 
-	function MissionsController($scope, Mission, $location, $modal){
+	function MissionsController($scope, Mission, $location, $modal, $http){
 		$scope.missions = Mission.getAll();
+
+		if($scope.missions.length == 0) {	
+			$http.get("/resources/missions.json").success(function(data){
+				Mission.setList(data);
+				$scope.missions = Mission.getAll();
+			});
+		}
 
 		$scope.delete = function(id) {
 			Mission.delete(id);
