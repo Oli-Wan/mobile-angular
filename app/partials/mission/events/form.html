@@ -14,13 +14,13 @@
 			<div class="controls">
 				<div class="input-append">
 					<input  class="input-small" type="text" id="start-datepicker"
-					ng-model="event.start.date" bs-datepicker></input>
+					ng-model="event.start.date" data-autocolose="true" bs-datepicker></input>
 					<button type="button" class="btn" data-toggle="datepicker">
 						<i class="icon-calendar"></i>
 					</button>
 				</div>
 				<div class="input-append">
-					<input  class="input-small" type="text" data-show-meridian="false" data-template="modal" 
+					<input  class="input-small" type="text" data-show-meridian="false"
 					ng-model="event.start.time" bs-timepicker></input>
 					<button type="button" class="btn" data-toggle="timepicker">
 						<i class="icon-time"></i>
@@ -39,7 +39,7 @@
 					</button>
 				</div>
 				<div class="input-append">
-					<input  class="input-small" type="text" data-show-meridian="false" data-template="modal" 
+					<input  class="input-small" type="text" data-show-meridian="false"
 					ng-model="event.end.time" bs-timepicker></input>
 					<button type="button" class="btn" data-toggle="timepicker">
 						<i class="icon-time"></i>
