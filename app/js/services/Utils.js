@@ -4,14 +4,14 @@
  			var currentTime = new Date();
  			return {
  				date: this.toTwoDigits(currentTime.getDate())+"/"+
- 					this.toTwoDigits(currentTime.getMonth())+"/"+
+ 					this.toTwoDigits(currentTime.getMonth()+1)+"/"+
  					currentTime.getFullYear(),
  				time: this.toTwoDigits(currentTime.getHours())+":"+
  					this.toTwoDigits(currentTime.getMinutes())
  			};
  		},
  		toTwoDigits: function(value) {
- 			var valueString = (value+1).toString();
+ 			var valueString = value.toString();
  			if(valueString.length == 1) {
  				valueString = "0"+valueString;
  			}
