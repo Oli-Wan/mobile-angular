@@ -6,7 +6,7 @@
  				date: this.toTwoDigits(currentTime.getDate())+"/"+
  					this.toTwoDigits(currentTime.getMonth())+"/"+
  					currentTime.getFullYear(),
- 				time: this.toTwoDigits(currentTime.getHours()+":"+
+ 				time: this.toTwoDigits(currentTime.getHours())+":"+
  					this.toTwoDigits(currentTime.getMinutes())
  			};
  		},
