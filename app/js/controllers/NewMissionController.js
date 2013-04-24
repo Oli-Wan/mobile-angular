@@ -1,7 +1,8 @@
 
 smurAngular.controller('NewMissionController', 
-	function NewMissionController($scope, $http, $location, Mission){
+	function NewMissionController($scope, $http, $location, Mission, mobile){
 		$scope.alerts = [];
+		$scope.mobile = mobile;
 
 		$http.get("/resources/vehicles.json").success(function(data){
 			$scope.vehicles = data;
