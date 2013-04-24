@@ -1,7 +1,8 @@
 
 smurAngular.controller("NewStaffController", 
-	function NewStaffController($scope, $http, $location, $routeParams, Mission) {
+	function NewStaffController($scope, $http, $location, $routeParams, Mission, mobile) {
 		$scope.mission = Mission.get($routeParams.missionId);
+		$scope.mobile = mobile;
 
 		$http.get('/resources/functions.json').success(function(data){
 			$scope.functions = data;
