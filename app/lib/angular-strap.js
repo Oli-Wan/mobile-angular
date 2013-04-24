@@ -351,7 +351,8 @@ angular.module('$strap.directives')
 .directive('bsDatepicker', ['$timeout', '$strap.config', function($timeout, config) {
   'use strict';
 
-  var isAppleTouch = navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false;
+  //var isAppleTouch = navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false;
+  var isAppleTouch = false;
 
   var regexpMap = function regexpMap(language) {
     language = language || 'en';
