@@ -14,8 +14,6 @@ smurAngular.controller('NewEventController',
 		$scope.event.start = Utils.getCurrentDateAndTime();
 		$scope.event.end  = Utils.getCurrentDateAndTime();
 
-		console.log($scope.event);
-
 		$scope.back = function() {
 			$location.url("/mission/"+$scope.mission.id).search({page: "event"});
 		};

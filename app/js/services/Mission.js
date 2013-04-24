@@ -21,7 +21,6 @@ smurAngular.factory("Mission", function Mission($http, $rootScope){
 			this.list = [];
 			for(var i = 0; i < currentList.length; i++) {
 				if(currentList[i].id == id) {
-					console.log("deleting "+currentList[i])
 					continue;
 				}
 
