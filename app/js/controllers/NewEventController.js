@@ -1,5 +1,5 @@
 smurAngular.controller('NewEventController', 
-	function NewEventController($scope, $http, $location, $routeParams, Mission) {
+	function NewEventController($scope, $http, $location, $routeParams, Mission, Utils) {
 		$scope.mission = Mission.get($routeParams.missionId);
 		
 		$http.get("/resources/event-types.json").success(function(data){
@@ -10,9 +10,9 @@ smurAngular.controller('NewEventController',
 			$scope.vehicles = data;
 		});
 
-		$scope.event = {}
-		$scope.event.start = getCurrentDateAndTime();
-		$scope.event.end  = getCurrentDateAndTime();
+		$scope.event = {};
+		$scope.event.start = Utils.getCurrentDateAndTime();
+		$scope.event.end  = Utils.getCurrentDateAndTime();
 
 		console.log($scope.event);
 
@@ -24,4 +24,3 @@ smurAngular.controller('NewEventController',
 			$scope.back();
 		};
 	});
-}
