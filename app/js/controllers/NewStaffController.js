@@ -1,7 +1,8 @@
 
 smurAngular.controller("NewStaffController", 
-	function NewStaffController($scope, $http, $location, $routeParams, Mission, Utils) {
+	function NewStaffController($scope, $http, $location, $routeParams, Mission, mobile) {
 		$scope.mission = Mission.get($routeParams.missionId);
+		$scope.mobile = mobile;
 		$scope.date = Utils.getCurrentDateAndTime();
 
 		$http.get('/resources/functions.json').success(function(data){
@@ -11,7 +12,6 @@ smurAngular.controller("NewStaffController",
 		$http.get('/resources/persons.json').success(function(data){
 			$scope.persons = data;
 		});
-
 
 		$scope.back = function() {
 			$location.url("/mission/"+$scope.mission.id).search({page: "staff"});

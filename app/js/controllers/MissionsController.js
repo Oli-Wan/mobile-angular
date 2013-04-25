@@ -1,7 +1,14 @@
 
 smurAngular.controller('MissionsController', 
-	function MissionsController($scope, Mission, $location, $modal){
+	function MissionsController($scope, Mission, $location, $modal, $http){
 		$scope.missions = Mission.getAll();
+
+		if($scope.missions.length == 0) {	
+			$http.get("/resources/missions.json").success(function(data){
+				Mission.setList(data);
+				$scope.missions = Mission.getAll();
+			});
+		}
 
 		$scope.delete = function(id) {
 			Mission.delete(id);
@@ -9,6 +16,9 @@ smurAngular.controller('MissionsController',
 		};
 
 		$scope.navigateTo = function(mission) {
+			$location.url("/mission/"+mission.id).search({page: "mission"});
+			/*
+			$scope.password = 1234;
 			if($scope.password == "1234") {
 				$scope.dismiss();
 				$location.url("/mission/"+mission.id).search({page: "mission"});
@@ -18,7 +28,7 @@ smurAngular.controller('MissionsController',
 					"title": "Mauvais mot de passe",
 					"content": "Essayez 1234"
 				});
-			}
+			}*/
 		};
 
 		$scope.goToNewMission = function(){

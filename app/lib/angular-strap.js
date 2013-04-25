@@ -6,15 +6,15 @@
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
 
-angular.module('$strap.config', []).value('$strap.config', {});
-angular.module('$strap.filters', ['$strap.config']);
-angular.module('$strap.directives', ['$strap.config']);
-angular.module('$strap', ['$strap.filters', '$strap.directives', '$strap.config']);
+ angular.module('$strap.config', []).value('$strap.config', {});
+ angular.module('$strap.filters', ['$strap.config']);
+ angular.module('$strap.directives', ['$strap.config']);
+ angular.module('$strap', ['$strap.filters', '$strap.directives', '$strap.config']);
 
 
-angular.module('$strap.directives')
+ angular.module('$strap.directives')
 
-.directive('bsAlert', ['$parse', '$timeout', '$compile', function($parse, $timeout, $compile) {
+ .directive('bsAlert', ['$parse', '$timeout', '$compile', function($parse, $timeout, $compile) {
   'use strict';
 
   return {
@@ -22,8 +22,8 @@ angular.module('$strap.directives')
     link: function postLink(scope, element, attrs) {
 
       var getter = $parse(attrs.bsAlert),
-        setter = getter.assign,
-        value = getter(scope);
+      setter = getter.assign,
+      value = getter(scope);
 
       // For static alerts
       if(!attrs.bsAlert) {
@@ -47,7 +47,7 @@ angular.module('$strap.directives')
 
           // Compile alert content
           //$timeout(function(){
-          $compile(element.contents())(scope);
+            $compile(element.contents())(scope);
           //});
 
           // Add proper class
@@ -106,32 +106,32 @@ angular.module('$strap.directives')
           };
 
           $.support.transition && element.hasClass('fade') ?
-            element.on($.support.transition.end, removeElement) :
-            removeElement();
+          element.on($.support.transition.end, removeElement) :
+          removeElement();
 
         } else if(value) { // object, set closed property to 'true'
-          ev.preventDefault();
+        ev.preventDefault();
 
-          element.removeClass('in');
+        element.removeClass('in');
 
-          removeElement = function() {
-            element.trigger('closed');
-            scope.$apply(function() {
-              value.closed = true;
-            });
-          };
+        removeElement = function() {
+          element.trigger('closed');
+          scope.$apply(function() {
+            value.closed = true;
+          });
+        };
 
-          $.support.transition && element.hasClass('fade') ?
-            element.on($.support.transition.end, removeElement) :
-            removeElement();
+        $.support.transition && element.hasClass('fade') ?
+        element.on($.support.transition.end, removeElement) :
+        removeElement();
 
         } else { // static, regular behavior
         }
 
       });
 
-    }
-  };
+}
+};
 }]);
 
 
@@ -165,10 +165,10 @@ angular.module('$strap.directives')
           if(bNew !== bOld) {
             $.fn.button.Constructor.prototype.toggle.call(button);
           // Handle $q promises
-          } else if(bNew && !startValue) {
-            element.addClass('active');
-          }
-        });
+        } else if(bNew && !startValue) {
+          element.addClass('active');
+        }
+      });
 
       }
 
@@ -226,10 +226,10 @@ angular.module('$strap.directives')
         setTimeout(function () {
         element.button('reset')
         }, 1000)
-      });*/
+});*/
 
-    }
-  };
+}
+};
 
 }])
 
@@ -270,9 +270,9 @@ angular.module('$strap.directives')
 
           $timeout(function() {
             iElement
-              .find('[value]').button()
-              .filter('[value="' + controller.$viewValue + '"]')
-              .addClass('active');
+            .find('[value]').button()
+            .filter('[value="' + controller.$viewValue + '"]')
+            .addClass('active');
           });
 
           iElement.on('click.button.data-api', function (ev) {
@@ -312,7 +312,7 @@ angular.module('$strap.directives')
     link: function postLink(scope, element, attrs, ctrl) {
 
       var getter = $parse(attrs.bsButtonSelect),
-        setter = getter.assign;
+      setter = getter.assign;
 
       // Bind ngModelController
       if(ctrl) {
@@ -351,7 +351,8 @@ angular.module('$strap.directives')
 .directive('bsDatepicker', ['$timeout', '$strap.config', function($timeout, config) {
   'use strict';
 
-  var isAppleTouch = navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false;
+  //var isAppleTouch = navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false;
+  var isAppleTouch = false;
 
   var regexpMap = function regexpMap(language) {
     language = language || 'en';
@@ -392,9 +393,9 @@ angular.module('$strap.directives')
     link: function postLink(scope, element, attrs, controller) {
 
       var options = config.datepicker || {},
-          language = attrs.language || options.language || 'en',
-          type = attrs.dateType || options.type || 'date',
-          format = attrs.dateFormat || options.format || ($.fn.datepicker.dates[language] && $.fn.datepicker.dates[language].format) || 'yyyy-mm-dd';
+      language = attrs.language || options.language || 'en',
+      type = attrs.dateType || options.type || 'date',
+      format = attrs.dateFormat || options.format || ($.fn.datepicker.dates[language] && $.fn.datepicker.dates[language].format) || 'yyyy-mm-dd';
 
       var dateFormatRegexp = isAppleTouch ? regexpForDateFormat('yyyy-mm-dd', language) : regexpForDateFormat(format, language);
 
@@ -431,12 +432,13 @@ angular.module('$strap.directives')
       }
 
       // Use native interface for touch devices
+      /* It is not working so well...
       if(isAppleTouch) {
 
         element.prop('type', 'date').css('-webkit-appearance', 'textfield');
 
       } else {
-
+        */
         // If we have a ngModelController then wire it up
         if(controller) {
           element.on('changeDate', function(ev) {
@@ -465,7 +467,7 @@ angular.module('$strap.directives')
           }
         });
 
-      }
+      //}
 
       // Support add-on
       var component = element.siblings('[data-toggle="datepicker"]');
@@ -492,8 +494,8 @@ angular.module('$strap.directives')
     angular.forEach(items, function(item, index) {
       if(item.divider) return ul.splice(index + 1, 0, '<li class="divider"></li>');
       var li = '<li' + (item.submenu && item.submenu.length ? ' class="dropdown-submenu"' : '') + '>' +
-        '<a tabindex="-1" ng-href="' + (item.href || '') + '"' + (item.click ? '" ng-click="' + item.click + '"' : '') + (item.target ? '" target="' + item.target + '"' : '') + '>' +
-        (item.text || '') + '</a>';
+      '<a tabindex="-1" ng-href="' + (item.href || '') + '"' + (item.click ? '" ng-click="' + item.click + '"' : '') + (item.target ? '" target="' + item.target + '"' : '') + '>' +
+      (item.text || '') + '</a>';
       if(item.submenu && item.submenu.length) li += buildTemplate(item.submenu).join("\n");
       li += '</li>';
       ul.splice(index + 1, 0, li);
@@ -507,7 +509,7 @@ angular.module('$strap.directives')
     link: function postLink(scope, iElement, iAttrs) {
 
       var getter = $parse(iAttrs.bsDropdown),
-          items = getter(scope);
+      items = getter(scope);
 
       // Defer after any ngRepeat rendering
       $timeout(function() {
@@ -525,8 +527,8 @@ angular.module('$strap.directives')
       });
 
       iElement
-        .addClass('dropdown-toggle')
-        .attr('data-toggle', "dropdown");
+      .addClass('dropdown-toggle')
+      .attr('data-toggle', "dropdown");
 
     }
   };
@@ -543,7 +545,7 @@ angular.module('$strap.directives')
       if(!options) options = {};
 
       var scope = options.scope || $rootScope.$new(),
-          templateUrl = options.template;
+      templateUrl = options.template;
 
       //@todo support {title, content} object
 
@@ -594,13 +596,13 @@ angular.module('$strap.directives')
 
       });
 
-    }
+}
 
-    return new Modal(options);
+return new Modal(options);
 
-  };
+};
 
-  return ModalFactory;
+return ModalFactory;
 
 }])
 
@@ -649,13 +651,13 @@ angular.module('$strap.directives')
             pattern = $li.attr('data-match-route'),
             regexp = new RegExp('^' + pattern + '$', ["i"]);
 
-          if(regexp.test(newValue)) {
-            $li.addClass('active');
-          } else {
-            $li.removeClass('active');
-          }
+            if(regexp.test(newValue)) {
+              $li.addClass('active');
+            } else {
+              $li.removeClass('active');
+            }
 
-        });
+          });
       });
     }
   };
@@ -682,9 +684,9 @@ angular.module('$strap.directives')
     link: function postLink(scope, element, attr, ctrl) {
 
       var getter = $parse(attr.bsPopover),
-        setter = getter.assign,
-        value = getter(scope),
-        options = {};
+      setter = getter.assign,
+      value = getter(scope),
+      options = {};
 
       if(angular.isObject(value)) {
         options = value;
@@ -703,7 +705,7 @@ angular.module('$strap.directives')
             // Hide any active popover except self
             $(".popover.in").each(function() {
               var $this = $(this),
-                popover = $this.data('popover');
+              popover = $this.data('popover');
               if(popover && !popover.$element.is(element)) {
                 $this.popover('hide');
               }
@@ -760,8 +762,8 @@ angular.module('$strap.directives')
 
       });
 
-    }
-  };
+}
+};
 
 }]);
 
@@ -811,19 +813,19 @@ angular.module('$strap.directives')
 
   var template = '<div class="tabs">' +
   '<ul class="nav nav-tabs">' +
-    '<li ng-repeat="pane in panes" ng-class="{active:pane.active}">' +
-      '<a data-target="#{{pane.id}}" data-index="{{$index}}" data-toggle="tab">{{pane.title}}</a>' +
-    '</li>' +
+  '<li ng-repeat="pane in panes" ng-class="{active:pane.active}">' +
+  '<a data-target="#{{pane.id}}" data-index="{{$index}}" data-toggle="tab">{{pane.title}}</a>' +
+  '</li>' +
   '</ul>' +
   '<div class="tab-content" ng-transclude>' +
     // '<div ng-repeat="pane in panes" ng-class="{active:pane.selected}">{{pane.content}}</div>' +
-  '</div>';
+    '</div>';
 
-  return {
-    restrict: 'A',
-    require: '?ngModel',
-    priority: 0,
-    scope: true,
+    return {
+      restrict: 'A',
+      require: '?ngModel',
+      priority: 0,
+      scope: true,
     template: template,//'<div class="tabs"><ul class="nav nav-tabs"></ul><div class="tab-content"></div></div>',
     replace: true,
     transclude: true,
@@ -832,8 +834,8 @@ angular.module('$strap.directives')
       return function postLink(scope, iElement, iAttrs, controller) {
 
         var getter = $parse(iAttrs.bsTabs),
-            setter = getter.assign,
-            value = getter(scope);
+        setter = getter.assign,
+        value = getter(scope);
 
         scope.panes = [];
         var $tabs = iElement.find('ul.nav-tabs');
@@ -893,11 +895,11 @@ angular.module('$strap.directives')
 
         }
 
-    };
+      };
 
-  }
+    }
 
-};
+  };
 
 }]);
 
@@ -965,8 +967,8 @@ angular.module('$strap.directives')
     link: function postLink(scope, element, attrs, ctrl) {
 
       var getter = $parse(attrs.bsTooltip),
-        setter = getter.assign,
-        value = getter(scope);
+      setter = getter.assign,
+      value = getter(scope);
 
       // Watch bsTooltip for changes
       scope.$watch(attrs.bsTooltip, function(newValue, oldValue) {
@@ -980,7 +982,7 @@ angular.module('$strap.directives')
           // Hide any active popover except self
           $(".tooltip.in").each(function() {
             var $this = $(this),
-              tooltip = $this.data('tooltip');
+            tooltip = $this.data('tooltip');
             if(tooltip && !tooltip.$element.is(element)) {
               $this.tooltip('hide');
             }
@@ -1031,8 +1033,8 @@ angular.module('$strap.directives')
     link: function postLink(scope, element, attrs, controller) {
 
       var getter = $parse(attrs.bsTypeahead),
-          setter = getter.assign,
-          value = getter(scope);
+      setter = getter.assign,
+      value = getter(scope);
 
       // Watch bsTypeahead for changes
       scope.$watch(attrs.bsTypeahead, function(newValue, oldValue) {

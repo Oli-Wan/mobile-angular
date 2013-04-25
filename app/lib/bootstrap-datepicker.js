@@ -202,6 +202,13 @@
 				];
 			}
 
+			var closeEvent = function (e) {
+				// Clicked outside the datepicker, hide it
+				if ($(e.target).closest('.datepicker.datepicker-inline, .datepicker.datepicker-dropdown').length === 0) {
+					this.hide();
+				}
+			};
+
 			this._secondaryEvents = [
 				[this.picker, {
 					click: $.proxy(this.click, this)
@@ -210,12 +217,8 @@
 					resize: $.proxy(this.place, this)
 				}],
 				[$(document), {
-					mousedown: $.proxy(function (e) {
-						// Clicked outside the datepicker, hide it
-						if ($(e.target).closest('.datepicker.datepicker-inline, .datepicker.datepicker-dropdown').length === 0) {
-							this.hide();
-						}
-					}, this)
+					mousedown: $.proxy(closeEvent, this),
+					touchstart: $.proxy(closeEvent, this)
 				}]
 			];
 		},

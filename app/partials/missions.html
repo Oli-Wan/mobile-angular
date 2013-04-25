@@ -20,7 +20,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="mission in missions" ng-click="passwordModal(mission)" >
+			<tr ng-repeat="mission in missions" ng-click="navigateTo(mission)" >
 				<td>{{mission.created_at}}</td>
 				<td class="hidden-phone">{{mission.id}}</td>
 				<td class="hidden-phone">{{mission.type}}</td>
