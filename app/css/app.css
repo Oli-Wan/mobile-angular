@@ -135,7 +135,7 @@
 
 
 .bs-docs-sidenav {
-	width: inherit;
+	width: 100%;
 	margin: 30px 0 0;
 	padding: 0;
 	background-color: #fff;

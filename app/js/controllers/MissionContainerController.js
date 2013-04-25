@@ -13,29 +13,18 @@ smurAngular.controller("MissionContainerController",
 			return $scope.includedUrl == expectedUrl;
 		};
 
-		$scope.navigate = function(id) {
-			if(id == "back")
-				$scope.back();
-			else {
-				$location.url("/mission/"+$scope.mission.id).search({page: id});
-				$scope.includedUrl = $scope.getPathFromParams();
-				$window.scrollTo(0,0);
-			}
-		};
+		$scope.$on('$routeUpdate', function() { 
+			$scope.includedUrl = $scope.getPathFromParams();
+			$window.scrollTo(0,0);
+		});
 
 		$scope.getPathFromParams = function() {
-			var before = new Date();
 			var currentPage = $location.search().page;
 			for (var i = 0; i < $scope.menuItems.length; i++) {
 				if($scope.menuItems[i].id == currentPage) 
 					return $scope.menuItems[i].templateUrl;
 			};
-
 			return "";
-		};
-
-		$scope.back = function() {
-			$location.url("/");
 		};
 
 		$scope.showMenu = function() {
