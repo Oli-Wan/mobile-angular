@@ -2,9 +2,6 @@
 smurAngular.factory("Mission", function Mission($timeout, $q, $rootScope){
 	var storeWrapper = {
 		ready:false,
-		setReady: function() {
-			this.ready = true;
-		},
 		getStore: function() {
 			return $timeout(waitForStore);
 		},
@@ -14,20 +11,17 @@ smurAngular.factory("Mission", function Mission($timeout, $q, $rootScope){
 			keyPath: 'id',
 			autoIncrement: true,
 			onStoreReady: function() {
-				storeWrapper.setReady();
+				storeWrapper.ready = true;
 			}
 		})
 	};
 
-	function waitForStore() {
-		if(storeWrapper.ready) {
+	var waitForStore = function() {
+		if(storeWrapper.ready)
 			return storeWrapper.store;
-		}
-		else {
+		else
 			return $timeout(waitForStore, 100);
-		}
 	}
-
 
 	return {
 		getAll: function() {
@@ -45,6 +39,7 @@ smurAngular.factory("Mission", function Mission($timeout, $q, $rootScope){
 			var deferred = $q.defer();
 			storeWrapper.getStore().then(function(store){
 				store.get(id, function(data) {
+
 					$rootScope.$apply(function(){
 						deferred.resolve(data);
 					});
