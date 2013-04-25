@@ -1,11 +1,8 @@
 
 smurAngular.controller("MissionContainerController", 
 	function MissionContainerController($scope, $rootScope, $routeParams, $http, $location, Mission, $window, mobile){
-		Mission.getStore().then(function(store){
-			store.get(parseInt($routeParams.missionId), function(data) {
-				$scope.mission = data;
-				$scope.$apply();
-			});
+		Mission.get(parseInt($routeParams.missionId)).then(function(data){
+			$scope.mission = data;
 		});
 
 		$scope.mobile = mobile;

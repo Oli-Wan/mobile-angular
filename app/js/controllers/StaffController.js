@@ -1,11 +1,9 @@
 
 smurAngular.controller("StaffController", 
 	function StaffController($scope, $routeParams, $http, $modal, $location, Mission, Staff){
-		Mission.getStore().then(function(store){
-			store.get(parseInt($routeParams.missionId), function(data) {
-				$scope.mission = data;
-				$scope.refreshStaff();
-			});
+		Mission.get(parseInt($routeParams.missionId)).then(function(data) {
+			$scope.mission = data;
+			$scope.refreshStaff();
 		});
 
 		$http.get('/resources/functions.json').success(function(data){
@@ -29,11 +27,8 @@ smurAngular.controller("StaffController",
 					newStaff.push(element);
 			});
 			$scope.mission.staff = newStaff;
-			Mission.getStore().then(function(store){
-				store.put($scope.mission, function(){
-					$scope.refreshStaff();
-					$scope.$apply();
-				});
+			Mission.save($scope.mission).then(function(){
+				$scope.refreshStaff();
 			});
 			$scope.dismiss();
 		};
@@ -49,6 +44,7 @@ smurAngular.controller("StaffController",
 		};
 
 		$scope.refreshStaff = function() {
+			console.log("refreshing staff");
 			if($scope.mission.staff === undefined)
 				return;
 

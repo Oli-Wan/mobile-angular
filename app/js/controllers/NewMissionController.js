@@ -18,10 +18,8 @@ smurAngular.controller('NewMissionController',
 			if($scope.password == "1234") {
 				var formattedDate = Utils.getCurrentDateAndTime();
 				$scope.mission.created_at = formattedDate.date+" "+formattedDate.time;
-				Mission.getStore().then(function(store){
-					store.put($scope.mission);
-					$scope.back();
-				});
+				Mission.save($scope.mission);
+				$scope.back();
 			} else {
 				$scope.alerts.push({
 					"type": "error",

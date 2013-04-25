@@ -1,11 +1,9 @@
 
 smurAngular.controller("VehicleController", 
 	function VehicleController($scope, $routeParams, $location, $modal, Mission, Vehicle) {		
-		Mission.getStore().then(function(store){
-			store.get(parseInt($routeParams.missionId), function(data) {
-				$scope.mission = data;
-				$scope.refreshVehicles();
-			});
+		Mission.get(parseInt($routeParams.missionId)).then(function(data) {
+			$scope.mission = data;
+			$scope.refreshVehicles();
 		});
 
 		$scope.goToNewVehicle = function() {
@@ -21,11 +19,8 @@ smurAngular.controller("VehicleController",
 					newVehicles.push(element);
 			});
 			$scope.mission.vehicles = newVehicles;
-			Mission.getStore().then(function(store){
-				store.put($scope.mission, function(){
-					$scope.refreshVehicles();
-					$scope.$apply();
-				});
+			Mission.save($scope.mission).then(function(){
+				$scope.refreshVehicles();
 			});
 			$scope.dismiss();
 		};

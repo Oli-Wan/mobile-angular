@@ -1,21 +1,14 @@
 
 smurAngular.controller('MissionsController', 
 	function MissionsController($scope, Mission, $location, $modal, $rootScope, $timeout){
-		Mission.getStore().then(function(store){
-			store.getAll(function(data){
-				$scope.missions = data;
-				$scope.$apply();
-			});
+		Mission.getAll().then(function(data){
+			$scope.missions = data;
 		});
 
 		$scope.delete = function(id) {
-			Mission.getStore().then(function(store) {
-				store.remove(id, function() {
-					store.getAll(function(data) {
-						$scope.missions = data;
-						$scope.$apply();
-					});
-					$scope.dismiss();
+			Mission.remove(id).then(function(){
+				Mission.getAll().then(function(data){
+					$scope.missions = data;
 				});
 			});
 		};
@@ -49,7 +42,7 @@ smurAngular.controller('MissionsController',
 		};
 
 		$scope.deleteModal = function(id) {
-			$scope.id = id;
+			$scope.element = id;
 			return $modal({
 				scope: $scope,
 				template: '/partials/misc/deleteConfirmation.html', 

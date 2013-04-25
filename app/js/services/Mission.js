@@ -1,5 +1,5 @@
 
-smurAngular.factory("Mission", function Mission($timeout){
+smurAngular.factory("Mission", function Mission($timeout, $q, $rootScope){
 	var storeWrapper = {
 		ready:false,
 		setReady: function() {
@@ -28,5 +28,49 @@ smurAngular.factory("Mission", function Mission($timeout){
 		}
 	}
 
-	return storeWrapper;
+
+	return {
+		getAll: function() {
+			var deferred = $q.defer();
+			storeWrapper.getStore().then(function(store){
+				store.getAll(function(data){
+					$rootScope.$apply(function(){
+						deferred.resolve(data);
+					});
+				});
+			});
+			return deferred.promise;
+		},
+		get: function(id) {
+			var deferred = $q.defer();
+			storeWrapper.getStore().then(function(store){
+				store.get(id, function(data) {
+					$rootScope.$apply(function(){
+						deferred.resolve(data);
+					});
+				});
+			});
+			return deferred.promise;
+		},
+		remove: function(id) {
+			var deferred = $q.defer();
+			storeWrapper.getStore().then(function(store) {
+				store.remove(id, function(){
+					$rootScope.$apply(function(){
+						deferred.resolve("Sucess");
+					});
+				});
+			});
+			return deferred.promise;
+		},
+		save: function(mission) {
+			var deferred = $q.defer();
+			storeWrapper.getStore().then(function(store){
+				store.put(mission, function(){
+					deferred.resolve("Sucess");
+				});
+			});
+			return deferred.promise;
+		}
+	};
 });

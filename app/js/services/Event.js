@@ -22,7 +22,7 @@ smurAngular.factory("Event", function Event($timeout, $q, $rootScope){
 		}),
 		getByMissionId: function(missionId){
 			var id = parseInt(missionId);
-			var deffered = $q.defer();
+			var deferred = $q.defer();
 			storeWrapper.getStore().then(function(store){
 				var keyRange = store.makeKeyRange({
 					lower: id,
@@ -30,14 +30,14 @@ smurAngular.factory("Event", function Event($timeout, $q, $rootScope){
 				});
 				store.query(function(data) {
 					$rootScope.$apply(function(){
-						deffered.resolve(data);
+						deferred.resolve(data);
 					});
 				}, {
 					"index":"missionId",
 					"keyRange":keyRange
 				});
 			});
-			return deffered.promise;
+			return deferred.promise;
 		}
 	};
 

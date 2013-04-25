@@ -4,11 +4,8 @@ smurAngular.controller("NewStaffController",
 		$scope.staff = {};
 		$scope.staff.time = Utils.getCurrentDateAndTime();
 		
-		Mission.getStore().then(function(store){
-			store.get(parseInt($routeParams.missionId), function(data) {
-				$scope.mission = data;
-				$scope.$apply();
-			});
+		Mission.get(parseInt($routeParams.missionId)).then(function(data){
+			$scope.mission = data;
 		});
 
 		Staff.getStore().then(function(store){
@@ -22,21 +19,16 @@ smurAngular.controller("NewStaffController",
 			$scope.functions = data;
 		});
 
-
 		$scope.back = function() {
 			$location.url("/mission/"+$scope.mission.id).search({page: "staff"});
 		};
 
 		$scope.add = function() {
-			$scope.staff.store="staff";
 			if($scope.mission.staff === undefined)
 				$scope.mission.staff = [];
-			
-			$scope.mission.staff.push($scope.staff);
 
-			Mission.getStore().then(function(store){
-				store.put($scope.mission);
-			});
+			$scope.mission.staff.push($scope.staff);
+			Mission.save($scope.mission);
 			$scope.back();
 		};
 	});
