@@ -2,9 +2,9 @@
 	<h1>Ajouter un véhicule</h1>
 	<form class="form form-horizontal">
 		<div class="control-group">
-			<label for="" class="control-label">Type</label>
+			<label for="types" class="control-label">Type</label>
 			<div class="controls">
-				<select ng-model="search.type" class="input-xlarge">
+				<select ng-model="search.type" id="types" class="input-xlarge">
 					<option ng-repeat="type in types" value="{{type.id}}">{{type.name}}</option>
 				</select>
 			</div>
@@ -16,20 +16,11 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label for="" class="control-label">Resource</label>
+			<label for="vehicle" class="control-label">Resource</label>
 			<div class="controls">
-				<select class="input-xlarge">
-					<option ng-repeat="vehicle in vehicles  | filter:search">
-						{{vehicle.name}}
-					</option>
-				</select>
-			</div>
-		</div>
-		<div class="control-group">
-			<label for="" class="control-label">Resource</label>
-			<div class="controls">
-				<select class="input-xlarge">
-					<option ng-repeat="vehicle in vehicles  | filter:search">
+				<select class="input-xlarge" id="vehicle" ng-model="vehicle.name">
+					<option ng-repeat="vehicle in vehicles  | filter:search"
+						value="{{vehicle.name}}">
 						{{vehicle.name}}
 					</option>
 				</select>
