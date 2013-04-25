@@ -12,11 +12,7 @@ smurAngular.controller("NewStaffController",
 		$http.get('/resources/persons.json').success(function(data){
 			$scope.persons = data;
 		});
-
-		$scope.back = function() {
-			$location.url("/mission/"+$scope.mission.id).search({page: "staff"});
-		};
-
+		
 		$scope.add = function() {
 			$scope.staff.store="staff";
 			$scope.mission.staff.push($scope.staff);

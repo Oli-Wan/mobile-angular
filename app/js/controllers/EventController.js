@@ -11,8 +11,4 @@ smurAngular.controller("EventController",
 				modalClass:'wide-modal'
 			});			
 		};*/
-
-		$scope.goToNewEvent = function() {
-			$location.url("/mission/"+$scope.mission.id+"/events/new");
-		}
 	});
