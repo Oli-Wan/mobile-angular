@@ -1,4 +1,4 @@
- smurAngular.service("Utils", function Utils(){
+ smurAngular.service("Utils", function Utils($q, $rootScope){
  	return {
  		getCurrentDateAndTime: function(){
  			var currentTime = new Date();
