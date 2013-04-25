@@ -12,15 +12,19 @@ smurAngular.controller('NewMissionController',
 			$scope.responsibles = data;
 		});
 		
+		$scope.back = function(){
+			$location.url("/");
+		};
+
 		$scope.add = function(){
 			if($scope.password == "1234") {
 				var mission = $scope.mission;
 				var currentTime = new Date();
 				mission.id = currentTime.getTime();
 				mission.created_at = currentTime.getDate()+"/"+currentTime.getMonth()+"/"+currentTime.getFullYear()+" "+
-					currentTime.getHours()+"h"+currentTime.getMinutes();
+				currentTime.getHours()+"h"+currentTime.getMinutes();
 				Mission.create(mission);
-				$location.url("/");
+				$scope.back();
 			} else {
 				$scope.alerts.push({
 					"type": "error",
