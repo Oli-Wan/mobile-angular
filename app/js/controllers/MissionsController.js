@@ -31,10 +31,6 @@ smurAngular.controller('MissionsController',
 			}*/
 		};
 
-		$scope.goToNewMission = function(){
-			$location.url("/mission/new");
-		};
-
 		$scope.passwordModal = function(mission) {
 			$scope.selectedMission = mission
 			$scope.alerts = [];
