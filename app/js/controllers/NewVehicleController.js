@@ -15,11 +15,6 @@ smurAngular.controller("NewVehicleController",
 			$scope.vehicles = data;
 		});
 
-
-		$scope.back = function() {
-			$location.url("/mission/"+$scope.mission.id).search({page: "vehicle"});
-		};
-
 		$scope.add = function() {
 			$scope.back();
 		};

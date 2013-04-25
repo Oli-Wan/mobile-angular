@@ -3,10 +3,10 @@
 	<div ng-controller="VehicleController">
 		<h3 class="pull-left">Véhicules</h3>
 
-		<button type="button" class="btn btn-primary btn-add pull-right" 
-			ng-click="goToNewVehicle()">
+		<a class="btn btn-primary btn-add pull-right" 
+			ng-href="#/mission/{{mission.id}}/vehicle/new">
 			Ajouter un véhicule
-		</button>
+		</a>
 
 		<div class="clearfix" />
 
