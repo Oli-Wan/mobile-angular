@@ -41,12 +41,9 @@ smurAngular.controller("VehicleController",
 
 			$scope.vehicles = [];
 			$scope.mission.vehicles.forEach(function(element, index, array) {
-				Vehicle.getStore().then(function(store){
-					store.get(parseInt(element.id), function(data){
-						data.time = element.time;
-						$scope.vehicles.push(data);
-						$scope.$apply();
-					});
+				Vehicle.get(parseInt(element.id)).then(function(data){
+					data.time = element.time;
+					$scope.vehicles.push(data);
 				});
 			});
 		};

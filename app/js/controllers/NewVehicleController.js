@@ -5,13 +5,10 @@ smurAngular.controller("NewVehicleController",
 			$scope.mission = data;
 		});
 
-		Vehicle.getStore().then(function(store) {
-			store.getAll(function(data) {
-				$scope.vehicles = data;
-				$scope.$apply();
-			});
+		Vehicle.getAll().then(function(data) {
+			$scope.vehicles = data;
 		});
-		
+
 		$http.get('/resources/vehicle-types.json').success(function(data){
 			$scope.types = data;
 			$scope.typeNames = [];

@@ -14,11 +14,8 @@ smurAngular.controller('EditEventController',
 			}
 		});
 
-		Vehicle.getStore().then(function(store) {
-			store.getAll(function(data) {
-				$scope.vehicles = data;
-				$scope.$apply();
-			});
+		Vehicle.getAll().then(function(data) {
+			$scope.vehicles = data;
 		});
 
 		$http.get("/resources/event-types.json").success(function(data){
