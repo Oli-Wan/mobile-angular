@@ -29,8 +29,4 @@ smurAngular.controller('NewMissionController',
 				});
 			}
 		};
-
-		$scope.back = function() {
-			$location.url("/");
-		};
 	});
