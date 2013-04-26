@@ -1,20 +1,27 @@
 
 smurAngular.factory("Mission", function Mission($timeout, $q, $rootScope, IDBService){
 	var storeWrapper = {
+		store: undefined,
 		getStore: function() {
 			var deferred = $q.defer();
-			var a = new IDBStore({
-				dbVersion: 1,
-				storeName: 'mission',
-				keyPath: 'id',
-				autoIncrement: true,
-				onStoreReady: function() {
-					var store = this;
-					$rootScope.$apply(function(){
-						deferred.resolve(store);
-					});
-				}
-			});
+			if(this.store)
+				deferred.resolve(this.store)
+			else
+			{
+				this.store = new IDBStore({
+					dbVersion: 1,
+					storeName: 'mission',
+					keyPath: 'id',
+					autoIncrement: true,
+					onStoreReady: function() {
+						var storeReady = this;
+						console.log("new");
+						$rootScope.$apply(function(){
+							deferred.resolve(storeReady);
+						});
+					}
+				});
+			}
 			return deferred.promise;
 		}
 	};
