@@ -39,7 +39,9 @@
  					var deferred = $q.defer();
  					storeWrapper.getStore().then(function(store){
  						store.put(mission, function(){
- 							deferred.resolve("Sucess");
+ 							$rootScope.$apply(function(){
+ 								deferred.resolve("Sucess");
+ 							});
  						});
  					});
  					return deferred.promise;

@@ -1,5 +1,5 @@
 
-smurAngular.factory("Mission", function Mission($timeout, $q, $rootScope, IDBService){
+smurAngular.factory("Mission", function Mission($q, $rootScope, IDBService){
 	var storeWrapper = {
 		store: undefined,
 		getStore: function() {

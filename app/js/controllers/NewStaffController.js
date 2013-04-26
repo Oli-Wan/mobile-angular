@@ -8,13 +8,10 @@ smurAngular.controller("NewStaffController",
 			$scope.mission = data;
 		});
 
-		Staff.getStore().then(function(store){
-			store.getAll(function(data) {
-				$scope.persons = data;
-				$scope.$apply();
-			});
+		Staff.getAll().then(function(data) {
+			$scope.persons = data;
 		});
-
+		
 		$http.get('/resources/functions.json').success(function(data){
 			$scope.functions = data;
 		});

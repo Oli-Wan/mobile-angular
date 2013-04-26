@@ -3,11 +3,8 @@ smurAngular.controller('EditEventController',
 		Mission.get(parseInt($routeParams.missionId)).then(function(data) {
 			$scope.mission = data;
 			if($routeParams.eventId) {
-				Event.getStore().then(function(eventStore){
-					eventStore.get(parseInt($routeParams.eventId), function(data){
-						$scope.event = data;
-						$scope.$apply();
-					});
+				Event.get(parseInt($routeParams.eventId)).then(function(data){
+					$scope.event = data;
 				});
 			} else {
 				$scope.event = {};
@@ -15,9 +12,8 @@ smurAngular.controller('EditEventController',
 				$scope.event.end  = Utils.getCurrentDateAndTime();
 				$scope.event.missionId = $scope.mission.id;
 			}
-			$scope.$apply();
 		});
-		
+
 		Vehicle.getStore().then(function(store) {
 			store.getAll(function(data) {
 				$scope.vehicles = data;
@@ -34,9 +30,7 @@ smurAngular.controller('EditEventController',
 		};
 
 		$scope.save = function() {
-			Event.getStore().then(function(store) {
-				store.put($scope.event);
-			});
+			Event.save($scope.event);
 			$scope.back();
 		};
 	});

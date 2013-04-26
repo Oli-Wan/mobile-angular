@@ -1,6 +1,6 @@
 
 smurAngular.controller("EventController", 
-	function EventController($scope, $http, $modal, $routeParams, $location, Mission, Event){
+	function EventController($scope, $modal, $routeParams, Event){
 		$scope.missionId = $routeParams.missionId;
 		
 		$scope.fetchEvents = function() {
@@ -10,12 +10,10 @@ smurAngular.controller("EventController",
 		};
 
 		$scope.delete = function(id) {
-			Event.getStore().then(function(store) {
-				store.remove(id, function() {
-					$scope.fetchEvents();
-				});
-				$scope.dismiss();
+			Event.remove(id).then(function() {
+				$scope.fetchEvents();
 			});
+			$scope.dismiss();
 		};
 
 		$scope.deleteModal = function(id) {

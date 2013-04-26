@@ -18,7 +18,6 @@ smurAngular.controller("StaffController",
 		}
 
 		$scope.delete = function(elementToDelete) {
-			console.log(elementToDelete);
 			var newStaff = [];
 			$scope.mission.staff.forEach(function(element, index, array){
 				if(element.id != elementToDelete.id || 
@@ -44,18 +43,14 @@ smurAngular.controller("StaffController",
 		};
 
 		$scope.refreshStaff = function() {
-			console.log("refreshing staff");
 			if($scope.mission.staff === undefined)
 				return;
 
 			$scope.staff = [];
 			$scope.mission.staff.forEach(function(element, index, array) {
-				Staff.getStore().then(function(staffStore){
-					staffStore.get(parseInt(element.id), function(data){
-						data.time = element.time;
-						$scope.staff.push(data);
-						$scope.$apply();
-					});
+				Staff.get(parseInt(element.id)).then(function(data){
+					data.time = element.time;
+					$scope.staff.push(data);
 				});
 			});
 		};

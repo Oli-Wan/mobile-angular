@@ -1,31 +1,29 @@
 
-smurAngular.factory("Staff", function Staff($timeout){
+smurAngular.factory("Staff", function Staff($q, $rootScope, IDBService){
 	var storeWrapper = {
-		ready:false,
-		setReady: function() {
-			this.ready = true;
-		},
+		store: undefined,
 		getStore: function() {
-			return $timeout(waitForStore);
-		},
-		store: new IDBStore({
-			dbVersion: 2,
-			storeName: 'staff',
-			keyPath: 'id',
-			autoIncrement: true,
-			onStoreReady: function() {
-				storeWrapper.setReady();
+			var deferred = $q.defer();
+			if(this.store)
+				deferred.resolve(this.store)
+			else
+			{
+				this.store = new IDBStore({
+					dbVersion: 2,
+					storeName: 'staff',
+					keyPath: 'id',
+					autoIncrement: true,
+					onStoreReady: function() {
+						var storeReady = this;
+						console.log("new");
+						$rootScope.$apply(function(){
+							deferred.resolve(storeReady);
+						});
+					}
+				});
 			}
-		})
+			return deferred.promise;
+		}
 	};
-
-	function waitForStore() {
-		if(storeWrapper.ready) {
-			return storeWrapper.store;
-		}
-		else {
-			return $timeout(waitForStore, 100);
-		}
-	}
-	return storeWrapper;
+	return IDBService.getIDBCrudObject(storeWrapper);
 });

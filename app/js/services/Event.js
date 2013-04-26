@@ -1,53 +1,53 @@
 
-smurAngular.factory("Event", function Event($timeout, $q, $rootScope){
+smurAngular.factory("Event", function Event($q, $rootScope, IDBService){
 	var storeWrapper = {
-		ready:false,
-		setReady: function() {
-			this.ready = true;
-		},
+		store: undefined,
 		getStore: function() {
-			return $timeout(waitForStore);
-		},
-		store: new IDBStore({
-			dbVersion: 2,
-			storeName: 'event',
-			keyPath: 'id',
-			autoIncrement: true,
-			onStoreReady: function() {
-				storeWrapper.setReady();
-			},
-			indexes: [
-			{ name: "missionId" }
-			]
-		}),
-		getByMissionId: function(missionId){
-			var id = parseInt(missionId);
 			var deferred = $q.defer();
-			storeWrapper.getStore().then(function(store){
-				var keyRange = store.makeKeyRange({
-					lower: id,
-					upper: id
+			if(this.store)
+				deferred.resolve(this.store)
+			else
+			{
+				this.store = new IDBStore({
+					dbVersion: 2,
+					storeName: 'event',
+					keyPath: 'id',
+					autoIncrement: true,
+					onStoreReady: function() {
+						var storeReady = this;
+						console.log("new");
+						$rootScope.$apply(function(){
+							deferred.resolve(storeReady);
+						});
+					},
+					indexes: [
+					{ name: "missionId" }
+					]
 				});
-				store.query(function(data) {
-					$rootScope.$apply(function(){
-						deferred.resolve(data);
-					});
-				}, {
-					"index":"missionId",
-					"keyRange":keyRange
-				});
-			});
+			}
 			return deferred.promise;
 		}
 	};
 
-	function waitForStore() {
-		if(storeWrapper.ready) {
-			return storeWrapper.store;
-		}
-		else {
-			return $timeout(waitForStore, 100);
-		}
-	}
-	return storeWrapper;
+	var idbService = IDBService.getIDBCrudObject(storeWrapper);
+	idbService.getByMissionId = function(missionId){
+		var id = parseInt(missionId);
+		var deferred = $q.defer();
+		storeWrapper.getStore().then(function(store){
+			var keyRange = store.makeKeyRange({
+				lower: id,
+				upper: id
+			});
+			store.query(function(data) {
+				$rootScope.$apply(function(){
+					deferred.resolve(data);
+				});
+			}, {
+				"index":"missionId",
+				"keyRange":keyRange
+			});
+		});
+		return deferred.promise;
+	};
+	return idbService;
 });

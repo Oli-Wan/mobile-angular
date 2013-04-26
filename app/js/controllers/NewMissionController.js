@@ -7,13 +7,10 @@ smurAngular.controller('NewMissionController',
 			$scope.vehicles = data;
 		});
 
-		Staff.getStore().then(function(store){
-			store.getAll(function(data){
-				$scope.responsibles = data;
-				$scope.$apply();
-			});
+		Staff.getAll().then(function(data){
+			$scope.responsibles = data;
 		});
-		
+
 		$scope.add = function(){
 			if($scope.password == "1234") {
 				var formattedDate = Utils.getCurrentDateAndTime();

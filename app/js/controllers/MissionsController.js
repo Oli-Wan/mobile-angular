@@ -11,6 +11,7 @@ smurAngular.controller('MissionsController',
 					$scope.missions = data;
 				});
 			});
+			$scope.dismiss();
 		};
 
 		$scope.navigateTo = function(mission) {
