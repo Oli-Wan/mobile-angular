@@ -55,39 +55,34 @@
 
 .view-enter-setup, .view-leave-setup, .inclusion-enter-setup, .inclusion-leave-setup,
 .page-leave-setup, .page-enter-setup {
-	-webkit-transition:all ease-in-out 0.25s;
-	-moz-transition:all ease-in-out 0.25s;
-	-ms-transition:all ease-in-out 0.25s;
-	-o-transition:all ease-in-out 0.25s;
-	transition:all ease-in-out 0.25s;
+	-webkit-transition:all linear 0.5s;
+	-moz-transition:all linear 0.5s;
+	-ms-transition:all linear 0.5s;
+	-o-transition:all linear 0.5s;
+	transition:all linear 0.5s;
 }
 
-/* view */
-.view-enter-setup, .view-leave-setup {
-	position:absolute;
-	top:0;
-	left:0;
-	right:0;
-	bottom:0;
-}
 
 .view-enter-setup {
-	left:100%;
+	top:0;
+	position: absolute;
 	width:100%;
+	padding-right: 40px;
+	-webkit-transform: translate(100%);
+	-ms-transform: translate(100%);
+	transform: translate(100%);
 }
 
 .view-enter-setup.view-enter-start {
-	left:0;
-	margin:0 20px;
-}
-
-.view-leave-setup { 
-	width: 100%;
-	left:0;
+	-webkit-transform: translate(0);
+	-ms-transform: translate(0);
+	transform: translate(0);
 }
 
 .view-leave-setup.view-leave-start {
-	left:-120%;
+	-webkit-transform: translate(-100%);
+	-ms-transform: translate(-100%);
+	transform: translate(-100%);
 }
 
 /*inclusion*/
