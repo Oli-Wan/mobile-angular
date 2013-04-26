@@ -7,7 +7,7 @@
 }
 
 
-.wide-modal {
+.small-modal {
 	width:600px;
 	margin-left:-300px;
 }
@@ -53,83 +53,45 @@
 /* Transitions
 -------------------------------------------------- */
 
-.view-enter-setup, .view-leave-setup, .inclusion-enter-setup, .inclusion-leave-setup,
-.page-leave-setup, .page-enter-setup {
-	-webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.25s;
-	-moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.25s;
-	-ms-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.25s;
-	-o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.25s;
-	transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.25s;
+.view-enter-setup, .view-leave-setup, 
+.inclusion-enter-setup, .inclusion-leave-setup {
+	-webkit-transition:all linear 0.5s;
+	-moz-transition:all linear 0.5s;
+	-ms-transition:all linear 0.5s;
+	-o-transition:all linear 0.5s;
+	transition:all linear 0.5s;
 }
 
-/* view */
-.view-enter-setup, .view-leave-setup {
-	position:absolute;
+
+.view-enter-setup, 
+.inclusion-enter-setup {
 	top:0;
-	left:0;
-	right:0;
-	bottom:0;
-}
-
-.view-enter-setup {
-	left:100%;
+	position: absolute;
 	width:100%;
+	padding-right: 40px;
+	-webkit-transform: translate(100%);
+	-ms-transform: translate(100%);
+	transform: translate(100%);
 }
 
-.view-enter-setup.view-enter-start {
-	left:0;
-	margin:0 20px;
-}
-
-.view-leave-setup { 
-	width: 100%;
-	left:0;
+.view-enter-setup.view-enter-start, 
+.inclusion-enter-setup.inclusion-enter-start {
+	-webkit-transform: translate(0);
+	-ms-transform: translate(0);
+	transform: translate(0);
 }
 
 .view-leave-setup.view-leave-start {
-	left:-120%;
-}
-
-/*inclusion*/
-.inclusion-enter-setup {
-	position: absolute;
-	width:100%;
-	left:100%;
-}
-
-.inclusion-enter-setup.inclusion-enter-start {
-	left:0;
-}
-
-.inclusion-leave-setup {
-	position: absolute;
-	width:100%;
+	-webkit-transform: translate(-100%);
+	-ms-transform: translate(-100%);
+	transform: translate(-100%);
 }
 
 .inclusion-leave-setup.inclusion-leave-start {
+	-webkit-transform: scale(0.8);
+	-ms-transform: scale(0.8);
+	transform: scale(0.8);
 }
-
-/* show */
-.page-enter-setup {
-	position:absolute;
-	width: 100%;
-	left: 100%;
-}
-
-.page-enter-setup.page-enter-start {
-	left:0;
-}
-
-.page-leave-setup {
-	position: absolute;
-	width: 100%;
-	left:0;
-}
-
-.page-leave-setup.page-leave-start {
-	left:100%;
-}
-
 /* Sidenav
 -------------------------------------------------- */
 
