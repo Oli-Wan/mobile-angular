@@ -38,7 +38,21 @@
  				save: function(mission) {
  					var deferred = $q.defer();
  					storeWrapper.getStore().then(function(store){
+ 						console.log("saving");
+ 						console.log(store);
  						store.put(mission, function(){
+ 							$rootScope.$apply(function(){
+ 								deferred.resolve("Sucess");
+ 							});
+ 						});
+ 					});
+ 					return deferred.promise;
+ 				},
+ 				clear: function() {
+ 					var deferred = $q.defer();
+ 					storeWrapper.getStore().then(function(store){
+ 						store.clear(function(){
+ 							console.log("Cleared");
  							$rootScope.$apply(function(){
  								deferred.resolve("Sucess");
  							});

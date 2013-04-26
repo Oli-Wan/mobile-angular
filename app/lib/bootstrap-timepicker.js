@@ -364,7 +364,7 @@
         this.$widget.removeClass('open');
       }
 
-      $(document).off('mousedown.timepicker');
+      $(document).off('mousedown.timepicker, touchstart.timepicker');
 
       this.isOpen = false;
     },
@@ -662,7 +662,7 @@
       }
 
       var self = this;
-      $(document).on('mousedown.timepicker', function (e) {
+      $(document).on('mousedown.timepicker, touchstart.timepicker', function (e) {
         // Clicked outside the timepicker, hide it
         if ($(e.target).closest('.bootstrap-timepicker-widget').length === 0) {
           self.hideWidget();

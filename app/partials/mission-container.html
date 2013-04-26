@@ -6,9 +6,15 @@
 		<div ng-show="renderMenu()" ng-class="{true:'span10', false:'span3'}[mobile]">
 			<ul class="nav nav-list bs-docs-sidenav affix">
 				<li ng-repeat="menuItem in menuItems" ng-class="{active: includeUrlIs(menuItem.templateUrl)}">
-					<a ng-click="navigate(menuItem.id)">
+					<a ng-href="#/mission/{{mission.id}}?page={{menuItem.id}}">
 						<i class="icon-chevron-right"></i>
 						{{menuItem.name}}
+					</a>
+				</li>
+				<li>
+					<a href="#/">
+						<i class="icon-chevron-right"></i>
+						Retour à la liste
 					</a>
 				</li>
 			</ul>
@@ -16,7 +22,8 @@
 		<div class="mission-description" ng-show="renderPage()"
 			ng-class="{true:'span12', false:'span9'}[mobile]">
 			<div ng-include="includedUrl" 
-				ng-animate="{enter: 'inclusion-enter', leave: 'inclusion-leave'}"></div>
+				ng-animate="{enter: 'inclusion-enter', leave: 'inclusion-leave'}">
+			</div>
 		</div>
 	</div>
 </div>

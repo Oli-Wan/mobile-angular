@@ -1,23 +1,13 @@
 <div class="mission-description-part">
+	<ng-include src="'/partials/misc/back.html'"></ng-include>
 	<div ng-controller="EventController">
-		
-		<div class="visible-phone">
-			<button type="button" class="btn btn-primary"
-				ng-click="showMenu()">
-				<i class="icon-arrow-left icon-white" />
-			</button>
-			<div class="clearfix" ></div>
-		</div>
-
 		<h3 class="pull-left">Evènements</h3>
-
 		<a class="btn btn-primary btn-add pull-right" 
-			ng-href="#/mission/{{missionId}}/events/new">
+			ng-href="#/mission/{{mission.id}}/events/new">
 			Ajouter un évènement
 		</a>
-
-		<div class="clearfix"></div>
-
+		<div class="clearfix" />
+		
 		<table class="table table-hover">
 			<thead>
 				<tr>

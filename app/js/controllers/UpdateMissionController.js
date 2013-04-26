@@ -11,7 +11,6 @@ smurAngular.controller("UpdateMissionController", function UpdateMissionControll
 				title: "Succès",
 				content: "Mission mise à jour avec succès"
 			});
-			$scope.$apply();
 			$window.scrollTo(0,0);
 		});
 	};

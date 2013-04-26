@@ -23,9 +23,5 @@
 		"id":"vehicle",
 		"name":"Véhicules",
 		"templateUrl":"/partials/mission/vehicles/vehicles.html"
-	},
-	{
-		"id":"back",
-		"name":"Retour à la liste"
 	}
 ]

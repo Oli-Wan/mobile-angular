@@ -15,6 +15,9 @@ smurAngular.controller('MissionsController',
 		};
 
 		$scope.navigateTo = function(mission) {
+			$location.url("/mission/"+mission.id).search({page: "mission"});
+			/*
+			$scope.password = 1234;
 			if($scope.password == "1234") {
 				$scope.dismiss();
 				$location.url("/mission/"+mission.id).search({page: "mission"});
@@ -24,11 +27,7 @@ smurAngular.controller('MissionsController',
 					"title": "Mauvais mot de passe",
 					"content": "Essayez 1234"
 				});
-			}
-		};
-
-		$scope.goToNewMission = function(){
-			$location.url("/mission/new");
+			}*/
 		};
 
 		$scope.passwordModal = function(mission) {

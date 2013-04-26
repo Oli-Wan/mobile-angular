@@ -15,7 +15,6 @@ smurAngular.factory("Staff", function Staff($q, $rootScope, IDBService){
 					autoIncrement: true,
 					onStoreReady: function() {
 						var storeReady = this;
-						console.log("new");
 						$rootScope.$apply(function(){
 							deferred.resolve(storeReady);
 						});
