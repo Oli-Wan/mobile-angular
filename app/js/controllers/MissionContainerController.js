@@ -21,6 +21,10 @@ smurAngular.controller("MissionContainerController",
 			$window.scrollTo(0,0);
 		});
 
+		$scope.navigate = function(id) {
+			$location.url("/mission/"+$scope.mission.id).search({page: id});
+		};
+
 		$scope.getPathFromParams = function() {
 			var currentPage = $location.search().page;
 			for (var i = 0; i < $scope.menuItems.length; i++) {
