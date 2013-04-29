@@ -16,7 +16,7 @@ smurAngular.controller("NewStaffController",
 		$http.get('/resources/functions.json').success(function(data){
 			$scope.functions = data;
 		});
-		
+
 		$scope.back = function() {
 			$location.url("/mission/"+$scope.mission.id).search({page: "staff"});
 		};

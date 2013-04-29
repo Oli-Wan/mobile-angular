@@ -1,13 +1,13 @@
 <div>		
 	<h1 class="pull-left">Missions</h1>
 	
-	<a class="btn btn-primary btn-add pull-right" 
-			href="#/mission/new">
+	<a class="btn btn-large btn-primary btn-add pull-right" 
+			ng-tap="goToNewMission()">
 		Ajouter une nouvelle mission
 	</a>
 
 	<div class="clearfix"></div>
-	<table class="table table-hover table-clickable">
+	<table class="table table-hover table-tapable">
 		<thead>
 			<tr>
 				<th>Heure</th>
@@ -21,16 +21,16 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="mission in missions" ng-click="navigateTo(mission)" >
-				<td>{{mission.created_at}}</td>
-				<td class="hidden-phone">{{mission.id}}</td>
-				<td class="hidden-phone">{{mission.type}}</td>
-				<td>{{mission.destination}}</td>
-				<td class="hidden-phone">{{mission.responsible}}</td>
-				<td class="hidden-phone">{{mission.victims}}</td>
-				<td class="hidden-phone">{{mission.observation}}</td>
+			<tr ng-repeat="mission in missions" >
+				<td ng-tap="navigateTo(mission)" >{{mission.created_at}}</td>
+				<td ng-tap="navigateTo(mission)" class="hidden-phone">{{mission.id}}</td>
+				<td ng-tap="navigateTo(mission)" class="hidden-phone">{{mission.type}}</td>
+				<td ng-tap="navigateTo(mission)" >{{mission.destination}}</td>
+				<td ng-tap="navigateTo(mission)" class="hidden-phone">{{mission.responsible}}</td>
+				<td ng-tap="navigateTo(mission)" class="hidden-phone">{{mission.victims}}</td>
+				<td ng-tap="navigateTo(mission)" class="hidden-phone">{{mission.observation}}</td>
 				<td>
-					<button class="btn btn-danger" ng-click="deleteModal(mission.id)">
+					<button class="btn btn-danger" ng-tap="deleteModal(mission.id)">
 						<i class="icon-trash icon-white"></i>
 					</button>
 				</td>

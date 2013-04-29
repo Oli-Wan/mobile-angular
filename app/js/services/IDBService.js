@@ -52,7 +52,6 @@
  					var deferred = $q.defer();
  					storeWrapper.getStore().then(function(store){
  						store.clear(function(){
- 							console.log("Cleared");
  							$rootScope.$apply(function(){
  								deferred.resolve("Sucess");
  							});

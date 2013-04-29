@@ -4,7 +4,7 @@
 		<h3 class="pull-left">Personnel</h3>
 
 		<a class="btn btn-primary btn-add pull-right" 
-			ng-href="#/mission/{{mission.id}}/staff/new">
+			ng-tap="goToNewStaff()">
 			Ajouter une personne
 		</a>
 
@@ -22,7 +22,7 @@
 				<td>{{functions[person.function.id]}}</td>
 				<td>{{person.time.time}}</td>
 				<td>
-					<button class="btn btn-danger" ng-click="deleteModal(person)">
+					<button class="btn btn-danger" ng-tap="deleteModal(person)">
 						<i class="icon-trash icon-white"></i>
 					</button>				
 				</td>
