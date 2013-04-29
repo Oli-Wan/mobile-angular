@@ -1,5 +1,7 @@
 smurAngular.controller("IDBManagementController", 
 	function IDBManagementController($scope, $http, Mission, Staff, Event, Vehicle) {
+		$scope.alerts = [];
+
 		$scope.clearMission = function() {
 			Mission.clear().then(function() {
 				console.log("Mission cleared");
@@ -39,6 +41,10 @@ smurAngular.controller("IDBManagementController",
 							}  
 						};
 						Staff.save(dbObject).then(function(){
+							$scope.alerts.push({
+								"type": "success",
+								"title": "Personne ajoutée"
+							});
 							count++;
 							if(count < data.length)
 								recursivePut(count, data);
@@ -59,7 +65,12 @@ smurAngular.controller("IDBManagementController",
 							"name": element.name,
 							"type": element.type
 						}  
+
 						Vehicle.save(dbObject).then(function(){
+							$scope.alerts.push({
+								"type": "success",
+								"title": "Véhicule ajouté"
+							});
 							count++;
 							if(count < data.length)
 								recursivePut(count, data);
