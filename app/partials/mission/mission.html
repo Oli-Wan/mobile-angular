@@ -2,7 +2,7 @@
 	<form class="form form-horizontal" ng-controller="UpdateMissionController">
 		<div class="visible-phone">
 			<button type="button" class="btn btn-primary"
-				ng-click="showMenu()">
+				ng-tap="showMenu()">
 				<i class="icon-arrow-left icon-white" />
 			</button>
 			<div class="clearfix" ></div>
@@ -55,7 +55,7 @@
 		<textarea rows="5" ng-model="mission.observation" class="input-xxlarge"></textarea>
 
 		<div class="form-actions">
-			<button class="btn btn-primary" ng-click="save()">Sauvegarder</button>
+			<button class="btn btn-primary" ng-tap="save()">Sauvegarder</button>
 		</div>
 	</form>
 </div>
