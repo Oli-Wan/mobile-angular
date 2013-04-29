@@ -54,15 +54,19 @@
 -------------------------------------------------- */
 
 .view-enter-setup, .view-leave-setup {
-	-webkit-transition:opacity linear 0.5s;
-	-moz-transition:opacity linear 0.5s;
-	-ms-transition:opacity linear 0.5s;
-	-o-transition:opacity linear 0.5s;
-	transition:opacity linear 0.5s;
+	-webkit-transition:opacity linear 0.25s;
+	-moz-transition:opacity linear 0.25s;
+	-ms-transition:opacity linear 0.25s;
+	-o-transition:opacity linear 0.25s;
+	transition:opacity linear 0.25s;
 }
 
 
 .view-enter-setup {
+	top:0;
+	position: absolute;
+	width:100%;
+	padding-right: 40px;
 	opacity: 0;
 }
 
