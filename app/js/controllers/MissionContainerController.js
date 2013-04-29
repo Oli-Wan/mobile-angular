@@ -22,7 +22,10 @@ smurAngular.controller("MissionContainerController",
 		});
 
 		$scope.navigate = function(id) {
-			$location.url("/mission/"+$scope.mission.id).search({page: id});
+			if(id == "back")
+				$location.url("/");
+			else
+				$location.url("/mission/"+$scope.mission.id).search({page: id});
 		};
 
 		$scope.getPathFromParams = function() {
@@ -37,11 +40,6 @@ smurAngular.controller("MissionContainerController",
 		$scope.showMenu = function() {
 			$scope.includedUrl = "";
 			$location.path("/mission/"+$scope.mission.id);
-		};
-
-
-		$scope.back = function() {
-			$location.path("/");
 		};
 
 		$scope.renderMenu = function() {			

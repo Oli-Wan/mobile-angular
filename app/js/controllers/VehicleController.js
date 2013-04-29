@@ -7,7 +7,7 @@ smurAngular.controller("VehicleController",
 		});
 
 		$scope.goToNewVehicle = function() {
-			$location.url("/mission/"+$scope.mission.id+"/vehicles/new");
+			$location.url("/mission/"+$scope.mission.id+"/vehicle/new");
 		};
 
 		$scope.delete = function(elementToDelete) {
