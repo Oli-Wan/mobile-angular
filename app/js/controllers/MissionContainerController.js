@@ -36,8 +36,13 @@ smurAngular.controller("MissionContainerController",
 
 		$scope.showMenu = function() {
 			$scope.includedUrl = "";
-			$location.url("/mission/"+$scope.mission.id);
-		}
+			$location.path("/mission/"+$scope.mission.id);
+		};
+
+
+		$scope.back = function() {
+			$location.path("/");
+		};
 
 		$scope.renderMenu = function() {			
 			if(!$scope.mobile)

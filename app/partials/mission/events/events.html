@@ -3,7 +3,7 @@
 	<div ng-controller="EventController">
 		<h3 class="pull-left">Evènements</h3>
 		<a class="btn btn-primary btn-add pull-right" 
-			ng-href="#/mission/{{mission.id}}/events/new">
+			ng-tap="goToNewEvent()">
 			Ajouter un évènement
 		</a>
 		<div class="clearfix" />
@@ -39,7 +39,7 @@
 						</ng-switch>
 					</td>
 					<td>
-						<a ng-href="#/mission/{{missionId}}/event/{{event.id}}/edit"
+						<a ng-tap="goToEditEvent(event.id)"
 							class="btn btn-primary">
 							<i class="icon-pencil icon-white"></i>
 						</a>
