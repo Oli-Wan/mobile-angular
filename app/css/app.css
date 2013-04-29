@@ -55,11 +55,11 @@
 
 .view-enter-setup, .view-leave-setup, 
 .inclusion-enter-setup, .inclusion-leave-setup {
-	-webkit-transition:all linear 0.5s;
-	-moz-transition:all linear 0.5s;
-	-ms-transition:all linear 0.5s;
-	-o-transition:all linear 0.5s;
-	transition:all linear 0.5s;
+	-webkit-transition:all linear 0.25s;
+	-moz-transition:all linear 0.25s;
+	-ms-transition:all linear 0.25s;
+	-o-transition:all linear 0.25s;
+	transition:all linear 0.25s;
 }
 
 
