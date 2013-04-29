@@ -53,45 +53,23 @@
 /* Transitions
 -------------------------------------------------- */
 
-.view-enter-setup, .view-leave-setup, 
-.inclusion-enter-setup, .inclusion-leave-setup {
-	-webkit-transition:all linear 0.5s;
-	-moz-transition:all linear 0.5s;
-	-ms-transition:all linear 0.5s;
-	-o-transition:all linear 0.5s;
-	transition:all linear 0.5s;
+.view-enter-setup, .view-leave-setup {
+	-webkit-transition:opacity linear 0.5s;
+	-moz-transition:opacity linear 0.5s;
+	-ms-transition:opacity linear 0.5s;
+	-o-transition:opacity linear 0.5s;
+	transition:opacity linear 0.5s;
 }
 
 
-.view-enter-setup, 
-.inclusion-enter-setup {
-	top:0;
-	position: absolute;
-	width:100%;
-	padding-right: 40px;
-	-webkit-transform: translate(100%);
-	-ms-transform: translate(100%);
-	transform: translate(100%);
+.view-enter-setup {
+	opacity: 0;
 }
 
-.view-enter-setup.view-enter-start, 
-.inclusion-enter-setup.inclusion-enter-start {
-	-webkit-transform: translate(0);
-	-ms-transform: translate(0);
-	transform: translate(0);
+.view-enter-setup.view-enter-start {
+	opacity:1;
 }
 
-.view-leave-setup.view-leave-start {
-	-webkit-transform: translate(-100%);
-	-ms-transform: translate(-100%);
-	transform: translate(-100%);
-}
-
-.inclusion-leave-setup.inclusion-leave-start {
-	-webkit-transform: scale(0.8);
-	-ms-transform: scale(0.8);
-	transform: scale(0.8);
-}
 /* Sidenav
 -------------------------------------------------- */
 
