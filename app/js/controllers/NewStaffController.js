@@ -26,7 +26,8 @@ smurAngular.controller("NewStaffController",
 				$scope.mission.staff = [];
 			
 			$scope.mission.staff.push($scope.staff);
-			Mission.save($scope.mission);
-			$scope.back();
+			Mission.save($scope.mission).then(function(){
+				$scope.back();
+			});
 		};
 	});

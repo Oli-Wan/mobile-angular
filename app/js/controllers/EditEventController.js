@@ -27,7 +27,8 @@ smurAngular.controller('EditEventController',
 		};
 
 		$scope.save = function() {
-			Event.save($scope.event);
-			$scope.back();
+			Event.save($scope.event).then(function(){
+				$scope.back();
+			});
 		};
 	});

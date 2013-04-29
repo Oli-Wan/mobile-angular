@@ -28,7 +28,8 @@ smurAngular.controller("NewVehicleController",
 				$scope.mission.vehicles = [];
 			
 			$scope.mission.vehicles.push($scope.vehicle);
-			Mission.save($scope.mission);
-			$scope.back();
+			Mission.save($scope.mission).then(function(){
+				$scope.back();
+			});
 		};
 	});
