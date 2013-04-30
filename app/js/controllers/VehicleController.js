@@ -10,29 +10,21 @@ smurAngular.controller("VehicleController",
 			$location.url("/mission/"+$scope.mission.id+"/vehicle/new");
 		};
 
-		$scope.delete = function(elementToDelete) {
-			var newVehicles = [];
-			$scope.mission.vehicles.forEach(function(element, index, array){
-				if(element.id != elementToDelete.id || 
-					element.time.date != elementToDelete.time.date ||
-					element.time.time != elementToDelete.time.time )
-					newVehicles.push(element);
-			});
-			$scope.mission.vehicles = newVehicles;
-			Mission.save($scope.mission).then(function(){
-				$scope.refreshVehicles();
-			});
-			$scope.dismiss();
-		};
-
 		$scope.deleteModal = function(element) {
-			$scope.element = element;
-			return $modal({
-				scope: $scope,
-				template: '/partials/misc/deleteConfirmation.html', 
-				show: true, 
-				backdrop: 'static'
-			});
+			var confirm = $window.confirm("vous sûr de vouloir supprimer le véhicule #"+element.name);
+			if(confirm) {
+				var newVehicles = [];
+				$scope.mission.vehicles.forEach(function(element, index, array){
+					if(element.id != elementToDelete.id || 
+						element.time.date != elementToDelete.time.date ||
+						element.time.time != elementToDelete.time.time )
+						newVehicles.push(element);
+				});
+				$scope.mission.vehicles = newVehicles;
+				Mission.save($scope.mission).then(function(){
+					$scope.refreshVehicles();
+				});
+			}
 		};
 
 		$scope.refreshVehicles = function() {

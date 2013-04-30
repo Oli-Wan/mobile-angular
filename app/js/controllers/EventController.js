@@ -16,21 +16,13 @@ smurAngular.controller("EventController",
 			$location.url("/mission/"+$routeParams.missionId+"/event/"+id+"/edit");
 		};
 
-		$scope.delete = function(id) {
-			Event.remove(id).then(function() {
-				$scope.fetchEvents();
-			});
-			$scope.dismiss();
-		};
-
 		$scope.deleteModal = function(id) {
-			$scope.element = id;
-			return $modal({
-				scope: $scope,
-				template: '/partials/misc/deleteConfirmation.html', 
-				show: true, 
-				backdrop: 'static'
-			});
+			var confirm = $window.confirm("vous sûr de vouloir supprimer l'évènement #"+id);
+			if(confirm) {
+				Event.remove(id).then(function() {
+					$scope.fetchEvents();
+				});
+			}
 		};
 
 		$scope.fetchEvents();
