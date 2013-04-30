@@ -24,11 +24,9 @@
 			<label class="control-label" for="datepicker">Jour*</label>
 			<div class="controls">
 				<div class="input-append">
-					<input  class="input-normal" type="text" id="datepicker"
-							ng-model="staff.time.date" bs-datepicker></input>
-					<button type="button" class="btn" data-toggle="datepicker">
-						<i class="icon-calendar"></i>
-					</button>
+					<input  class="input-normal" type="date" id="datepicker"
+							ng-model="staff.time.date">
+					</input>
 				</div>
 			</div>
 		</div>
@@ -36,10 +34,7 @@
 			<label class="control-label" for="timepicker">Heure*</label>
 			<div class="controls">
 				<div class="input-append">
-					<input  class="input-normal" type="text" id="timepicker" data-show-meridian="false" ng-model="staff.time.time" bs-timepicker></input>
-					<button type="button" class="btn" data-toggle="timepicker">
-						<i class="icon-time"></i>
-					</button>
+					<input  class="input-normal" type="time" id="timepicker" data-show-meridian="false" ng-model="staff.time.time"></input>
 				</div>
 			</div>
 		</div>
