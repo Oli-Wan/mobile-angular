@@ -1,6 +1,6 @@
 
 smurAngular.controller("EventController", 
-	function EventController($scope, $modal, $location, $routeParams, Event){		
+	function EventController($scope, $location, $routeParams, Event){		
 		
 		$scope.fetchEvents = function() {
 			Event.getByMissionId($routeParams.missionId).then(function(data) {

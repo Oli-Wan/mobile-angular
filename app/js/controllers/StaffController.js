@@ -1,6 +1,6 @@
 
 smurAngular.controller("StaffController", 
-	function StaffController($scope, $routeParams, $http, $modal, $location, Mission, Staff){
+	function StaffController($scope, $routeParams, $http, $location, Mission, Staff){
 		Mission.get(parseInt($routeParams.missionId)).then(function(data) {
 			$scope.mission = data;
 			$scope.refreshStaff();

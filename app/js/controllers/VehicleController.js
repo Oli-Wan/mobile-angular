@@ -1,6 +1,6 @@
 
 smurAngular.controller("VehicleController", 
-	function VehicleController($scope, $routeParams, $location, $modal, Mission, Vehicle) {		
+	function VehicleController($scope, $routeParams, $location, Mission, Vehicle) {		
 		Mission.get(parseInt($routeParams.missionId)).then(function(data) {
 			$scope.mission = data;
 			$scope.refreshVehicles();
