@@ -1,6 +1,8 @@
 
 smurAngular.controller("MissionContainerController", 
 	function MissionContainerController($scope, $rootScope, $routeParams, $http, $location, Mission, $window, mobile){
+		$scope.menu = false;
+
 		Mission.get(parseInt($routeParams.missionId)).then(function(data){
 			$scope.mission = data;
 		});
@@ -35,6 +37,10 @@ smurAngular.controller("MissionContainerController",
 					return $scope.menuItems[i].templateUrl;
 			};
 			return "";
+		};
+
+		$scope.toggleLeftMenu = function() {
+			$scope.menu = !$scope.menu;
 		};
 
 		$scope.showMenu = function() {

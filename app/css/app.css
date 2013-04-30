@@ -1,11 +1,10 @@
+html, body, div.ng-scope, div[ng-view], div.container-fluid {
+	height:100%;
+}
+
 .btn-add {
 	margin-top: 15px;	
 }
-
-.table-clickable tbody tr:hover > td {
-	cursor: pointer;
-}
-
 
 .small-modal {
 	width:600px;
@@ -17,28 +16,87 @@
 }
 
 .mission-description-part {
-	height:100%;
 	background-color: white;
 }
 
-.mission-description{
-	min-height:700px!important;
-	overflow: auto;
-	position: relative;
-}
-
-.fixed {
-	position: fixed;
-}
-
-.mission-description-row {
-	padding-top:60px;
+.mission-description {
+	padding-top:50px;
+	margin-left:-20px;
+	padding-left: 20px;
+	height:100%;
 }
 
 .mission-name {
+	top:0;
+	left:0;
 	width: 100%;
-	background-color: white;
+	padding:0px 20px;
 	z-index: 1000;
+	border-bottom:1px solid #08c;
+	box-shadow: 0 0 10px gray;
+}
+
+.mission-main {
+	background-color: white;
+}
+
+.menu-button {
+	float:left;
+	width:14px;
+	height:20px;
+	padding: 10px 13px;
+	margin-right:10px;
+}
+
+.menu-button:hover {
+	background-color: #f5f5f5;
+}
+
+.mission-main {
+	-webkit-transition:-webkit-transform linear 0.1s;
+	-moz-transition:-moz-transform linear 0.1s;
+	-ms-transition:-ms-transform linear 0.1s;
+	-o-transition:-o-transform linear 0.1s;
+	transition:transform linear 0.1s;
+}
+
+.mission-main.move  {
+	position:absolute;
+	width:100%;
+	-webkit-transform: translate(300px);
+	-moz-transform: translate(300px);
+	-ms-transform: translate(300px);
+	-o-transform: translate(300px);
+	transform: translate(300px);
+}
+
+.mission-main {
+	-webkit-transform: translate(0);
+	-moz-transform: translate(0);
+	-ms-transform: translate(0);
+	-o-transform: translate(0);
+	transform: translate(0);
+}
+
+.menu {
+	background-color: white;
+	width:300px;
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+.menu-title {
+	background-color: #08c;
+	color:white;
+	padding-left:20px;
+	padding-top:10px;
+	height:30px;
+	border-bottom: 1px solid #0071ab;
+}
+
+.menu-title>h4{
+	margin-top:0;
 }
 
 .centered-content {
@@ -89,7 +147,6 @@
 
 .bs-docs-sidenav {
 	width: inherit;
-	margin: 30px 0 0;
 	padding: 0;
 	background-color: #fff;
 	-webkit-border-radius: 6px;
@@ -105,21 +162,8 @@
 	padding: 8px 14px;
 	border: 1px solid #e5e5e5;
 }
-.bs-docs-sidenav > li:first-child > a {
-	-webkit-border-radius: 6px 6px 0 0;
-	-moz-border-radius: 6px 6px 0 0;
-	border-radius: 6px 6px 0 0;
-}
-
-.bs-docs-sidenav > li:last-child > a {
-	-webkit-border-radius: 0 0 6px 6px;
-	-moz-border-radius: 0 0 6px 6px;
-	border-radius: 0 0 6px 6px;
-}
 
 .bs-docs-sidenav > .active > a {
-	position: relative;
-	z-index: 2;
 	padding: 9px 15px;
 	border: 0;
 	text-shadow: 0 1px 0 rgba(0,0,0,.15);
