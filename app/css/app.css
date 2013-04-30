@@ -61,6 +61,7 @@ html, body, div.ng-scope, div[ng-view], div.container-fluid {
 }
 
 .mission-main.move  {
+	border-left:1px solid #e5e5e5;
 	position:absolute;
 	width:100%;
 	-webkit-transform: translate(300px);
@@ -82,6 +83,7 @@ html, body, div.ng-scope, div[ng-view], div.container-fluid {
 	background-color: white;
 	width:300px;
 	position:absolute;
+	height:100%;
 	top:0;
 	left:0;
 }
