@@ -10,17 +10,16 @@
 					{{menuItem.name}}
 				</a>
 			</li>
-       </ul>
-   	</div>
+		</ul>
+	</div>
 	<div class="mission-main mission-name affix" ng-class="{true:'move', false:''}[menu]" >
 		<div class="menu-button" ng-tap="toggleLeftMenu()">
-		    <i ng-class="{true:'icon-arrow-right', false:'icon-arrow-left'}[menu]"></i>
+			<i ng-class="{true:'icon-arrow-right', false:'icon-arrow-left'}[menu]"></i>
 		</div>
 		<h4> Mission {{mission.id}} </h4>
 	</div>
 	<div class="mission-main mission-description" ng-class="{true:'move', false:''}[menu]" ng-show="renderPage()">
 		<div ng-include="includedUrl">
 		</div>
-	</div>
 	</div>
 </div>

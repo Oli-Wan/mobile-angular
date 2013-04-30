@@ -58,10 +58,10 @@ smurAngular.value('$strap.config', {
 });
 
 smurAngular.run(function($rootScope, $window){
-  $rootScope.windowWidth = $window.outerWidth;
-  angular.element($window).bind('resize',function(){
-    $rootScope.windowWidth = $window.outerWidth;
-    $rootScope.$apply('windowWidth');
+  $rootScope.scrollX = $window.scrollX;
+  angular.element($window).bind('scroll',function(){
+    $rootScope.scrollX = $window.scrollX;
+    $rootScope.$apply('scrollX');
   });
 })
 

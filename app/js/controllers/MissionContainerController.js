@@ -1,13 +1,11 @@
 
 smurAngular.controller("MissionContainerController", 
-	function MissionContainerController($scope, $rootScope, $routeParams, $http, $location, Mission, $window, mobile){
+	function MissionContainerController($scope, $rootScope, $routeParams, $http, $location, Mission, $window){
 		$scope.menu = false;
 
 		Mission.get(parseInt($routeParams.missionId)).then(function(data){
 			$scope.mission = data;
 		});
-
-		$scope.mobile = mobile;
 
 		$http.get("/resources/mission-menu.json").success(function(data){
 			$scope.menuItems = data;
@@ -50,28 +48,9 @@ smurAngular.controller("MissionContainerController",
 			$location.path("/mission/"+$scope.mission.id);
 		};
 
-		$scope.renderMenu = function() {			
-			if(!$scope.mobile)
-				return true;
-
-			if($location.search().page)
-				return false;
-			else
-				return true;
-		};
-
-		$scope.renderPage = function() {
-			if(!$scope.mobile)
-				return true;
-
-			return !$scope.renderMenu();
-		};
-
-		$rootScope.$watch('windowWidth',function(newVal, oldVal) {
-			if(newVal < 768 && !$scope.mobile) {
-				$scope.mobile = true;
-			} else if (newVal >= 768 && $scope.mobile) {
-				$scope.mobile = false;
-			}
+		$rootScope.$watch('scrollX', function(newVal, oldVal){
+			console.log("scroll vertically");
+			if($scope.menu)
+				$scope.menu = false;
 		});
 	});
