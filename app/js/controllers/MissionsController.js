@@ -14,7 +14,7 @@ smurAngular.controller('MissionsController',
 		};
 
 		$scope.deleteModal = function(id) {
-			var confirm = $window.confirm("vous sûr de vouloir supprimer la mission #"+id);
+			var confirm = $window.confirm("Êtes vous sûr de vouloir supprimer la mission #"+id);
 			if(confirm) {
 				Mission.remove(id).then(function(){
 					Mission.getAll().then(function(data){

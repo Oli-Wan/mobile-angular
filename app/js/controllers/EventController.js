@@ -1,6 +1,6 @@
 
 smurAngular.controller("EventController", 
-	function EventController($scope, $location, $routeParams, Event){		
+	function EventController($scope, $location, $window, $routeParams, Event){		
 		
 		$scope.fetchEvents = function() {
 			Event.getByMissionId($routeParams.missionId).then(function(data) {
@@ -17,7 +17,7 @@ smurAngular.controller("EventController",
 		};
 
 		$scope.deleteModal = function(id) {
-			var confirm = $window.confirm("vous sûr de vouloir supprimer l'évènement #"+id);
+			var confirm = $window.confirm("Êtes vous sûr de vouloir supprimer l'évènement #"+id);
 			if(confirm) {
 				Event.remove(id).then(function() {
 					$scope.fetchEvents();

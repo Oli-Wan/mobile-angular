@@ -1,6 +1,6 @@
 
 smurAngular.controller("StaffController", 
-	function StaffController($scope, $routeParams, $http, $location, Mission, Staff){
+	function StaffController($scope, $routeParams, $http, $window, $location, Mission, Staff){
 		Mission.get(parseInt($routeParams.missionId)).then(function(data) {
 			$scope.mission = data;
 			$scope.refreshStaff();
@@ -17,8 +17,9 @@ smurAngular.controller("StaffController",
 			$location.url("/mission/"+$scope.mission.id+"/staff/new");
 		};
 
-		$scope.deleteModal = function(element) {
-			var confirm = $window.confirm("vous sûr de vouloir supprimer la personne "+element.name);
+		$scope.deleteModal = function(elementToDelete) {
+			var confirm = $window.confirm("Êtes vous sûr de vouloir supprimer la personne "+
+				elementToDelete.firstname+" "+elementToDelete.lastname);
 			if(confirm) {
 				var newStaff = [];
 				$scope.mission.staff.forEach(function(element, index, array){

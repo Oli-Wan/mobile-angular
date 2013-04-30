@@ -1,6 +1,6 @@
 
 smurAngular.controller("VehicleController", 
-	function VehicleController($scope, $routeParams, $location, Mission, Vehicle) {		
+	function VehicleController($scope, $routeParams, $window, $location, Mission, Vehicle) {		
 		Mission.get(parseInt($routeParams.missionId)).then(function(data) {
 			$scope.mission = data;
 			$scope.refreshVehicles();
@@ -11,7 +11,7 @@ smurAngular.controller("VehicleController",
 		};
 
 		$scope.deleteModal = function(element) {
-			var confirm = $window.confirm("vous sûr de vouloir supprimer le véhicule #"+element.name);
+			var confirm = $window.confirm("Êtes vous sûr de vouloir supprimer le véhicule #"+element.name);
 			if(confirm) {
 				var newVehicles = [];
 				$scope.mission.vehicles.forEach(function(element, index, array){
