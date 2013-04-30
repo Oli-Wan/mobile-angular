@@ -3,9 +3,9 @@
  		getCurrentDateAndTime: function(){
  			var currentTime = new Date();
  			return {
- 				date: this.toTwoDigits(currentTime.getDate())+"/"+
- 					this.toTwoDigits(currentTime.getMonth()+1)+"/"+
- 					currentTime.getFullYear(),
+ 				date: currentTime.getFullYear()+"-"+
+ 					this.toTwoDigits(currentTime.getMonth()+1)+"-"+
+ 					this.toTwoDigits(currentTime.getDate()),
  				time: this.toTwoDigits(currentTime.getHours())+":"+
  					this.toTwoDigits(currentTime.getMinutes())
  			};

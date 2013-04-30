@@ -13,17 +13,11 @@
 			<label class="control-label" for="start-datepicker">Début*</label>
 			<div class="controls">
 				<div class="input-append">
-					<input  class="input-small" type="text" id="start-datepicker"
-					ng-model="event.start.date" bs-datepicker ></input>
-					<button type="button" class="btn" data-toggle="datepicker">
-						<i class="icon-calendar"></i>
-					</button>
+					<input  class="input-normal" type="date" id="start-datepicker"
+					ng-model="event.start.date" />
 				</div>
 				<div class="input-append">
-					<input  class="input-small" type="text" data-show-meridian="false" ng-model="event.start.time" bs-timepicker />
-					<button type="button" class="btn" data-toggle="timepicker">
-						<i class="icon-time"></i>
-					</button>
+					<input  class="input-normal" type="time" ng-model="event.start.time" />
 				</div>
 			</div>
 		</div>
@@ -31,17 +25,12 @@
 			<label class="control-label" for="end-datepicker">Fin*</label>
 			<div class="controls">
 				<div class="input-append">
-					<input  class="input-small" type="text" id="end-datepicker"
-					ng-model="event.end.date" bs-datepicker></input>
-					<button type="button" class="btn" data-toggle="datepicker">
-						<i class="icon-calendar"></i>
+					<input  class="input-normal" type="date" id="end-datepicker"
+					ng-model="event.end.date" />
 					</button>
 				</div>
 				<div class="input-append">
-					<input  class="input-small" type="text" data-show-meridian="false" ng-model="event.end.time" bs-timepicker />
-					<button type="button" class="btn" data-toggle="timepicker">
-						<i class="icon-time"></i>
-					</button>
+					<input  class="input-normal" type="time" ng-model="event.end.time" />
 				</div>
 			</div>
 		</div>
