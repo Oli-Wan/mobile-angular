@@ -26,8 +26,10 @@ smurAngular.controller("MissionContainerController",
 		$scope.navigate = function(id) {
 			if(id == "back")
 				$location.url("/");
-			else
+			else {
 				$location.url("/mission/"+$scope.mission.id).search({page: id});
+				$scope.menu = false;
+			}
 		};
 
 		$scope.getPathFromParams = function() {
