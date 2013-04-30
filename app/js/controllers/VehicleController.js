@@ -10,8 +10,8 @@ smurAngular.controller("VehicleController",
 			$location.url("/mission/"+$scope.mission.id+"/vehicle/new");
 		};
 
-		$scope.deleteModal = function(element) {
-			var confirm = $window.confirm("Êtes vous sûr de vouloir supprimer le véhicule #"+element.name);
+		$scope.deleteModal = function(elementToDelete) {
+			var confirm = $window.confirm("Êtes vous sûr de vouloir supprimer le véhicule #"+elementToDelete.name);
 			if(confirm) {
 				var newVehicles = [];
 				$scope.mission.vehicles.forEach(function(element, index, array){
