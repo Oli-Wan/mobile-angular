@@ -49,7 +49,6 @@ smurAngular.controller("MissionContainerController",
 		};
 
 		$rootScope.$watch('scrollX', function(newVal, oldVal){
-			console.log("scroll vertically");
 			if($scope.menu)
 				$scope.menu = false;
 		});
