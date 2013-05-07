@@ -56,7 +56,10 @@
 		<div class="control-group">
 			<label for="lastname" class="control-label">Ajouter une photo</label>
 			<div class="controls">
-				<input type="file" accept="image/*;capture=camera" />
+				<input type="file" accept="image/*" capture="camera" onchange="angular.element(this).scope().setFile(this)">
+			    <span class="help-block">
+			    	<light-box image="{{mission.image}}"></light-box>
+			    </span>
 			</div>
 		</div>
 		<div class="form-actions">

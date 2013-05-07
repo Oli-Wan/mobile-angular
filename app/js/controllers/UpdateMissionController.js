@@ -1,7 +1,9 @@
 smurAngular.controller("UpdateMissionController", function UpdateMissionController($scope, $window, $routeParams, Mission) {
-	Mission.get(parseInt($routeParams.missionId), function(data) {
-		$scope.mission = data;
-	});
+	var onLoadImage = function(e) {
+		$scope.$apply(function(){
+			$scope.mission.image = e.target.result;
+		});
+	};
 
 	$scope.save = function() {
 		Mission.save($scope.mission).then(function() {
@@ -13,5 +15,16 @@ smurAngular.controller("UpdateMissionController", function UpdateMissionControll
 			});
 			$window.scrollTo(0,0);
 		});
+	};
+
+	$scope.setFile = function(element) {
+		var reader = new FileReader();
+		var f = element.files[0];
+		reader.onload = function(e) {
+			$scope.$apply(function(){
+				$scope.mission.image = e.target.result;
+			});
+		};
+		reader.readAsDataURL(f); 
 	};
 });

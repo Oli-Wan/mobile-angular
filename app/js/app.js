@@ -63,5 +63,4 @@ smurAngular.run(function($rootScope, $window){
     $rootScope.scrollX = $window.scrollX;
     $rootScope.$apply('scrollX');
   });
-})
-
+});

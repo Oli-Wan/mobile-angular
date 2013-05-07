@@ -1,3 +1,6 @@
+/* General style
+-------------------------------------------------- */
+
 html, body, div.ng-scope, div[ng-view], div.container-fluid {
 	height:100%;
 }
@@ -110,31 +113,65 @@ html, body, div.ng-scope, div[ng-view], div.container-fluid {
 	display:none;
 }
 
-.mission-photo {
-	max-width:100px;
-	max-height: 100px;
+/* Lightbox
+-------------------------------------------------- */
+#overlay {	
+	display:none;
+	position:fixed;
+	height:100%;
+	width:100%;
+	top:0;
+	left:0;
+	background-color:black;
+	opacity:0.5;
+	z-index:1000;
+}
+
+#lightBox {
+	display:none;
+	position:fixed;
+	padding:5px;
+	top:50%;
+	left:50%;
+	margin:-150px 0 0 -150px;
+	z-index: 1002;
+	background-color: white;
+}
+#lightBox>img {
+	max-height: 500px;
+}
+
+.thumbnail {
+	max-height: 50px;
 }
 
 /* Transitions
 -------------------------------------------------- */
 
-.view-enter-setup, .view-leave-setup, 
-.inclusion-enter-setup, .inclusion-leave-setup {
-	-webkit-transition:opacity linear 0.25s;
-	-moz-transition:opacity linear 0.25s;
-	-ms-transition:opacity linear 0.25s;
-	-o-transition:opacity linear 0.25s;
-	transition:opacity linear 0.25s;
+.view-enter-setup, .view-leave-setup {
+	-webkit-transition-property:  opacity;
+	-webkit-transition-duration: 0.25s;
+	-webkit-transition-timing-function: linear;
+	-moz-transition-property:  opacity;
+	-moz-transition-duration: 0.25s;
+	-moz-transition-timing-function: linear;
+	-ms-transition-property:  opacity;
+	-ms-transition-duration: 0.25s;
+	-ms-transition-timing-function: linear;
+	-o-transition-property: opacity;
+	-o-transition-duration: 0.25s;
+	-o-transition-timing-function: linear;
+	transition-property:  opacity;
+	transition-duration: 0.25s;
+	transition-timing-function: linear;
 }
 
 
-.view-enter-setup, 
-.inclusion-enter-setup {
+.view-enter-setup {
 	opacity: 0;
 }
 
-.view-enter-setup.view-enter-start, 
-.inclusion-enter-setup.inclusion-enter-start {
+.view-enter-setup.view-enter-start {
 	opacity: 1;
 }
 
@@ -144,7 +181,9 @@ html, body, div.ng-scope, div[ng-view], div.container-fluid {
 
 .inclusion-leave-setup.inclusion-leave-start {
 	-webkit-transform: scale(0.8);
+	-moz-transform: scale(0.8);
 	-ms-transform: scale(0.8);
+	-o-transform: scale(0.8);
 	transform: scale(0.8);
 }
 
