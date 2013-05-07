@@ -110,6 +110,11 @@ html, body, div.ng-scope, div[ng-view], div.container-fluid {
 	display:none;
 }
 
+.mission-photo {
+	max-width:100px;
+	max-height: 100px;
+}
+
 /* Transitions
 -------------------------------------------------- */
 

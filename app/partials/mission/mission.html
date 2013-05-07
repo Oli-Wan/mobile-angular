@@ -53,7 +53,12 @@
 		<h3>Observation</h3>
 
 		<textarea rows="5" ng-model="mission.observation" class="input-xxlarge"></textarea>
-
+		<div class="control-group">
+			<label for="lastname" class="control-label">Ajouter une photo</label>
+			<div class="controls">
+				<input type="file" accept="image/*;capture=camera" />
+			</div>
+		</div>
 		<div class="form-actions">
 			<button class="btn btn-primary" ng-tap="save()">Sauvegarder</button>
 		</div>
