@@ -47,6 +47,11 @@ smurAngular.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/misc/dbManagement.html', 
     controller: 'IDBManagementController'
   });
+  $routeProvider.when('/accelerometer', 
+  {
+    templateUrl: 'partials/misc/accelerometer.html', 
+    controller: 'AccelerometerController'
+  });
   $routeProvider.otherwise({redirectTo: '/'});
 }]);
 
@@ -62,5 +67,12 @@ smurAngular.run(function($rootScope, $window){
   angular.element($window).bind('scroll',function(){
     $rootScope.scrollX = $window.scrollX;
     $rootScope.$apply('scrollX');
+  });
+});
+
+smurAngular.run(function($rootScope, $window){
+  angular.element($window).bind('deviceorientation', function(data){
+    $rootScope.orientationData = data;
+    $rootScope.$apply('orientationData');
   });
 });
