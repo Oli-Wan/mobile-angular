@@ -1,4 +1,10 @@
 smurAngular.controller("UpdateMissionController", function UpdateMissionController($scope, $window, $routeParams, Mission) {
+	if($scope.mission === undefined) {
+		console.log("loading");
+		Mission.get(parseInt($routeParams.missionId)).then(function(data){
+			$scope.mission = data;
+		});
+	}
 
 	$scope.save = function() {
 		Mission.save($scope.mission).then(function() {

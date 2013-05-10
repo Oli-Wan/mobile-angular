@@ -1,0 +1,1 @@
+smurAngular.value("url", window.URL || window.webkitURL);

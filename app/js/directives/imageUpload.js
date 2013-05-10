@@ -1,11 +1,11 @@
 
-smurAngular.directive('imageUpload', function() {
+smurAngular.directive('imageUpload', function(url, Utils) {
 	return {
 		restrict: 'E',
 		scope: { image:'=image' },
 		templateUrl: '/partials/directives/image-upload.html',
 		link: function ($scope, element, attrs) {
-			//Setup overlay			
+			//Setup overlay
 			var $overlay = $("#overlay");
 			var $lightBox = $("#lightBox");
 
@@ -24,9 +24,15 @@ smurAngular.directive('imageUpload', function() {
 				$(this).hide();
 			});
 
-			scope.showThumbnail = true;
-			if(image === undefined)
-				scope.showThumbnail = false;
+			$scope.showThumbnail = false;
+
+			$scope.$watch('image', function(value){
+				if(value !== undefined) {
+					$scope.showThumbnail = true;
+					var blob = Utils.dataURLToBlob(value);
+					$scope.imageUrl = url.createObjectURL(blob);
+				}
+			});
 
 			//Setup lightbox
 			var img = angular.element(element.children()[1].children[0]);
@@ -48,13 +54,14 @@ smurAngular.directive('imageUpload', function() {
 			$scope.setFile = function(element) {
 				var reader = new FileReader();
 				var f = element.files[0];
-
-				reader.onload = function(e) {
-					$scope.$apply(function(){
-						$scope.image = e.target.result;
+				reader.onloadend = function(event){
+					$scope.$apply(function() {
+						$scope.image = event.target.result;
+						var blob = Utils.dataURLToBlob($scope.image);
+						$scope.imageUrl = url.createObjectURL(blob);
 					});
 				};
-				reader.readAsDataURL(f); 
+				reader.readAsDataURL(f);
 			};
 		}
 	};
