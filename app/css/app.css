@@ -1,6 +1,11 @@
 /* General style
 -------------------------------------------------- */
 
+body {
+	margin:0px;
+	padding:0px;
+}
+
 html, body, div.ng-scope, div[ng-view], div.container-fluid {
 	height:100%;
 }

@@ -1,0 +1,6 @@
+<input type="file" accept="image/*" capture="camera" 
+	onchange="angular.element(this).scope().setFile(this)">
+<span class="help-block">
+	<img class="thumbnail" ng-src="{{image}}" />
+	<p>Touchez l'image pour la voir en grand format</p>	
+</span>
