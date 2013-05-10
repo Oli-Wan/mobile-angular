@@ -2,7 +2,7 @@
 smurAngular.directive('lightBox', function() {
 	return {
 		restrict: 'E',
-		templateUrl: '/partials/directives/lightBox.html',
+		templateUrl: '/partials/directives/light-box.html',
 		link: function (scope, element, attrs) {
 
 			attrs.$observe("image", function(value){
