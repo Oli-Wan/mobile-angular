@@ -35,10 +35,13 @@
  					});
  					return deferred.promise;
  				},
- 				save: function(mission) {
+ 				save: function(element) {
+ 					if(element.id === undefined)
+ 						element.id = Date.now();
+ 					
  					var deferred = $q.defer();
  					storeWrapper.getStore().then(function(store){
- 						store.put(mission, function(){
+ 						store.put(element, function(){
  							$rootScope.$apply(function(){
  								deferred.resolve("Sucess");
  							});
