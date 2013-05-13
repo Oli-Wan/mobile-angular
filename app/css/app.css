@@ -44,6 +44,10 @@ html, body, div.ng-scope, div[ng-view], div.container-fluid {
 	box-shadow: 0 0 10px gray;
 }
 
+.mission-name>h4{
+	padding-right:30px;
+}
+
 .mission-main {
 	background-color: white;
 }

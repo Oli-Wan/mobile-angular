@@ -16,7 +16,12 @@
 		<div class="menu-button" ng-tap="toggleLeftMenu()">
 			<i ng-class="{true:'icon-arrow-right', false:'icon-arrow-left'}[menu]"></i>
 		</div>
-		<h4> Mission {{mission.id}} </h4>
+		<h4> 
+			Mission {{mission.id}} 
+			<span class="pull-right" ng-hide="mission">
+				<loader></loader>
+			</span>
+		</h4>
 	</div>
 	<div class="mission-main mission-description" ng-class="{true:'move', false:''}[menu]">
 		<div ng-include="includedUrl">
