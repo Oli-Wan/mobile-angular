@@ -25,12 +25,12 @@ smurAngular.directive('imageUpload', function(url, ImageStorage) {
 			});
 
 			$scope.showThumbnail = false;
-
 			$scope.$watch('image', function(value){
 				if(value !== undefined) {
 					$scope.showThumbnail = true;
 					ImageStorage.getURL(value).then(function(url) {
 						$scope.imageUrl = url;
+						$lightBox.children("img").attr("src", url);
 					});
 				}
 			});
@@ -40,15 +40,13 @@ smurAngular.directive('imageUpload', function(url, ImageStorage) {
 			img.bind("touchstart", function(){
 				var currentHeight = $(window).height();
 				$lightBoxImg = $("#lightBox>img");
-				$lightBoxImg.css("max-height", (currentHeight-50).toString()+"px");
-				$lightBoxImg.attr("src", img.attr("src"));
+				$lightBoxImg.css("max-height", (currentHeight-100).toString()+"px");
+				$overlay.show();
 				$lightBox.show();
 				$lightBox.css({
 					"margin-left": -($lightBoxImg.width()/2),
 					"margin-top": -($lightBoxImg.height()/2)
 				});
-
-				$overlay.show();
 			});
 
 			// File upload
