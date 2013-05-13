@@ -2,8 +2,6 @@ smurAngular.controller("UpdateMissionController",
 	function UpdateMissionController($scope, $window, $routeParams, Mission) {
 		
 		$scope.save = function() {
-			//$scope.mission.hiddenImage = $scope.mission.image;
-			$scope.mission.image = undefined;
 			Mission.save($scope.mission).then(function() {
 				$scope.alerts = [];
 				$scope.alerts.push({

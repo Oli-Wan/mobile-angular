@@ -1,5 +1,5 @@
 
-smurAngular.directive('imageUpload', function(url, Utils) {
+smurAngular.directive('imageUpload', function(url, ImageStorage) {
 	return {
 		restrict: 'E',
 		scope: { image:'=image' },
@@ -29,8 +29,9 @@ smurAngular.directive('imageUpload', function(url, Utils) {
 			$scope.$watch('image', function(value){
 				if(value !== undefined) {
 					$scope.showThumbnail = true;
-					var blob = Utils.dataURLToBlob(value);
-					$scope.imageUrl = url.createObjectURL(blob);
+					ImageStorage.getURL(value).then(function(url) {
+						$scope.imageUrl = url;
+					});
 				}
 			});
 
@@ -53,15 +54,10 @@ smurAngular.directive('imageUpload', function(url, Utils) {
 			// File upload
 			$scope.setFile = function(element) {
 				var reader = new FileReader();
-				var f = element.files[0];
-				reader.onloadend = function(event){
-					$scope.$apply(function() {
-						$scope.image = event.target.result;
-						var blob = Utils.dataURLToBlob($scope.image);
-						$scope.imageUrl = url.createObjectURL(blob);
-					});
-				};
-				reader.readAsDataURL(f);
+				var image = element.files[0];
+				ImageStorage.save(image.name, image).then(function() {
+					$scope.image = image.name;
+				});
 			};
 		}
 	};

@@ -22,6 +22,9 @@
 				<loader></loader>
 			</span>
 		</h4>
+		<span ng-show="loadTime">
+			Loaded in {{loadTime}}
+		</span>
 	</div>
 	<div class="mission-main mission-description" ng-class="{true:'move', false:''}[menu]">
 		<div ng-include="includedUrl">
