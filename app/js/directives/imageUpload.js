@@ -29,6 +29,7 @@ smurAngular.directive('imageUpload', function(url, ImageStorage) {
 				if(value !== undefined) {
 					$scope.showThumbnail = true;
 					ImageStorage.getURL(value).then(function(url) {
+						console.log(url);
 						$scope.imageUrl = url;
 						$lightBox.children("img").attr("src", url);
 					});
@@ -51,9 +52,11 @@ smurAngular.directive('imageUpload', function(url, ImageStorage) {
 
 			// File upload
 			$scope.setFile = function(element) {
-				var reader = new FileReader();
+				console.log("Set file");
 				var image = element.files[0];
+				console.log(image);
 				ImageStorage.save(image.name, image).then(function() {
+					console.log("saved");
 					$scope.image = image.name;
 				});
 			};

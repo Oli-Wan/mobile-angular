@@ -1,14 +1,14 @@
-smurAngular.factory("ImageStorage", function ImageStorage($q, FileSystem, FileSystemUtils){
+smurAngular.factory("ImageStorage", function ImageStorage($q, $rootScope, FileSystem, FileSystemUtils){
 	return {
 		save: function(fileName, blob) {
 			var deffered = $q.defer();
-			FileSystem.then(function(fs){
+			FileSystem.getFileSystem().then(function(fs){
 				fs.root.getFile(fileName, {create: true}, function(fileEntry){
 					fileEntry.createWriter(function(fileWriter) {
-
 						fileWriter.onwriteend = function(e) {
-							console.log('Image saved');
-							deffered.resolve();
+							$rootScope.$apply(function(){
+								deffered.resolve();
+							});
 						};
 
 						fileWriter.onerror = function(e) {
@@ -23,9 +23,11 @@ smurAngular.factory("ImageStorage", function ImageStorage($q, FileSystem, FileSy
 		},
 		getURL: function(fileName) {
 			var deffered = $q.defer();
-			FileSystem.then(function(fs){
+			FileSystem.getFileSystem().then(function(fs){
 				fs.root.getFile(fileName, {}, function(fileEntry) {
-					deffered.resolve(fileEntry.toURL());
+					$rootScope.$apply(function(){
+						deffered.resolve(fileEntry.toURL());
+					});
 				}, FileSystemUtils.errorHandler);
 			});
 			return deffered.promise;

@@ -1,16 +1,40 @@
-smurAngular.factory("FileSystem", function FileSystem($q, $window, FileSystemUtils){
-	var deferred = $q.defer();
+smurAngular.factory("FileSystem", function FileSystem($q, $rootScope, $window, FileSystemUtils){
+	var fileSystemWrapper = {
+		getFileSystem: function() {
+			var deferred = $q.defer();
+			
 
-	var requestFileSystem  = $window.requestFileSystem || $window.webkitRequestFileSystem;
-	var persistentStorage = navigator.persistentStorage || navigator.webkitPersistentStorage;
+			var requestFileSystem  = $window.requestFileSystem || $window.webkitRequestFileSystem;
+			var persistentStorage = navigator.persistentStorage || navigator.webkitPersistentStorage;
 
-	var onInit = function(fileSystem) {
-		deferred.resolve(fileSystem);
+			var onInit = function(fileSystem) {
+				fileSystemWrapper.fileSystem = fileSystem;
+				$rootScope.$apply(function(){
+					deferred.resolve(fileSystem);
+				})
+			};
+
+			if(persistentStorage) {
+				// Last impl in Chrome
+				persistentStorage.requestQuota(10*1024*1024 /*10MB*/, function(grantedQuota){
+					requestFileSystem(window.PERSISTENT,grantedQuota , onInit, FileSystemUtils.errorHandler);
+				});
+			} else if ($window.webkitStorageInfo) {
+				// Legacy/mobile chrome support
+				window.webkitStorageInfo.requestQuota(PERSISTENT, 10*1024*1024 /*10MB*/, function(grantedBytes) {
+					requestFileSystem(PERSISTENT, grantedBytes, onInit, FileSystemUtils.errorHandler);
+				}, function(e) {
+					console.log('Error', e);
+				});
+			} else if(requestFileSystem) {
+				requestFileSystem(PERSISTENT,  10*1024*1024, onInit, FileSystemUtils.errorHandler);
+			} else {
+				$rootScope.$apply(function(){
+					deferred.reject("Cannot use FS API");
+				});
+			}		
+			return deferred.promise;
+		}
 	};
-
-	persistentStorage.requestQuota(10*1024*1024 /*10MB*/, function(grantedQuota){
-		requestFileSystem(window.PERSISTENT,grantedQuota , onInit, FileSystemUtils.errorHandler);
-	});
-
-	return deferred.promise;
+	return fileSystemWrapper;
 });
