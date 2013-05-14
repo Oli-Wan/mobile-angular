@@ -23,6 +23,7 @@ smurAngular.factory("FileSystemUtils", function FileSystemUtils($q, $window){
 				break;
 			};
 			console.log('Error: ' + msg);
+			console.log(e);
 		}
 	};
 });

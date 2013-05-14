@@ -1,11 +1,8 @@
-smurAngular.factory("FileSystem", function FileSystem($q, $rootScope, $window, FileSystemUtils){
+smurAngular.factory("FileSystem", 
+	function FileSystem($q, $rootScope, $window, FileSystemUtils, persistentStorage, requestFileSystem){
 	var fileSystemWrapper = {
 		getFileSystem: function() {
 			var deferred = $q.defer();
-			
-
-			var requestFileSystem  = $window.requestFileSystem || $window.webkitRequestFileSystem;
-			var persistentStorage = navigator.persistentStorage || navigator.webkitPersistentStorage;
 
 			var onInit = function(fileSystem) {
 				fileSystemWrapper.fileSystem = fileSystem;
@@ -17,7 +14,7 @@ smurAngular.factory("FileSystem", function FileSystem($q, $rootScope, $window, F
 			if(persistentStorage) {
 				// Last impl in Chrome
 				persistentStorage.requestQuota(10*1024*1024 /*10MB*/, function(grantedQuota){
-					requestFileSystem(window.PERSISTENT,grantedQuota , onInit, FileSystemUtils.errorHandler);
+					requestFileSystem(window.PERSISTENT ,grantedQuota , onInit, FileSystemUtils.errorHandler);
 				});
 			} else if ($window.webkitStorageInfo) {
 				// Legacy/mobile chrome support

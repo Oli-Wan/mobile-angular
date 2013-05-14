@@ -3,10 +3,8 @@ smurAngular.controller("MissionContainerController",
 	function MissionContainerController($scope, $rootScope, $routeParams, $http, $location, Mission, $window){
 		$scope.menu = false;
 
-		var date1 = Date.now();
 		Mission.get(parseInt($routeParams.missionId)).then(function(data){
 			$scope.mission = data;
-			$scope.loadTime = Date.now()-date1;
 		});
 
 		$http.get("/resources/mission-menu.json").success(function(data){

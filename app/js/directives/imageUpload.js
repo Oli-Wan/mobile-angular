@@ -25,11 +25,11 @@ smurAngular.directive('imageUpload', function(url, ImageStorage) {
 			});
 
 			$scope.showThumbnail = false;
+
 			$scope.$watch('image', function(value){
 				if(value !== undefined) {
 					$scope.showThumbnail = true;
 					ImageStorage.getURL(value).then(function(url) {
-						console.log(url);
 						$scope.imageUrl = url;
 						$lightBox.children("img").attr("src", url);
 					});
@@ -37,8 +37,8 @@ smurAngular.directive('imageUpload', function(url, ImageStorage) {
 			});
 
 			//Setup lightbox
-			var img = angular.element(element.children()[1].children[0]);
-			img.bind("touchstart", function(){
+			var img = $(".thumbnail>img");
+			img.on("touchstart", function(){
 				var currentHeight = $(window).height();
 				$lightBoxImg = $("#lightBox>img");
 				$lightBoxImg.css("max-height", (currentHeight-100).toString()+"px");
@@ -50,14 +50,25 @@ smurAngular.directive('imageUpload', function(url, ImageStorage) {
 				});
 			});
 
+			var showImage = function(imageName){
+				$scope.showThumbnail = true;
+				ImageStorage.getURL().then(function(url) {
+					$scope.imageUrl = url;
+					$lightBox.children("img").attr("src", url);
+				});
+			};
+
 			// File upload
 			$scope.setFile = function(element) {
 				console.log("Set file");
 				var image = element.files[0];
-				console.log(image);
+
+				if($scope.image) {
+					ImageStorage.remove($scope.image);
+				}
+
 				ImageStorage.save(image.name, image).then(function() {
-					console.log("saved");
-					$scope.image = image.name;
+					$scope.image = image.name;					
 				});
 			};
 		}

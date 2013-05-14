@@ -42,10 +42,10 @@ smurAngular.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/mission/vehicles/new.html', 
     controller: 'NewVehicleController'
   });
-  $routeProvider.when('/idbmanagement', 
+  $routeProvider.when('/storagemanagement', 
   {
-    templateUrl: 'partials/misc/dbManagement.html', 
-    controller: 'IDBManagementController'
+    templateUrl: 'partials/misc/storage-management.html', 
+    controller: 'StorageManagementController'
   });
   $routeProvider.when('/accelerometer', 
   {

@@ -150,8 +150,20 @@ html, body, div.ng-scope, div[ng-view], div.container-fluid {
 	max-height: 500px;
 }
 
-.thumbnail {
-	max-height: 50px;
+.thumbnail{
+	position: relative;
+}
+
+.thumbnail>a {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin-bottom:-20px;
+	background-color: black;
+	width:17px;
+	padding-left:3px;
+	height: 20px;
+	border-radius: 20px;
 }
 
 /* Transitions

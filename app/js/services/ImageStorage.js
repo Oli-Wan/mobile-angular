@@ -31,6 +31,13 @@ smurAngular.factory("ImageStorage", function ImageStorage($q, $rootScope, FileSy
 				}, FileSystemUtils.errorHandler);
 			});
 			return deffered.promise;
+		},
+		remove: function(fileName) {
+			FileSystem.getFileSystem().then(function(fs){
+				fs.root.getFile(fileName, {create: false}, function(fileEntry) {
+					fileEntry.remove(function() {}, FileSystemUtils.errorHandler);
+				}, FileSystemUtils.errorHandler);
+			});
 		}
 	};	
 });
