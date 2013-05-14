@@ -10,8 +10,15 @@
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css" />
 	<link rel="stylesheet" href="css/app.css"/>
 </head>
-<body>
-	<div class="container-fluid">	
+<body ng-controller="FullScreenController">
+	<div id="container" class="container-fluid">
+		<div class="application-starter" ng-hide="true">
+			<h1>ResUrgences Mobile</h1>
+			<p>Bienvenue dans l'application mobile ResUrgences</p>
+			<button  class="btn btn-primary btn-large" 
+				ng-tap="requestFullScreen()">Lancer l'application
+			</button>
+		</div>
 		<div
 			ng-view
 			ng-animate="{ enter: 'view-enter', leave: 'view-leave'}">
@@ -31,8 +38,10 @@
 	<script src="lib/angular/angular.js"></script>
 	<script src="lib/angular-strap.js"></script>
 	<script src="lib/angular/angular-resource.js"></script>
-	
+	<script src="lib/screenfull.js"></script>
+
 	<script src="js/app.js"></script>
+	<script src="js/controllers/FullScreenController.js"></script>
 	<script src="js/controllers/MissionsController.js"></script>
 	<script src="js/controllers/MissionContainerController.js"></script>
 	<script src="js/controllers/NewMissionController.js"></script>

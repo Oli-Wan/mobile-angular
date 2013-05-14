@@ -122,6 +122,34 @@ html, body, div.ng-scope, div[ng-view], div.container-fluid {
 	display:none;
 }
 
+/* Launcher
+-------------------------------------------------- */
+.application-starter {
+	text-align:center;
+}
+
+.application-starter>h1 {
+	font-size: 120px;
+	letter-spacing: -2px;
+	line-height: 1;
+}
+
+.application-starter>p {
+	font-size: 40px;
+	font-weight: 200;
+	line-height: 1.25;
+}
+
+.application-starter>.btn {
+	border: 0 none;
+	border-radius: 6px 6px 6px 6px;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset, 0 1px 5px rgba(0, 0, 0, 0.25);
+	color: #FFFFFF;
+	font-size: 24px;
+	font-weight: 200;
+	padding: 19px 24px;
+}
+
 /* Lightbox
 -------------------------------------------------- */
 #overlay {	

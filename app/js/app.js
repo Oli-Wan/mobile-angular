@@ -62,17 +62,21 @@ smurAngular.value('$strap.config', {
   }
 });
 
-smurAngular.run(function($rootScope, $window){
+smurAngular.run(function($rootScope, $window, $timeout){
   $rootScope.scrollX = $window.scrollX;
+
   angular.element($window).bind('scroll',function(){
     $rootScope.scrollX = $window.scrollX;
     $rootScope.$apply('scrollX');
   });
-});
 
-smurAngular.run(function($rootScope, $window){
   angular.element($window).bind('deviceorientation', function(data){
     $rootScope.orientationData = data;
     $rootScope.$apply('orientationData');
   });
+
+  screenfull.onchange = function() {
+    $rootScope.fullscreen = screenfull.isFullscreen;
+    $rootScope.$apply('fullScreen');
+  };
 });
