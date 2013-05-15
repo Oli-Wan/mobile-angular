@@ -48,7 +48,13 @@
 		<div class="control-group">
 			<label for="lastname" class="control-label">Ajouter une photo</label>
 			<div class="controls">
-				<image-upload image="mission.image"></image-uploade>
+				<input type="file" accept="image/*" capture="camera" 
+					ng-model="image" ng-files>
+				<ul class="thumbnails">
+					<li class="span2">
+						<thumbnail src="{{imageUrl}}" />
+					</li>
+				</ul>
 			</div>
 		</div>
 		<div class="form-actions">
