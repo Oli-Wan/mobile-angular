@@ -23,24 +23,27 @@ smurAngular.controller("UpdateMissionController",
 		}, true);
 
 		$scope.save = function() {
-			var imageName = $scope.mission.image;
-			var imageFile = $scope.image[0];
+			if(imageFile !== undefined && imageFile.length > 0 ) {
+				var imageName = $scope.mission.image;
+				var imageFile = $scope.image[0];
 
-			if(imageName) {
-				ImageStorage.remove(imageName);
+				if(imageName) {
+					ImageStorage.remove(imageName);
+				}
+
+				ImageStorage.save(imageFile.name, imageFile);
+				$scope.mission.image = imageFile.name;	
 			}
+			
 
-			ImageStorage.save(imageFile.name, imageFile).then(function() {
-				$scope.mission.image = imageFile.name;
-				Mission.save($scope.mission).then(function() {
-					$scope.alerts = [];
-					$scope.alerts.push({
-						type: "success",
-						title: "Succès",
-						content: "Mission mise à jour avec succès"
-					});
-					$window.scrollTo(0,0);
+			Mission.save($scope.mission).then(function() {
+				$scope.alerts = [];
+				$scope.alerts.push({
+					type: "success",
+					title: "Succès",
+					content: "Mission mise à jour avec succès"
 				});
+				$window.scrollTo(0,0);
 			});
 		};
 	});

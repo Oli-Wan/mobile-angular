@@ -54,7 +54,7 @@ smurAngular.controller("StorageManagementController",
 		};
 
 		$scope.populateStaff = function() {
-			$http.get('/resources/persons.json').success(function(data){
+			$http.get('http://localhost:2403/persons').success(function(data){
 				var count = 0;
 				Staff.clear().then(function(){
 					var recursivePut = function(count, data){
@@ -85,7 +85,8 @@ smurAngular.controller("StorageManagementController",
 		};
 
 		$scope.populateVehicle = function() {
-			$http.get('/resources/vehicles.json').success(function(data){
+			$http.get('http://localhost:2403/vehicles').success(function(data){
+				console.log(data);
 				var count = 0;
 				Vehicle.clear().then(function(){
 					var recursivePut = function(count, data){
