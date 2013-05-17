@@ -9,7 +9,6 @@ smurAngular.directive('ngFiles', function() {
 
 			var input = angular.element(element);
 			input.bind('change', function(){
-				console.log("New file");
 				$scope.files = this.files;
 				$scope.$apply();
 			});

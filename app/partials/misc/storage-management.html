@@ -7,20 +7,20 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="span4">
-			<button type="button" class="btn btn-primary" ng-tap="clearMission()">Clear mission store</button> <br />
+		<div class="span3">
+			<button type="button" class="btn btn-primary btn-block" ng-tap="clearMission()">Clear mission store</button> <br />
 		</div>
-		<div class="span4">
-			<button type="button" class="btn btn-primary" ng-tap="clearStaff()">Clear staff store</button> <br />
+		<div class="span3">
+			<button type="button" class="btn btn-primary btn-block" ng-tap="clearStaff()">Clear staff store</button> <br />
 		</div>
-		<div class="span4">
-			<button type="button" class="btn btn-primary" ng-tap="clearEvent()">Clear event store</button> <br />
+		<div class="span3">
+			<button type="button" class="btn btn-primary btn-block" ng-tap="clearEvent()">Clear event store</button> <br />
 		</div>
-		<div class="span4">
-			<button type="button" class="btn btn-primary" ng-tap="clearVehicle()">Clear vehicle store</button> <br />
+		<div class="span3">
+			<button type="button" class="btn btn-primary btn-block" ng-tap="clearVehicle()">Clear vehicle store</button> <br />
 		</div>
-		<div class="span4">
-			<button type="button" class="btn btn-primary" ng-tap="clearCommand()">Clear command store</button> <br />
+		<div class="span3">
+			<button type="button" class="btn btn-primary btn-block" ng-tap="clearCommand()">Clear command store</button> <br />
 		</div>
 
 	</div>
@@ -30,11 +30,11 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="span4">
-			<button type="button" class="btn btn-primary" ng-tap="populateStaff()">Populate staff store</button> <br />
+		<div class="span3">
+			<button type="button" class="btn btn-primary btn-block" ng-tap="populateStaff()">Populate staff store</button> <br />
 		</div>
-		<div class="span4">
-			<button type="button" class="btn btn-primary" ng-tap="populateVehicle()">Populate vehicle store</button> <br />
+		<div class="span3">
+			<button type="button" class="btn btn-primary btn-block" ng-tap="populateVehicle()">Populate vehicle store</button> <br />
 		</div>
 	</div>
 	<h3>FileSystem API</h3>
@@ -48,14 +48,28 @@
 			</div>
 		</div>
 		<div class="span6" ng-show="fsPolyfill">
-		    <div class="alert alert-info">
-		    	Espace disque utilisé indisponible avec le polyfill.
+			<div class="alert alert-info">
+				Espace disque utilisé indisponible avec le polyfill.
 			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="span4">
-			<button type="button" class="btn btn-primary" ng-tap="clearFS()">Supprimer tous les fichiers</button> <br />
+			<button type="button" class="btn btn-primary btn-block" ng-tap="clearFS()">Supprimer tous les fichiers</button> <br />
+		</div>
+	</div>
+	<h3>LocalStorage</h3>
+	<div class="row" >
+		<div class="span4">
+			<input type="text" required ng-model="clientId" />
+		</div>
+		<div class="span3">
+			<button type="button" class="btn btn-primary btn-block" ng-tap="setClientId()">Change client ID</button> <br />
+		</div>
+	</div>
+	<div class="row">
+		<div class="span3">
+			<button type="button" class="btn btn-primary btn-block" ng-tap="resetLastCmd()">Reset last CMD</button> <br />
 		</div>
 	</div>
 

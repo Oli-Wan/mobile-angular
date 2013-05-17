@@ -4,16 +4,16 @@ smurAngular.factory("Mission", function Mission($q, $rootScope, IDBService, Comm
 		store: undefined,
 		getStore: function() {
 			var deferred = $q.defer();
-			if(this.store)
+			if(this.store) {
 				deferred.resolve(this.store);
-			else
-			{
-				this.store = new IDBStore({
+			} else {
+				new IDBStore({
 					dbVersion: 1,
 					storeName: 'mission',
 					keyPath: 'id',
 					autoIncrement: true,
 					onStoreReady: function() {
+						storeWrapper.store = this;
 						var storeReady = this;
 						$rootScope.$apply(function(){
 							deferred.resolve(storeReady);

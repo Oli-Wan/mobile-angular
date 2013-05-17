@@ -6,9 +6,7 @@ smurAngular.controller('MissionsController',
 		});
 
 		$scope.$on('dataChanged', function() {
-			console.log("dataChanged");
 			Mission.getAll().then(function(data){
-				console.log(data);
 				$scope.missions = data;
 			});
 		});

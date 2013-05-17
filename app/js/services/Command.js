@@ -13,7 +13,6 @@ smurAngular.factory("Command",
 						keyPath: 'id',
 						autoIncrement: true,
 						onStoreReady: function() {
-							console.log("Store ready");
 							var storeReady = this;
 							$rootScope.$apply(function(){
 								deferred.resolve(storeReady);
@@ -31,7 +30,6 @@ smurAngular.factory("Command",
 		};
 		var idbService = IDBService.getIDBCrudObject(storeWrapper);
 		idbService.sendIfNeeded = function(store, data, fromOutside) {
-			console.log("sendIfNeeded start");
 			var start = Date.now();
 			var deferred = $q.defer();
 
@@ -59,7 +57,6 @@ smurAngular.factory("Command",
 						}
 					}
 				}
-				console.log(diffArray);		
 
 				if(diffArray.length > 0) {
 					var diff = {
@@ -69,11 +66,10 @@ smurAngular.factory("Command",
 					}; 
 
 					var cmd = {}; 
-					cmd.date = new Date();
+					cmd.date = Date.now();
 					cmd.origin = clientId;
 					cmd.status = "waiting";
 					cmd.data = diff;
-					console.log(cmd);
 
 					storeWrapper.getStore().then(function(cmdStore){	
 						cmdStore.put(cmd);
@@ -90,7 +86,6 @@ smurAngular.factory("Command",
 					upper: "waiting"
 				});
 				store.query(function(data) {
-					console.log(data);
 					$rootScope.$apply(function(){
 						deferred.resolve(data);
 					});

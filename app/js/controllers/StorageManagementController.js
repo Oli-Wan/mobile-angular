@@ -1,5 +1,5 @@
 smurAngular.controller("StorageManagementController", 
-	function StorageManagementController($scope, $http, Mission, Staff, Event, Vehicle, FileSystem, FileSystemUtils, persistentStorage, Command) {
+	function StorageManagementController($scope, $http, Mission, Staff, Event, Vehicle, FileSystem, FileSystemUtils, persistentStorage, Command, localStorage) {
 		$scope.alerts = [];
 
 		$scope.getStorageStats = function(){	
@@ -16,6 +16,8 @@ smurAngular.controller("StorageManagementController",
 		};
 
 		$scope.getStorageStats();
+
+		$scope.clientId = localStorage.getItem("SMUR_CLIENT_ID");
 
 		$scope.clearMission = function() {
 			Mission.clear().then(function() {
@@ -95,7 +97,6 @@ smurAngular.controller("StorageManagementController",
 
 		$scope.populateVehicle = function() {
 			$http.get('http://localhost:2403/vehicles').success(function(data){
-				console.log(data);
 				var count = 0;
 				Vehicle.clear().then(function(){
 					var recursivePut = function(count, data){
@@ -145,4 +146,12 @@ smurAngular.controller("StorageManagementController",
 			  readEntries();
 			});
 		};
+
+		$scope.resetLastCmd = function(){
+			localStorage.setItem("LAST_CMD", 0);
+		};
+
+		$scope.setClientId = function() {
+			localStorage.setItem("SMUR_CLIENT_ID", $scope.clientId);
+		}
 	});

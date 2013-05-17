@@ -14,7 +14,6 @@ smurAngular.run(function($timeout, $http, Command) {
 				var postData = JSON.parse(JSON.stringify(cmd));
 				delete postData["id"];
 				$http.post('http://localhost:2403/commands', postData).success(function(){
-					console.log("Command sent");
 					cmd.status = "sent";
 					Command.save(cmd).then(function(){
 						send(data, ++count);
@@ -23,7 +22,6 @@ smurAngular.run(function($timeout, $http, Command) {
 					console.log("Couldn't send the command, will try again later");
 				});
 			};
-
 			send(data, 0);
 		});
 		$timeout(sendingFunction, 30000);

@@ -2,23 +2,18 @@ smurAngular.controller("UpdateMissionController",
 	function UpdateMissionController($scope, $window, $routeParams, url, Mission, ImageStorage) {
 
 		$scope.$watch('mission', function(value){
-			console.log("watch");
 			if(!value || !value.image)
 				return;
 
-			console.log(value);
-			ImageStorage.getURL(value.image).then(function(url) {
-				console.log(url);
+ 			ImageStorage.getURL(value.image).then(function(url) {
 				$scope.imageUrl = url;
 			});
 		});
 
 		$scope.$watch('image', function(value) {
-			console.log("Image watcher");
-			console.log(value);
 			if(!value)
 				return;
-			console.log("Value exists");
+
 			$scope.imageUrl = url.createObjectURL(value[0]);
 		}, true);
 
