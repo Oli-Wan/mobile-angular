@@ -5,7 +5,7 @@ smurAngular.factory("Event", function Event($q, $rootScope, IDBService){
 		getStore: function() {
 			var deferred = $q.defer();
 			if(this.store)
-				deferred.resolve(this.store)
+				deferred.resolve(this.store);
 			else
 			{
 				this.store = new IDBStore({

@@ -1,11 +1,11 @@
 
-smurAngular.factory("Mission", function Mission($q, $rootScope, IDBService){
+smurAngular.factory("Mission", function Mission($q, $rootScope, IDBService, Command){
 	var storeWrapper = {
 		store: undefined,
 		getStore: function() {
 			var deferred = $q.defer();
 			if(this.store)
-				deferred.resolve(this.store)
+				deferred.resolve(this.store);
 			else
 			{
 				this.store = new IDBStore({
@@ -24,5 +24,22 @@ smurAngular.factory("Mission", function Mission($q, $rootScope, IDBService){
 			return deferred.promise;
 		}
 	};
-	return IDBService.getIDBCrudObject(storeWrapper);
+	var service = IDBService.getIDBCrudObject(storeWrapper);
+	service.save= function(element) {
+		if(element.id === undefined)
+			element.id = Date.now();
+
+		var deferred = $q.defer();
+		storeWrapper.getStore().then(function(store){
+			Command.sendIfNeeded(store, element).then(function(){
+				store.put(element, function(){
+					$rootScope.$apply(function(){
+						deferred.resolve("Sucess");
+					});
+				});
+			});
+		});
+		return deferred.promise;
+	};
+	return service;
 });

@@ -1,5 +1,5 @@
 smurAngular.controller("StorageManagementController", 
-	function StorageManagementController($scope, $http, Mission, Staff, Event, Vehicle, FileSystem, FileSystemUtils, persistentStorage) {
+	function StorageManagementController($scope, $http, Mission, Staff, Event, Vehicle, FileSystem, FileSystemUtils, persistentStorage, Command) {
 		$scope.alerts = [];
 
 		$scope.getStorageStats = function(){	
@@ -49,6 +49,15 @@ smurAngular.controller("StorageManagementController",
 				$scope.alerts.push({
 					"type": "success",
 					"title": "Vehicle cleared"
+				});
+			});
+		};
+
+		$scope.clearCommand = function() {
+			Command.clear().then(function() {
+				$scope.alerts.push({
+					"type": "success",
+					"title": "Command cleared"
 				});
 			});
 		};

@@ -1,6 +1,6 @@
 
 smurAngular.controller('NewMissionController', 
-	function NewMissionController($scope, $location, Mission, Vehicle, Staff, mobile, Utils){
+	function NewMissionController($scope, $location, Mission, Vehicle, Staff, mobile, Utils, Command){
 		$scope.alerts = [];
 		$scope.mobile = mobile;
 

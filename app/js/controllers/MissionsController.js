@@ -1,8 +1,16 @@
 
 smurAngular.controller('MissionsController', 
-	function MissionsController($scope, Mission, $location, $window, $rootScope, $timeout){
+	function MissionsController($scope, Mission, $location, $window){
 		Mission.getAll().then(function(data){
 			$scope.missions = data;
+		});
+
+		$scope.$on('dataChanged', function() {
+			console.log("dataChanged");
+			Mission.getAll().then(function(data){
+				console.log(data);
+				$scope.missions = data;
+			});
 		});
 
 		$scope.navigateTo = function(mission) {

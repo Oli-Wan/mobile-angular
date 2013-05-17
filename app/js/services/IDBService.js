@@ -1,5 +1,5 @@
  smurAngular.service("IDBService", 
- 	function IDBService($q, $rootScope, Command){
+ 	function IDBService($q, $rootScope){
  		return {
  			getIDBCrudObject: function(storeWrapper) {
  				return {
@@ -42,11 +42,9 @@
 
  						var deferred = $q.defer();
  						storeWrapper.getStore().then(function(store){
- 							Command.sendIfNeeded(store, element).then(function(){	
- 								store.put(element, function(){
- 									$rootScope.$apply(function(){
- 										deferred.resolve("Sucess");
- 									});
+ 							store.put(element, function(){
+ 								$rootScope.$apply(function(){
+ 									deferred.resolve("Sucess");
  								});
  							});
  						});
@@ -65,4 +63,5 @@
  					}
  				};
  			}
+ 		};
  	});
