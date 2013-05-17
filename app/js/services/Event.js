@@ -8,12 +8,13 @@ smurAngular.factory("Event", function Event($q, $rootScope, IDBService){
 				deferred.resolve(this.store);
 			else
 			{
-				this.store = new IDBStore({
+				new IDBStore({
 					dbVersion: 2,
 					storeName: 'event',
 					keyPath: 'id',
 					autoIncrement: true,
 					onStoreReady: function() {
+						storeWrapper.store = this;
 						var storeReady = this;
 						$rootScope.$apply(function(){
 							deferred.resolve(storeReady);
