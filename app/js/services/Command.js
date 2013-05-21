@@ -29,53 +29,71 @@ smurAngular.factory("Command",
 			}
 		};
 		var idbService = IDBService.getIDBCrudObject(storeWrapper);
-		idbService.sendIfNeeded = function(store, data, fromOutside) {
+		idbService.sendIfNeeded = function(store, data, action) {
 			var start = Date.now();
 			var deferred = $q.defer();
 
-			store.get(data.id, function(currentData) {
-				// let the other instruction run in parallel as with get the data
-				$rootScope.$apply(deferred.resolve());
-				var cmdData;
-				var diffArray = new Array();
-				if(!currentData) {
-					for(var property in data) {
-						diffArray.push({
-							attribute: property,
-							new_val: data[property],
-							old_val: ""
-						});
-					}
-				} else {
-					for(var property in data) {
-						if(data[property] != currentData[property]) {
+			if(action == "delete") {
+				deferred.resolve();
+				var removal = {
+					entity: store.storeName,
+					id: data,
+					type: "delete"
+				}; 
+
+				var cmd = {}; 
+				cmd.date = Date.now();
+				cmd.origin = clientId;
+				cmd.status = "waiting";
+				cmd.data = removal;
+				storeWrapper.getStore().then(function(cmdStore){
+					cmdStore.put(cmd);
+				});
+			} else {
+				store.get(data.id, function(currentData) {
+					$rootScope.$apply(deferred.resolve());
+					var cmdData;
+					var diffArray = new Array();
+					if(!currentData) {
+						for(var property in data) {
 							diffArray.push({
 								attribute: property,
 								new_val: data[property],
-								old_val: currentData[property]
+								old_val: ""
 							});
 						}
+					} else {
+						for(var property in data) {
+							if(data[property] != currentData[property]) {
+								diffArray.push({
+									attribute: property,
+									new_val: data[property],
+									old_val: currentData[property]
+								});
+							}
+						}
 					}
-				}
 
-				if(diffArray.length > 0) {
-					var diff = {
-						entity: store.storeName,
-						id: data.id,
-						changes : diffArray
-					}; 
+					if(diffArray.length > 0) {
+						var diff = {
+							entity: store.storeName,
+							id: data.id,
+							type: "update",
+							changes : diffArray
+						}; 
 
-					var cmd = {}; 
-					cmd.date = Date.now();
-					cmd.origin = clientId;
-					cmd.status = "waiting";
-					cmd.data = diff;
+						var cmd = {}; 
+						cmd.date = Date.now();
+						cmd.origin = clientId;
+						cmd.status = "waiting";
+						cmd.data = diff;
 
-					storeWrapper.getStore().then(function(cmdStore){	
-						cmdStore.put(cmd);
-					});
-				}
-			});
+						storeWrapper.getStore().then(function(cmdStore){
+							cmdStore.put(cmd);
+						});
+					}
+				});
+			}
 			return deferred.promise;
 		};
 		idbService.getNonSentCommands = function(){
@@ -95,6 +113,9 @@ smurAngular.factory("Command",
 				});
 			});
 			return deferred.promise;
+		};
+		idbService.sendRemovalMessage = function(id) {
+
 		};
 		return idbService;
 	});
