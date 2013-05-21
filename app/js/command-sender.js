@@ -24,6 +24,6 @@ smurAngular.run(function($timeout, $http, Command) {
 			};
 			send(data, 0);
 		});
-		$timeout(sendingFunction, 30000);
-	}, 30000);
+		$timeout(sendingFunction, 5000);
+	}, 5000);
 });

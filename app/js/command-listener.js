@@ -1,33 +1,45 @@
 smurAngular.run(function(SocketService, StoreProvider, $rootScope, $http, clientId, Command, localStorage) {
 
-	var handleMission = function(command, callback) {
+	var handleCommand = function(command, callback) {
 		Command.save(command);
 		localStorage.setItem("LAST_CMD", command.date);
+
+		console.log(command);
+
 		var data = command.data;
 		var storeName = data.entity;
-
 		var store = StoreProvider.getStoreByName(storeName);
 		if(!store) {
 			console.log("Unknown entity");
 		} else {
-			store.get(data.id).then(function(localData){
-				if(!localData) {
-					localData = {};
-					localData.id = data.id;
-				}
-
-				var changeArray = data.changes;
-
-				changeArray.forEach(function(element){
-					localData[element.attribute] = element.new_val;
-				});
-
-				store.save(localData).then(function(){
+			var action = command.data.type;
+			
+			if(action == "delete") {
+				store.remove(command.data.id).then(function(){
 					$rootScope.$broadcast('dataChanged');
 					if(callback)
 						callback();
 				});
-			});
+			} else {
+				store.get(data.id).then(function(localData){
+					if(!localData) {
+						localData = {};
+						localData.id = data.id;
+					}
+
+					var changeArray = data.changes;
+
+					changeArray.forEach(function(element){
+						localData[element.attribute] = element.new_val;
+					});
+
+					store.save(localData).then(function(){
+						$rootScope.$broadcast('dataChanged');
+						if(callback)
+							callback();
+					});
+				});
+			}
 		}
 	};
 
@@ -42,7 +54,7 @@ smurAngular.run(function(SocketService, StoreProvider, $rootScope, $http, client
 				return;
 
 			var command = array[count];
-			handleMission(command, function() {
+			handleCommand(command, function() {
 				recursiveFn(++count, array)
 			});
 		};
@@ -56,6 +68,6 @@ smurAngular.run(function(SocketService, StoreProvider, $rootScope, $http, client
 		if(command.origin == clientId)
 			return;
 
-		handleMission(command);
+		handleCommand(command);
 	});
 });
