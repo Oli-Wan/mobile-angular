@@ -7,13 +7,14 @@ smurAngular.factory("Command",
 				if(this.store) {
 					deferred.resolve(this.store);
 				} else {
-					this.store = new IDBStore({
+					new IDBStore({
 						dbVersion: 2,
 						storeName: 'commands',
 						keyPath: 'id',
 						autoIncrement: true,
 						onStoreReady: function() {
 							var storeReady = this;
+							storeWrapper.store = this;
 							$rootScope.$apply(function(){
 								deferred.resolve(storeReady);
 							});
@@ -114,8 +115,24 @@ smurAngular.factory("Command",
 			});
 			return deferred.promise;
 		};
-		idbService.sendRemovalMessage = function(id) {
-
+		idbService.getNewCommands = function() {
+			var deferred = $q.defer();
+			storeWrapper.getStore().then(function(store){
+				var keyRange = store.makeKeyRange({
+					lower: "new",
+					upper: "new"
+				});
+				store.query(function(data) {
+					$rootScope.$apply(function(){
+						deferred.resolve(data);
+					});
+				}, {
+					"index":"status",
+					"keyRange":keyRange
+				});
+			});
+			return deferred.promise;
 		};
+
 		return idbService;
 	});

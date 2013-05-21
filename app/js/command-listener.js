@@ -1,6 +1,7 @@
 smurAngular.run(function(SocketService, StoreProvider, $rootScope, $http, clientId, Command, localStorage) {
 
 	var handleCommand = function(command, callback) {
+		command.status = "new";
 		Command.save(command);
 		localStorage.setItem("LAST_CMD", command.date);
 
