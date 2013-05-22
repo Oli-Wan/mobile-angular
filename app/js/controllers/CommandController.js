@@ -1,5 +1,7 @@
 smurAngular.controller('CommandController', 
 	function CommandController($scope, $timeout, $location, Command) {
+		$scope.swipeLeft = [];
+		$scope.swipeRight = [];
 
 		$scope.toggleChange = function() {
 			$scope.change = true;
@@ -32,6 +34,22 @@ smurAngular.controller('CommandController',
 
 		$scope.toggleNotifcations = function() {
 			$scope.notificationsVisible = !$scope.notificationsVisible;
+		};
+
+		$scope.swipeLeft = function(command, index) {
+			$scope.swipe(command, $scope.swipeLeft, index)
+		};
+
+		$scope.swipeRight = function(command, index) {
+			$scope.swipe(command, $scope.swipeRight, index)
+		};
+
+		$scope.swipe = function(command, array, index) {
+			command.status = "read";
+			array[index] = true;
+			Command.save(command).then(function(){
+				$scope.nb = $scope.nb - 1;
+			});
 		};
 
 		$scope.goToNotification = function(command) {

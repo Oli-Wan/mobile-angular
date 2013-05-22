@@ -28,7 +28,9 @@
     				<div id="notification-zone" ng-class="{true:'open', false:''}[notificationsVisible]">
     					<div class="notification-container">
 	    					<a ng-repeat="notification in notifications" 
-	    						class="notification" 
+	    						hm-swipe-left="swipeLeft(notification, $index)" 
+	    						hm-swipe-right="swipeRight(notification, $index)" 
+	    						class="notification" ng-class="{'swipe-left':swipeLeft[$index], 'swipe-right':swipeRight[$index]}"
 	    						hm-tap="goToNotification(notification)">
 	    						<span ng-show="notification.data.type == 'update'">
 	    							La mission #{{notification.data.id}} a été mise à jour.
@@ -39,7 +41,7 @@
 	    					</a>
     					</div>
 						
-						<div class="swipe">
+						<div class="swipe" hm-swipe-up="toggleNotifcations()">
 							<i class="icon-align-justify"></i>
 						</div>
     				</div>

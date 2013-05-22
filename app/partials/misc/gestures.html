@@ -1,7 +1,17 @@
 <div>
 	<h1>Gestures</h1>
 
-	<div id="say-hello" hm-tap="hello()">
-		<p>Say Hello</p>
+	<div id="tap-me" class="gestured" hm-tap="tapMe()">
+		<p>Tap me</p>
+	</div>
+	<br />
+	<div id="swipe-me" class="gestured" hm-swipe-left="swipeMeLeft()" 
+		hm-swipe-right="swipeMeRight()" 
+		ng-class="{'swipe-left':swipeLeft, 'swipe-right':swipeRight}">
+		<p>Swipe me</p>
+	</div>
+	<br />
+	<div id="drag-me" class="gestured" hm-drag="dragMe()">
+		<p>Drag me</p>
 	</div>
 </div>
