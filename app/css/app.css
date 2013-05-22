@@ -6,7 +6,7 @@ body {
 	padding:0px;
 }
 
-html, body, div.ng-scope, div[ng-view], div.container-fluid {
+html, body, div[ng-view], div.container-fluid {
 	height:100%;
 }
 
@@ -442,6 +442,10 @@ div[ng-view] {
 	opacity: 0;
 }
 
+#drag-me {
+	z-index: 1000;
+}
+
 #drag-me.animated-return {
 	-webkit-transition:left linear 0.5s;
 	-moz-transition:left linear 0.5s;
@@ -450,7 +454,14 @@ div[ng-view] {
 	transition:left linear 0.5s;
 }
 
-
+#target {
+	position:relative;
+	top:-50px;
+	left:500px;
+	height:50px;
+	width:50px;
+	background-color: red;
+}
 
 
 
