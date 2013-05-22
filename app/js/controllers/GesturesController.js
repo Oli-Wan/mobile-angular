@@ -1,5 +1,6 @@
 smurAngular.controller('GesturesController', 
 	function GesturesController($scope) {
+		$scope.event;
 
 		$scope.tapMe = function(){
 			console.log("Tapped");
@@ -15,8 +16,8 @@ smurAngular.controller('GesturesController',
 			$scope.swipeRight = true;
 		};
 
-		$scope.dragMe = function(scope, args){
-			console.log(scope);
+		$scope.dragMe = function(args){
+			console.log($scope.event);
 			console.log(args);
 			console.log("dragged");
 		};

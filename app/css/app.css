@@ -442,6 +442,13 @@ div[ng-view] {
 	opacity: 0;
 }
 
+#drag-me.animated-return {
+	-webkit-transition:left linear 0.5s;
+	-moz-transition:left linear 0.5s;
+	-ms-transition:left linear 0.5s;
+	-o-transition:left linear 0.5s;
+	transition:left linear 0.5s;
+}
 
 
 
