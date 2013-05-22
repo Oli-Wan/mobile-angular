@@ -1,13 +1,12 @@
-smurAngular.directive('ngDrag', function() {
+smurAngular.directive('ngDrag', function($parse) {
 	return {
 		restrict: 'A',
-		scope: {
-			threshold: '@ngDragThreshold'
-		},
 		link: function ($scope, element, attrs) {
-			//var threshold = attrs['ng-drag-threshold'];
+			var threshold = attrs.ngDragThreshold;
+			
+			var dragFn = $parse(attrs.ngDragAction);
+			var releaseFn = $parse(attrs.ngDragRelease);
 
-			var threshold = $scope.threshold;
 			var thresholdExceeded = false;
 
 			Hammer(element[0]).on('dragstart', function(event){
@@ -34,9 +33,15 @@ smurAngular.directive('ngDrag', function() {
 				if($this.position().left > threshold) {
 					left = threshold;
 					thresholdExceeded = true;
-				} else if (thresholdExceeded)
+					$scope.$apply(function(){
+						dragFn($scope);
+					});
+				} else if (thresholdExceeded) {
 					thresholdExceeded = false;
-
+					$scope.$apply(function(){
+						releaseFn($scope);
+					});
+				}
 
 				$this.css("left",left+"px");
 			});
