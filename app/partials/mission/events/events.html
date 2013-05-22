@@ -2,7 +2,7 @@
 	<div ng-controller="EventController">
 		<h3 class="pull-left">Evènements</h3>
 		<a class="btn btn-primary btn-add pull-right" 
-			ng-tap="goToNewEvent()">
+			hm-tap="goToNewEvent()">
 			Ajouter un évènement
 		</a>
 		<div class="clearfix" />
@@ -38,11 +38,11 @@
 						</ng-switch>
 					</td>
 					<td>
-						<a ng-tap="goToEditEvent(event.id)"
+						<a hm-tap="goToEditEvent(event.id)"
 							class="btn btn-primary">
 							<i class="icon-pencil icon-white"></i>
 						</a>
-						<button class="btn btn-danger" ng-tap="deleteModal(event.id)">
+						<button class="btn btn-danger" hm-tap="deleteModal(event.id)">
 							<i class="icon-trash icon-white"></i>
 						</button>
 					</td>

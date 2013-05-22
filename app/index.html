@@ -17,7 +17,7 @@
     		<a class="brand" href="#">ResUrgence Mobile</a>
     		<ul class="nav" ng-controller="CommandController">
     			<li class="dropdown">
-    				<a id="notification-toggle" class="dropdown-toggle" ng-tap="toggleNotifcations()" ng-class="{'open':notificationsVisible, 'new':change}">
+    				<a id="notification-toggle" class="dropdown-toggle" hm-tap="toggleNotifcations()" ng-class="{'open':notificationsVisible, 'new':change}">
 					    <ng-pluralize count="nb"
     							when="{'0': 'Aucune notification',
 								    'one': '1 notification',
@@ -29,7 +29,7 @@
     					<div class="notification-container">
 	    					<a ng-repeat="notification in notifications" 
 	    						class="notification" 
-	    						ng-tap="goToNotification(notification)">
+	    						hm-tap="goToNotification(notification)">
 	    						<span ng-show="notification.data.type == 'update'">
 	    							La mission #{{notification.data.id}} a été mise à jour.
 	    						</span>
@@ -53,7 +53,7 @@
 			<h1>ResUrgences Mobile</h1>
 			<p>Bienvenue dans l'application mobile ResUrgences</p>
 			<button  class="btn btn-primary btn-large" 
-				ng-tap="requestFullScreen()">Lancer l'application
+				hm-tap="requestFullScreen()">Lancer l'application
 			</button>
 		</div>
 	
