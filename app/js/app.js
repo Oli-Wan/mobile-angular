@@ -2,7 +2,7 @@
 
 
 // Declare app level module which depends on filters, and services
-var smurAngular = angular.module('smurAngular', ['ngResource', '$strap.directives']);
+var smurAngular = angular.module('smurAngular', ['ngResource', '$strap.directives', 'angular-gestures']);
 
 smurAngular.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', 
@@ -51,6 +51,11 @@ smurAngular.config(['$routeProvider', function($routeProvider) {
   {
     templateUrl: 'partials/misc/accelerometer.html', 
     controller: 'AccelerometerController'
+  });
+  $routeProvider.when('/gestures', 
+  {
+    templateUrl: 'partials/misc/gestures.html', 
+    controller: 'GesturesController'
   });
   $routeProvider.otherwise({redirectTo: '/'});
 }]);

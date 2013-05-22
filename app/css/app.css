@@ -376,3 +376,13 @@ div[ng-view] {
 	top: auto;
 	bottom: 270px;
 }
+
+/* Gestures demo
+-------------------------------------------------- */
+
+#say-hello {
+	width:300px;
+	height:50px;
+	background-color: black;
+	color:white;
+}
