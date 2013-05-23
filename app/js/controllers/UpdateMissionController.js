@@ -18,7 +18,7 @@ smurAngular.controller("UpdateMissionController",
 		}, true);
 
 		$scope.save = function() {
-			if(imageFile !== undefined && imageFile.length > 0 ) {
+			if($scope.image !== undefined && $scope.image.length > 0 ) {
 				var imageName = $scope.mission.image;
 				var imageFile = $scope.image[0];
 
@@ -30,7 +30,6 @@ smurAngular.controller("UpdateMissionController",
 				$scope.mission.image = imageFile.name;	
 			}
 			
-
 			Mission.save($scope.mission).then(function() {
 				$scope.alerts = [];
 				$scope.alerts.push({

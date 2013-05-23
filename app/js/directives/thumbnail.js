@@ -17,13 +17,13 @@ smurAngular.directive('thumbnail', function() {
 				$lightBox = $("#lightBox");
 			}
 
-			$overlay.on('touchstart', function(){
+			Hammer($overlay[0]).on('tap', function(){
 				$lightBox.hide();
 				$(this).hide();
 			});
 
 			var img = $(element).find("img");
-			img.on("touchstart", function(){
+			Hammer(img[0]).on("tap", function(){
 				var currentHeight = $(window).height();
 				$lightBoxImg = $("#lightBox>img");
 				$lightBoxImg.css("max-height", (currentHeight-100).toString()+"px");
