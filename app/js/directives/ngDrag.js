@@ -9,8 +9,17 @@ smurAngular.directive('ngDrag', function($parse) {
 			var draggable = element.parent();
 
 			$scope.thresholdExceeded = false;
-			if(attrs['ngDragSwitch'] === undefined)
+			if(attrs['switch'] === undefined)
 				$scope.thresholdExceeded = $scope.dragSwitch;
+			
+			$scope.axis = "X";
+			if(attrs['axis'] !== undefined)
+				$scope.axis = attrs['axis'].toUpperCase();
+
+			if($scope.threshold === undefined)
+				$scope.threshold = 500;
+
+			console.log($scope.axis);
 
 			$scope.switch = function(value) {
 				if(attrs['switch'] === undefined)
@@ -26,8 +35,9 @@ smurAngular.directive('ngDrag', function($parse) {
 				if($scope.thresholdExceeded)
 					offset = $scope.threshold;
 
+				console.log("offset:",offset);
 				draggable.addClass('animate');
-				draggable.css("transform", "translate("+offset+"px)");
+				draggable.css("transform", "translate"+$scope.axis+"("+offset+"px)");
 			};
 
 			$scope.$watch('dragSwitch', function(newValue){
@@ -40,19 +50,30 @@ smurAngular.directive('ngDrag', function($parse) {
 			});
 
 			Hammer(draggable[0]).on('drag', function(event){
-				var deltaX = event.gesture.deltaX;
-				
-				if($scope.thresholdExceeded)
-					deltaX = deltaX + parseInt($scope.threshold);
+				var delta = event.gesture['delta'+$scope.axis];
 
-				$(this).css("transform", "translate("+deltaX+"px)");
+				if($scope.thresholdExceeded)
+					delta = delta + parseInt($scope.threshold);
+
+				$(this).css("transform", "translate"+$scope.axis+"("+delta+"px)");
 
 			});
 
 			Hammer(draggable[0]).on('dragend', function(event){
 				$this = $(this);
+				var delta = event.gesture['delta'+$scope.axis];
 
-				if($this.position().left > $scope.threshold) {
+				var leftMember;
+				var rightMember;
+				if($scope.threshold < 0) {
+					rightMember = delta;
+					leftMember = $scope.threshold;
+				} else {
+					leftMember = delta;
+					rightMember = $scope.threshold;
+				}
+
+				if( leftMember > rightMember) {
 					$scope.thresholdExceeded = true;
 					$scope.switch(true);
 					$scope.$apply();

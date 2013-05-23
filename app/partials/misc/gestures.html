@@ -4,19 +4,29 @@
 	<div id="tap-me" class="gestured" hm-tap="tapMe()">
 		<p>Tap me</p>
 	</div>
+	<div class="clearfix" ></div>
 	<br />
 	<div id="swipe-me" class="gestured animate" hm-swipe-left="swipeMeLeft()" 
 		hm-swipe-right="swipeMeRight()" 
 		ng-class="{'swipe-left':swipeLeft, 'swipe-right':swipeRight}">
 		<p>Swipe me</p>
 	</div>
+	<div class="clearfix" ></div>
 	<br />
 	<div id="drag-me" class="gestured">
-		<p>Drag me {{dragMessage}}</p>
+		<p>1</p>
 		<ng-drag switch="dragSwitch" threshold="500"></ng-drag>
 	</div>
 	<div id="target">
 		HERE
 	</div>
-	<button class="btn" hm-tap="moveDraggable()">Move without drag</button>
+	<div class="clearfix" ></div>
+	<div id="drag-me-2" class="gestured">
+		<p>2</p>
+		<ng-drag switch="dragSwitch2" threshold="-200" axis="y"></ng-drag>
+	</div>
+	<div class="clearfix" ></div>
+	<br />
+	<button class="btn" hm-tap="moveDraggable()">Move 1</button>
+	<button class="btn" hm-tap="moveDraggable2()">Move 2</button>
 </div>
