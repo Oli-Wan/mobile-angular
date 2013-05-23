@@ -2,7 +2,7 @@ smurAngular.directive('ngDrag', function($parse) {
 	return {
 		restrict: 'A',
 		link: function ($scope, element, attrs) {
-			var threshold = attrs.ngDragThreshold;
+			var threshold = parseInt(attrs.ngDragThreshold);
 			
 			var dragFn = $parse(attrs.ngDragAction);
 			var releaseFn = $parse(attrs.ngDragRelease);
@@ -16,20 +16,19 @@ smurAngular.directive('ngDrag', function($parse) {
 
 			Hammer(element[0]).on('drag', function(event){
 				var deltaX = event.gesture.deltaX;
+				
 				if(thresholdExceeded)
-					deltaX = deltaX+500;
+					deltaX = deltaX + threshold;
 
-				$(this).css({
-					position: "relative",
-					left: deltaX+"px"
-				});
+				$(this).css("transform", "translate("+deltaX+"px)");
+
 			});
 
 			Hammer(element[0]).on('dragend', function(event){
 				$this = $(this);
-				$this.addClass('animated-return');
+
 				var left = 0;
-				console.log($this.position().left);
+
 				if($this.position().left > threshold) {
 					left = threshold;
 					thresholdExceeded = true;
@@ -43,7 +42,8 @@ smurAngular.directive('ngDrag', function($parse) {
 					});
 				}
 
-				$this.css("left",left+"px");
+				$this.addClass('animated-return');
+				$this.css("transform", "translate("+left+"px)");
 			});
 		}
 	};

@@ -1,4 +1,4 @@
-<div>
+<div class="no-x-scrolling">
 	<div class="menu">
 		<div class="menu-title">
 			<h4>Menu</h4>
@@ -12,9 +12,15 @@
 			</li>
 		</ul>
 	</div>
-	<div class="mission-main mission-name affix" ng-class="{true:'move', false:''}[menu]" >
+	<div class="mission-zone" 
+		ng-class="{true:'move', false:''}[menu]"
+		ng-drag 
+		ng-drag-threshold="300"
+		ng-drag-action="dragStatus(true)"
+		ng-drag-release="dragStatus(false)">
+	<div class="mission-main mission-name affix">
 		<div class="menu-button" hm-tap="toggleLeftMenu()">
-			<i ng-class="{true:'icon-arrow-right', false:'icon-arrow-left'}[menu]"></i>
+			<i ng-class="{true:'icon-arrow-right', false:'icon-arrow-left'}[open]"></i>
 		</div>
 		<h4> 
 			Mission {{mission.id}} 
@@ -23,9 +29,9 @@
 			</span>
 		</h4>
 	</div>
-	<div class="mission-main mission-description" 
-		ng-class="{true:'move', false:''}[menu]">
-		<div ng-include="includedUrl">
-		</div>
+	<div class="mission-main mission-description" >
+	<div ng-include="includedUrl">
 	</div>
+</div>
+</div>
 </div>

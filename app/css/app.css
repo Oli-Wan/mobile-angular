@@ -14,6 +14,11 @@ html, body, div[ng-view], div.container-fluid {
 	margin-top: 15px;	
 }
 
+.no-x-scrolling {
+	margin: 0 -20px;
+	overflow-x:hidden;
+}
+
 .small-modal {
 	width:600px;
 	margin-left:-300px;
@@ -24,21 +29,18 @@ html, body, div[ng-view], div.container-fluid {
 }
 
 .mission-description-part {
-	background-color: white;
 }
 
 .mission-description {
-	padding-top:50px;
-	margin-left:-20px;
 	padding-left: 20px;
+	padding-top:50px;
 	height:100%;
 }
 
 .mission-name {
 	top:40;
 	left:0;
-	width: 100%;
-	padding:0px 20px;
+	right: 0;
 	z-index: 1000;
 	border-bottom:1px solid #08c;
 	box-shadow: 0 0 10px gray;
@@ -46,10 +48,6 @@ html, body, div[ng-view], div.container-fluid {
 
 .mission-name>h4{
 	padding-right:30px;
-}
-
-.mission-main {
-	background-color: white;
 }
 
 .menu-button {
@@ -70,12 +68,22 @@ html, body, div[ng-view], div.container-fluid {
 	-ms-transition:-ms-transform linear 0.1s;
 	-o-transition:-o-transform linear 0.1s;
 	transition:transform linear 0.1s;
+	background-color: white;
+
+	-webkit-transform: translate(0);
+	-moz-transform: translate(0);
+	-ms-transform: translate(0);
+	-o-transform: translate(0);
+	transform: translate(0);
 }
 
-.mission-main.move  {
-	border-left:1px solid #e5e5e5;
-	position:absolute;
-	width:100%;
+.mission-zone.move  {
+	-webkit-transition:-webkit-transform linear 0.1s;
+	-moz-transition:-moz-transform linear 0.1s;
+	-ms-transition:-ms-transform linear 0.1s;
+	-o-transition:-o-transform linear 0.1s;
+	transition:transform linear 0.1s;
+
 	-webkit-transform: translate(300px);
 	-moz-transform: translate(300px);
 	-ms-transform: translate(300px);
@@ -83,12 +91,8 @@ html, body, div[ng-view], div.container-fluid {
 	transform: translate(300px);
 }
 
-.mission-main {
-	-webkit-transform: translate(0);
-	-moz-transform: translate(0);
-	-ms-transform: translate(0);
-	-o-transform: translate(0);
-	transform: translate(0);
+.mission-zone {
+	background-color: white;
 }
 
 .menu {
@@ -125,6 +129,7 @@ html, body, div[ng-view], div.container-fluid {
 div[ng-view] {
 	padding-top:41px;
 }
+
 
 /* Notifications
 -------------------------------------------------- */
@@ -446,12 +451,12 @@ div[ng-view] {
 	z-index: 1000;
 }
 
-#drag-me.animated-return {
-	-webkit-transition:left linear 0.5s;
-	-moz-transition:left linear 0.5s;
-	-ms-transition:left linear 0.5s;
-	-o-transition:left linear 0.5s;
-	transition:left linear 0.5s;
+.animated-return {
+	-webkit-transition:all linear 0.2s;
+	-moz-transition:all linear 0.2s;
+	-ms-transition:all linear 0.2s;
+	-o-transition:all linear 0.2s;
+	transition:all linear 0.2s;
 }
 
 #target {
