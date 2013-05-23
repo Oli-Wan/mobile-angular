@@ -11,14 +11,12 @@
 		<p>Swipe me</p>
 	</div>
 	<br />
-	<div id="drag-me" class="gestured" 
-		ng-drag 
-		ng-drag-threshold="500"
-		ng-drag-action="dragMe()"
-		ng-drag-release="releaseMe()">
+	<div id="drag-me" class="gestured">
 		<p>Drag me {{dragMessage}}</p>
+		<ng-drag switch="dragSwitch" threshold="500"></ng-drag>
 	</div>
 	<div id="target">
 		HERE
 	</div>
+	<button class="btn" hm-tap="moveDraggable()">Move without drag</button>
 </div>

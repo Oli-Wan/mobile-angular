@@ -2,8 +2,7 @@
 smurAngular.controller("MissionContainerController", 
 	function MissionContainerController($scope, $rootScope, $routeParams, $http, $location, Mission, $window){
 		$scope.menu = false;
-		$scope.open = false;
-
+		
 		Mission.get(parseInt($routeParams.missionId)).then(function(data){
 			$scope.mission = data;
 		});
@@ -21,6 +20,10 @@ smurAngular.controller("MissionContainerController",
 			$scope.includedUrl = $scope.getPathFromParams();
 			$window.scrollTo(0,0);
 		});
+
+		$scope.toggleMenu = function(){
+			$scope.menu = !$scope.menu;
+		};
 
 		$scope.navigate = function(id) {
 			if(id == "back")
@@ -40,21 +43,8 @@ smurAngular.controller("MissionContainerController",
 			return "";
 		};
 
-		$scope.toggleLeftMenu = function() {
-			$scope.menu = !$scope.open;
-		};
-
-		$scope.dragStatus = function(open){
-			$scope.open = open;
-		}
-
 		$scope.showMenu = function() {
 			$scope.includedUrl = "";
 			$location.path("/mission/"+$scope.mission.id);
 		};
-
-		$rootScope.$watch('scrollX', function(newVal, oldVal){
-			if($scope.menu)
-				$scope.menu = false;
-		});
 	});

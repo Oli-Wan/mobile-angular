@@ -12,26 +12,22 @@
 			</li>
 		</ul>
 	</div>
-	<div class="mission-zone" 
-		ng-class="{true:'move', false:''}[menu]"
-		ng-drag 
-		ng-drag-threshold="300"
-		ng-drag-action="dragStatus(true)"
-		ng-drag-release="dragStatus(false)">
-	<div class="mission-main mission-name affix">
-		<div class="menu-button" hm-tap="toggleLeftMenu()">
-			<i ng-class="{true:'icon-arrow-right', false:'icon-arrow-left'}[open]"></i>
+	<div class="mission-zone" >
+		<div class="mission-main mission-name affix">
+			<div class="menu-button" hm-tap="toggleMenu()">
+				<i ng-class="{true:'icon-arrow-right', false:'icon-arrow-left'}[menu]"></i>
+			</div>
+			<h4> 
+				Mission {{mission.id}} 
+				<span class="pull-right" ng-hide="mission">
+					<loader></loader>
+				</span>
+			</h4>
 		</div>
-		<h4> 
-			Mission {{mission.id}} 
-			<span class="pull-right" ng-hide="mission">
-				<loader></loader>
-			</span>
-		</h4>
+		<div class="mission-main mission-description" >
+			<div ng-include="includedUrl">
+			</div>
+		</div>
+		<ng-drag switch="menu" threshold="300"></ng-drag>
 	</div>
-	<div class="mission-main mission-description" >
-	<div ng-include="includedUrl">
-	</div>
-</div>
-</div>
 </div>

@@ -95,6 +95,14 @@ html, body, div[ng-view], div.container-fluid {
 	background-color: white;
 }
 
+.mission-zone.no-menu {
+	-webkit-transform: translate(0);
+	-moz-transform: translate(0);
+	-ms-transform: translate(0);
+	-o-transform: translate(0);
+	transform: translate(0);
+}
+
 .menu {
 	background-color: white;
 	width:300px;
