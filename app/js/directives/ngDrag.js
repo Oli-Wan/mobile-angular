@@ -1,49 +1,68 @@
 smurAngular.directive('ngDrag', function($parse) {
 	return {
-		restrict: 'A',
+		restrict: 'E',
+		scope: {
+			dragSwitch: "=switch",
+			threshold: "@"
+		},
 		link: function ($scope, element, attrs) {
-			var threshold = parseInt(attrs.ngDragThreshold);
-			
-			var dragFn = $parse(attrs.ngDragAction);
-			var releaseFn = $parse(attrs.ngDragRelease);
+			var draggable = element.parent();
 
-			var thresholdExceeded = false;
+			$scope.thresholdExceeded = false;
+			if(attrs['ngDragSwitch'] === undefined)
+				$scope.thresholdExceeded = $scope.dragSwitch;
 
-			Hammer(element[0]).on('dragstart', function(event){
+			$scope.switch = function(value) {
+				if(attrs['switch'] === undefined)
+					return;
+				if($scope.dragSwitch == value)
+					return;
+
+				$scope.dragSwitch = value
+			};
+
+			$scope.move = function(){
+				var offset = 0
+				if($scope.thresholdExceeded)
+					offset = $scope.threshold;
+
+				draggable.addClass('animated-return');
+				draggable.css("transform", "translate("+offset+"px)");
+			};
+
+			$scope.$watch('dragSwitch', function(newValue){
+				$scope.thresholdExceeded = newValue;
+				$scope.move();
+			});
+
+			Hammer(draggable[0]).on('dragstart', function(event){
 				$(this).removeClass('animated-return');
 			});
 
-
-			Hammer(element[0]).on('drag', function(event){
+			Hammer(draggable[0]).on('drag', function(event){
 				var deltaX = event.gesture.deltaX;
 				
-				if(thresholdExceeded)
-					deltaX = deltaX + threshold;
+				if($scope.thresholdExceeded)
+					deltaX = deltaX + parseInt($scope.threshold);
 
 				$(this).css("transform", "translate("+deltaX+"px)");
 
 			});
 
-			Hammer(element[0]).on('dragend', function(event){
+			Hammer(draggable[0]).on('dragend', function(event){
 				$this = $(this);
 
-				var left = 0;
-
-				if($this.position().left > threshold) {
-					left = threshold;
-					thresholdExceeded = true;
-					$scope.$apply(function(){
-						dragFn($scope);
-					});
-				} else if (thresholdExceeded) {
-					thresholdExceeded = false;
-					$scope.$apply(function(){
-						releaseFn($scope);
-					});
+				if($this.position().left > $scope.threshold) {
+					$scope.thresholdExceeded = true;
+					$scope.switch(true);
+					$scope.$apply();
+				} else if ($scope.thresholdExceeded) {
+					$scope.thresholdExceeded = false;
+					$scope.switch(false);
+					$scope.$apply();
 				}
 
-				$this.addClass('animated-return');
-				$this.css("transform", "translate("+left+"px)");
+				$scope.move();
 			});
 		}
 	};
