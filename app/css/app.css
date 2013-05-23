@@ -6,8 +6,17 @@ body {
 	padding:0px;
 }
 
-html, body, div[ng-view], div.container-fluid {
+html, body, div[ng-view], div.container-fluid, .fill-screen-height {
+	-webkit-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 	height:100%;
+}
+
+div[ng-view] {
+	padding-top:41px;
 }
 
 .btn-add {
@@ -19,76 +28,35 @@ html, body, div[ng-view], div.container-fluid {
 	overflow-x:hidden;
 }
 
-.small-modal {
-	width:600px;
-	margin-left:-300px;
-}
-
 .controls-row {
 	margin-bottom:10px;
 }
 
-.mission-description-part {
-}
+/* Mission & menu
+-------------------------------------------------- */
 
 .mission-description {
 	padding-left: 20px;
+	padding-right: 20px;
 	padding-top:50px;
-	height:100%;
 }
 
 .mission-name {
-	top:40;
 	left:0;
 	right: 0;
 	z-index: 1000;
 	border-bottom:1px solid #08c;
-	box-shadow: 0 0 10px gray;
-}
-
-.mission-name>h4{
-	padding-right:30px;
+	box-shadow: 0 0 5px gray;
 }
 
 .menu-button {
 	float:left;
-	width:14px;
-	height:20px;
 	padding: 10px 13px;
 	margin-right:10px;
 }
 
 .menu-button:hover {
 	background-color: #f5f5f5;
-}
-
-.mission-main {
-	-webkit-transition:-webkit-transform linear 0.1s;
-	-moz-transition:-moz-transform linear 0.1s;
-	-ms-transition:-ms-transform linear 0.1s;
-	-o-transition:-o-transform linear 0.1s;
-	transition:transform linear 0.1s;
-	background-color: white;
-
-	-webkit-transform: translate(0);
-	-moz-transform: translate(0);
-	-ms-transform: translate(0);
-	-o-transform: translate(0);
-	transform: translate(0);
-}
-
-.mission-zone.move  {
-	-webkit-transition:-webkit-transform linear 0.1s;
-	-moz-transition:-moz-transform linear 0.1s;
-	-ms-transition:-ms-transform linear 0.1s;
-	-o-transition:-o-transform linear 0.1s;
-	transition:transform linear 0.1s;
-
-	-webkit-transform: translate(300px);
-	-moz-transform: translate(300px);
-	-ms-transform: translate(300px);
-	-o-transform: translate(300px);
-	transform: translate(300px);
 }
 
 .mission-zone {
@@ -104,12 +72,8 @@ html, body, div[ng-view], div.container-fluid {
 }
 
 .menu {
-	background-color: white;
 	width:300px;
 	position:absolute;
-	height:100%;
-	top:40;
-	left:0;
 }
 
 .menu-title {
@@ -125,19 +89,28 @@ html, body, div[ng-view], div.container-fluid {
 	margin-top:0;
 }
 
-.centered-content {
-	width:480px;
-	margin:auto;
+/* Transitions
+-------------------------------------------------- */
+
+.animate, .view-enter-setup, .view-leave-setup {
+	-webkit-transition:all linear 0.2s;
+	-moz-transition:all linear 0.2s;
+	-ms-transition:all linear 0.2s;
+	-o-transition:all linear 0.2s;
+	transition:all linear 0.2s;
 }
 
-.modal-body .not-modal {
-	display:none;
+.view-enter-setup {
+	opacity: 0;
 }
 
-div[ng-view] {
-	padding-top:41px;
+.view-enter-setup.view-enter-start {
+	opacity: 1;
 }
 
+.view-leave-setup.view-leave-start {
+	display: none;
+}
 
 /* Notifications
 -------------------------------------------------- */
@@ -147,20 +120,14 @@ div[ng-view] {
 	z-index: 1001;
 	position:fixed;
 	background-color: rgb(27, 27, 27);
-
-	-webkit-transition:all linear 0.5s;
-	-moz-transition:all linear 0.5s;
-	-ms-transition:all linear 0.5s;
-	-o-transition:all linear 0.5s;
-	transition:all linear 0.5s;
 }
 
 #notification-toggle.new {
-	-webkit-transform: scale(2.5);
-	-moz-transform: scale(2.5);
-	-ms-transform: scale(2.5);
-	-o-transform: scale(2.5);
-	transform: scale(2.5);
+	-webkit-transform: scale(2);
+	-moz-transform: scale(2);
+	-ms-transform: scale(2);
+	-o-transform: scale(2);
+	transform: scale(2);
 }
 
 #notification-toggle.open{
@@ -177,13 +144,6 @@ div[ng-view] {
 	overflow: hidden;
 	box-shadow: 0 0 10px black;
 	background-color: rgb(27, 27, 27);
-
-	-webkit-transition:height linear 0.5s;
-	-moz-transition:height linear 0.5s;
-	-ms-transition:height linear 0.5s;
-	-o-transition:height linear 0.5s;
-	transition:height linear 0.5s;
-
 }
 
 #notification-zone.open {
@@ -219,14 +179,6 @@ div[ng-view] {
 	background-image: linear-gradient(to bottom, #4e4e4e, black)
 }
 
-.notification {
-	-webkit-transition:all linear 0.5s;
-	-moz-transition:all linear 0.5s;
-	-ms-transition:all linear 0.5s;
-	-o-transition:all linear 0.5s;
-	transition:all linear 0.5s;
-}
-
 .notification.swipe-left {
 	-webkit-transform: translate(-300px);
 	-moz-transform: translate(-300px);
@@ -247,9 +199,10 @@ div[ng-view] {
 }
 
 
-/* Launcher
+/* Launcher (hidden)
 -------------------------------------------------- */
 .application-starter {
+	display: none;
 	text-align:center;
 }
 
@@ -286,7 +239,7 @@ div[ng-view] {
 	left:0;
 	background-color:black;
 	opacity:0.5;
-	z-index:1000;
+	z-index:1050;
 }
 
 #lightBox {
@@ -296,74 +249,16 @@ div[ng-view] {
 	top:50%;
 	left:50%;
 	margin:-150px 0 0 -150px;
-	z-index: 1002;
+	z-index: 1052;
 	background-color: white;
 }
+
 #lightBox>img {
 	max-height: 500px;
 }
 
-.thumbnail{
-	position: relative;
-}
-
-.thumbnail>a {
-	position: absolute;
-	top: 0;
-	right: 0;
-	margin-bottom:-20px;
-	background-color: black;
-	width:17px;
-	padding-left:3px;
-	height: 20px;
-	border-radius: 20px;
-}
-
-/* Transitions
--------------------------------------------------- */
-
-.view-enter-setup, .view-leave-setup {
-	-webkit-transition-property:  opacity;
-	-webkit-transition-duration: 0.25s;
-	-webkit-transition-timing-function: linear;
-	-moz-transition-property:  opacity;
-	-moz-transition-duration: 0.25s;
-	-moz-transition-timing-function: linear;
-	-ms-transition-property:  opacity;
-	-ms-transition-duration: 0.25s;
-	-ms-transition-timing-function: linear;
-	-o-transition-property: opacity;
-	-o-transition-duration: 0.25s;
-	-o-transition-timing-function: linear;
-	transition-property:  opacity;
-	transition-duration: 0.25s;
-	transition-timing-function: linear;
-}
-
-
-.view-enter-setup {
-	opacity: 0;
-}
-
-.view-enter-setup.view-enter-start {
-	opacity: 1;
-}
-
-.view-leave-setup.view-leave-start {
-	display: none;
-}
-
-.inclusion-leave-setup.inclusion-leave-start {
-	-webkit-transform: scale(0.8);
-	-moz-transform: scale(0.8);
-	-ms-transform: scale(0.8);
-	-o-transform: scale(0.8);
-	transform: scale(0.8);
-}
-
 /* Sidenav
 -------------------------------------------------- */
-
 
 .bs-docs-sidenav {
 	width: inherit;
@@ -428,14 +323,6 @@ div[ng-view] {
 	color:white;
 }
 
-#swipe-me{
-	-webkit-transition:all linear 0.5s;
-	-moz-transition:all linear 0.5s;
-	-ms-transition:all linear 0.5s;
-	-o-transition:all linear 0.5s;
-	transition:all linear 0.5s;
-}
-
 #swipe-me.swipe-left {
 	-webkit-transform: translate(-300px);
 	-moz-transform: translate(-300px);
@@ -459,14 +346,6 @@ div[ng-view] {
 	z-index: 1000;
 }
 
-.animated-return {
-	-webkit-transition:all linear 0.2s;
-	-moz-transition:all linear 0.2s;
-	-ms-transition:all linear 0.2s;
-	-o-transition:all linear 0.2s;
-	transition:all linear 0.2s;
-}
-
 #target {
 	position:relative;
 	top:-50px;
@@ -475,8 +354,3 @@ div[ng-view] {
 	width:50px;
 	background-color: red;
 }
-
-
-
-
-

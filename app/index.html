@@ -17,7 +17,7 @@
     		<a class="brand" href="#">ResUrgence Mobile</a>
     		<ul class="nav" ng-controller="CommandController">
     			<li class="dropdown">
-    				<a id="notification-toggle" class="dropdown-toggle" hm-tap="toggleNotifcations()" ng-class="{'open':notificationsVisible, 'new':change}">
+    				<a id="notification-toggle" class="dropdown-toggle animate" hm-tap="toggleNotifcations()" ng-class="{'open':notificationsVisible, 'new':change}">
 					    <ng-pluralize count="nb"
     							when="{'0': 'Aucune notification',
 								    'one': '1 notification',
@@ -25,12 +25,12 @@
     					</ng-pluralize>
     					<b class="caret"></b>
     				</a>
-    				<div id="notification-zone" ng-class="{true:'open', false:''}[notificationsVisible]">
+    				<div id="notification-zone" ng-class="{true:'open', false:''}[notificationsVisible]" class="animate">
     					<div class="notification-container">
 	    					<a ng-repeat="notification in notifications" 
 	    						hm-swipe-left="swipeLeft(notification, $index)" 
 	    						hm-swipe-right="swipeRight(notification, $index)" 
-	    						class="notification" ng-class="{'swipe-left':swipeLeft[$index], 'swipe-right':swipeRight[$index]}"
+	    						class="notification animate" ng-class="{'swipe-left':swipeLeft[$index], 'swipe-right':swipeRight[$index]}"
 	    						hm-tap="goToNotification(notification)">
 	    						<span ng-show="notification.data.type == 'update'">
 	    							La mission #{{notification.data.id}} a été mise à jour.
@@ -51,7 +51,7 @@
 	</div>
 
 	<div id="container" class="container-fluid">
-		<div class="application-starter" style="display:none">
+		<div class="application-starter">
 			<h1>ResUrgences Mobile</h1>
 			<p>Bienvenue dans l'application mobile ResUrgences</p>
 			<button  class="btn btn-primary btn-large" 

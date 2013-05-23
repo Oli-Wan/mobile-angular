@@ -26,7 +26,7 @@ smurAngular.directive('ngDrag', function($parse) {
 				if($scope.thresholdExceeded)
 					offset = $scope.threshold;
 
-				draggable.addClass('animated-return');
+				draggable.addClass('animate');
 				draggable.css("transform", "translate("+offset+"px)");
 			};
 
@@ -36,7 +36,7 @@ smurAngular.directive('ngDrag', function($parse) {
 			});
 
 			Hammer(draggable[0]).on('dragstart', function(event){
-				$(this).removeClass('animated-return');
+				$(this).removeClass('animate');
 			});
 
 			Hammer(draggable[0]).on('drag', function(event){
