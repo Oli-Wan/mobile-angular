@@ -4,7 +4,8 @@ smurAngular.directive('ngDrag', function($parse) {
 		scope: {
 			dragSwitch: "=switch",
 			threshold: "@",
-			onThreshold: "&"
+			onThreshold: "&",
+			bounded: "@"
 		},
 		link: function ($scope, element, attrs) {
 			var draggable = element.parent();
@@ -54,6 +55,9 @@ smurAngular.directive('ngDrag', function($parse) {
 
 				if($scope.thresholdExceeded)
 					delta = delta + parseInt($scope.threshold);
+
+				if($scope.bounded && delta > $scope.threshold)
+					delta = $scope.threshold;
 
 				$(this).css("transform", "translate"+$scope.axis+"("+delta+"px)");
 
