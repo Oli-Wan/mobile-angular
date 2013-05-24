@@ -39,6 +39,8 @@ div[ng-view] {
 	padding-left: 20px;
 	padding-right: 20px;
 	padding-top:50px;
+	background-color: white;
+	overflow: auto;
 }
 
 .mission-name {
@@ -47,6 +49,7 @@ div[ng-view] {
 	z-index: 1000;
 	border-bottom:1px solid #08c;
 	box-shadow: 0 0 5px gray;
+	background-color: white;
 }
 
 .menu-button {
@@ -92,7 +95,7 @@ div[ng-view] {
 /* Transitions
 -------------------------------------------------- */
 
-.animate, .view-enter-setup, .view-leave-setup {
+.animate, .view-enter, .view-leave {
 	-webkit-transition:all linear 0.2s;
 	-moz-transition:all linear 0.2s;
 	-ms-transition:all linear 0.2s;
@@ -100,15 +103,15 @@ div[ng-view] {
 	transition:all linear 0.2s;
 }
 
-.view-enter-setup {
+.view-enter {
 	opacity: 0;
 }
 
-.view-enter-setup.view-enter-start {
+.view-enter-active {
 	opacity: 1;
 }
 
-.view-leave-setup.view-leave-start {
+.view-leave-active {
 	display: none;
 }
 
@@ -381,4 +384,9 @@ div[ng-view] {
 	width:70px;
 	background-color: red;
 }
+
+#hold-me.hold {
+	background-color: red;
+}
+
 

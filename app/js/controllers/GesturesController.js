@@ -1,6 +1,6 @@
 smurAngular.controller('GesturesController', 
 	function GesturesController($scope) {
-		$scope.dragMessage = "right"
+		$scope.hold = false;
 		$scope.dragSwitch = false;
 		$scope.dragSwitch2 = false;
 		$scope.dragSwitch3 = false;
@@ -31,6 +31,10 @@ smurAngular.controller('GesturesController',
 			console.log("Threshold", message);
 		};
 
+		$scope.myFunction = function() {
+			console.log("Fonction métier");
+		}
+
 		$scope.moveDraggable = function(){
 			$scope.dragSwitch = !$scope.dragSwitch;
 		};
@@ -46,5 +50,10 @@ smurAngular.controller('GesturesController',
 		$scope.releaseMe = function(){
 			$scope.dragMessage = "right"
 		};
+
+		$scope.holdMe = function(){
+			$scope.hold = !$scope.hold;
+		};
+
 
 	});

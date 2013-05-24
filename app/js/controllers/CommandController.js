@@ -1,5 +1,5 @@
 smurAngular.controller('CommandController', 
-	function CommandController($scope, $timeout, $location, Command) {
+	function CommandController($scope, $timeout, $location, $route, Command) {
 		$scope.swipeLeft = [];
 		$scope.swipeRight = [];
 
@@ -60,9 +60,15 @@ smurAngular.controller('CommandController',
 				$scope.toggleNotifcations();
 			});
 
-			if(command.data.type = "delete")
+			if(command.data.type == "delete")
 				$location.url("/");
-			else
-				$location.url("/mission/"+command.data.id).search({page: "mission"});
+			else {
+				var url = "/mission/"+command.data.id;
+				var currentPath = $location.path();
+				if(url == currentPath)
+					$route.reload();
+				else
+					$location.path(url).search({page: "mission"});
+			}
 		};
 	});

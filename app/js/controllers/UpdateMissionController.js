@@ -30,7 +30,7 @@ smurAngular.controller("UpdateMissionController",
 				$scope.mission.image = imageFile.name;	
 			}
 			
-			Mission.save($scope.mission).then(function() {
+			Mission.notifyAndSave($scope.mission).then(function() {
 				$scope.alerts = [];
 				$scope.alerts.push({
 					type: "success",

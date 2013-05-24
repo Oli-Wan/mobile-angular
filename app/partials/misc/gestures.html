@@ -15,7 +15,7 @@
 	<br />
 	<div id="drag-me" class="gestured" on-transition-end="end()">
 		<p>1</p>
-		<ng-drag switch="dragSwitch" threshold="500" on-threshold="onThreshold(1+2)"></ng-drag>
+		<ng-drag switch="dragSwitch" threshold="500" on-threshold="myFunction()"></ng-drag>
 	</div>
 	<div id="target">
 		HERE
@@ -23,12 +23,15 @@
 	<div class="clearfix" ></div>
 	<div id="drag-me-2" class="gestured" >
 		<p>2</p>
-		<ng-drag switch="dragSwitch3" threshold=
-		"200" axis="y" bounded="true"></ng-drag>
 		<ng-drag switch="dragSwitch2" threshold="-200" axis="y" bounded="true"></ng-drag>
 	</div>
 	<div class="clearfix" ></div>
 	<br />
 	<button class="btn" hm-tap="moveDraggable()">Move 1</button>
 	<button class="btn" hm-tap="moveDraggable2()">Move 2</button>
+	<br />
+	<div id="hold-me" class="gestured animate" hm-hold="holdMe()" ng-class="{true: 'hold',false:''}[hold]">
+		<p>Hold me</p>
+	</div>
+
 </div>
