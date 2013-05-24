@@ -2,7 +2,7 @@
 <html lang="en" ng-app="smurAngular">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
 	<title>ResUrgences Mobile</title>
 	<link rel="stylesheet" href="css/bootstrap-responsive.min.css"/>
 	<link rel="stylesheet" href="css/bootstrap.min.css"/>
@@ -24,12 +24,10 @@
     					</ng-pluralize>
     					<b class="caret"></b>
     				</a>
-    				<div id="notification-zone" ng-class="{true:'open', false:''}[notificationsVisible]" class="animate">
+    				<div id="notification-zone" class="animate">
     					<div class="notification-container">
 	    					<a ng-repeat="notification in notifications" 
-	    						hm-swipe-left="swipeLeft(notification, $index)" 
-	    						hm-swipe-right="swipeRight(notification, $index)" 
-	    						class="notification animate" ng-class="{'swipe-left':swipeLeft[$index], 'swipe-right':swipeRight[$index]}"
+	    						class="notification"
 	    						hm-tap="goToNotification(notification)">
 	    						<span ng-show="notification.data.type == 'update'">
 	    							La mission #{{notification.data.id}} a été mise à jour.
@@ -37,12 +35,23 @@
 	    						<span ng-show="notification.data.type == 'delete'">
 	    							La mission #{{notification.data.id}} a été supprimée.
 	    						</span>
+	    						<ng-drag
+		    						on-threshold="hide(notification)" 
+		    						threshold="350"
+		    						axis="x">
+		    					</ng-drag>
 	    					</a>
     					</div>
 						
-						<div class="swipe" hm-swipe-up="toggleNotifcations()">
+						<div class="swipe">
 							<i class="icon-align-justify"></i>
 						</div>
+						<ng-drag 
+							switch="notificationsVisible" 
+							threshold="400"
+							axis="y"
+							bounded="true">
+						</ng-drag>
     				</div>
     			</li>
     		</ul>
@@ -126,11 +135,13 @@
 	<script src="js/services/SocketService.js"></script>
 	<script src="js/services/StoreProvider.js"></script>
 	<script src="js/services/SyncedResourceService.js"></script>
+	<script src="js/services/transitionEndEvent.js"></script>
 
 	<script src="js/directives/ngTap.js"></script>
 	<script src="js/directives/ngFiles.js"></script>
 	<script src="js/directives/loader.js"></script>
 	<script src="js/directives/thumbnail.js"></script>
 	<script src="js/directives/ngDrag.js"></script>
+	<script src="js/directives/onTransitionEnd.js"></script>
 </body>
 </html>

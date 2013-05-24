@@ -117,7 +117,6 @@ div[ng-view] {
 
 #notification-toggle {
 	margin-bottom: -1px;
-	z-index: 1001;
 	position:fixed;
 	background-color: rgb(27, 27, 27);
 }
@@ -137,26 +136,32 @@ div[ng-view] {
 
 #notification-zone {
 	position:absolute;
-	height:0px;
-	top:40px;
-	z-index: 1000;
-	width:320px;
+	top:-361px;
+	z-index: -1;
+	width:350px;
 	overflow: hidden;
-	box-shadow: 0 0 10px black;
 	background-color: rgb(27, 27, 27);
-}
-
-#notification-zone.open {
 	border: 1px solid rgb(153, 153, 153);
 	height:400px;
 }
 
+#notification-zone.open {
+	box-shadow: 0 0 10px black;
+}
+
 #notification-zone>.notification-container {
 	height:370px;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 #notification-zone>.notification-container>.notification {
 	display: block;
+	-webkit-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 	width:100%;
 	line-height:40px;
 	padding-left:10px;
@@ -177,6 +182,14 @@ div[ng-view] {
 	width: 100%;
 	text-align: center;
 	background-image: linear-gradient(to bottom, #4e4e4e, black)
+}
+
+.notification {
+	-webkit-transition:-webkit-transform linear 0.2s;
+	-moz-transition:-moz-transform linear 0.2s;
+	-ms-transition:-ms-transform linear 0.2s;
+	-o-transition:-o-transform linear 0.2s;
+	transition:transform linear 0.2s;
 }
 
 .notification.swipe-left {
@@ -356,6 +369,16 @@ div[ng-view] {
 	float:left;
 	margin-left:200px;
 	height:50px;
-	width:50px;
+	width:70px;
 	background-color: red;
 }
+
+#target2 {
+	float:left;
+	margin-left:500px;
+	margin-top:150px;
+	height:50px;
+	width:70px;
+	background-color: red;
+}
+

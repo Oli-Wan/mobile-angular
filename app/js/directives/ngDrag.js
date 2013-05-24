@@ -9,8 +9,8 @@ smurAngular.directive('ngDrag', function($parse) {
 		},
 		link: function ($scope, element, attrs) {
 			var draggable = element.parent();
-
 			$scope.thresholdExceeded = false;
+			
 			if(attrs['switch'] === undefined)
 				$scope.thresholdExceeded = $scope.dragSwitch;
 
@@ -22,17 +22,11 @@ smurAngular.directive('ngDrag', function($parse) {
 				$scope.threshold = 500;
 
 			$scope.isDeltaAboveThreshold = function(delta) {
-				var leftMember;
-				var rightMember;
 				if($scope.threshold < 0) {
-					rightMember = delta;
-					leftMember = $scope.threshold;
+					return $scope.threshold >= delta;
 				} else {
-					leftMember = delta;
-					rightMember = $scope.threshold;
+					return delta >= $scope.threshold;
 				}
-
-				return leftMember > rightMember;
 			};
 
 			$scope.switch = function(value) {
@@ -59,12 +53,10 @@ smurAngular.directive('ngDrag', function($parse) {
 			});
 
 			Hammer(draggable[0]).on('dragstart', function(event){
-				event.stopPropagation();
 				$(this).removeClass('animate');
 			});
 
 			Hammer(draggable[0]).on('drag', function(event) {
-				event.stopPropagation();
 				var delta = event.gesture['delta'+$scope.axis];
 
 				if($scope.thresholdExceeded)
@@ -78,19 +70,10 @@ smurAngular.directive('ngDrag', function($parse) {
 			});
 
 			Hammer(draggable[0]).on('dragend', function(event){
-				event.stopPropagation();
 				$this = $(this);
 				var delta = event.gesture['delta'+$scope.axis];
-
-				var leftMember;
-				var rightMember;
-				if($scope.threshold < 0) {
-					rightMember = delta;
-					leftMember = $scope.threshold;
-				} else {
-					leftMember = delta;
-					rightMember = $scope.threshold;
-				}
+				if($scope.thresholdExceeded)
+					delta = delta + parseInt($scope.threshold);
 
 				if( $scope.isDeltaAboveThreshold(delta) ) {
 					$scope.thresholdExceeded = true;

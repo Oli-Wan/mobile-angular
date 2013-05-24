@@ -10,7 +10,6 @@ smurAngular.controller('CommandController',
 			}, 500);
 		};
 
-		console.log("Command controller");
 		$scope.nb = 0;
 		$scope.notificationsVisible = false;
 
@@ -19,8 +18,10 @@ smurAngular.controller('CommandController',
 		});
 
 		$scope.loadNewCommands = function() {
+			$scope.swipeLeft = [];
+			$scope.swipeRight = [];
+
 			Command.getNewCommands().then(function(data){
-				console.log(data);
 				$scope.notifications = data;
 
 				if(data.length > $scope.nb )
@@ -44,11 +45,10 @@ smurAngular.controller('CommandController',
 			$scope.swipe(command, $scope.swipeRight, index)
 		};
 
-		$scope.swipe = function(command, array, index) {
+		$scope.hide = function(command) {
 			command.status = "read";
-			array[index] = true;
 			Command.save(command).then(function(){
-				$scope.nb = $scope.nb - 1;
+				$scope.loadNewCommands();
 			});
 		};
 

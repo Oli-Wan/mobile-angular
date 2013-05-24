@@ -3,6 +3,7 @@ smurAngular.controller('GesturesController',
 		$scope.dragMessage = "right"
 		$scope.dragSwitch = false;
 		$scope.dragSwitch2 = false;
+		$scope.dragSwitch3 = false;
 
 		$scope.tapMe = function(){
 			console.log("Tapped");
@@ -36,6 +37,10 @@ smurAngular.controller('GesturesController',
 
 		$scope.moveDraggable2 = function(){
 			$scope.dragSwitch2 = !$scope.dragSwitch2;
+		};
+
+		$scope.moveDraggable3 = function(){
+			$scope.dragSwitch3 = !$scope.dragSwitch3;
 		};
 
 		$scope.releaseMe = function(){
