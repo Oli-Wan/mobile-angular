@@ -22,6 +22,10 @@ smurAngular.controller('GesturesController',
 			console.log("watch drag", newValue);
 		});
 
+		$scope.onThreshold = function(message) {
+			console.log("Threshold", message);
+		};
+
 		$scope.moveDraggable = function(){
 			$scope.dragSwitch = !$scope.dragSwitch;
 		};

@@ -3,7 +3,8 @@ smurAngular.directive('ngDrag', function($parse) {
 		restrict: 'E',
 		scope: {
 			dragSwitch: "=switch",
-			threshold: "@"
+			threshold: "@",
+			onThreshold: "&"
 		},
 		link: function ($scope, element, attrs) {
 			var draggable = element.parent();
@@ -11,15 +12,13 @@ smurAngular.directive('ngDrag', function($parse) {
 			$scope.thresholdExceeded = false;
 			if(attrs['switch'] === undefined)
 				$scope.thresholdExceeded = $scope.dragSwitch;
-			
+				
 			$scope.axis = "X";
 			if(attrs['axis'] !== undefined)
 				$scope.axis = attrs['axis'].toUpperCase();
 
 			if($scope.threshold === undefined)
 				$scope.threshold = 500;
-
-			console.log($scope.axis);
 
 			$scope.switch = function(value) {
 				if(attrs['switch'] === undefined)
@@ -35,7 +34,6 @@ smurAngular.directive('ngDrag', function($parse) {
 				if($scope.thresholdExceeded)
 					offset = $scope.threshold;
 
-				console.log("offset:",offset);
 				draggable.addClass('animate');
 				draggable.css("transform", "translate"+$scope.axis+"("+offset+"px)");
 			};
@@ -46,10 +44,12 @@ smurAngular.directive('ngDrag', function($parse) {
 			});
 
 			Hammer(draggable[0]).on('dragstart', function(event){
+				event.stopPropagation();
 				$(this).removeClass('animate');
 			});
 
-			Hammer(draggable[0]).on('drag', function(event){
+			Hammer(draggable[0]).on('drag', function(event) {
+				event.stopPropagation();
 				var delta = event.gesture['delta'+$scope.axis];
 
 				if($scope.thresholdExceeded)
@@ -60,6 +60,7 @@ smurAngular.directive('ngDrag', function($parse) {
 			});
 
 			Hammer(draggable[0]).on('dragend', function(event){
+				event.stopPropagation();
 				$this = $(this);
 				var delta = event.gesture['delta'+$scope.axis];
 
@@ -76,7 +77,9 @@ smurAngular.directive('ngDrag', function($parse) {
 				if( leftMember > rightMember) {
 					$scope.thresholdExceeded = true;
 					$scope.switch(true);
-					$scope.$apply();
+					$scope.$apply(function(){
+						$scope.onThreshold();
+					});
 				} else if ($scope.thresholdExceeded) {
 					$scope.thresholdExceeded = false;
 					$scope.switch(false);
