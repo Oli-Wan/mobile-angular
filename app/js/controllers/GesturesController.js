@@ -18,6 +18,10 @@ smurAngular.controller('GesturesController',
 			$scope.swipeRight = true;
 		};
 
+		$scope.end = function() {
+			console.log("Transition end");
+		};
+
 		$scope.$watch('dragSwitch', function(newValue){
 			console.log("watch drag", newValue);
 		});

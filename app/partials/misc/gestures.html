@@ -13,7 +13,7 @@
 	</div>
 	<div class="clearfix" ></div>
 	<br />
-	<div id="drag-me" class="gestured">
+	<div id="drag-me" class="gestured" on-transition-end="end()">
 		<p>1</p>
 		<ng-drag switch="dragSwitch" threshold="500" on-threshold="onThreshold(1+2)"></ng-drag>
 	</div>
@@ -21,7 +21,7 @@
 		HERE
 	</div>
 	<div class="clearfix" ></div>
-	<div id="drag-me-2" class="gestured">
+	<div id="drag-me-2" class="gestured" >
 		<p>2</p>
 		<ng-drag switch="dragSwitch2" threshold="-200" axis="y"></ng-drag>
 	</div>
