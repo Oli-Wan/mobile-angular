@@ -2,7 +2,7 @@
 
 
 // Declare app level module which depends on filters, and services
-var smurAngular = angular.module('smurAngular', ['ngResource', '$strap.directives']);
+var smurAngular = angular.module('smurAngular', ['ngResource', '$strap.directives', 'angular-gestures']);
 
 smurAngular.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', 
@@ -23,18 +23,39 @@ smurAngular.config(['$routeProvider', function($routeProvider) {
   });
   $routeProvider.when('/mission/:missionId/events/new', 
   {
-    templateUrl: 'partials/mission/events/new.html', 
-    controller: 'NewEventController'
+    templateUrl: 'partials/mission/events/form.html', 
+    controller: 'EditEventController'
   });
+  $routeProvider.when('/mission/:missionId/event/:eventId/edit', 
+  {
+    templateUrl: 'partials/mission/events/form.html', 
+    controller: 'EditEventController'
+  });
+
   $routeProvider.when('/mission/:missionId/staff/new', 
   {
     templateUrl: 'partials/mission/staff/new.html', 
     controller: 'NewStaffController'
   });
-  $routeProvider.when('/mission/:missionId/vehicles/new', 
+  $routeProvider.when('/mission/:missionId/vehicle/new', 
   {
     templateUrl: 'partials/mission/vehicles/new.html', 
     controller: 'NewVehicleController'
+  });
+  $routeProvider.when('/storagemanagement', 
+  {
+    templateUrl: 'partials/misc/storage-management.html', 
+    controller: 'StorageManagementController'
+  });
+  $routeProvider.when('/accelerometer', 
+  {
+    templateUrl: 'partials/misc/accelerometer.html', 
+    controller: 'AccelerometerController'
+  });
+  $routeProvider.when('/gestures', 
+  {
+    templateUrl: 'partials/misc/gestures.html', 
+    controller: 'GesturesController'
   });
   $routeProvider.otherwise({redirectTo: '/'});
 }]);
@@ -46,11 +67,21 @@ smurAngular.value('$strap.config', {
   }
 });
 
-smurAngular.run(function($rootScope, $window){
-  $rootScope.windowWidth = $window.outerWidth;
-  angular.element($window).bind('resize',function(){
-    $rootScope.windowWidth = $window.outerWidth;
-    $rootScope.$apply('windowWidth');
-  });
-})
+smurAngular.run(function($rootScope, $window, $timeout){
+  $rootScope.scrollX = $window.scrollX;
 
+  angular.element($window).bind('scroll',function(){
+    $rootScope.scrollX = $window.scrollX;
+    $rootScope.$apply('scrollX');
+  });
+
+  angular.element($window).bind('deviceorientation', function(data){
+    $rootScope.orientationData = data;
+    $rootScope.$apply('orientationData');
+  });
+
+  screenfull.onchange = function() {
+    $rootScope.fullscreen = screenfull.isFullscreen;
+    $rootScope.$apply('fullScreen');
+  };
+});

@@ -1,38 +1,32 @@
 
 smurAngular.controller('MissionsController', 
-	function MissionsController($scope, Mission, $location, $modal){
-		$scope.missions = Mission.getAll();
+	function MissionsController($scope, Mission, $location, $window){
+		Mission.getAll().then(function(data){
+			$scope.missions = data;
+		});
 
-		$scope.delete = function(id) {
-			Mission.delete(id);
-			$scope.missions = Mission.getAll();
-		};
+		$scope.$on('dataChanged', function() {
+			Mission.getAll().then(function(data){
+				$scope.missions = data;
+			});
+		});
 
 		$scope.navigateTo = function(mission) {
-			if($scope.password == "1234") {
-				$scope.dismiss();
-				$location.url("/mission/"+mission.id).search({page: "mission"});
-			} else {
-				$scope.alerts.push({
-					"type": "error",
-					"title": "Mauvais mot de passe",
-					"content": "Essayez 1234"
-				});
-			}
+			$location.url("/mission/"+mission.id).search({page: "mission"});
 		};
 
 		$scope.goToNewMission = function(){
-			$location.url("/mission/new");
+			$location.url('/mission/new');
 		};
 
-		$scope.passwordModal = function(mission) {
-			$scope.selectedMission = mission
-			$scope.alerts = [];
-			return $modal({
-				scope: $scope,
-				template: '/partials/missions/password.html', 
-				show: true, 
-				backdrop: 'static'
-			});
+		$scope.deleteModal = function(id) {
+			var confirm = $window.confirm("Êtes vous sûr de vouloir supprimer la mission #"+id);
+			if(confirm) {
+				Mission.notifyAndRemove(id).then(function(){
+					Mission.getAll().then(function(data){
+						$scope.missions = data;
+					});
+				});
+			}
 		};
 	});

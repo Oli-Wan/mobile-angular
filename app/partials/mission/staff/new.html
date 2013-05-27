@@ -1,51 +1,46 @@
 <div>
-	<h1>Ajouter une personne</h1>
-	<form class="form form-horizontal">
+	<h4>Ajouter une personne</h4>
+	<form class="form" ng-class="{true:'', false:'form-horizontal'}[mobile]">
 		<div class="control-group">
 			<label for="" class="control-label">Fonction</label>
 			<div class="controls">
-				<select ng-model="search.function" class="input-xlarge">
+				<select ng-model="search.function" class="input-normal">
 					<option ng-repeat="function in functions" value="{{function.id}}">{{function.name}}</option>
 				</select>
 			</div>
 		</div>
 		<div class="control-group">
-			<label for="" class="control-label">Resource</label>
+			<label for="" class="control-label">Resource*</label>
 			<div class="controls">
-				<select class="input-xlarge">
-					<option ng-repeat="person in persons  | filter:search">
+				<select id="persons" class="input-normal" 
+					ng-model="staff.id">
+					<option ng-repeat="person in persons  | filter:search" value="{{person.id}}">
 						{{person.lastname}} {{person.firstname}}
 					</option>
-				</select>
+				</select>	
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="datepicker">Heure</label>
+			<label class="control-label" for="datepicker">Jour*</label>
 			<div class="controls">
 				<div class="input-append">
-					<input  class="input-normal" type="text" id="datepicker"
-							ng-model="date" bs-datepicker></input>
-					<button type="button" class="btn" data-toggle="datepicker">
-						<i class="icon-calendar"></i>
-					</button>
+					<input  class="input-normal" type="date" id="datepicker"
+							ng-model="staff.time.date">
+					</input>
 				</div>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="timepicker">Heure</label>
+			<label class="control-label" for="timepicker">Heure*</label>
 			<div class="controls">
 				<div class="input-append">
-					<input  class="input-normal" type="text" id="timepicker" data-show-meridian="false" data-template="modal" 
-							ng-model="time" bs-timepicker></input>
-					<button type="button" class="btn" data-toggle="timepicker">
-						<i class="icon-time"></i>
-					</button>
+					<input  class="input-normal" type="time" id="timepicker" data-show-meridian="false" ng-model="staff.time.time"></input>
 				</div>
 			</div>
 		</div>
 		<div class="form-actions">
-			<button class="btn" ng-click="back()">Annuler</button>
-			<button class="btn btn-primary" ng-click="add()">Ajouter</button>
+			<button class="btn" hm-tap="back()">Annuler</button>
+			<button class="btn btn-primary" ng-disabled="form.$invalid" hm-tap="add()">Ajouter</button>
 		</div>
 	</form>
 </div>

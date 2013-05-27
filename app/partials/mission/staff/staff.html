@@ -1,41 +1,29 @@
 <div class="mission-description-part">
 	<div ng-controller="StaffController">
-		<div class="visible-phone">
-			<button type="button" class="btn btn-primary"
-				ng-click="showMenu()">
-				<i class="icon-arrow-left icon-white" />
-			</button>
-			<div class="clearfix" ></div>
-		</div>
-
 		<h3 class="pull-left">Personnel</h3>
 
-		<button type="button" class="btn btn-primary btn-add pull-right" 
-			ng-click="goToNewStaff()">
+		<a class="btn btn-primary btn-add pull-right" 
+			hm-tap="goToNewStaff()">
 			Ajouter une personne
-		</button>
+		</a>
 
 		<div class="clearfix" />
-
+		
+		<div class="alert fade" ng-repeat="alert in alerts" bs-alert="alert"></div>
+		
 		<table class="table table-hover">
-			<tr>
-				<td>Ballouz Michel</td>
-				<td>Médecin</td>
-				<td>13h37</td>
+			<tr ng-hide="staff.length">
+				<td colspan="4">Aucun personnel</td>
+			</tr>
+
+			<tr ng-repeat="person in staff">
+				<td>{{person.lastname}} {{person.firstname}}</td>
+				<td>{{functions[person.function.id]}}</td>
+				<td>{{person.time.time}}</td>
 				<td>
-					<button class="btn btn-danger" bs-modal="'/partials/misc/deleteConfirmation.html'">
+					<button class="btn btn-danger" hm-tap="deleteModal(person)">
 						<i class="icon-trash icon-white"></i>
 					</button>				
-				</td>
-			</tr>
-			<tr>
-				<td>Maller Jean-Pierre</td>
-				<td>Ambulancier</td>
-				<td>13h37</td>
-				<td>
-					<button class="btn btn-danger" bs-modal="'/partials/misc/deleteConfirmation.html'">
-						<i class="icon-trash icon-white"></i>
-					</button>
 				</td>
 			</tr>
 		</table>

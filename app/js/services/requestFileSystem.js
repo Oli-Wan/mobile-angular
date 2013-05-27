@@ -1,0 +1,1 @@
+smurAngular.value("requestFileSystem", window.requestFileSystem || window.webkitRequestFileSystem);

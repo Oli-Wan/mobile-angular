@@ -1,38 +1,33 @@
 
 smurAngular.controller("NewStaffController", 
-	function NewStaffController($scope, $http, $location, $routeParams, Mission) {
-		$scope.mission = Mission.get($routeParams.missionId);
+	function NewStaffController($scope, $http, $location, $routeParams, Mission, Staff, Utils, mobile) {
+		$scope.staff = {};
+		$scope.staff.time = Utils.getCurrentDateAndTime();
+		$scope.mobile = mobile;
 
+		Mission.get(parseInt($routeParams.missionId)).then(function(data){
+			$scope.mission = data;
+		});
+
+		Staff.getAll().then(function(data) {
+			$scope.persons = data;
+		});
+		
 		$http.get('/resources/functions.json').success(function(data){
 			$scope.functions = data;
 		});
 
-		$http.get('/resources/persons.json').success(function(data){
-			$scope.persons = data;
-		});
-
-		var currentTime = new Date();
-
-		$scope.date = currentTime.getDate()+"/"+currentTime.getMonth()+"/"+currentTime.getFullYear();
-		$scope.time = currentTime.getHours()+":"+currentTime.getMinutes();
-
 		$scope.back = function() {
-			$location.url("/mission/"+$scope.mission.id).search({page: "staff"});
+			$location.url("/mission/"+$routeParams.missionId).search({page: "staff"});
 		};
 
 		$scope.add = function() {
-			$scope.staff.store="staff";
+			if($scope.mission.staff === undefined)
+				$scope.mission.staff = [];
+			
 			$scope.mission.staff.push($scope.staff);
-
-			Mission.getStore().then(function(store){
-				store.put($scope.mission, function(){
-					$scope.alerts = [];
-					$scope.alerts.push({
-						type: "success",
-						title: "Succès",
-						content: "Mission mise à jour avec succès"
-					});
-				});
+			Mission.save($scope.mission).then(function(){
+				$scope.back();
 			});
 		};
 	});
