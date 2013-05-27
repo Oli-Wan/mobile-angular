@@ -1,4 +1,4 @@
-smurAngular.run(function($timeout, $http, Command) {
+mobileAngular.run(function($timeout, $http, Command) {
 	$timeout(function sendingFunction(){
 		Command.getNonSentCommands().then(function(data){
 			if(data.length == 0) {

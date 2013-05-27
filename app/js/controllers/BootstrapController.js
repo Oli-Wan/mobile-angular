@@ -1,4 +1,4 @@
-smurAngular.controller('BootstrapController', 
+mobileAngular.controller('BootstrapController', 
 	function BootstrapController($scope, $http, ClientID, Backend, localStorage, Vehicle, Staff, $window) {
 		var boostrapedKey = "SMUR_BOOSTRAPED";
 		$scope.boostraped = localStorage.getItem(boostrapedKey);

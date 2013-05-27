@@ -1,4 +1,4 @@
-smurAngular.directive('ngTap', function() {
+mobileAngular.directive('ngTap', function() {
 	return function(scope, element, attrs) {
 		var tapping;
 		tapping = false;

@@ -1,5 +1,5 @@
 
-smurAngular.controller("StaffController", 
+mobileAngular.controller("StaffController", 
 	function StaffController($scope, $routeParams, $http, $window, $location, Mission, Staff){
 		Mission.get(parseInt($routeParams.missionId)).then(function(data) {
 			$scope.mission = data;

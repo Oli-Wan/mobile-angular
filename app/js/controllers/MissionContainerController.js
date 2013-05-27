@@ -1,5 +1,5 @@
 
-smurAngular.controller("MissionContainerController", 
+mobileAngular.controller("MissionContainerController", 
 	function MissionContainerController($scope, $rootScope, $routeParams, $http, $location, Mission, $window){
 		$scope.menu = false;
 		

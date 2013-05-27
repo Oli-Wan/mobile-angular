@@ -1,4 +1,4 @@
-smurAngular.factory("transitionEndEvent", function (){
+mobileAngular.factory("transitionEndEvent", function (){
 	var t;
 	var el = document.createElement('fakeelement');
 	var result;

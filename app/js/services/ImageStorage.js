@@ -1,4 +1,4 @@
-smurAngular.factory("ImageStorage", function ImageStorage($q, $rootScope, FileSystem, FileSystemUtils){
+mobileAngular.factory("ImageStorage", function ImageStorage($q, $rootScope, FileSystem, FileSystemUtils){
 	return {
 		save: function(fileName, blob) {
 			var deffered = $q.defer();

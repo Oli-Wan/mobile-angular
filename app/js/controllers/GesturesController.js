@@ -1,4 +1,4 @@
-smurAngular.controller('GesturesController', 
+mobileAngular.controller('GesturesController', 
 	function GesturesController($scope) {
 		$scope.hold = false;
 		$scope.dragSwitch = false;

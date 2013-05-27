@@ -1,1 +1,1 @@
-smurAngular.value("url", window.URL || window.webkitURL);
+mobileAngular.value("url", window.URL || window.webkitURL);

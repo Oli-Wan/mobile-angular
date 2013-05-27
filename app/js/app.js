@@ -2,9 +2,9 @@
 
 
 // Declare app level module which depends on filters, and services
-var smurAngular = angular.module('smurAngular', ['ngResource', '$strap.directives', 'angular-gestures']);
+var mobileAngular = angular.module('mobileAngular', ['ngResource', '$strap.directives', 'angular-gestures']);
 
-smurAngular.config(['$routeProvider', function($routeProvider) {
+mobileAngular.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', 
   {
     templateUrl: 'partials/missions.html', 
@@ -61,13 +61,13 @@ smurAngular.config(['$routeProvider', function($routeProvider) {
 }]);
 
 //default for datepicker
-smurAngular.value('$strap.config', {
+mobileAngular.value('$strap.config', {
   datepicker: {
     format: 'dd/mm/yyyy'
   }
 });
 
-smurAngular.run(function($rootScope, $window, $timeout){
+mobileAngular.run(function($rootScope, $window, $timeout){
   $rootScope.scrollX = $window.scrollX;
 
   angular.element($window).bind('scroll',function(){

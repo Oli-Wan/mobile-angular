@@ -1,5 +1,5 @@
 
-smurAngular.controller("NewStaffController", 
+mobileAngular.controller("NewStaffController", 
 	function NewStaffController($scope, $http, $location, $routeParams, Mission, Staff, Utils) {
 		$scope.staff = {};
 		$scope.staff.time = Utils.getCurrentDateAndTime();

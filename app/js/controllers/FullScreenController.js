@@ -1,4 +1,4 @@
-smurAngular.controller("FullScreenController", 
+mobileAngular.controller("FullScreenController", 
 	function FullScreenController($scope, $window){
 		if(screenfull.enabled)
 			$scope.fullscreenSupport = true;

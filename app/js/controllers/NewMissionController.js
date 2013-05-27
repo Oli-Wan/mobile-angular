@@ -1,5 +1,5 @@
 
-smurAngular.controller('NewMissionController', 
+mobileAngular.controller('NewMissionController', 
 	function NewMissionController($scope, $location, Mission, Vehicle, Staff, Utils, Command){
 		$scope.alerts = [];
 

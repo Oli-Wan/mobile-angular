@@ -1,4 +1,4 @@
-smurAngular.controller("StorageManagementController", 
+mobileAngular.controller("StorageManagementController", 
 	function StorageManagementController($scope, $http, Mission, Staff, Event, Vehicle, 
 		FileSystem, FileSystemUtils, persistentStorage, Command, localStorage, ClientID, Backend) {
 

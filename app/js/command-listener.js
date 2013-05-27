@@ -1,4 +1,4 @@
-smurAngular.run(function(SocketService, StoreProvider, $rootScope, $http, ClientID, Command, localStorage, Backend) {
+mobileAngular.run(function(SocketService, StoreProvider, $rootScope, $http, ClientID, Command, localStorage, Backend) {
 
 	var handleCommand = function(command, callback) {
 		command.status = "new";

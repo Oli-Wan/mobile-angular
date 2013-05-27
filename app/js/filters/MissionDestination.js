@@ -1,4 +1,4 @@
-smurAngular.filter('missionDestination', function(){
+mobileAngular.filter('missionDestination', function(){
 	return function(events) {
 		if(events === undefined)
 			return;

@@ -1,4 +1,4 @@
-smurAngular.directive('thumbnail', function() {
+mobileAngular.directive('thumbnail', function() {
 	return {
 		restrict: 'E',
 		scope: { src: "@" },
