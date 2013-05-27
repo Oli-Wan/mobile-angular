@@ -11,6 +11,6 @@ http://localhost:3000
 
 ## Prérequis
 
-Pour que l'application fonctionne correctement, il faut lancer en parallèle le serveur smur-backend.
+Pour que l'application fonctionne correctement, il faut lancer en parallèle le serveur backend.
 
-https://github.com/Oli-Wan/smur-backend
+https://github.com/Oli-Wan/backend
