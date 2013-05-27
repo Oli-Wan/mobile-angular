@@ -1,4 +1,4 @@
-smurAngular.factory("Command", 
+mobileAngular.factory("Command", 
 	function Command($q, $rootScope, $http, $timeout, ClientID, IDBService){
 		var storeWrapper = {
 			store: undefined,

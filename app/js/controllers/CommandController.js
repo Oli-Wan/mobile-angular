@@ -1,4 +1,4 @@
-smurAngular.controller('CommandController', 
+mobileAngular.controller('CommandController', 
 	function CommandController($scope, $timeout, $location, $route, Command) {
 		$scope.swipeLeft = [];
 		$scope.swipeRight = [];

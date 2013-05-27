@@ -1,4 +1,4 @@
-smurAngular.factory("FileSystemUtils", function FileSystemUtils($q, $window){
+mobileAngular.factory("FileSystemUtils", function FileSystemUtils($q, $window){
 	return {
 		errorHandler: function(e) {
 			var msg = '';

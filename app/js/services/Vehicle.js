@@ -1,5 +1,5 @@
 
-smurAngular.factory("Vehicle", function Vehicle($q, $rootScope, IDBService){
+mobileAngular.factory("Vehicle", function Vehicle($q, $rootScope, IDBService){
 	var storeWrapper = {
 		store: undefined,
 		getStore: function() {

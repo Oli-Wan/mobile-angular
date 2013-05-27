@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en" ng-app="smurAngular">
+<html lang="en" ng-app="mobileAngular" manifest="mobileapp.appcache">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-	<title>ResUrgences Mobile</title>
+	<title>Angular Mobile</title>
 	<link rel="stylesheet" href="css/bootstrap-responsive.min.css"/>
 	<link rel="stylesheet" href="css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="css/bootstrap-timepicker.css" />
@@ -13,7 +13,7 @@
 <body ng-controller="FullScreenController">
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		 <div class="navbar-inner">
-    		<a class="brand" href="#">ResUrgence Mobile</a>
+    		<a class="brand" href="#">Angular Mobile</a>
     		<ul class="nav" ng-controller="CommandController">
     			<li class="dropdown">
     				<a id="notification-toggle" class="dropdown-toggle animate" hm-tap="toggleNotifcations()" ng-class="{'open':notificationsVisible, 'new':change}">
@@ -71,8 +71,8 @@
 
 	<div id="container" class="container-fluid">
 		<div class="application-starter">
-			<h1>ResUrgences Mobile</h1>
-			<p>Bienvenue dans l'application mobile ResUrgences</p>
+			<h1>Angular Mobile</h1>
+			<p>Bienvenue dans l'application mobile Angular</p>
 			<button  class="btn btn-primary btn-large" 
 				hm-tap="requestFullScreen()">Lancer l'application
 			</button>

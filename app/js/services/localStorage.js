@@ -1,1 +1,1 @@
-smurAngular.value("localStorage", window.localStorage);
+mobileAngular.value("localStorage", window.localStorage);

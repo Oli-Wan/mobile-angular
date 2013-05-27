@@ -1,4 +1,4 @@
-smurAngular.directive('onTransitionEnd', function($parse, transitionEndEvent) {
+mobileAngular.directive('onTransitionEnd', function($parse, transitionEndEvent) {
 	return {
 		restrict: 'A',
 		link: function ($scope, element, attrs) {

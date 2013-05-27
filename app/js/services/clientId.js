@@ -1,4 +1,4 @@
-smurAngular.factory("ClientID", function(localStorage){
+mobileAngular.factory("ClientID", function(localStorage){
 	var clientIdKey = "SMUR_CLIENT_ID"
 	return {
 		get: function() {

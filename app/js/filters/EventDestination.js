@@ -1,4 +1,4 @@
-smurAngular.filter('eventDestination', function(){
+mobileAngular.filter('eventDestination', function(){
 	return function(input) {
 		if(input == "intervention")
 			return "/partials/mission/events/address.html";

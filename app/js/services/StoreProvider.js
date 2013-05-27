@@ -1,4 +1,4 @@
-  smurAngular.service("StoreProvider", 
+  mobileAngular.service("StoreProvider", 
  	function StoreProvider(Mission, Event, Vehicle, Staff){
  		return {
  			getStoreByName: function(name) {

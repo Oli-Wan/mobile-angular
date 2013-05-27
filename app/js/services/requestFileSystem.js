@@ -1,1 +1,1 @@
-smurAngular.value("requestFileSystem", window.requestFileSystem || window.webkitRequestFileSystem);
+mobileAngular.value("requestFileSystem", window.requestFileSystem || window.webkitRequestFileSystem);

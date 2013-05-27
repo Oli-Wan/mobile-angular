@@ -1,4 +1,4 @@
-smurAngular.factory("FileSystem", 
+mobileAngular.factory("FileSystem", 
 	function FileSystem($q, $rootScope, $window, FileSystemUtils, persistentStorage, requestFileSystem){
 	var fileSystemWrapper = {
 		getFileSystem: function() {

@@ -1,4 +1,4 @@
- smurAngular.service("SyncedResourceService", 
+ mobileAngular.service("SyncedResourceService", 
  	function SyncedResourceService($q, $rootScope, IDBService, Command){
  		return {
  			syncedResourceManager: function(storeWrapper) {

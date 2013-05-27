@@ -1,4 +1,4 @@
- smurAngular.service("IDBService", 
+ mobileAngular.service("IDBService", 
  	function IDBService($q, $rootScope){
  		return {
  			getIDBCrudObject: function(storeWrapper) {

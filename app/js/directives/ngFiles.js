@@ -1,4 +1,4 @@
-smurAngular.directive('ngFiles', function() {
+mobileAngular.directive('ngFiles', function() {
 	return {
 		restrict: 'A',
 		scope: { files: "=ngModel" },

@@ -1,4 +1,4 @@
-smurAngular.directive('ngDrag', function($parse) {
+mobileAngular.directive('ngDrag', function($parse) {
 	return {
 		restrict: 'E',
 		scope: {

@@ -1,1 +1,1 @@
-smurAngular.value("persistentStorage", navigator.persistentStorage || navigator.webkitPersistentStorage);
+mobileAngular.value("persistentStorage", navigator.persistentStorage || navigator.webkitPersistentStorage);

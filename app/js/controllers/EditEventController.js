@@ -1,4 +1,4 @@
-smurAngular.controller('EditEventController', 
+mobileAngular.controller('EditEventController', 
 	function EditEventController($scope, $http, $location, $routeParams, Mission, Event, Vehicle, Utils) {
 		Mission.get(parseInt($routeParams.missionId)).then(function(data) {
 			$scope.mission = data;

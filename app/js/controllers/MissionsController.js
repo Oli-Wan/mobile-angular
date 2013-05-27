@@ -1,5 +1,5 @@
 
-smurAngular.controller('MissionsController', 
+mobileAngular.controller('MissionsController', 
 	function MissionsController($scope, Mission, $location, $window){
 		Mission.getAll().then(function(data){
 			$scope.missions = data;

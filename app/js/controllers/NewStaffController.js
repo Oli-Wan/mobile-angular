@@ -1,9 +1,8 @@
 
-smurAngular.controller("NewStaffController", 
-	function NewStaffController($scope, $http, $location, $routeParams, Mission, Staff, Utils, mobile) {
+mobileAngular.controller("NewStaffController", 
+	function NewStaffController($scope, $http, $location, $routeParams, Mission, Staff, Utils) {
 		$scope.staff = {};
 		$scope.staff.time = Utils.getCurrentDateAndTime();
-		$scope.mobile = mobile;
 
 		Mission.get(parseInt($routeParams.missionId)).then(function(data){
 			$scope.mission = data;

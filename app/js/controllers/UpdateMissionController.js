@@ -1,4 +1,4 @@
-smurAngular.controller("UpdateMissionController", 
+mobileAngular.controller("UpdateMissionController", 
 	function UpdateMissionController($scope, $window, $routeParams, url, Mission, ImageStorage) {
 
 		$scope.$watch('mission', function(value){

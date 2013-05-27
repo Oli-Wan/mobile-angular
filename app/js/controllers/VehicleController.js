@@ -1,5 +1,5 @@
 
-smurAngular.controller("VehicleController", 
+mobileAngular.controller("VehicleController", 
 	function VehicleController($scope, $routeParams, $window, $location, Mission, Vehicle) {		
 		Mission.get(parseInt($routeParams.missionId)).then(function(data) {
 			$scope.mission = data;

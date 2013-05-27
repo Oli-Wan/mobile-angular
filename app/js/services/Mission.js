@@ -1,5 +1,5 @@
 
-smurAngular.factory("Mission", function Mission($q, $rootScope, SyncedResourceService){
+mobileAngular.factory("Mission", function Mission($q, $rootScope, SyncedResourceService){
 	var storeWrapper = {
 		store: undefined,
 		getStore: function() {
