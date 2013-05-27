@@ -1,5 +1,5 @@
 smurAngular.factory("Command", 
-	function Command($q, $rootScope, $http, $timeout, clientId, IDBService){
+	function Command($q, $rootScope, $http, $timeout, ClientID, IDBService){
 		var storeWrapper = {
 			store: undefined,
 			getStore: function() {
@@ -44,7 +44,7 @@ smurAngular.factory("Command",
 
 				var cmd = {}; 
 				cmd.date = Date.now();
-				cmd.origin = clientId;
+				cmd.origin = ClientID.get();
 				cmd.status = "waiting";
 				cmd.data = removal;
 				storeWrapper.getStore().then(function(cmdStore){
@@ -85,7 +85,7 @@ smurAngular.factory("Command",
 
 						var cmd = {}; 
 						cmd.date = Date.now();
-						cmd.origin = clientId;
+						cmd.origin = ClientID.get();
 						cmd.status = "waiting";
 						cmd.data = diff;
 

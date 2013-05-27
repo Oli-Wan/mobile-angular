@@ -1,4 +1,4 @@
-smurAngular.run(function(SocketService, StoreProvider, $rootScope, $http, clientId, Command, localStorage) {
+smurAngular.run(function(SocketService, StoreProvider, $rootScope, $http, ClientID, Command, localStorage) {
 
 	var handleCommand = function(command, callback) {
 		command.status = "new";
@@ -66,7 +66,7 @@ smurAngular.run(function(SocketService, StoreProvider, $rootScope, $http, client
 	SocketService.on('commands:new', function(command) {
 		localStorage.setItem("LAST_CMD", command.date);
 
-		if(command.origin == clientId)
+		if(command.origin == ClientID.get())
 			return;
 
 		handleCommand(command);

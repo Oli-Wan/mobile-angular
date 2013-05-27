@@ -1,10 +1,16 @@
-smurAngular.factory("clientId", function(localStorage, $http){
-	var clientId = localStorage.getItem("SMUR_CLIENT_ID");
-
-	if(!clientId) {
-		clientId = "clientIdTest";
-		localStorage.setItem("SMUR_CLIENT_ID", clientId);		
-	}
-
-	return clientId;
+smurAngular.factory("ClientID", function(localStorage){
+	var clientIdKey = "SMUR_CLIENT_ID"
+	return {
+		get: function() {
+			var clientId = localStorage.getItem(clientIdKey);
+			if(!clientId) {
+				this.set("temporaryClientId");
+				return "temporaryClientId";
+			}
+			return clientId;		
+		},
+		set: function(clientId) {
+			localStorage.setItem(clientIdKey, clientId);
+		}
+	};
 });

@@ -1,5 +1,7 @@
 smurAngular.controller("StorageManagementController", 
-	function StorageManagementController($scope, $http, Mission, Staff, Event, Vehicle, FileSystem, FileSystemUtils, persistentStorage, Command, localStorage) {
+	function StorageManagementController($scope, $http, Mission, Staff, Event, Vehicle, 
+			FileSystem, FileSystemUtils, persistentStorage, Command, localStorage, ClientID) {
+
 		$scope.alerts = [];
 
 		$scope.getStorageStats = function(){	
@@ -17,7 +19,7 @@ smurAngular.controller("StorageManagementController",
 
 		$scope.getStorageStats();
 
-		$scope.clientId = localStorage.getItem("SMUR_CLIENT_ID");
+		$scope.clientId = ClientID.get();
 
 		$scope.clearMission = function() {
 			Mission.clear().then(function() {
@@ -152,6 +154,6 @@ smurAngular.controller("StorageManagementController",
 		};
 
 		$scope.setClientId = function() {
-			localStorage.setItem("SMUR_CLIENT_ID", $scope.clientId);
+			ClientID.set($scope.clientId);
 		}
 	});
