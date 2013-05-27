@@ -1,13 +1,5 @@
 <div class="mission-description-part">
-	<form class="form form-horizontal">
-		<div class="visible-phone">
-			<button type="button" class="btn btn-primary"
-				ng-click="showMenu()">
-				<i class="icon-arrow-left icon-white" />
-			</button>
-			<div class="clearfix" ></div>
-		</div>
-
+	<form class="form form-horizontal" ng-controller="UpdateMissionController">
 		<h3>Mission</h3>
 
 		<div class="alert fade" ng-repeat="alert in alerts" bs-alert="alert"></div>
@@ -53,9 +45,20 @@
 		<h3>Observation</h3>
 
 		<textarea rows="5" ng-model="mission.observation" class="input-xxlarge"></textarea>
-
+		<div class="control-group">
+			<label for="lastname" class="control-label">Ajouter une photo</label>
+			<div class="controls">
+				<input type="file" accept="image/*" capture="camera" 
+					ng-model="image" ng-files>
+				<ul class="thumbnails">
+					<li class="span2">
+						<thumbnail src="{{imageUrl}}" />
+					</li>
+				</ul>
+			</div>
+		</div>
 		<div class="form-actions">
-			<button class="btn btn-primary" ng-click="save()">Sauvegarder</button>
+			<button class="btn btn-primary" hm-tap="save()">Sauvegarder</button>
 		</div>
 	</form>
 </div>

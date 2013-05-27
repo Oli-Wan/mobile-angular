@@ -1,0 +1,76 @@
+<div>	
+	<div class="alert fade" ng-repeat="alert in alerts" bs-alert="alert"></div>
+	<h3>IndexedDB</h3>
+	<div class="row">
+		<div class="span12">
+			<h4>Clear</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span3">
+			<button type="button" class="btn btn-primary btn-block" hm-tap="clearMission()">Clear mission store</button> <br />
+		</div>
+		<div class="span3">
+			<button type="button" class="btn btn-primary btn-block" hm-tap="clearStaff()">Clear staff store</button> <br />
+		</div>
+		<div class="span3">
+			<button type="button" class="btn btn-primary btn-block" hm-tap="clearEvent()">Clear event store</button> <br />
+		</div>
+		<div class="span3">
+			<button type="button" class="btn btn-primary btn-block" hm-tap="clearVehicle()">Clear vehicle store</button> <br />
+		</div>
+		<div class="span3">
+			<button type="button" class="btn btn-primary btn-block" hm-tap="clearCommand()">Clear command store</button> <br />
+		</div>
+
+	</div>
+	<div class="row">
+		<div class="span12">
+			<h4>Populate</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span3">
+			<button type="button" class="btn btn-primary btn-block" hm-tap="populateStaff()">Populate staff store</button> <br />
+		</div>
+		<div class="span3">
+			<button type="button" class="btn btn-primary btn-block" hm-tap="populateVehicle()">Populate vehicle store</button> <br />
+		</div>
+	</div>
+	<h3>FileSystem API</h3>
+	<div class="row" >
+		<div class="span5" >
+			Espace utilisé : {{fs.used}} Bytes/{{fs.total}} Bytes
+		</div>
+		<div class="span5">
+			<div class="progress progress-striped">
+				<div class="bar" style="width: {{fs.perc}}%"></div>
+			</div>
+		</div>
+		<div class="span6" ng-show="fsPolyfill">
+			<div class="alert alert-info">
+				Espace disque utilisé indisponible avec le polyfill.
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span4">
+			<button type="button" class="btn btn-primary btn-block" hm-tap="clearFS()">Supprimer tous les fichiers</button> <br />
+		</div>
+	</div>
+	<h3>LocalStorage</h3>
+	<div class="row" >
+		<div class="span4">
+			<input type="text" required ng-model="clientId" />
+		</div>
+		<div class="span3">
+			<button type="button" class="btn btn-primary btn-block" hm-tap="setClientId()">Change client ID</button> <br />
+		</div>
+	</div>
+	<div class="row">
+		<div class="span3">
+			<button type="button" class="btn btn-primary btn-block" hm-tap="resetLastCmd()">Reset last CMD</button> <br />
+		</div>
+	</div>
+
+</div>

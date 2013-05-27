@@ -64,12 +64,12 @@
 		<ng-include src="destination"></ng-include>
 
 		<div class="form-actions not-modal">
-			<button class="btn" ng-click="back()">Annuler</button>
-			<button class="btn btn-primary" ng-click="add()" ng-disabled="form.$invalid">Ajouter</button>
+			<button class="btn" hm-tap="back()">Annuler</button>
+			<button class="btn btn-primary" hm-tap="add()" ng-disabled="form.$invalid">Ajouter</button>
 		</div>
 	</form>
 </div>
 <div class="modal-footer">
-	<button class="btn" ng-click="dismiss()">Annuler</button>
-	<button class="btn btn-primary" ng-click="dismiss()">Ajouter</button>
+	<button class="btn" hm-tap="dismiss()">Annuler</button>
+	<button class="btn btn-primary" hm-tap="dismiss()">Ajouter</button>
 </div>

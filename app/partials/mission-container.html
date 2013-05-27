@@ -1,29 +1,33 @@
-<div>
-	<div class="mission-name affix">
-		<h1> Mission {{mission.id}} </h1>
-	</div>
-	<div class="row-fluid mission-description-row">
-		<div ng-show="renderMenu()" ng-class="{true:'span10', false:'span3'}[mobile]">
-			<ul class="nav nav-list bs-docs-sidenav affix">
-				<li ng-repeat="menuItem in menuItems" ng-class="{active: includeUrlIs(menuItem.templateUrl)}">
-					<a ng-href="#/mission/{{mission.id}}?page={{menuItem.id}}">
-						<i class="icon-chevron-right"></i>
-						{{menuItem.name}}
-					</a>
-				</li>
-				<li>
-					<a href="#/">
-						<i class="icon-chevron-right"></i>
-						Retour à la liste
-					</a>
-				</li>
-			</ul>
+<div class="no-x-scrolling fill-screen-height">
+	<div class="menu">
+		<div class="menu-title">
+			<h4>Menu</h4>
 		</div>
-		<div class="mission-description" ng-show="renderPage()"
-			ng-class="{true:'span12', false:'span9'}[mobile]">
-			<div ng-include="includedUrl" 
-				ng-animate="{enter: 'inclusion-enter', leave: 'inclusion-leave'}">
+		<ul class="nav nav-list bs-docs-sidenav">
+			<li ng-repeat="menuItem in menuItems" ng-class="{active: includeUrlIs(menuItem.templateUrl)}">
+				<a hm-tap="navigate(menuItem.id)">
+					<i class="icon-chevron-right"></i>
+					{{menuItem.name}}
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="mission-zone fill-screen-height" >
+		<div class="mission-name affix">
+			<div class="menu-button" hm-tap="toggleMenu()">
+				<i ng-class="{true:'icon-arrow-right', false:'icon-arrow-left'}[menu]"></i>
+			</div>
+			<h4> 
+				Mission {{mission.id}} 
+				<span class="pull-right" ng-hide="mission">
+					<loader></loader>
+				</span>
+			</h4>
+		</div>
+		<div class="mission-description fill-screen-height" >
+			<div ng-include="includedUrl">
 			</div>
 		</div>
+		<ng-drag switch="menu" threshold="300"></ng-drag>
 	</div>
 </div>

@@ -1,30 +1,24 @@
 
 smurAngular.controller('NewMissionController', 
-	function NewMissionController($scope, $http, $location, Mission, mobile){
+	function NewMissionController($scope, $location, Mission, Vehicle, Staff, mobile, Utils, Command){
 		$scope.alerts = [];
 		$scope.mobile = mobile;
 
-		$http.get("/resources/vehicles.json").success(function(data){
+		Vehicle.getAll().then(function(data){
 			$scope.vehicles = data;
 		});
 
-		$http.get("/resources/persons.json").success(function(data){
+		Staff.getAll().then(function(data){
 			$scope.responsibles = data;
 		});
-		
-		$scope.back = function(){
-			$location.url("/");
-		};
 
 		$scope.add = function(){
 			if($scope.password == "1234") {
-				var mission = $scope.mission;
-				var currentTime = new Date();
-				mission.id = currentTime.getTime();
-				mission.created_at = currentTime.getDate()+"/"+currentTime.getMonth()+"/"+currentTime.getFullYear()+" "+
-				currentTime.getHours()+"h"+currentTime.getMinutes();
-				Mission.create(mission);
-				$scope.back();
+				var formattedDate = Utils.getCurrentDateAndTime();
+				$scope.mission.created_at = formattedDate.date+" "+formattedDate.time;
+				Mission.notifyAndSave($scope.mission).then(function(){
+					$scope.back();
+				});
 			} else {
 				$scope.alerts.push({
 					"type": "error",
@@ -32,5 +26,9 @@ smurAngular.controller('NewMissionController',
 					"content": "Essayez 1234"
 				});
 			}
+		};
+
+		$scope.back = function() {
+			$location.url("/");
 		};
 	});

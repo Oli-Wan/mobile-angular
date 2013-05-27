@@ -2,7 +2,7 @@
 <html lang="en" ng-app="smurAngular">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
 	<title>ResUrgences Mobile</title>
 	<link rel="stylesheet" href="css/bootstrap-responsive.min.css"/>
 	<link rel="stylesheet" href="css/bootstrap.min.css"/>
@@ -10,36 +10,138 @@
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css" />
 	<link rel="stylesheet" href="css/app.css"/>
 </head>
-<body>
-	<div class="container-fluid">	
-		<div
-			ng-view
-			id="ng-view"
-			ng-animate="{ enter: 'view-enter', leave: 'view-leave'}">
-		</div>	
+<body ng-controller="FullScreenController">
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		 <div class="navbar-inner">
+    		<a class="brand" href="#">ResUrgence Mobile</a>
+    		<ul class="nav" ng-controller="CommandController">
+    			<li class="dropdown">
+    				<a id="notification-toggle" class="dropdown-toggle animate" hm-tap="toggleNotifcations()" ng-class="{'open':notificationsVisible, 'new':change}">
+					    <ng-pluralize count="nb"
+    							when="{'0': 'Aucune notification',
+								    'one': '1 notification',
+								    'other': '{} notifications'}">
+    					</ng-pluralize>
+    					<b class="caret"></b>
+    				</a>
+    				<div id="notification-zone" class="animate">
+    					<div class="notification-container">
+	    					<a ng-repeat="notification in notifications" 
+	    						class="notification"
+	    						hm-tap="goToNotification(notification)">
+	    						<span ng-show="notification.data.type == 'update'">
+	    							La mission #{{notification.data.id}} a été mise à jour.
+	    						</span>
+	    						<span ng-show="notification.data.type == 'delete'">
+	    							La mission #{{notification.data.id}} a été supprimée.
+	    						</span>
+	    						<ng-drag
+		    						on-threshold="hide(notification)" 
+		    						threshold="350"
+		    						axis="x">
+		    					</ng-drag>
+	    					</a>
+    					</div>
+						
+						<div class="swipe">
+							<i class="icon-align-justify"></i>
+						</div>
+						<ng-drag 
+							switch="notificationsVisible" 
+							threshold="400"
+							axis="y"
+							bounded="true">
+						</ng-drag>
+    				</div>
+    			</li>
+    		</ul>
+		 </div>
 	</div>
 
-		<script src="lib/jquery-1.9.1.min.js"></script>
-		<script src="lib/bootstrap.min.js"></script>
-		<script src="lib/bootstrap-timepicker.js"></script>
-		<script src="lib/bootstrap-datepicker.js"></script>
-		<script src="lib/angular/angular.js"></script>
-		<script src="lib/angular-strap.js"></script>
-		<script src="lib/angular/angular-resource.js"></script>
-		<script src="js/app.js"></script>
-		<script src="js/controllers/MissionsController.js"></script>
-		<script src="js/controllers/MissionContainerController.js"></script>
-		<script src="js/controllers/NewMissionController.js"></script>
-		<script src="js/controllers/StaffController.js"></script>
-		<script src="js/controllers/NewStaffController.js"></script>
-		<script src="js/controllers/EventController.js"></script>
-		<script src="js/controllers/NewEventController.js"></script>
-		<script src="js/controllers/VehicleController.js"></script>
-		<script src="js/controllers/NewVehicleController.js"></script>
-		<script src="js/filters/EventDestination.js"></script>
-		<script src="js/services/Utils.js"></script>
-		<script src="js/services/Mission.js"></script>
-		<script src="js/services/LocalStorage.js"></script>
-		<script src="js/services/Mobile.js"></script>
-	</body>
+	<div id="container" class="container-fluid">
+		<div class="application-starter">
+			<h1>ResUrgences Mobile</h1>
+			<p>Bienvenue dans l'application mobile ResUrgences</p>
+			<button  class="btn btn-primary btn-large" 
+				hm-tap="requestFullScreen()">Lancer l'application
+			</button>
+		</div>
+	
+		<div
+			ng-view
+			ng-animate="{ enter: 'view-enter', leave: 'view-leave'}">
+		</div>
+		
+		
+
+	</div>
+
+	<!-- polyfills-->
+	<script src="lib/IndexedDBShim.min.js"></script>
+	<script src="lib/idb.filesystem.js"></script>
+
+	<script src="lib/jquery-1.9.1.min.js"></script>
+	<script src="lib/bootstrap.min.js"></script>
+	<script src="lib/bootstrap-timepicker.js"></script>
+	<script src="lib/bootstrap-datepicker.js"></script>
+	<script src="lib/idbstore.js"></script>
+	<script src="lib/angular/angular.js"></script>
+	<script src="lib/angular-strap.js"></script>
+	<script src="lib/angular/angular-resource.js"></script>
+	<script src="lib/screenfull.js"></script>
+	<script src="lib/socket.io.js"></script>
+	<script src="lib/hammer.js"></script>
+	<script src="lib/gestures.js"></script>
+
+	<script src="js/css-hooks.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/command-listener.js"></script>
+	<script src="js/command-sender.js"></script>
+
+	<script src="js/controllers/FullScreenController.js"></script>
+	<script src="js/controllers/MissionsController.js"></script>
+	<script src="js/controllers/MissionContainerController.js"></script>
+	<script src="js/controllers/NewMissionController.js"></script>
+	<script src="js/controllers/UpdateMissionController.js"></script>	
+	<script src="js/controllers/StaffController.js"></script>
+	<script src="js/controllers/NewStaffController.js"></script>
+	<script src="js/controllers/EventController.js"></script>
+	<script src="js/controllers/EditEventController.js"></script>
+	<script src="js/controllers/VehicleController.js"></script>
+	<script src="js/controllers/NewVehicleController.js"></script>
+	<script src="js/controllers/StorageManagementController.js"></script>
+	<script src="js/controllers/AccelerometerController.js"></script>	
+	<script src="js/controllers/CommandController.js"></script>	
+	<script src="js/controllers/GesturesController.js"></script>
+
+	<script src="js/filters/EventDestination.js"></script>
+	
+	<script src="js/services/Utils.js"></script>
+	<script src="js/services/IDBService.js"></script>
+	<script src="js/services/Mission.js"></script>
+	<script src="js/services/Staff.js"></script>
+	<script src="js/services/Event.js"></script>
+	<script src="js/services/URL.js"></script>
+	<script src="js/services/Vehicle.js"></script>
+	<script src="js/services/Mobile.js"></script>
+	<script src="js/services/FileSystem.js"></script>
+	<script src="js/services/FileSystemUtils.js"></script>
+	<script src="js/services/ImageStorage.js"></script>
+	<script src="js/services/requestFileSystem.js"></script>
+	<script src="js/services/persistentStorage.js"></script>
+	<script src="js/services/Command.js"></script>
+	<script src="js/services/localStorage.js"></script>
+	<script src="js/services/clientId.js"></script>
+	<script src="js/services/SocketService.js"></script>
+	<script src="js/services/StoreProvider.js"></script>
+	<script src="js/services/SyncedResourceService.js"></script>
+	<script src="js/services/transitionEndEvent.js"></script>
+
+	<script src="js/directives/ngTap.js"></script>
+	<script src="js/directives/ngFiles.js"></script>
+	<script src="js/directives/loader.js"></script>
+	<script src="js/directives/thumbnail.js"></script>
+	<script src="js/directives/ngDrag.js"></script>
+	<script src="js/directives/onTransitionEnd.js"></script>
+</body>
 </html>

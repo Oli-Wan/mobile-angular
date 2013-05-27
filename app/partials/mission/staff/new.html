@@ -10,44 +10,37 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label for="persons" class="control-label">Resource</label>
+			<label for="" class="control-label">Resource*</label>
 			<div class="controls">
 				<select id="persons" class="input-normal" 
-					ng-model="person">
-					<option ng-repeat="person in persons  | filter:search" value="{{person}}">
+					ng-model="staff.id">
+					<option ng-repeat="person in persons  | filter:search" value="{{person.id}}">
 						{{person.lastname}} {{person.firstname}}
 					</option>
 				</select>	
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="datepicker">Heure</label>
+			<label class="control-label" for="datepicker">Jour*</label>
 			<div class="controls">
 				<div class="input-append">
-					<input  class="input-normal" type="text" id="datepicker"
-					ng-model="staff.time.date" bs-datepicker></input>
-					<button type="button" class="btn" data-toggle="datepicker">
-						<i class="icon-calendar"></i>
-					</button>
+					<input  class="input-normal" type="date" id="datepicker"
+							ng-model="staff.time.date">
+					</input>
 				</div>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="timepicker">Heure</label>
+			<label class="control-label" for="timepicker">Heure*</label>
 			<div class="controls">
 				<div class="input-append">
-					<input  class="input-normal" type="text" id="timepicker" 
-					data-show-meridian="false" ng-model="staff.time.time" bs-timepicker></input>
-					<button type="button" class="btn" 
-							data-toggle="timepicker">
-						<i class="icon-time"></i>
-					</button>
+					<input  class="input-normal" type="time" id="timepicker" data-show-meridian="false" ng-model="staff.time.time"></input>
 				</div>
 			</div>
 		</div>
 		<div class="form-actions">
-			<button class="btn" ng-click="back()">Annuler</button>
-			<button class="btn btn-primary" ng-click="add()">Ajouter</button>
+			<button class="btn" hm-tap="back()">Annuler</button>
+			<button class="btn btn-primary" ng-disabled="form.$invalid" hm-tap="add()">Ajouter</button>
 		</div>
 	</form>
 </div>

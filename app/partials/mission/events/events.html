@@ -1,37 +1,53 @@
 <div class="mission-description-part">
-	<ng-include src="'/partials/misc/back.html'"></ng-include>
 	<div ng-controller="EventController">
 		<h3 class="pull-left">Evènements</h3>
 		<a class="btn btn-primary btn-add pull-right" 
-			ng-href="#/mission/{{mission.id}}/events/new">
+			hm-tap="goToNewEvent()">
 			Ajouter un évènement
 		</a>
-		<div class="clearfix" /><i class="icon-arrow-left icon-white" />
+		<div class="clearfix" />
 		
 		<table class="table table-hover">
-			<tr>
-				<th>Type</th>
-				<th>Début</th>
-				<th>Fin</th>
-				<th>Véhicule</th>
-				<th>Destination</th>
-				<th></th>
-			</tr>
-			<tr>
-				<td>Intervention</td>
-				<td>16/04/2013 <br /> 23h05</td>
-				<td>16/04/2013 <br /> 23h19</td>
-				<td>UMH2</td>
-				<td>1337 Avenue des Champs-Elysées <br /> 75000 Paris</td>
-				<td>
-					<button class="btn btn-primary" ng-click="goToNewEvent()">
-						<i class="icon-pencil icon-white"></i>
-					</button>
-					<button class="btn btn-danger" bs-modal="'/partials/misc/deleteConfirmation.html'">
-						<i class="icon-trash icon-white"></i>
-					</button>
-				</td>
-			</tr>
+			<thead>
+				<tr>
+					<th>Type</th>
+					<th>Début</th>
+					<th>Fin</th>
+					<th>Véhicule</th>
+					<th>Destination</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>	
+				<tr ng-hide="events.length">
+					<td colspan="6">Aucun évènement</td>
+				</tr>
+				<tr ng-repeat="event in events">
+					<td>{{event.type}}</td>
+					<td>{{event.start.date}} {{event.start.time}}</td>
+					<td>{{event.end.date}} {{event.end.time}}</td>
+					<td>{{event.vehicle}}</td>
+					<td ng-switch on="event.type">
+							<span ng-switch-when="intervention">
+								{{event.address.number}} {{event.address.streetType}} {{event.address.streetName}} <br />
+								{{event.address.zipCode}} {{event.address.city}}
+							</span>
+							<span ng-switch-when="hospitalisation">
+								Service de {{event.service.name}} de l'hopital {{event.service.hospital}} à {{event.service.city}}
+							</span>
+						</ng-switch>
+					</td>
+					<td>
+						<a hm-tap="goToEditEvent(event.id)"
+							class="btn btn-primary">
+							<i class="icon-pencil icon-white"></i>
+						</a>
+						<button class="btn btn-danger" hm-tap="deleteModal(event.id)">
+							<i class="icon-trash icon-white"></i>
+						</button>
+					</td>
+				</tr>
+			</tbody>
 		</table>
 	</div>
 </div>

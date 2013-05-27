@@ -1,36 +1,29 @@
 
-smurAngular.factory("Mission", function Mission($http, $rootScope){
-	var Mission = {
-		list: [],
-		getAll: function() {	
-			return this.list;
-		},
-		get: function(id) {
-			var foundElement;
-			this.list.forEach(function(element, index, array){
-				if(element.id == id)
-					foundElement = element;
-			});
-			return foundElement;
-		},
-		create: function(data) {
-			this.list.push(data);
-		},
-		delete: function(id) {
-			var currentList = this.list;
-			this.list = [];
-			for(var i = 0; i < currentList.length; i++) {
-				if(currentList[i].id == id) {
-					continue;
-				}
-
-				this.list.push(currentList[i]);
+smurAngular.factory("Mission", function Mission($q, $rootScope, SyncedResourceService){
+	var storeWrapper = {
+		store: undefined,
+		getStore: function() {
+			var deferred = $q.defer();
+			if(this.store) {
+				deferred.resolve(this.store);
+			} else {
+				new IDBStore({
+					dbVersion: 1,
+					storeName: 'mission',
+					keyPath: 'id',
+					autoIncrement: true,
+					onStoreReady: function() {
+						storeWrapper.store = this;
+						var storeReady = this;
+						$rootScope.$apply(function(){
+							deferred.resolve(storeReady);
+						});
+					}
+				});
 			}
-		},
-		setList: function(data) {
-			this.list = data;
+			return deferred.promise;
 		}
-	}
+	};
 
-	return Mission;
+	return SyncedResourceService.syncedResourceManager(storeWrapper);
 });
