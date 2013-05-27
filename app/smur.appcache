@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#2013-27-05
+#2013-27-05 2
 
 CACHE:
 
@@ -60,7 +60,7 @@ CACHE:
 /js/filters/EventDestination.js
 /js/filters/MissionDestination.js
 /js/services/Backend.js
-/js/services/clientId.js
+/js/services/ClientID.js
 /js/services/Command.js
 /js/services/Event.js
 /js/services/FileSystem.js
@@ -123,3 +123,6 @@ CACHE:
 /resources/persons.json
 /resources/vehicle-types.json
 /resources/vehicles.json
+
+NETWORK:
+*

@@ -44,31 +44,44 @@ smurAngular.run(function(SocketService, StoreProvider, $rootScope, $http, Client
 		}
 	};
 
-	var lastCmd = localStorage.getItem("LAST_CMD");
-	var getParams = "";
-	if(lastCmd) 
-		getParams = '?{"date": {"$gt":' + lastCmd +'}}';
-	
-	$http.get(Backend.get()+'/commands'+getParams).success(function(commands) {
-		var recursiveFn = function(count, array) {
-			if(count >= array.length)
-				return;
+	var fetch = function() {	
+		var lastCmd = localStorage.getItem("LAST_CMD");
+		var getParams = "";
+		if(lastCmd) 
+			getParams = '?{"date": {"$gt":' + lastCmd +'}}';
 
-			var command = array[count];
-			handleCommand(command, function() {
-				recursiveFn(++count, array)
-			});
-		};
+		$http.get(Backend.get()+'/commands'+getParams).success(function(commands) {
+			var recursiveFn = function(count, array) {
+				if(count >= array.length)
+					return;
 
-		recursiveFn(0, commands);
-	});
+				var command = array[count];
+				handleCommand(command, function() {
+					recursiveFn(++count, array)
+				});
+			};
+
+			recursiveFn(0, commands);
+		});
+	};
+
+	fetch();
 
 	SocketService.on('commands:new', function(command) {
 		localStorage.setItem("LAST_CMD", command.date);
-
-		if(command.origin == ClientID.get())
+		var clientId = ClientID.get();
+		console.log(command.origin, clientId);
+		if(command.origin == clientId)
 			return;
 
 		handleCommand(command);
+	});
+
+	SocketService.on('disconnect', function(){
+		console.log('disconnected');
+		// broadcast throughout the app
+	});
+	SocketService.on('reconnect', function(){
+		fetch();
 	});
 });
