@@ -1,0 +1,27 @@
+<div ng-controller="BootstrapController">
+	
+	<div id="boostrap" ng-hide="boostraped" >
+		<h3>Configuration initiale</h3>
+		<div class="alert fade" ng-repeat="alert in alerts" bs-alert="alert"></div>
+		<div class="control-group">
+			<label for="client-id" class="control-label">ClientID</label>
+			<div class="controls">
+				<input type="text" id="client-id" ng-model="clientID" class="input-large" required>
+			</div>
+		</div>
+		<div class="control-group">
+			<label for="backend" class="control-label">Backend</label>
+			<div class="controls">
+				<input type="text" id="backend" ng-model="backend" class="input-large" required>
+			</div>
+		</div>
+		<div class="form-actions">
+			<button class="btn btn-primary" hm-tap="save()">Ok</button>
+		</div>
+	</div>
+
+	<div ng-show="boostraped"
+		ng-view
+		ng-animate="{ enter: 'view-enter', leave: 'view-leave'}">
+	</div>
+</div>

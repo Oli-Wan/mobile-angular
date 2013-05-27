@@ -1,3 +1,3 @@
-smurAngular.factory("SocketService", function SocketService(){ 
-	return io.connect("http://localhost:2403");
+smurAngular.factory("SocketService", function SocketService(Backend){ 
+	return io.connect(Backend.get());
 });

@@ -1,5 +1,7 @@
 smurAngular.controller("StorageManagementController", 
-	function StorageManagementController($scope, $http, Mission, Staff, Event, Vehicle, FileSystem, FileSystemUtils, persistentStorage, Command, localStorage) {
+	function StorageManagementController($scope, $http, Mission, Staff, Event, Vehicle, 
+		FileSystem, FileSystemUtils, persistentStorage, Command, localStorage, ClientID, Backend) {
+
 		$scope.alerts = [];
 
 		$scope.getStorageStats = function(){	
@@ -17,7 +19,8 @@ smurAngular.controller("StorageManagementController",
 
 		$scope.getStorageStats();
 
-		$scope.clientId = localStorage.getItem("SMUR_CLIENT_ID");
+		$scope.clientId = ClientID.get();
+		$scope.backend = Backend.get();
 
 		$scope.clearMission = function() {
 			Mission.clear().then(function() {
@@ -65,7 +68,7 @@ smurAngular.controller("StorageManagementController",
 		};
 
 		$scope.populateStaff = function() {
-			$http.get('http://localhost:2403/persons').success(function(data){
+			$http.get(Backend.get()+'/persons').success(function(data){
 				var count = 0;
 				Staff.clear().then(function(){
 					var recursivePut = function(count, data){
@@ -96,7 +99,7 @@ smurAngular.controller("StorageManagementController",
 		};
 
 		$scope.populateVehicle = function() {
-			$http.get('http://localhost:2403/vehicles').success(function(data){
+			$http.get(Backend.get()+'/vehicles').success(function(data){
 				var count = 0;
 				Vehicle.clear().then(function(){
 					var recursivePut = function(count, data){
@@ -128,30 +131,47 @@ smurAngular.controller("StorageManagementController",
 				var dirReader = fs.root.createReader();
 				var entries = [];
 
-			  var readEntries = function() {
-			  	dirReader.readEntries (function(results) {
-			  		if (!results.length) {
-			  			listResults(entries.sort());
-			  		} else {
-			  			entries = entries.concat(Array.prototype.slice.call(results || [], 0));
-			  			entries.forEach(function(entry, i) {
-			  				if(entry.isFile)
-			  					entry.remove($scope.getStorageStats, FileSystemUtils.errorHandler);
-			  				else
-			  					entry.removeRecursively($scope.getStorageStats, FileSystemUtils.errorHandler);
-			  			});
-			  		}
-			  	}, FileSystemUtils.errorHandler);
-			  };
-			  readEntries();
+				var readEntries = function() {
+					dirReader.readEntries (function(results) {
+						if (!results.length) {
+							listResults(entries.sort());
+						} else {
+							entries = entries.concat(Array.prototype.slice.call(results || [], 0));
+							entries.forEach(function(entry, i) {
+								if(entry.isFile)
+									entry.remove($scope.getStorageStats, FileSystemUtils.errorHandler);
+								else
+									entry.removeRecursively($scope.getStorageStats, FileSystemUtils.errorHandler);
+							});
+						}
+					}, FileSystemUtils.errorHandler);
+				};
+				readEntries();
 			});
 		};
 
 		$scope.resetLastCmd = function(){
 			localStorage.setItem("LAST_CMD", 0);
+			$scope.alerts.push({
+				"type": "success",
+				"title": "ID de la dernière commande reçue remis à zéro."
+			});
 		};
 
 		$scope.setClientId = function() {
-			localStorage.setItem("SMUR_CLIENT_ID", $scope.clientId);
-		}
+			ClientID.set($scope.clientId);
+			$scope.alerts.push({
+				"type": "success",
+				"title": "Client ID changé."
+			});
+		};
+
+		$scope.setClientId = function() {
+			Backend.set($scope.backend);
+			$scope.alerts.push({
+				"type": "success",
+				"title": "Backend changé."
+			});
+		};
+
 	});
