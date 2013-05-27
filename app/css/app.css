@@ -15,7 +15,7 @@ html, body, div[ng-view], div.container-fluid, .fill-screen-height {
 	height:100%;
 }
 
-div[ng-view] {
+div.container-fluid {
 	padding-top:41px;
 }
 

@@ -54,9 +54,20 @@
 						</ng-drag>
     				</div>
     			</li>
+
     		</ul>
+
+			<ul class="nav pull-right">
+    			<li>
+    				<a href="/#/storagemanagement">
+    					Configuration
+    					<i class="icon-cog icon-white"></i>
+    				</a>
+    			</li>
+			</ul>
 		 </div>
 	</div>
+	
 
 	<div id="container" class="container-fluid">
 		<div class="application-starter">
@@ -66,14 +77,10 @@
 				hm-tap="requestFullScreen()">Lancer l'application
 			</button>
 		</div>
-	
-		<div
-			ng-view
-			ng-animate="{ enter: 'view-enter', leave: 'view-leave'}">
-		</div>
-		
-		
 
+
+		<ng-include src="'/partials/misc/bootstrap.html'"></ng-include>
+		
 	</div>
 
 	<!-- polyfills-->
@@ -113,6 +120,7 @@
 	<script src="js/controllers/AccelerometerController.js"></script>	
 	<script src="js/controllers/CommandController.js"></script>	
 	<script src="js/controllers/GesturesController.js"></script>
+	<script src="js/controllers/BootstrapController.js"></script>
 
 	<script src="js/filters/EventDestination.js"></script>
 	
@@ -135,6 +143,7 @@
 	<script src="js/services/StoreProvider.js"></script>
 	<script src="js/services/SyncedResourceService.js"></script>
 	<script src="js/services/transitionEndEvent.js"></script>
+	<script src="js/services/Backend.js"></script>
 
 	<script src="js/directives/ngTap.js"></script>
 	<script src="js/directives/ngFiles.js"></script>

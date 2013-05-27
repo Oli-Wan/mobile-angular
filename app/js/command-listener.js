@@ -1,4 +1,4 @@
-smurAngular.run(function(SocketService, StoreProvider, $rootScope, $http, ClientID, Command, localStorage) {
+smurAngular.run(function(SocketService, StoreProvider, $rootScope, $http, ClientID, Command, localStorage, Backend) {
 
 	var handleCommand = function(command, callback) {
 		command.status = "new";
@@ -49,7 +49,7 @@ smurAngular.run(function(SocketService, StoreProvider, $rootScope, $http, Client
 	if(lastCmd) 
 		getParams = '?{"date": {"$gt":' + lastCmd +'}}';
 	
-	$http.get('http://localhost:2403/commands'+getParams).success(function(commands) {
+	$http.get(Backend.get()+'/commands'+getParams).success(function(commands) {
 		var recursiveFn = function(count, array) {
 			if(count >= array.length)
 				return;
