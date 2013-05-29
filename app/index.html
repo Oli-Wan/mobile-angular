@@ -24,7 +24,8 @@
     					</ng-pluralize>
     					<b class="caret"></b>
     				</a>
-    				<div id="notification-zone" class="animate">
+    				<div id="notification-zone" 
+    					ng-class="{'true':'visible', 'false':''}[notificationsVisible]">
     					<div class="notification-container">
 	    					<a ng-repeat="notification in notifications" 
 	    						class="notification"
@@ -54,7 +55,6 @@
 						</ng-drag>
     				</div>
     			</li>
-
     		</ul>
 
 			<ul class="nav pull-right">
@@ -70,6 +70,10 @@
 	
 
 	<div id="container" class="container-fluid">
+		<div class="alert top-alert" ng-controller="ConnectionController" ng-show="offline">
+			<strong>Vous êtes actuellement déconnecté.</strong>	
+		</div>
+
 		<div class="application-starter">
 			<h1>Angular Mobile</h1>
 			<p>Bienvenue dans l'application mobile Angular</p>
@@ -98,10 +102,11 @@
 	<script src="lib/hammer.js"></script>
 	<script src="lib/gestures.js"></script>
 
-	<script src="js/css-hooks.js"></script>
 	<script src="js/app.js"></script>
-	<script src="js/command-listener.js"></script>
-	<script src="js/command-sender.js"></script>
+
+	<script src="js/utils/css-hooks.js"></script>
+	<script src="js/utils/CommandListener.js"></script>
+	<script src="js/utils/CommandSender.js"></script>
 
 	<script src="js/controllers/FullScreenController.js"></script>
 	<script src="js/controllers/MissionsController.js"></script>
@@ -119,6 +124,7 @@
 	<script src="js/controllers/CommandController.js"></script>	
 	<script src="js/controllers/GesturesController.js"></script>
 	<script src="js/controllers/BootstrapController.js"></script>
+	<script src="js/controllers/ConnectionController.js"></script>
 
 	<script src="js/filters/EventDestination.js"></script>
 	

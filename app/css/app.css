@@ -139,6 +139,7 @@ div.container-fluid {
 
 #notification-zone {
 	position:absolute;
+	displau:none;
 	top:-361px;
 	z-index: -1;
 	width:350px;
@@ -148,8 +149,8 @@ div.container-fluid {
 	height:400px;
 }
 
-#notification-zone.open {
-	box-shadow: 0 0 10px black;
+#notification-zone.visible {
+	display: block;
 }
 
 #notification-zone>.notification-container {
@@ -242,6 +243,12 @@ div.container-fluid {
 	font-size: 24px;
 	font-weight: 200;
 	padding: 19px 24px;
+}
+
+/* Offline alert
+-------------------------------------------------- */
+.top-alert {
+	margin: 0px -20px;
 }
 
 /* Lightbox

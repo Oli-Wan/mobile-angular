@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#2013-05-29 13:26:18
+#2013-05-29 16:37:42
 
 CACHE:
 ./css/app.css
@@ -11,8 +11,6 @@ CACHE:
 ./img/glyphicons-halflings.png
 ./index.html
 ./js/app.js
-./js/command-listener.js
-./js/command-sender.js
 ./js/controllers/AccelerometerController.js
 ./js/controllers/BootstrapController.js
 ./js/controllers/CommandController.js
@@ -29,7 +27,6 @@ CACHE:
 ./js/controllers/StorageManagementController.js
 ./js/controllers/UpdateMissionController.js
 ./js/controllers/VehicleController.js
-./js/css-hooks.js
 ./js/directives/loader.js
 ./js/directives/ngDrag.js
 ./js/directives/ngFiles.js
@@ -59,6 +56,9 @@ CACHE:
 ./js/services/URL.js
 ./js/services/Utils.js
 ./js/services/Vehicle.js
+./js/utils/command-listener.js
+./js/utils/command-sender.js
+./js/utils/css-hooks.js
 ./lib/angular/angular-cookies.js
 ./lib/angular/angular-cookies.min.js
 ./lib/angular/angular-loader.js
