@@ -48,7 +48,7 @@ mobileAngular.run(function(SocketService, StoreProvider, $rootScope, $http, Clie
 		var lastCmd = localStorage.getItem("LAST_CMD");
 		var getParams = "";
 		if(lastCmd) 
-			getParams = '?{"date": {"$gt":' + lastCmd +'}}';
+			getParams = '?{"date": {"$gt":' + lastCmd +'},"$sort": {"date": 1}}';
 
 		$http.get(Backend.get()+'/commands'+getParams).success(function(commands) {
 			var recursiveFn = function(count, array) {
