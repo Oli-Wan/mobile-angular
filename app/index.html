@@ -24,7 +24,8 @@
     					</ng-pluralize>
     					<b class="caret"></b>
     				</a>
-    				<div id="notification-zone" class="animate">
+    				<div id="notification-zone" 
+    					ng-class="{'true':'visible', 'false':''}[notificationsVisible]">
     					<div class="notification-container">
 	    					<a ng-repeat="notification in notifications" 
 	    						class="notification"
