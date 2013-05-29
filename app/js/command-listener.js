@@ -48,7 +48,7 @@ mobileAngular.run(function(SocketService, StoreProvider, $rootScope, $http, Clie
 		var lastCmd = localStorage.getItem("LAST_CMD");
 		var getParams = "";
 		if(lastCmd) 
-			getParams = '?{"date": {"$gt":' + lastCmd +'}}';
+			getParams = '?{"date": {"$gt":' + lastCmd +'},"$sort": {"date": 1}}';
 
 		$http.get(Backend.get()+'/commands'+getParams).success(function(commands) {
 			var recursiveFn = function(count, array) {
@@ -65,8 +65,6 @@ mobileAngular.run(function(SocketService, StoreProvider, $rootScope, $http, Clie
 		});
 	};
 
-	fetch();
-
 	SocketService.on('commands:new', function(command) {
 		localStorage.setItem("LAST_CMD", command.date);
 		var clientId = ClientID.get();
@@ -78,10 +76,11 @@ mobileAngular.run(function(SocketService, StoreProvider, $rootScope, $http, Clie
 	});
 
 	SocketService.on('disconnect', function(){
-		console.log('disconnected');
+		console.log("disconnected");
 		// broadcast throughout the app
 	});
 	SocketService.on('reconnect', function(){
-		fetch();
+		console.log("Back online");
 	});
+	SocketService.on('connect', fetch);
 });
