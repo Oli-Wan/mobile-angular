@@ -1,4 +1,5 @@
 mobileAngular.run(function($timeout, $http, Command) {
+	var pollingInterval = 5000;
 	$timeout(function sendingFunction(){
 		Command.getNonSentCommands().then(function(data){
 			if(data.length == 0) {
@@ -24,6 +25,6 @@ mobileAngular.run(function($timeout, $http, Command) {
 			};
 			send(data, 0);
 		});
-		$timeout(sendingFunction, 5000);
-	}, 5000);
+		$timeout(sendingFunction, pollingInterval);
+	}, pollingInterval);
 });
