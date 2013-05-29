@@ -1,49 +1,4 @@
-mobileAngular.run(function(SocketService, StoreProvider, $rootScope, $http, ClientID, Command, localStorage, Backend) {
-
-	var handleCommand = function(command, callback) {
-		command.status = "new";
-		Command.save(command);
-		localStorage.setItem("LAST_CMD", command.date);
-
-		console.log(command);
-
-		var data = command.data;
-		var storeName = data.entity;
-		var store = StoreProvider.getStoreByName(storeName);
-		if(!store) {
-			console.log("Unknown entity");
-		} else {
-			var action = command.data.type;
-			
-			if(action == "delete") {
-				store.remove(command.data.id).then(function(){
-					$rootScope.$broadcast('dataChanged');
-					if(callback)
-						callback();
-				});
-			} else {
-				store.get(data.id).then(function(localData){
-					if(!localData) {
-						localData = {};
-						localData.id = data.id;
-					}
-
-					var changeArray = data.changes;
-
-					changeArray.forEach(function(element){
-						localData[element.attribute] = element.new_val;
-					});
-
-					store.save(localData).then(function(){
-						$rootScope.$broadcast('dataChanged');
-						if(callback)
-							callback();
-					});
-				});
-			}
-		}
-	};
-
+mobileAngular.run( function(SocketService, StoreProvider, $rootScope, $http, ClientID, Command, CommandUtils, localStorage, Backend) {
 	var fetch = function() {	
 		var lastCmd = localStorage.getItem("LAST_CMD");
 		var getParams = "";
@@ -56,7 +11,7 @@ mobileAngular.run(function(SocketService, StoreProvider, $rootScope, $http, Clie
 					return;
 
 				var command = array[count];
-				handleCommand(command, function() {
+				CommandUtils.handleCommand(command, function() {
 					recursiveFn(++count, array)
 				});
 			};
@@ -72,7 +27,7 @@ mobileAngular.run(function(SocketService, StoreProvider, $rootScope, $http, Clie
 		if(command.origin == clientId)
 			return;
 
-		handleCommand(command);
+		CommandUtils.handleCommand(command);
 	});
 
 	SocketService.on('disconnect', function(){
@@ -82,5 +37,6 @@ mobileAngular.run(function(SocketService, StoreProvider, $rootScope, $http, Clie
 	SocketService.on('reconnect', function(){
 		console.log("Back online");
 	});
+
 	SocketService.on('connect', fetch);
 });

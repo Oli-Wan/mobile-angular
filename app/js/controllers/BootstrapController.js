@@ -1,5 +1,5 @@
 mobileAngular.controller('BootstrapController', 
-	function BootstrapController($scope, $http, ClientID, Backend, localStorage, Command, Vehicle, Staff, $window, StoreProvider, $rootScope) {
+	function BootstrapController($scope, $http, ClientID, Backend, localStorage, Command, Vehicle, Staff, $window, StoreProvider, $rootScope, CommandUtils) {
 		var boostrapedKey = "SMUR_BOOSTRAPED";
 		$scope.boostraped = localStorage.getItem(boostrapedKey);
 		$scope.progress = 0;
@@ -74,45 +74,6 @@ mobileAngular.controller('BootstrapController',
 				});
 			});
 
-			var handleCommand = function(command, callback) {
-				command.status = "read";
-				Command.save(command);
-				localStorage.setItem("LAST_CMD", command.date);
-
-				var data = command.data;
-				var storeName = data.entity;
-				var store = StoreProvider.getStoreByName(storeName);
-				if(!store) {
-					console.log("Unknown entity");
-				} else {
-					var action = command.data.type;
-
-					if(action == "delete") {
-						store.remove(command.data.id).then(function(){
-							if(callback)
-								callback();
-						});
-					} else {
-						store.get(data.id).then(function(localData){
-							if(!localData) {
-								localData = {};
-								localData.id = data.id;
-							}
-
-							var changeArray = data.changes;
-
-							changeArray.forEach(function(element){
-								localData[element.attribute] = element.new_val;
-							});
-
-							store.save(localData).then(function(){
-								if(callback)
-									callback();
-							});
-						});
-					}
-				}
-			};
 
 			$http.get($scope.backend+'/commands'+'?{"$sort": {"date": 1}}').success(function(commands) {
 				if(commands.length <= 0) {
@@ -126,10 +87,10 @@ mobileAngular.controller('BootstrapController',
 						return;
 
 					var command = array[count];
-					handleCommand(command, function() {
+					CommandUtils.handleCommand(command, function() {
 						$scope.progress += step;
 						recursiveFn(++count, array);
-					});
+					}, false, "read");
 				};
 
 				recursiveFn(0, commands);
