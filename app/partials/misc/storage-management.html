@@ -40,7 +40,7 @@
 	<h3>FileSystem API</h3>
 	<div class="row" >
 		<div class="span5" >
-			Espace utilisé : {{fs.used}} Bytes/{{fs.total}} Bytes
+			Used disk space : {{fs.used}} Bytes/{{fs.total}} Bytes
 		</div>
 		<div class="span5">
 			<div class="progress progress-striped">
@@ -49,13 +49,13 @@
 		</div>
 		<div class="span6" ng-show="fsPolyfill">
 			<div class="alert alert-info">
-				Espace disque utilisé indisponible avec le polyfill.
+				Used disk space unavailable.
 			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="span4">
-			<button type="button" class="btn btn-primary btn-block" hm-tap="clearFS()">Supprimer tous les fichiers</button> <br />
+			<button type="button" class="btn btn-primary btn-block" hm-tap="clearFS()">Delete all files</button> <br />
 		</div>
 	</div>
 	<h3>LocalStorage</h3>
