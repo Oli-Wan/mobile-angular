@@ -245,6 +245,12 @@ div.container-fluid {
 	padding: 19px 24px;
 }
 
+/* Offline alert
+-------------------------------------------------- */
+.top-alert {
+	margin: 0px -20px;
+}
+
 /* Lightbox
 -------------------------------------------------- */
 #overlay {	

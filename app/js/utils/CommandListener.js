@@ -1,4 +1,4 @@
-mobileAngular.run( function(SocketService, $http, ClientID, CommandUtils, localStorage, Backend) {
+mobileAngular.run( function(SocketService, $http, ClientID, CommandUtils, localStorage, Backend, $rootScope) {
 	var fetch = function() {	
 		var lastCmd = localStorage.getItem("LAST_CMD");
 		var getParams = "";
@@ -30,13 +30,15 @@ mobileAngular.run( function(SocketService, $http, ClientID, CommandUtils, localS
 		CommandUtils.handleCommand(command);
 	});
 
+	SocketService.on('error', function(){
+		$rootScope.$broadcast('offline');
+	});
+
 	SocketService.on('disconnect', function(){
-		console.log("disconnected");
-		// broadcast
+		$rootScope.$broadcast('offline');
 	});
 	SocketService.on('reconnect', function(){
-		console.log("back online");
-		// broadcast
+		$rootScope.$broadcast('online');
 	});
 
 	SocketService.on('connect', fetch);
