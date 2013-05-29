@@ -3,8 +3,16 @@ mobileAngular.controller("MissionContainerController",
 	function MissionContainerController($scope, $rootScope, $routeParams, $http, $location, Mission, $window){
 		$scope.menu = false;
 		
-		Mission.get(parseInt($routeParams.missionId)).then(function(data){
-			$scope.mission = data;
+		$scope.getMission = function() {	
+			Mission.get(parseInt($routeParams.missionId)).then(function(data){
+				$scope.mission = data;
+			});
+		};
+
+		$scope.getMission();
+
+		$scope.$on('dataChanged', function() {
+			$scope.getMission();
 		});
 
 		$http.get("/resources/mission-menu.json").success(function(data){
