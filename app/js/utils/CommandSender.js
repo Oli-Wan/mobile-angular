@@ -3,7 +3,6 @@ mobileAngular.run(function($timeout, $http, Command) {
 	$timeout(function sendingFunction(){
 		Command.getNonSentCommands().then(function(data){
 			if(data.length == 0) {
-				console.log("Nothing to send");
 				return;
 			}
 
@@ -19,9 +18,7 @@ mobileAngular.run(function($timeout, $http, Command) {
 					Command.save(cmd).then(function(){
 						send(data, ++count);
 					});
-				}).error(function(){
-					console.log("Couldn't send the command, will try again later");
-				});
+				})
 			};
 			send(data, 0);
 		});
