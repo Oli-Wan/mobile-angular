@@ -53,12 +53,10 @@ mobileAngular.directive('ngDrag', function($parse) {
 			});
 
 			Hammer(draggable[0]).on('dragstart', function(event){
-				event.gesture.preventDefault();
 				$(this).removeClass('animate');
 			});
 
 			Hammer(draggable[0]).on('drag', function(event) {
-				event.gesture.preventDefault();
 				var delta = event.gesture['delta'+$scope.axis];
 
 				if($scope.thresholdExceeded)
@@ -68,11 +66,9 @@ mobileAngular.directive('ngDrag', function($parse) {
 					delta = $scope.threshold;
 
 				$(this).css("transform", "translate"+$scope.axis+"("+delta+"px)");
-
 			});
 
 			Hammer(draggable[0]).on('dragend', function(event){
-				event.gesture.preventDefault();
 				$this = $(this);
 				var delta = event.gesture['delta'+$scope.axis];
 				if($scope.thresholdExceeded)
