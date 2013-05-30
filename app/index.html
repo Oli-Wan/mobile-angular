@@ -9,29 +9,61 @@
 	<link rel="stylesheet" href="css/app.css"/>
 </head>
 <body>
-	<div ng-controller="CommandController">
+	<div>
 		<div class="navbar navbar-inverse navbar-fixed-top" >
-			 <div class="navbar-inner" >
-	    		<a class="brand" href="#">Angular Mobile</a>
-	    		<ul class="nav">
-	    			<li class="dropdown">
-	    				<a id="notification-toggle" class="dropdown-toggle animate" hm-tap="toggleNotifcations()">
-	    					<span class="hidden-phone">
-						   		<ng-pluralize count="nb"
-		    							when="{'0': 'Aucune notification',
-										    'one': '1 notification',
-										    'other': '{} notifications'}">
-		    					</ng-pluralize>
-	    					</span>
-	    					<span>
-	    						<!-- visible-phone inherit its parent display -->
-	    						<span class="visible-phone">{{nb}}</span>
-	    					</span>
-	    					<b class="caret"></b>
-	    				</a>
-	    			</li>
-	    		</ul>
+			 <div class="navbar-inner">
+			 	<div ng-controller="CommandController">
+				 	<div class="notification-bar pull-left navbar-inner">
+			    		<a class="brand" href="#">Angular Mobile</a>
+			    		<ul class="nav pull-right">
+			    			<li class="dropdown">
+			    				<a id="notification-toggle" class="dropdown-toggle animate" hm-tap="toggleNotifcations()">
+							   		<ng-pluralize count="nb"
+			    							when="{'0': '0 notification',
+											    'one': '1 notification',
+											    'other': '{} notifications'}">
+			    					</ng-pluralize>
+			    					<b class="caret"></b>
+			    				</a>
+			    			</li>
+			    		</ul>
+					</div>
 
+					<div id="notification-zone" 
+						ng-class="{'true':'visible', 'false':''}[notificationsVisible]">
+						<div class="notification-container">
+							<div class="notification-controls">
+								<button class="btn btn-inverse" hm-tap="goToDetails()">Details</button>
+								<button class="btn btn-inverse" hm-tap="Clear()">Tout cacher</button>
+							</div>
+							<a ng-repeat="notification in notifications" 
+								class="notification"
+								hm-tap="goToNotification(notification)">
+								<span ng-show="notification.data.type == 'update'">
+									La mission #{{notification.data.id}} a été mise à jour.
+								</span>
+								<span ng-show="notification.data.type == 'delete'">
+									La mission #{{notification.data.id}} a été supprimée.
+								</span>
+								<ng-drag
+									on-threshold="hide(notification)" 
+									threshold="350"
+									axis="x">
+								</ng-drag>
+							</a>
+						</div>
+						
+						<div class="swipe">
+							<i class="icon-align-justify"></i>
+						</div>
+						<ng-drag 
+							switch="notificationsVisible" 
+							threshold="400"
+							axis="y"
+							bounded="true">
+						</ng-drag>
+					</div>
+				</div>
 				<ul class="nav pull-right">
 	    			<li>
 	    				<a href="/#/storagemanagement">
@@ -43,40 +75,6 @@
 	    			</li>
 				</ul>		
 			</div>
-		</div>
-		<div id="notification-zone" 
-			ng-class="{'true':'visible', 'false':''}[notificationsVisible]">
-			<div class="notification-container">
-				<div class="notification-controls">
-					<button class="btn btn-inverse" hm-tap="goToDetails()">Details</button>
-					<button class="btn btn-inverse" hm-tap="Clear()">Tout cacher</button>
-				</div>
-				<a ng-repeat="notification in notifications" 
-					class="notification"
-					hm-tap="goToNotification(notification)">
-					<span ng-show="notification.data.type == 'update'">
-						La mission #{{notification.data.id}} a été mise à jour.
-					</span>
-					<span ng-show="notification.data.type == 'delete'">
-						La mission #{{notification.data.id}} a été supprimée.
-					</span>
-					<ng-drag
-						on-threshold="hide(notification)" 
-						threshold="350"
-						axis="x">
-					</ng-drag>
-				</a>
-			</div>
-			
-			<div class="swipe">
-				<i class="icon-align-justify"></i>
-			</div>
-			<ng-drag 
-				switch="notificationsVisible" 
-				threshold="420"
-				axis="y"
-				bounded="true">
-			</ng-drag>
 		</div>
 	</div>
 

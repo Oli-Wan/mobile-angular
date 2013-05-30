@@ -3,7 +3,12 @@
 
 body {
 	margin:0px;
-	padding:0px;
+}
+
+@media (min-width: 767px) {
+	body {
+		padding:0px;
+	}
 }
 
 html, body, div[ng-view], div.container-fluid, .fill-screen-height {
@@ -36,10 +41,10 @@ div.container-fluid {
 -------------------------------------------------- */
 
 @media (max-width: 979px) {
-  .navbar-fixed-top,
-  .navbar-fixed-bottom {
-    position: relative;
-  }
+	.navbar-fixed-top,
+	.navbar-fixed-bottom {
+		position: relative;
+	}
 }
 
 /* Mission & menu
@@ -125,18 +130,42 @@ div.container-fluid {
 	display: none;
 }
 
-/* Notifications
+/* Bootstrap overrides
 -------------------------------------------------- */
 
-
-
-.navbar-inner {
-	padding-left:20px;
-	padding-right:20px;
-	z-index:1001;
+@media (max-width: 979px) {
+	.navbar-fixed-top .navbar-inner,
+	.navbar-fixed-bottom .navbar-inner {
+		padding: 0px;
+	}
 }
 
-#notification-toggle {
+/* Notifications
+-------------------------------------------------- */
+@media (max-width: 400px) {
+	.notification-bar{
+		width:85%;
+	}
+	
+	#notification-zone {
+		width:100%;
+	}
+
+} 
+
+@media (min-width: 400px) {
+	.notification-bar{
+		width:350px;
+	}
+	
+	#notification-zone {
+		width:350px;
+	}
+}
+
+.notification-bar {
+	position: relative;
+	z-index:1;
 }
 
 #notification-toggle.new {
@@ -149,14 +178,11 @@ div.container-fluid {
 
 #notification-zone {
 	position:absolute;
-	top:-381px;
+	top:-361px;
 	left:0;
-	width:350px;
-	z-index:1000;
 	overflow: hidden;
 	background-color: rgb(27, 27, 27);
 	height:400px;
-	padding-top:20px;
 }
 
 #notification-zone>.notification-container {
