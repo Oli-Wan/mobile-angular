@@ -1,7 +1,5 @@
 'use strict';
 
-
-// Declare app level module which depends on filters, and services
 var mobileAngular = angular.module('mobileAngular', ['ngResource', '$strap.directives', 'angular-gestures']);
 
 mobileAngular.config(['$routeProvider', function($routeProvider) {
@@ -56,6 +54,11 @@ mobileAngular.config(['$routeProvider', function($routeProvider) {
   {
     templateUrl: 'partials/misc/gestures.html', 
     controller: 'GesturesController'
+  });
+  $routeProvider.when('/commands/', 
+  {
+    templateUrl: 'partials/misc/command-list.html', 
+    controller: 'CommandController'
   });
   $routeProvider.otherwise({redirectTo: '/'});
 }]);

@@ -3,7 +3,12 @@
 
 body {
 	margin:0px;
-	padding:0px;
+}
+
+@media (min-width: 767px) {
+	body {
+		padding:0px;
+	}
 }
 
 html, body, div[ng-view], div.container-fluid, .fill-screen-height {
@@ -30,6 +35,16 @@ div.container-fluid {
 
 .controls-row {
 	margin-bottom:10px;
+}
+
+/* Bootstrap overrides
+-------------------------------------------------- */
+
+@media (max-width: 979px) {
+	.navbar-fixed-top,
+	.navbar-fixed-bottom {
+		position: relative;
+	}
 }
 
 /* Mission & menu
@@ -115,13 +130,42 @@ div.container-fluid {
 	display: none;
 }
 
-/* Notifications
+/* Bootstrap overrides
 -------------------------------------------------- */
 
-#notification-toggle {
-	margin-bottom: -1px;
-	position:fixed;
-	background-color: rgb(27, 27, 27);
+@media (max-width: 979px) {
+	.navbar-fixed-top .navbar-inner,
+	.navbar-fixed-bottom .navbar-inner {
+		padding: 0px;
+	}
+}
+
+/* Notifications
+-------------------------------------------------- */
+@media (max-width: 400px) {
+	.notification-bar{
+		width:85%;
+	}
+	
+	#notification-zone {
+		width:100%;
+	}
+
+} 
+
+@media (min-width: 400px) {
+	.notification-bar{
+		width:350px;
+	}
+	
+	#notification-zone {
+		width:350px;
+	}
+}
+
+.notification-bar {
+	position: relative;
+	z-index:1;
 }
 
 #notification-toggle.new {
@@ -132,29 +176,17 @@ div.container-fluid {
 	transform: scale(2);
 }
 
-#notification-toggle.open{
-	border: 1px solid rgb(153, 153, 153);
-	border-bottom: none;
-}
-
 #notification-zone {
 	position:absolute;
-	displau:none;
 	top:-361px;
-	z-index: -1;
-	width:350px;
+	left:0;
 	overflow: hidden;
 	background-color: rgb(27, 27, 27);
-	border: 1px solid rgb(153, 153, 153);
 	height:400px;
 }
 
-#notification-zone.visible {
-	display: block;
-}
-
 #notification-zone>.notification-container {
-	height:370px;
+	height:324px;
 	overflow-x: hidden;
 	overflow-y: auto;
 }
@@ -214,7 +246,23 @@ div.container-fluid {
 	transform: translate(300px);
 	opacity: 0;
 }
+.notification-controls {
+	border-bottom: 1px solid rgb(153, 153, 153);
+	padding-bottom:5px;
+}
 
+.notification-controls>button:last-child {
+	float:right;
+}
+
+.command-item {
+	margin-bottom:20px;
+	border-bottom: 2px solid black;
+}
+
+.command-item>p {
+	font-size:15px;
+}
 
 /* Launcher (hidden)
 -------------------------------------------------- */

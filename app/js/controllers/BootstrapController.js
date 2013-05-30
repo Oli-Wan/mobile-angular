@@ -10,6 +10,7 @@ mobileAngular.controller('BootstrapController',
 		});
 
 		$scope.save = function(){
+			$scope.progress = 0;
 			$scope.alerts = [];
 			ClientID.set($scope.clientID);
 			Backend.set($scope.backend);

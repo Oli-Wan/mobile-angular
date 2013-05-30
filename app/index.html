@@ -4,45 +4,54 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
 	<title>Angular Mobile</title>
-	<link rel="stylesheet" href="css/bootstrap-responsive.min.css"/>
-	<link rel="stylesheet" href="css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="css/bootstrap-timepicker.css" />
-	<link rel="stylesheet" href="css/bootstrap-datepicker.css" />
+	<link rel="stylesheet" href="css/bootstrap.css"/>
+	<link rel="stylesheet" href="css/bootstrap-responsive.css"/>
 	<link rel="stylesheet" href="css/app.css"/>
 </head>
-<body ng-controller="FullScreenController">
-	<div class="navbar navbar-inverse navbar-fixed-top">
-		 <div class="navbar-inner">
-    		<a class="brand" href="#">Angular Mobile</a>
-    		<ul class="nav" ng-controller="CommandController">
-    			<li class="dropdown">
-    				<a id="notification-toggle" class="dropdown-toggle animate" hm-tap="toggleNotifcations()" ng-class="{'open':notificationsVisible, 'new':change}">
-					    <ng-pluralize count="nb"
-    							when="{'0': 'Aucune notification',
-								    'one': '1 notification',
-								    'other': '{} notifications'}">
-    					</ng-pluralize>
-    					<b class="caret"></b>
-    				</a>
-    				<div id="notification-zone" 
-    					ng-class="{'true':'visible', 'false':''}[notificationsVisible]">
-    					<div class="notification-container">
-	    					<a ng-repeat="notification in notifications" 
-	    						class="notification"
-	    						hm-tap="goToNotification(notification)">
-	    						<span ng-show="notification.data.type == 'update'">
-	    							La mission #{{notification.data.id}} a été mise à jour.
-	    						</span>
-	    						<span ng-show="notification.data.type == 'delete'">
-	    							La mission #{{notification.data.id}} a été supprimée.
-	    						</span>
-	    						<ng-drag
-		    						on-threshold="hide(notification)" 
-		    						threshold="350"
-		    						axis="x">
-		    					</ng-drag>
-	    					</a>
-    					</div>
+<body>
+	<div>
+		<div class="navbar navbar-inverse navbar-fixed-top" >
+			 <div class="navbar-inner">
+			 	<div ng-controller="NotificationController">
+				 	<div class="notification-bar pull-left navbar-inner">
+			    		<a class="brand" href="#">Angular Mobile</a>
+			    		<ul class="nav pull-right">
+			    			<li class="dropdown">
+			    				<a id="notification-toggle" class="dropdown-toggle animate" hm-tap="toggleNotifcations()">
+							   		<ng-pluralize count="nb"
+			    							when="{'0': '0 notification',
+											    'one': '1 notification',
+											    'other': '{} notifications'}">
+			    					</ng-pluralize>
+			    					<b class="caret"></b>
+			    				</a>
+			    			</li>
+			    		</ul>
+					</div>
+
+					<div id="notification-zone" 
+						ng-class="{'true':'visible', 'false':''}[notificationsVisible]">
+						<div class="notification-controls">
+							<button class="btn btn-inverse" hm-tap="goToDetails()">Details</button>
+							<button class="btn btn-inverse" hm-tap="clear()">Tout cacher</button>
+						</div>
+						<div class="notification-container">
+							<a ng-repeat="notification in commands" 
+								class="notification"
+								hm-tap="goToNotification(notification)">
+								<span ng-show="notification.data.type == 'update'">
+									La mission #{{notification.data.id}} a été mise à jour.
+								</span>
+								<span ng-show="notification.data.type == 'delete'">
+									La mission #{{notification.data.id}} a été supprimée.
+								</span>
+								<ng-drag
+									on-threshold="hide(notification)" 
+									threshold="350"
+									axis="x">
+								</ng-drag>
+							</a>
+						</div>
 						
 						<div class="swipe">
 							<i class="icon-align-justify"></i>
@@ -53,20 +62,22 @@
 							axis="y"
 							bounded="true">
 						</ng-drag>
-    				</div>
-    			</li>
-    		</ul>
-
-			<ul class="nav pull-right">
-    			<li>
-    				<a href="/#/storagemanagement">
-    					Configuration
-    					<i class="icon-cog icon-white"></i>
-    				</a>
-    			</li>
-			</ul>
-		 </div>
+					</div>
+				</div>
+				<ul class="nav pull-right">
+	    			<li>
+	    				<a href="/#/storagemanagement">
+	    					<span class="hidden-phone">
+	    						Configuration
+	    					</span>
+	    					<i class="icon-cog icon-white"></i>
+	    				</a>
+	    			</li>
+				</ul>		
+			</div>
+		</div>
 	</div>
+
 	
 
 	<div id="container" class="container-fluid">
@@ -121,10 +132,11 @@
 	<script src="js/controllers/NewVehicleController.js"></script>
 	<script src="js/controllers/StorageManagementController.js"></script>
 	<script src="js/controllers/AccelerometerController.js"></script>	
-	<script src="js/controllers/CommandController.js"></script>	
+	<script src="js/controllers/NotificationController.js"></script>	
 	<script src="js/controllers/GesturesController.js"></script>
 	<script src="js/controllers/BootstrapController.js"></script>
 	<script src="js/controllers/ConnectionController.js"></script>
+	<script src="js/controllers/CommandController.js"></script>
 
 	<script src="js/filters/EventDestination.js"></script>
 	

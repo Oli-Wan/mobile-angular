@@ -133,6 +133,19 @@ mobileAngular.factory("Command",
 			});
 			return deferred.promise;
 		};
-
+		idbService.getAllSorted = function() {
+			var deferred = $q.defer();
+			storeWrapper.getStore().then(function(store){
+				store.query(function(data) {
+					$rootScope.$apply(function(){
+						deferred.resolve(data);
+					});
+				}, {
+					"index":"date",
+					"order":"DESC"
+				});
+			});
+			return deferred.promise;
+		};
 		return idbService;
 	});

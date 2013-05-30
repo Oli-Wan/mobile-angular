@@ -1,0 +1,30 @@
+<div>
+	<h3>Modifications</h3>
+	<div ng-repeat="command in commands" class="command-item" class="row">
+		<dl class="dl-horizontal">
+			<dt>Ressource</dt>
+			<dd>{{command.data.entity}}</dd>
+			<dt>Identifiant</dt>
+			<dd>{{command.data.id}}</dd>
+			<dt>Action</dt>
+			<dd>{{command.data.type}}</dd>
+			<dt>Date</dt>
+			<dd>{{command.date | date:'yyyy-MM-dd HH:mm:ss Z'}}</dd>
+			<dt>Status</dt>
+			<dd>{{command.status}}</dd>
+		</dl>
+
+		<table class="table">	
+			<tr>
+				<th>Attribut</th>
+				<th>Ancienne valeur</th>
+				<th>Nouvelle valeur</th>
+			</tr>		
+			<tr ng-repeat="change in command.data.changes">
+				<td>{{change.attribute}}</td>
+				<td>{{change.old_val}}</td>
+				<td>{{change.new_val}}</td>
+			</tr>
+		</table>
+	</div>	
+</div>

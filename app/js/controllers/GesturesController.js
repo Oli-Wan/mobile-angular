@@ -1,10 +1,5 @@
 mobileAngular.controller('GesturesController', 
 	function GesturesController($scope) {
-		$scope.hold = false;
-		$scope.dragSwitch = false;
-		$scope.dragSwitch2 = false;
-		$scope.dragSwitch3 = false;
-
 		$scope.tapMe = function(){
 			console.log("Tapped");
 		};
@@ -22,10 +17,6 @@ mobileAngular.controller('GesturesController',
 		$scope.end = function() {
 			console.log("Transition end");
 		};
-
-		$scope.$watch('dragSwitch', function(newValue){
-			console.log("watch drag", newValue);
-		});
 
 		$scope.onThreshold = function(message) {
 			console.log("Threshold", message);
@@ -55,5 +46,12 @@ mobileAngular.controller('GesturesController',
 			$scope.hold = !$scope.hold;
 		};
 
+		$scope.$watch('dragSwitch', function(newValue){
+			console.log("watch drag", newValue);
+		});
 
+		$scope.hold = false;
+		$scope.dragSwitch = false;
+		$scope.dragSwitch2 = false;
+		$scope.dragSwitch3 = false;
 	});
