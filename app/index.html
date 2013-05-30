@@ -31,11 +31,11 @@
 
 					<div id="notification-zone" 
 						ng-class="{'true':'visible', 'false':''}[notificationsVisible]">
+						<div class="notification-controls">
+							<button class="btn btn-inverse" hm-tap="goToDetails()">Details</button>
+							<button class="btn btn-inverse" hm-tap="clear()">Tout cacher</button>
+						</div>
 						<div class="notification-container">
-							<div class="notification-controls">
-								<button class="btn btn-inverse" hm-tap="goToDetails()">Details</button>
-								<button class="btn btn-inverse" hm-tap="Clear()">Tout cacher</button>
-							</div>
 							<a ng-repeat="notification in notifications" 
 								class="notification"
 								hm-tap="goToNotification(notification)">

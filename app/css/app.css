@@ -186,7 +186,7 @@ div.container-fluid {
 }
 
 #notification-zone>.notification-container {
-	height:370px;
+	height:324px;
 	overflow-x: hidden;
 	overflow-y: auto;
 }

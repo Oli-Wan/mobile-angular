@@ -37,19 +37,21 @@ mobileAngular.controller('CommandController',
 			$scope.notificationsVisible = !$scope.notificationsVisible;
 		};
 
-		$scope.swipeLeft = function(command, index) {
-			$scope.swipe(command, $scope.swipeLeft, index)
-		};
-
-		$scope.swipeRight = function(command, index) {
-			$scope.swipe(command, $scope.swipeRight, index)
-		};
-
 		$scope.hide = function(command) {
 			command.status = "read";
 			Command.save(command).then(function(){
 				$scope.loadNewCommands();
 			});
+		};
+
+		$scope.clear = function() {
+			for(var i = 0; i < $scope.notifications.length; i++) {
+				var command = $scope.notifications[i];
+				command.status = "read";
+				Command.save(command).then(function(){
+					$scope.loadNewCommands();
+				});
+			}
 		};
 
 		$scope.goToNotification = function(command) {
