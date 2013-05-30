@@ -36,7 +36,7 @@
 							<button class="btn btn-inverse" hm-tap="clear()">Tout cacher</button>
 						</div>
 						<div class="notification-container">
-							<a ng-repeat="notification in notifications" 
+							<a ng-repeat="notification in commands" 
 								class="notification"
 								hm-tap="goToNotification(notification)">
 								<span ng-show="notification.data.type == 'update'">

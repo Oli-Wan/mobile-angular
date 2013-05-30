@@ -1,0 +1,21 @@
+<div>
+	<h3>Modifications</h3>
+
+	<div ng-repeat="command in commands" class="command-item">
+		<p>
+			<strong>Ressource : </strong>{{command.data.entity}} #{{command.data.id}}, <strong>action : </strong>{{command.data.type}}, <strong>date : </strong>{{command.date}}
+		</p>
+		<table class="table">	
+			<tr>
+				<th>Attribut</th>
+				<th>Ancienne valeur</th>
+				<th>Nouvelle valeur</th>
+			</tr>		
+			<tr ng-repeat="change in command.data.changes">
+				<td>{{change.attribute}}</td>
+				<td>{{change.old_val}}</td>
+				<td>{{change.new_val}}</td>
+			</tr>
+		</table>
+	</div>	
+</div>

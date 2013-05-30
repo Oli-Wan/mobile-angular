@@ -254,6 +254,16 @@ div.container-fluid {
 .notification-controls>button:last-child {
 	float:right;
 }
+
+.command-item {
+	margin-bottom:20px;
+	border-bottom: 2px solid black;
+}
+
+.command-item>p {
+	font-size:15px;
+}
+
 /* Launcher (hidden)
 -------------------------------------------------- */
 .application-starter {

@@ -22,7 +22,7 @@ mobileAngular.controller('CommandController',
 			$scope.swipeRight = [];
 
 			Command.getNewCommands().then(function(data){
-				$scope.notifications = data;
+				$scope.commands = data;
 
 				if(data.length > $scope.nb )
 					$scope.toggleChange();
@@ -45,8 +45,8 @@ mobileAngular.controller('CommandController',
 		};
 
 		$scope.clear = function() {
-			for(var i = 0; i < $scope.notifications.length; i++) {
-				var command = $scope.notifications[i];
+			for(var i = 0; i < $scope.commands.length; i++) {
+				var command = $scope.commands[i];
 				command.status = "read";
 				Command.save(command).then(function(){
 					$scope.loadNewCommands();
@@ -73,4 +73,8 @@ mobileAngular.controller('CommandController',
 					$location.path(url).search({page: "mission"});
 			}
 		};
+
+		$scope.goToDetails = function(){
+			$location.path('/commands/');
+		}
 	});

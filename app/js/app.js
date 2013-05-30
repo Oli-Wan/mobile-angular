@@ -55,6 +55,11 @@ mobileAngular.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/misc/gestures.html', 
     controller: 'GesturesController'
   });
+  $routeProvider.when('/commands/', 
+  {
+    templateUrl: 'partials/misc/command-list.html', 
+    controller: 'CommandController'
+  });
   $routeProvider.otherwise({redirectTo: '/'});
 }]);
 
