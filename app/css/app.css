@@ -118,10 +118,18 @@ div.container-fluid {
 /* Notifications
 -------------------------------------------------- */
 
+.navbar-inner {
+	padding-left:20px;
+	padding-right:20px;
+}
+
 #notification-toggle {
 	margin-bottom: -1px;
 	position:fixed;
-	background-color: rgb(27, 27, 27);
+	min-width:40px;
+}
+#notification-toggle>span.visible-phone {
+	display:inline !important;
 }
 
 #notification-toggle.new {
