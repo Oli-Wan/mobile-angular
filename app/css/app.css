@@ -222,8 +222,14 @@ div.container-fluid {
 	transform: translate(300px);
 	opacity: 0;
 }
+.notification-controls {
+	border-bottom: 1px solid rgb(153, 153, 153);
+	padding-bottom:5px;
+}
 
-
+.notification-controls>button:last-child {
+	float:right;
+}
 /* Launcher (hidden)
 -------------------------------------------------- */
 .application-starter {
