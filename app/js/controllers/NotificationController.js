@@ -76,5 +76,11 @@ mobileAngular.controller('NotificationController',
 
 		$scope.goToDetails = function(){
 			$location.path('/commands/');
-		}
+		};
+
+		$scope.$on('$routeChangeStart', function() { 
+			if($scope.notificationsVisible)
+				$scope.notificationsVisible = false;
+		});
+
 	});
