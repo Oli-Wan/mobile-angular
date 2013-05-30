@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#2013-05-29 16:37:42
+#2013-05-30 10:24:29
 
 CACHE:
 ./css/app.css
@@ -7,6 +7,7 @@ CACHE:
 ./css/bootstrap-responsive.min.css
 ./css/bootstrap-timepicker.css
 ./css/bootstrap.min.css
+./img/ajax-loader.gif
 ./img/glyphicons-halflings-white.png
 ./img/glyphicons-halflings.png
 ./index.html
@@ -14,6 +15,7 @@ CACHE:
 ./js/controllers/AccelerometerController.js
 ./js/controllers/BootstrapController.js
 ./js/controllers/CommandController.js
+./js/controllers/ConnectionController.js
 ./js/controllers/EditEventController.js
 ./js/controllers/EventController.js
 ./js/controllers/FullScreenController.js
@@ -56,8 +58,8 @@ CACHE:
 ./js/services/URL.js
 ./js/services/Utils.js
 ./js/services/Vehicle.js
-./js/utils/command-listener.js
-./js/utils/command-sender.js
+./js/utils/CommandListener.js
+./js/utils/CommandSender.js
 ./js/utils/css-hooks.js
 ./lib/angular/angular-cookies.js
 ./lib/angular/angular-cookies.min.js

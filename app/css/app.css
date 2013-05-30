@@ -32,6 +32,16 @@ div.container-fluid {
 	margin-bottom:10px;
 }
 
+/* Bootstrap overrides
+-------------------------------------------------- */
+
+@media (max-width: 979px) {
+  .navbar-fixed-top,
+  .navbar-fixed-bottom {
+    position: relative;
+  }
+}
+
 /* Mission & menu
 -------------------------------------------------- */
 
@@ -118,18 +128,15 @@ div.container-fluid {
 /* Notifications
 -------------------------------------------------- */
 
+
+
 .navbar-inner {
 	padding-left:20px;
 	padding-right:20px;
+	z-index:1001;
 }
 
 #notification-toggle {
-	margin-bottom: -1px;
-	position:fixed;
-	min-width:40px;
-}
-#notification-toggle>span.visible-phone {
-	display:inline !important;
 }
 
 #notification-toggle.new {
@@ -140,25 +147,16 @@ div.container-fluid {
 	transform: scale(2);
 }
 
-#notification-toggle.open{
-	border: 1px solid rgb(153, 153, 153);
-	border-bottom: none;
-}
-
 #notification-zone {
 	position:absolute;
-	displau:none;
-	top:-361px;
-	z-index: -1;
+	top:-381px;
+	left:0;
 	width:350px;
+	z-index:1000;
 	overflow: hidden;
 	background-color: rgb(27, 27, 27);
-	border: 1px solid rgb(153, 153, 153);
 	height:400px;
-}
-
-#notification-zone.visible {
-	display: block;
+	padding-top:20px;
 }
 
 #notification-zone>.notification-container {

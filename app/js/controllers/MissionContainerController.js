@@ -1,33 +1,15 @@
 
 mobileAngular.controller("MissionContainerController", 
-	function MissionContainerController($scope, $rootScope, $routeParams, $http, $location, Mission, $window){
-		$scope.menu = false;
-		
+	function MissionContainerController($scope, $routeParams, $http, $location, Mission, $window){		
 		$scope.getMission = function() {	
 			Mission.get(parseInt($routeParams.missionId)).then(function(data){
 				$scope.mission = data;
 			});
 		};
 
-		$scope.getMission();
-
-		$scope.$on('dataChanged', function() {
-			$scope.getMission();
-		});
-
-		$http.get("/resources/mission-menu.json").success(function(data){
-			$scope.menuItems = data;
-			$scope.includedUrl = $scope.getPathFromParams();
-		});
-
 		$scope.includeUrlIs = function(expectedUrl) {
 			return $scope.includedUrl == expectedUrl;
 		};
-
-		$scope.$on('$routeUpdate', function() { 
-			$scope.includedUrl = $scope.getPathFromParams();
-			$window.scrollTo(0,0);
-		});
 
 		$scope.toggleMenu = function(){
 			$scope.menu = !$scope.menu;
@@ -55,4 +37,21 @@ mobileAngular.controller("MissionContainerController",
 			$scope.includedUrl = "";
 			$location.path("/mission/"+$scope.mission.id);
 		};
+
+		$scope.$on('$routeUpdate', function() { 
+			$scope.includedUrl = $scope.getPathFromParams();
+			$window.scrollTo(0,0);
+		});
+
+		$scope.$on('dataChanged', function() {
+			$scope.getMission();
+		});
+
+		$http.get("/resources/mission-menu.json").success(function(data){
+			$scope.menuItems = data;
+			$scope.includedUrl = $scope.getPathFromParams();
+		});
+
+		$scope.menu = false;
+		$scope.getMission();
 	});

@@ -1,7 +1,5 @@
 'use strict';
 
-
-// Declare app level module which depends on filters, and services
 var mobileAngular = angular.module('mobileAngular', ['ngResource', '$strap.directives', 'angular-gestures']);
 
 mobileAngular.config(['$routeProvider', function($routeProvider) {
