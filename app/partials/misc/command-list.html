@@ -1,10 +1,17 @@
 <div>
 	<h3>Modifications</h3>
+	<div ng-repeat="command in commands" class="command-item" class="row">
+		<dl class="dl-horizontal">
+			<dt>Ressource</dt>
+			<dd>{{command.data.entity}}</dd>
+			<dt>Identifiant</dt>
+			<dd>{{command.data.id}}</dd>
+			<dt>Action</dt>
+			<dd>{{command.data.type}}</dd>
+			<dt>Date</dt>
+			<dd>{{command.date| date:'yyyy-MM-dd HH:mm:ss Z'}}</dd>
+		</dl>
 
-	<div ng-repeat="command in commands" class="command-item">
-		<p>
-			<strong>Ressource : </strong>{{command.data.entity}} #{{command.data.id}}, <strong>action : </strong>{{command.data.type}}, <strong>date : </strong>{{command.date}}
-		</p>
 		<table class="table">	
 			<tr>
 				<th>Attribut</th>
