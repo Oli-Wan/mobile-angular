@@ -60,6 +60,10 @@ mobileAngular.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/misc/command-list.html', 
     controller: 'CommandController'
   });
+    $routeProvider.when('/cube/', 
+  {
+    templateUrl: 'partials/misc/cube.html'
+  });
   $routeProvider.otherwise({redirectTo: '/'});
 }]);
 
