@@ -45,6 +45,10 @@ div.container-fluid {
 	.navbar-fixed-bottom {
 		position: relative;
 	}
+	
+	div.container-fluid {
+		padding-top: 0px;
+	}
 }
 
 /* Mission & menu

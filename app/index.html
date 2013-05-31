@@ -18,11 +18,16 @@
 			    		<ul class="nav pull-right">
 			    			<li class="dropdown">
 			    				<a id="notification-toggle" class="dropdown-toggle animate" hm-tap="toggleNotifcations()">
-							   		<ng-pluralize count="nb"
+							   		<ng-pluralize count="nb" class="hidden-phone"
 			    							when="{'0': '0 notification',
 											    'one': '1 notification',
 											    'other': '{} notifications'}">
 			    					</ng-pluralize>
+			    					<span>
+			    						<span class="visible-phone">
+			    							{{nb}}
+			    						</span>
+			    					</span>
 			    					<b class="caret"></b>
 			    				</a>
 			    			</li>
