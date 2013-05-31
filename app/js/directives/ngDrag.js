@@ -16,8 +16,13 @@ mobileAngular.directive('ngDrag', function($parse) {
 				$scope.thresholdExceeded = $scope.dragSwitch;
 
 			$scope.axis = "X";
-			if(attrs['axis'] !== undefined)
-				$scope.axis = attrs['axis'].toUpperCase();
+			var events = "dragright dragleft";
+			if(attrs['axis'] && attrs['axis'].toUpperCase() == "Y") {
+				$scope.axis = "Y";
+				events = "dragup dragdown";
+			}
+
+			console.log(attrs['axis'], $scope.axis, events);
 
 			if($scope.bound === undefined)
 				$scope.threshold = 500;
@@ -71,7 +76,7 @@ mobileAngular.directive('ngDrag', function($parse) {
 					$scope.move(0, true);
 			});
 
-			Hammer(draggable[0]).on('drag', function(event) {
+			Hammer(draggable[0]).on(events, function(event) {
 				if($scope.preventDefault)
 					event.gesture.preventDefault();
 

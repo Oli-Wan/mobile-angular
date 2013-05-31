@@ -84,8 +84,10 @@ mobileAngular.controller('BootstrapController',
 
 				var step =  30/commands.length;
 				var recursiveFn = function(count, array) {
-					if(count >= array.length)
+					if(count >= array.length) {
+						$scope.progress = 100;
 						return;
+					}
 
 					var command = array[count];
 					CommandUtils.handleCommand(command, function() {
