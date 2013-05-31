@@ -1,7 +1,7 @@
 mobileAngular.controller('NotificationController', 
 	function NotificationController($scope, $timeout, $location, $route, Command) {
-		$scope.swipeLeft = [];
-		$scope.swipeRight = [];
+		$scope.hideArray = [];
+		$scope.removeArray = [];
 
 		$scope.toggleChange = function() {
 			$scope.change = true;
@@ -18,8 +18,7 @@ mobileAngular.controller('NotificationController',
 		});
 
 		$scope.loadNewCommands = function() {
-			$scope.swipeLeft = [];
-			$scope.swipeRight = [];
+			$scope.hideArray = [];
 
 			Command.getNewCommands().then(function(data){
 				$scope.commands = data;
@@ -37,11 +36,11 @@ mobileAngular.controller('NotificationController',
 			$scope.notificationsVisible = !$scope.notificationsVisible;
 		};
 
-		$scope.hide = function(command) {
+		$scope.hide = function(command, index) {
+			$scope.hideArray[index] = true;
 			command.status = "read";
 			Command.save(command).then(function(){
-				$scope.loadNewCommands();
-			});
+				$scope.nb--;			});
 		};
 
 		$scope.clear = function() {

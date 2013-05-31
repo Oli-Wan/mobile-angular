@@ -3,8 +3,8 @@ mobileAngular.directive('onTransitionEnd', function($parse, transitionEndEvent) 
 		restrict: 'A',
 		link: function ($scope, element, attrs) {
 			var fn = $parse(attrs["onTransitionEnd"]);
-			console.log(transitionEndEvent);
-			element.bind(transitionEndEvent, function(){
+			element.bind(transitionEndEvent, function(event){
+				console.log("transion-end", event);
 				$scope.$apply(function(){
 					fn($scope);
 				});

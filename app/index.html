@@ -17,7 +17,9 @@
 			    		<a class="brand" href="#">Angular Mobile</a>
 			    		<ul class="nav pull-right">
 			    			<li class="dropdown">
-			    				<a id="notification-toggle" class="dropdown-toggle animate" hm-tap="toggleNotifcations()">
+			    				<a id="notification-toggle" class="dropdown-toggle animate" 
+			    					hm-tap="toggleNotifcations()"
+									ng-class="{'true':'new', 'false':''}[change]">
 							   		<ng-pluralize count="nb" class="hidden-phone"
 			    							when="{'0': '0 notification',
 											    'one': '1 notification',
@@ -37,13 +39,18 @@
 					<div id="notification-zone" 
 						ng-class="{'true':'visible', 'false':''}[notificationsVisible]">
 						<div class="notification-controls">
-							<button class="btn btn-inverse" hm-tap="goToDetails()">Details</button>
-							<button class="btn btn-inverse" hm-tap="clear()">Tout cacher</button>
+							<button class="btn btn-inverse" hm-tap="goToDetails()">
+								Historique
+							</button>
+							<button class="btn btn-inverse" hm-tap="clear()">
+								Tout cacher
+							</button>
 						</div>
 						<div class="notification-container">
 							<a ng-repeat="notification in commands" 
 								class="notification"
-								hm-tap="goToNotification(notification)">
+								hm-tap="goToNotification(notification)"
+								ng-class="{'hide':hideArray[$index]}">
 								<span ng-show="notification.data.type == 'update'">
 									La mission #{{notification.data.id}} a été mise à jour.
 								</span>
@@ -51,9 +58,10 @@
 									La mission #{{notification.data.id}} a été supprimée.
 								</span>
 								<ng-drag
-									on-threshold="hide(notification)" 
-									threshold="350"
-									axis="x">
+									on-threshold="hide(notification, $index)" 
+									bound="350"
+									axis="x"
+									prevent-default="true">
 								</ng-drag>
 							</a>
 						</div>
@@ -63,9 +71,10 @@
 						</div>
 						<ng-drag 
 							switch="notificationsVisible" 
-							threshold="400"
+							bound="400"
 							axis="y"
-							bounded="true">
+							bounded="true"
+							prevent-default="true">
 						</ng-drag>
 					</div>
 				</div>

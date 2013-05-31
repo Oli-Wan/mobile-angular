@@ -15,15 +15,30 @@
 	<br />
 	<div id="drag-me" class="gestured" on-transition-end="end()">
 		<p>1</p>
-		<ng-drag switch="dragSwitch" threshold="500" on-threshold="myFunction()"></ng-drag>
+		<ng-drag switch="dragSwitch" 
+			bound="200" 
+			on-threshold="myFunction()"
+			prevent-default="true">
+		</ng-drag>
+	</div>
+	<div id="threshold">
+		x
 	</div>
 	<div id="target">
-		HERE
+		Target
 	</div>
 	<div class="clearfix" ></div>
+	<div id="threshold2">
+		x
+	</div>
 	<div id="drag-me-2" class="gestured" >
 		<p>2</p>
-		<ng-drag switch="dragSwitch2" threshold="-200" axis="y" bounded="true"></ng-drag>
+		<ng-drag switch="dragSwitch2" 
+			bound="-200" 
+			axis="y" 
+			bounded="true" 
+			prevent-default="true">
+		</ng-drag>
 	</div>
 	<div class="clearfix" ></div>
 	<br />

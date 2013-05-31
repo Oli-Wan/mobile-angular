@@ -172,12 +172,24 @@ div.container-fluid {
 	z-index:1;
 }
 
-#notification-toggle.new {
-	-webkit-transform: scale(2);
-	-moz-transform: scale(2);
-	-ms-transform: scale(2);
-	-o-transform: scale(2);
-	transform: scale(2);
+@media (max-width: 400px) {
+	#notification-toggle.new {
+		-webkit-transform: scale(3);
+		-moz-transform: scale(3);
+		-ms-transform: scale(3);
+		-o-transform: scale(3);
+		transform: scale(3);
+	}
+}
+
+@media (min-width: 400px) {
+	#notification-toggle.new {
+		-webkit-transform: scale(2);
+		-moz-transform: scale(2);
+		-ms-transform: scale(2);
+		-o-transform: scale(2);
+		transform: scale(2);
+	}
 }
 
 #notification-zone {
@@ -224,32 +236,10 @@ div.container-fluid {
 	background-image: linear-gradient(to bottom, #4e4e4e, black)
 }
 
-.notification {
-	-webkit-transition:-webkit-transform linear 0.2s;
-	-moz-transition:-moz-transform linear 0.2s;
-	-ms-transition:-ms-transform linear 0.2s;
-	-o-transition:-o-transform linear 0.2s;
-	transition:transform linear 0.2s;
+.notification.hide {
+	display:none!important;
 }
 
-.notification.swipe-left {
-	-webkit-transform: translate(-300px);
-	-moz-transform: translate(-300px);
-	-ms-transform: translate(-300px);
-	-o-transform: translate(-300px);
-	transform: translate(-300px);
-	opacity: 0;
-}
-
-
-.notification.swipe-right {
-	-webkit-transform: translate(300px);
-	-moz-transform: translate(300px);
-	-ms-transform: translate(300px);
-	-o-transform: translate(300px);
-	transform: translate(300px);
-	opacity: 0;
-}
 .notification-controls {
 	border-bottom: 1px solid rgb(153, 153, 153);
 	padding-bottom:5px;
@@ -393,7 +383,7 @@ div.container-fluid {
 
 .gestured {
 	float:left;
-	width:300px;
+	width:50px;
 	height:50px;
 	background-color: black;
 	color:white;
@@ -423,24 +413,31 @@ div.container-fluid {
 }
 
 #drag-me-2 {
-	margin-left:500px;
-	margin-top:150px;
+	margin-left:200px;
+	margin-top:50px;
+}
+
+#threshold {
+	float:left;	
+	margin-left:50px;
+	height:50px;
+	width:20px;
+	background-color: violet;
+}
+
+#threshold2 {
+	margin-top:80px;
+	margin-left:200px;
+	height:20px;
+	width:50px;
+	background-color: violet;
 }
 
 #target {
 	float:left;
-	margin-left:200px;
+	margin-left:80px;
 	height:50px;
-	width:70px;
-	background-color: red;
-}
-
-#target2 {
-	float:left;
-	margin-left:500px;
-	margin-top:150px;
-	height:50px;
-	width:70px;
+	width:50px;
 	background-color: red;
 }
 
