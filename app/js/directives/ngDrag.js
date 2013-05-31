@@ -3,7 +3,7 @@ mobileAngular.directive('ngDrag', function($parse) {
 		restrict: 'E',
 		scope: {
 			dragSwitch: "=switch",
-			threshold: "@",
+			bound: "@",
 			onThreshold: "&",
 			bounded: "@",
 			preventDefault: '@'
@@ -19,14 +19,22 @@ mobileAngular.directive('ngDrag', function($parse) {
 			if(attrs['axis'] !== undefined)
 				$scope.axis = attrs['axis'].toUpperCase();
 
-			if($scope.threshold === undefined)
+			if($scope.bound === undefined)
 				$scope.threshold = 500;
 
-			$scope.isDeltaAboveThreshold = function(delta) {
-				if($scope.threshold < 0) {
-					return $scope.threshold >= delta;
+			$scope.isAbove = function(delta, reference) {
+				if(reference < 0) {
+					return reference >= delta;
 				} else {
-					return delta >= $scope.threshold;
+					return delta >= reference;
+				}
+			}
+
+			$scope.isDeltaAboveBound = function(delta) {
+				if($scope.bound < 0) {
+					return $scope.bound >= delta;
+				} else {
+					return delta >= $scope.bound;
 				}
 			};
 
@@ -58,7 +66,7 @@ mobileAngular.directive('ngDrag', function($parse) {
 				$scope.thresholdExceeded = newValue;
 				
 				if($scope.thresholdExceeded)
-					$scope.move($scope.threshold, true);
+					$scope.move($scope.bound, true);
 				else
 					$scope.move(0, true);
 			});
@@ -67,13 +75,15 @@ mobileAngular.directive('ngDrag', function($parse) {
 				if($scope.preventDefault)
 					event.gesture.preventDefault();
 
+				event.stopPropagation();
+
 				var delta = event.gesture['delta'+$scope.axis];
 
 				if($scope.thresholdExceeded)
-					delta = delta + parseInt($scope.threshold);
+					delta = delta + parseInt($scope.bound);
 
-				if($scope.bounded && $scope.isDeltaAboveThreshold(delta))
-					delta = $scope.threshold;
+				if($scope.bounded && $scope.isAbove(delta, $scope.bound))
+					delta = $scope.bound;
 
 				$scope.move(delta);
 			});
@@ -85,15 +95,15 @@ mobileAngular.directive('ngDrag', function($parse) {
 				$this = $(this);
 				var delta = event.gesture['delta'+$scope.axis];
 				if($scope.thresholdExceeded)
-					delta = delta + parseInt($scope.threshold);
+					delta = delta + parseInt($scope.bound);
 
-				if( $scope.isDeltaAboveThreshold(delta) ) {
+				if( $scope.isAbove(delta, $scope.bound/2) ) {
 					$scope.thresholdExceeded = true;
 					$scope.switch(true);
 					$scope.$apply(function(){
 						$scope.onThreshold();
 					});
-					$scope.move($scope.threshold, true);
+					$scope.move($scope.bound, true);
 				} else if ($scope.thresholdExceeded) {
 					$scope.thresholdExceeded = false;
 					$scope.switch(false);
