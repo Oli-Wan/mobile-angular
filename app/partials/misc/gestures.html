@@ -15,7 +15,11 @@
 	<br />
 	<div id="drag-me" class="gestured" on-transition-end="end()">
 		<p>1</p>
-		<ng-drag switch="dragSwitch" threshold="100" on-threshold="myFunction()"></ng-drag>
+		<ng-drag switch="dragSwitch" 
+			threshold="100" 
+			on-threshold="myFunction()"
+			prevent-default="true">
+		</ng-drag>
 	</div>
 	<div id="target">
 		HERE
