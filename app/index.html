@@ -17,7 +17,9 @@
 			    		<a class="brand" href="#">Angular Mobile</a>
 			    		<ul class="nav pull-right">
 			    			<li class="dropdown">
-			    				<a id="notification-toggle" class="dropdown-toggle animate" hm-tap="toggleNotifcations()">
+			    				<a id="notification-toggle" class="dropdown-toggle animate" 
+			    					hm-tap="toggleNotifcations()"
+									ng-class="{'true':'new', 'false':''}[change]">
 							   		<ng-pluralize count="nb" class="hidden-phone"
 			    							when="{'0': '0 notification',
 											    'one': '1 notification',
