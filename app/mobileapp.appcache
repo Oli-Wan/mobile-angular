@@ -1,12 +1,10 @@
 CACHE MANIFEST
-#2013-05-30 10:24:29
+#2013-05-31 17:30:57
 
 CACHE:
 ./css/app.css
-./css/bootstrap-datepicker.css
-./css/bootstrap-responsive.min.css
-./css/bootstrap-timepicker.css
-./css/bootstrap.min.css
+./css/bootstrap-responsive.css
+./css/bootstrap.css
 ./img/ajax-loader.gif
 ./img/glyphicons-halflings-white.png
 ./img/glyphicons-halflings.png
@@ -25,10 +23,12 @@ CACHE:
 ./js/controllers/NewMissionController.js
 ./js/controllers/NewStaffController.js
 ./js/controllers/NewVehicleController.js
+./js/controllers/NotificationController.js
 ./js/controllers/StaffController.js
 ./js/controllers/StorageManagementController.js
 ./js/controllers/UpdateMissionController.js
 ./js/controllers/VehicleController.js
+./js/directives/cube.js
 ./js/directives/loader.js
 ./js/directives/ngDrag.js
 ./js/directives/ngFiles.js
@@ -88,13 +88,17 @@ CACHE:
 ./lib/screenfull.js
 ./lib/socket.io.js
 ./lib/thumbs.0.5.2.min.js
+./partials/directives/cube.html
 ./partials/directives/loader.html
 ./partials/directives/thumbnail.html
 ./partials/misc/accelerometer.html
 ./partials/misc/back.html
 ./partials/misc/bootstrap.html
+./partials/misc/command-list.html
+./partials/misc/cube.html
 ./partials/misc/deleteConfirmation.html
 ./partials/misc/gestures.html
+./partials/misc/notifications.html
 ./partials/misc/storage-management.html
 ./partials/mission/events/address.html
 ./partials/mission/events/dialog.html
