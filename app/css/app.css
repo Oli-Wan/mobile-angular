@@ -237,7 +237,7 @@ div.container-fluid {
 }
 
 .notification.hide {
-	display: none!important;
+	display:none!important;
 }
 
 .notification-controls {
