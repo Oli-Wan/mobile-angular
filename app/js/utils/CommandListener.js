@@ -7,13 +7,15 @@ mobileAngular.run( function(SocketService, $http, ClientID, CommandUtils, localS
 
 		$http.get(Backend.get()+'/commands'+getParams).success(function(commands) {
 			var recursiveFn = function(count, array) {
-				if(count >= array.length)
+				if(count >= array.length) {
+					$rootScope.$broadcast('dataChanged');
 					return;
+				}
 
 				var command = array[count];
 				CommandUtils.handleCommand(command, function() {
 					recursiveFn(++count, array)
-				});
+				}, false);
 			};
 
 			recursiveFn(0, commands);
