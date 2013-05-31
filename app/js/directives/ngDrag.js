@@ -5,7 +5,8 @@ mobileAngular.directive('ngDrag', function($parse) {
 			dragSwitch: "=switch",
 			threshold: "@",
 			onThreshold: "&",
-			bounded: "@"
+			bounded: "@",
+			preventDefault: '@'
 		},
 		link: function ($scope, element, attrs) {
 			var draggable = element.parent();
@@ -38,25 +39,34 @@ mobileAngular.directive('ngDrag', function($parse) {
 				$scope.dragSwitch = value
 			};
 
-			$scope.move = function(){
-				var offset = 0
-				if($scope.thresholdExceeded)
-					offset = $scope.threshold;
+			$scope.move = function(offset, animate){
+				draggable.removeClass('animate');
+				
+				if(animate)
+					draggable.addClass('animate');
 
-				draggable.addClass('animate');
-				draggable.css("transform", "translate"+$scope.axis+"("+offset+"px)");
+				var coordinates;
+				if($scope.axis == "Y")
+					coordinates = "0,"+offset+"px, 0";
+				else
+					coordinates = offset+"px, 0, 0";
+
+				draggable.css("transform", "translate3d("+coordinates+") scale3d(1,1,1)");
 			};
 
 			$scope.$watch('dragSwitch', function(newValue){
 				$scope.thresholdExceeded = newValue;
-				$scope.move();
-			});
-
-			Hammer(draggable[0]).on('dragstart', function(event){
-				$(this).removeClass('animate');
+				
+				if($scope.thresholdExceeded)
+					$scope.move($scope.threshold, true);
+				else
+					$scope.move(0, true);
 			});
 
 			Hammer(draggable[0]).on('drag', function(event) {
+				if($scope.preventDefault)
+					event.gesture.preventDefault();
+
 				var delta = event.gesture['delta'+$scope.axis];
 
 				if($scope.thresholdExceeded)
@@ -65,10 +75,13 @@ mobileAngular.directive('ngDrag', function($parse) {
 				if($scope.bounded && $scope.isDeltaAboveThreshold(delta))
 					delta = $scope.threshold;
 
-				$(this).css("transform", "translate"+$scope.axis+"("+delta+"px)");
+				$scope.move(delta);
 			});
 
-			Hammer(draggable[0]).on('dragend', function(event){
+			Hammer(draggable[0]).on('release', function(event){
+				if($scope.preventDefault)
+					event.gesture.preventDefault();
+
 				$this = $(this);
 				var delta = event.gesture['delta'+$scope.axis];
 				if($scope.thresholdExceeded)
@@ -80,13 +93,15 @@ mobileAngular.directive('ngDrag', function($parse) {
 					$scope.$apply(function(){
 						$scope.onThreshold();
 					});
+					$scope.move($scope.threshold, true);
 				} else if ($scope.thresholdExceeded) {
 					$scope.thresholdExceeded = false;
 					$scope.switch(false);
 					$scope.$apply();
+					$scope.move("0", true);
+				} else {
+					$scope.move("0", true);
 				}
-
-				$scope.move();
 			});
 		}
 	};
