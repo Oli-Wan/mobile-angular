@@ -73,6 +73,10 @@ div.container-fluid {
 	}
 }
 
+select.input-xlarge {
+	width:284px;
+}
+
 /* Mission & menu
 -------------------------------------------------- */
 
