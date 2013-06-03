@@ -1,7 +1,7 @@
 <div class="no-x-scrolling fill-screen-height">
 	<div class="menu">
 		<div class="menu-title">
-			<h4>Menu</h4>
+			<h3>Menu</h3>
 		</div>
 		<ul class="nav nav-list bs-docs-sidenav">
 			<li ng-repeat="menuItem in menuItems" ng-class="{active: includeUrlIs(menuItem.templateUrl)}">
@@ -17,12 +17,12 @@
 			<div class="menu-button" hm-tap="toggleMenu()">
 				<i ng-class="{true:'icon-arrow-right', false:'icon-arrow-left'}[menu]"></i>
 			</div>
-			<h4> 
+			<h3> 
 				Mission {{mission.id}} 
 				<span class="pull-right" ng-hide="mission">
 					<loader></loader>
 				</span>
-			</h4>
+			</h3>
 		</div>
 		<div class="mission-description fill-screen-height" >
 			<div ng-include="includedUrl">
