@@ -1,15 +1,15 @@
 <div class="mission-description-part">
 	<div ng-controller="VehicleController">
-		<h3 class="pull-left">Véhicules</h3>
+		<h2 class="pull-left">Véhicules</h2>
 
-		<a class="btn btn-primary btn-add pull-right" 
+		<button class="btn btn-primary btn-large btn-add pull-right" 
 			hm-tap="goToNewVehicle()">
 			Ajouter un véhicule
-		</a>
+		</button>
 
 		<div class="clearfix" />
 
-		<table class="table table-hover">
+		<table class="table table-hover table-large font-large">
 			<tr ng-hide="vehicles.length">
 				<td colspan="4">Aucun véhicule</td>
 			</tr>
@@ -17,7 +17,7 @@
 				<td>{{vehicle.name}}</td>
 				<td>{{vehicle.time.time}}</td>
 				<td>
-					<button class="btn btn-danger" hm-tap="deleteModal(vehicle)">
+					<button class="btn btn-danger pull-right btn-large" hm-tap="deleteModal(vehicle)">
 						<i class="icon-trash icon-white"></i>
 					</button>				
 				</td>
