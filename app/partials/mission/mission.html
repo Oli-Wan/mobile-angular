@@ -1,6 +1,6 @@
 <div class="mission-description-part">
-	<form class="form form-horizontal" ng-controller="UpdateMissionController">
-		<h3>Mission</h3>
+	<form class="form form-horizontal " ng-controller="UpdateMissionController">
+		<h3>Mission {{mission.id}}</h3>
 
 		<div class="alert fade" ng-repeat="alert in alerts" bs-alert="alert"></div>
 
@@ -57,7 +57,7 @@
 			</div>
 		</div>
 		<div class="form-actions">
-			<button class="btn btn-primary" hm-tap="save()">Sauvegarder</button>
+			<button class="btn btn-primary btn-large" hm-tap="save()">Sauvegarder</button>
 		</div>
 	</form>
 </div>

@@ -22,8 +22,6 @@ mobileAngular.directive('ngDrag', function($parse) {
 				events = "dragup dragdown";
 			}
 
-			console.log(attrs['axis'], $scope.axis, events);
-
 			if($scope.bound === undefined)
 				$scope.threshold = 500;
 

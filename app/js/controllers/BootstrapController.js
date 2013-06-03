@@ -15,7 +15,7 @@ mobileAngular.controller('BootstrapController',
 			ClientID.set($scope.clientID);
 			Backend.set($scope.backend);
 			$scope.progress += 10;
-			var persons = $http.get($scope.backend+'/persons').
+			$http.get($scope.backend+'/persons').
 			success(function(data){
 				var count = 0;
 				Staff.clear().then(function(){

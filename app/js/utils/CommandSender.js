@@ -1,4 +1,4 @@
-mobileAngular.run(function($timeout, $http, Command) {
+mobileAngular.run(function($timeout, $http, Command, Backend) {
 	var pollingInterval = 5000;
 	$timeout(function sendingFunction(){
 		Command.getNonSentCommands().then(function(data){
@@ -13,7 +13,7 @@ mobileAngular.run(function($timeout, $http, Command) {
 				var cmd = data[count];
 				var postData = JSON.parse(JSON.stringify(cmd));
 				delete postData["id"];
-				$http.post('http://localhost:2403/commands', postData).success(function(){
+				$http.post(Backend.get()+'/commands', postData).success(function(){
 					cmd.status = "sent";
 					Command.save(cmd).then(function(){
 						send(data, ++count);
