@@ -13,21 +13,14 @@
 		</ul>
 	</div>
 	<div class="mission-zone fill-screen-height" >
-		<div class="mission-name affix">
+		<div class="mission-description fill-screen-height" >
 			<div class="menu-button" hm-tap="toggleMenu()">
 				<i ng-class="{true:'icon-arrow-right', false:'icon-arrow-left'}[menu]"></i>
+				<span class="visible-phone">Accéder au menu</span>
 			</div>
-			<h3> 
-				Mission {{mission.id}} 
-				<span class="pull-right" ng-hide="mission">
-					<loader></loader>
-				</span>
-			</h3>
-		</div>
-		<div class="mission-description fill-screen-height" >
 			<div ng-include="includedUrl">
 			</div>
 		</div>
-		<ng-drag switch="menu" bound="300" prevent-default="true"></ng-drag>
+		<ng-drag switch="menu" bound="250" prevent-default="true"></ng-drag>
 	</div>
 </div>

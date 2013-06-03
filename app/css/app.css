@@ -66,6 +66,7 @@ div.container-fluid {
 	.navbar-fixed-top,
 	.navbar-fixed-bottom {
 		position: relative;
+		margin-bottom: 0px;
 	}
 	
 	div.container-fluid {
@@ -81,9 +82,7 @@ select.input-xlarge {
 -------------------------------------------------- */
 
 .mission-description {
-	padding-left: 20px;
 	padding-right: 20px;
-	padding-top:60px;
 	background-color: white;
 	overflow: auto;
 	box-shadow: 0 0 5px gray;
@@ -98,10 +97,31 @@ select.input-xlarge {
 	background-color: white;
 }
 
-.menu-button {
-	float:left;
-	padding: 20px 23px;
-	margin-right:10px;
+@media (min-width: 768px) {
+	.menu-button {
+		position:absolute;
+		padding:20px  23px;
+		left:0;
+	}
+
+	.mission-description {
+		padding-left: 70px;
+	}
+}
+
+@media (max-width: 768px) {
+	.menu-button>i {
+		float:left;
+	}
+
+	.menu-button {
+		padding: 10px;
+		text-align:center;
+	}
+
+	.mission-description {
+		padding-left: 20px;
+	}
 }
 
 .menu-button:active,
@@ -114,7 +134,7 @@ select.input-xlarge {
 }
 
 .menu {
-	width:300px;
+	width:250px;
 	position:absolute;
 }
 
