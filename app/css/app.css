@@ -37,6 +37,28 @@ div.container-fluid {
 	margin-bottom:10px;
 }
 
+/* Fonts
+-------------------------------------------------- */
+.table-activable tbody tr:active > td,
+.table-activable tbody tr:active > th {
+	background-color: #f5f5f5;
+}
+
+/* Fonts scaling
+-------------------------------------------------- */
+
+@media (min-width: 769px) {
+	.font-large {
+		font-size:18px;
+	}
+
+	.table-large td, .table-large th {
+		padding:10px;
+		vertical-align: middle;
+	}
+}
+
+
 /* Bootstrap overrides
 -------------------------------------------------- */
 

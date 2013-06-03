@@ -7,11 +7,10 @@
 	</a>
 
 	<div class="clearfix"></div>
-	<table class="table table-hover table-tapable">
+	<table class="table table-hover table-activable font-large table-large">
 		<thead>
 			<tr>
 				<th>Heure</th>
-				<th class="hidden-phone">ID</th>
 				<th class="hidden-phone">Type</th>
 				<th>Destination</th>
 				<th class="hidden-phone">Responsable</th>
@@ -23,14 +22,13 @@
 		<tbody>
 			<tr ng-repeat="mission in missions" >
 				<td hm-tap="navigateTo(mission)" >{{mission.created_at}}</td>
-				<td hm-tap="navigateTo(mission)" class="hidden-phone">{{mission.id}}</td>
 				<td hm-tap="navigateTo(mission)" class="hidden-phone">{{mission.type}}</td>
 				<td hm-tap="navigateTo(mission)" >{{mission.destination}}</td>
 				<td hm-tap="navigateTo(mission)" class="hidden-phone">{{mission.responsible}}</td>
 				<td hm-tap="navigateTo(mission)" class="hidden-phone">{{mission.victims}}</td>
 				<td hm-tap="navigateTo(mission)" class="hidden-phone">{{mission.observation}}</td>
 				<td>
-					<button class="btn btn-danger" hm-tap="deleteModal(mission.id)">
+					<button class="btn btn-danger btn-large" hm-tap="deleteModal(mission.id)">
 						<i class="icon-trash icon-white"></i>
 					</button>
 				</td>
