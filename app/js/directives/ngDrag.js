@@ -53,6 +53,8 @@ angular.module('mobileAngular').directive('ngDrag', function($parse) {
 			$scope.move = function(offset, animate){
 				draggable.removeClass('animate');
 				
+				console.log("Moving");
+
 				if(animate)
 					draggable.addClass('animate');
 
@@ -61,7 +63,7 @@ angular.module('mobileAngular').directive('ngDrag', function($parse) {
 					coordinates = "0,"+offset+"px, 0";
 				else
 					coordinates = offset+"px, 0, 0";
-
+				console.log(coordinates);
 				draggable.css("transform", "translate3d("+coordinates+") scale3d(1,1,1)");
 			};
 
@@ -92,10 +94,6 @@ angular.module('mobileAngular').directive('ngDrag', function($parse) {
 			});
 
 			Hammer(draggable[0]).on('release', function(event){
-				if($scope.preventDefault)
-					event.gesture.preventDefault();
-
-				$this = $(this);
 				var delta = event.gesture['delta'+$scope.axis];
 				if($scope.thresholdExceeded)
 					delta = delta + parseInt($scope.bound);
