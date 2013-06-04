@@ -16,7 +16,7 @@ module.exports = function(grunt) {
     uglify: {
       task: {
         src: 'temp/minifiable.js',
-        dest: 'app/js/app.min.js'
+        dest: 'app/app.min.js'
       }
     },
     clean: ['temp/']
@@ -28,5 +28,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-clean');
 
-  grunt.registerTask('build', ['concat', 'ngmin', 'uglify']);
+  grunt.registerTask('build', ['concat', 'ngmin', 'uglify', 'clean']);
 };
