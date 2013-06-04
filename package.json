@@ -1,8 +1,11 @@
 {
-	"name": "mobile-angular",
-	"description": "Mobile AngularJS app",
-	"version": "0.0.1",
-	"dependencies": {
-		"express": "3.x"
-	}
+  "name": "mobile-angular",
+  "description": "Mobile AngularJS app",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "3.x"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1"
+  }
 }
