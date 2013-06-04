@@ -1,6 +1,6 @@
 
-mobileAngular.controller("VehicleController", 
-	function VehicleController($scope, $routeParams, $window, $location, Mission, Vehicle) {		
+angular.module('mobileAngular').controller("VehicleController", 
+	function ($scope, $routeParams, $window, $location, Mission, Vehicle) {		
 		Mission.get(parseInt($routeParams.missionId)).then(function(data) {
 			$scope.mission = data;
 			$scope.refreshVehicles();

@@ -1,6 +1,6 @@
 
-mobileAngular.controller("NewStaffController", 
-	function NewStaffController($scope, $http, $location, $routeParams, Mission, Staff, Utils) {
+angular.module('mobileAngular').controller("NewStaffController", 
+	function ($scope, $http, $location, $routeParams, Mission, Staff, Utils) {
 		$scope.staff = {};
 		$scope.staff.time = Utils.getCurrentDateAndTime();
 

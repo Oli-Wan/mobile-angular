@@ -1,5 +1,5 @@
-mobileAngular.controller('NotificationController', 
-	function NotificationController($scope, $timeout, $location, $route, Command) {
+angular.module('mobileAngular').controller('NotificationController', 
+	function ($scope, $timeout, $location, $route, Command) {
 		$scope.hideArray = [];
 		$scope.removeArray = [];
 

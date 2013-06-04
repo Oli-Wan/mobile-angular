@@ -1,5 +1,5 @@
 
-mobileAngular.factory("Staff", function Staff($q, $rootScope, IDBService){
+angular.module('mobileAngular').factory("Staff", function ($q, $rootScope, IDBService){
 	var storeWrapper = {
 		store: undefined,
 		getStore: function() {

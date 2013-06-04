@@ -1,4 +1,4 @@
-mobileAngular.factory("transitionEndEvent", function (){
+angular.module('mobileAngular').factory("transitionEndEvent", function (){
 	var t;
 	var el = document.createElement('fakeelement');
 	var result;

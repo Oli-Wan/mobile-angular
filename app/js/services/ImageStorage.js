@@ -1,4 +1,4 @@
-mobileAngular.factory("ImageStorage", function ImageStorage($q, $rootScope, FileSystem, FileSystemUtils){
+angular.module('mobileAngular').factory("ImageStorage", function ($q, $rootScope, FileSystem, FileSystemUtils){
 	return {
 		save: function(fileName, blob) {
 			var deffered = $q.defer();

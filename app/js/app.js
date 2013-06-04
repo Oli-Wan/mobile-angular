@@ -1,8 +1,8 @@
 'use strict';
 
-var mobileAngular = angular.module('mobileAngular', ['ngResource', '$strap.directives', 'angular-gestures']);
+angular.module('mobileAngular', ['ngResource', '$strap.directives', 'angular-gestures']);
 
-mobileAngular.config(['$routeProvider', function($routeProvider) {
+angular.module('mobileAngular').config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', 
   {
     templateUrl: 'partials/missions.html', 
@@ -68,13 +68,13 @@ mobileAngular.config(['$routeProvider', function($routeProvider) {
 }]);
 
 //default for datepicker
-mobileAngular.value('$strap.config', {
+angular.module('mobileAngular').value('$strap.config', {
   datepicker: {
     format: 'dd/mm/yyyy'
   }
 });
 
-mobileAngular.run(function($rootScope, $window, $timeout){
+angular.module('mobileAngular').run(function($rootScope, $window, $timeout){
   $rootScope.scrollX = $window.scrollX;
 
   angular.element($window).bind('scroll',function(){

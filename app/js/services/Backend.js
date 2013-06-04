@@ -1,4 +1,4 @@
-mobileAngular.factory("Backend", function(localStorage){
+angular.module('mobileAngular').factory("Backend", function(localStorage){
 	var backendKey = "SMUR_BACKEND"
 	return {
 		get: function() {

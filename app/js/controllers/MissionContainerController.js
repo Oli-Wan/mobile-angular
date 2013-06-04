@@ -1,6 +1,6 @@
 
-mobileAngular.controller("MissionContainerController", 
-	function MissionContainerController($scope, $routeParams, $http, $location, Mission, $window){		
+angular.module('mobileAngular').controller("MissionContainerController", 
+	function ($scope, $routeParams, $http, $location, Mission, $window){		
 		$scope.getMission = function() {	
 			Mission.get(parseInt($routeParams.missionId)).then(function(data){
 				$scope.mission = data;

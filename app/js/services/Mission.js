@@ -1,5 +1,5 @@
 
-mobileAngular.factory("Mission", function Mission($q, $rootScope, SyncedResourceService){
+angular.module('mobileAngular').factory("Mission", function ($q, $rootScope, SyncedResourceService){
 	var storeWrapper = {
 		store: undefined,
 		getStore: function() {

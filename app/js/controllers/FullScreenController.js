@@ -1,5 +1,5 @@
-mobileAngular.controller("FullScreenController", 
-	function FullScreenController($scope, $window){
+angular.module('mobileAngular').controller("FullScreenController", 
+	function ($scope, $window){
 		if(screenfull.enabled)
 			$scope.fullscreenSupport = true;
 

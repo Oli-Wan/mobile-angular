@@ -1,5 +1,4 @@
-mobileAngular.controller('GesturesController', 
-	function GesturesController($scope) {
+angular.module('mobileAngular').controller('GesturesController', function ($scope) {
 		$scope.tapMe = function(){
 			console.log("Tapped");
 		};

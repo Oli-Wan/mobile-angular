@@ -1,5 +1,5 @@
 
-mobileAngular.factory("Event", function Event($q, $rootScope, IDBService){
+angular.module('mobileAngular').factory("Event", function ($q, $rootScope, IDBService){
 	var storeWrapper = {
 		store: undefined,
 		getStore: function() {

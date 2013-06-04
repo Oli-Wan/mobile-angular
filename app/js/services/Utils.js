@@ -1,4 +1,4 @@
- mobileAngular.service("Utils", function Utils(){
+ angular.module('mobileAngular').service("Utils", function () {
  	return {
  		getCurrentDateAndTime: function(){
  			var currentTime = new Date();

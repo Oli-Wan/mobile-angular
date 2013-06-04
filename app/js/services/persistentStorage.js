@@ -1,1 +1,1 @@
-mobileAngular.value("persistentStorage", navigator.persistentStorage || navigator.webkitPersistentStorage);
+angular.module('mobileAngular').value("persistentStorage", navigator.persistentStorage || navigator.webkitPersistentStorage);

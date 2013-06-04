@@ -1,5 +1,5 @@
-mobileAngular.controller('BootstrapController', 
-	function BootstrapController($scope, $http, ClientID, Backend, localStorage, Command, Vehicle, Staff, $window, StoreProvider, $rootScope, CommandUtils) {
+angular.module('mobileAngular').controller('BootstrapController', 
+	function ($scope, $http, ClientID, Backend, localStorage, Command, Vehicle, Staff, $window, StoreProvider, $rootScope, CommandUtils) {
 		var boostrapedKey = "SMUR_BOOSTRAPED";
 		$scope.boostraped = localStorage.getItem(boostrapedKey);
 		$scope.progress = 0;

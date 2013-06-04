@@ -1,1 +1,1 @@
-mobileAngular.value("requestFileSystem", window.requestFileSystem || window.webkitRequestFileSystem);
+angular.module('mobileAngular').value("requestFileSystem", window.requestFileSystem || window.webkitRequestFileSystem);
