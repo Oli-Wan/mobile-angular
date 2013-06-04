@@ -3,7 +3,11 @@ angular.module('mobileAngular').controller("FullScreenController",
 		if(screenfull.enabled)
 			$scope.fullscreenSupport = true;
 
-		$scope.requestFullScreen = function(){
+		$scope.launch = function(){
 			screenfull.request();
-		}
+		};
+
+		$scope.exit = function(){
+			screenfull.exit();
+		};
 	});

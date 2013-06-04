@@ -8,17 +8,26 @@
 	<link rel="stylesheet" href="css/bootstrap-responsive.css"/>
 	<link rel="stylesheet" href="css/app.css"/>
 </head>
-<body>
+<body ng-controller="FullScreenController">
 	<div class="navbar navbar-inverse navbar-fixed-top" >
-	 	<div class="navbar-inner">
-			<ng-include src="'/partials/misc/notifications.html'"></ng-include>	
-			<ul class="nav pull-right">
+	 	<div class="navbar-inner" ng-show="fullscreen">
+			<div ng-include="'/partials/misc/notifications.html'">
+			</div>	
+			<ul class="nav pull-right top-bar-background">
     			<li>
     				<a href="/#/storagemanagement">
     					<span class="hidden-phone">
     						Configuration
     					</span>
     					<i class="icon-cog icon-white"></i>
+    				</a>
+    			</li>
+    			<li>
+    				<a hm-tap="exit()">
+    					<span class="hidden-phone">
+    						Quitter
+    					</span>
+    					<i class="icon-off icon-white"></i>
     				</a>
     			</li>
 			</ul>		
@@ -32,15 +41,18 @@
 			<strong>Vous êtes actuellement déconnecté.</strong>	
 		</div>
 
-		<div class="application-starter">
+		<div class="application-starter" ng-hide="fullscreen">
 			<h1>Angular Mobile</h1>
 			<p>Bienvenue dans l'application mobile Angular</p>
 			<button  class="btn btn-primary btn-large" 
-				hm-tap="requestFullScreen()">Lancer l'application
+				hm-tap="launch()">Lancer l'application
 			</button>
 		</div>
-
-		<ng-include src="'/partials/misc/bootstrap.html'"></ng-include>
+		<div 
+			class="main-include"
+			ng-include="'/partials/misc/bootstrap.html'"
+			ng-show="fullscreen">
+		</div>
 	</div>
 	
 	<script src="lib/prod/IndexedDBShim.min.js"></script>

@@ -11,7 +11,7 @@ body {
 	}
 }
 
-html, body, div[ng-view], div.container-fluid, .fill-screen-height {
+html, body, div[ng-view], div.main-include, div.container-fluid, .fill-screen-height {
 	-webkit-box-sizing:border-box;
 	-ms-box-sizing:border-box;
 	-o-box-sizing:border-box;
@@ -297,10 +297,21 @@ select.input-xlarge {
 	font-size:15px;
 }
 
+.top-bar-background {
+	background-color: #1b1b1b;
+	background-image: -moz-linear-gradient(top, #222222, #111111);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#111111));
+	background-image: -webkit-linear-gradient(top, #222222, #111111);
+	background-image: -o-linear-gradient(top, #222222, #111111);
+	background-image: linear-gradient(to bottom, #222222, #111111);
+	background-repeat: repeat-x;
+	border-color: #252525;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);
+}
+
 /* Launcher (hidden)
 -------------------------------------------------- */
 .application-starter {
-	display: none;
 	text-align:center;
 }
 

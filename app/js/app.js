@@ -88,6 +88,7 @@ angular.module('mobileAngular').run(function($rootScope, $window, $timeout){
   });
 
   screenfull.onchange = function() {
+    console.log("fullscreen toggle");
     $rootScope.fullscreen = screenfull.isFullscreen;
     $rootScope.$apply('fullScreen');
   };
