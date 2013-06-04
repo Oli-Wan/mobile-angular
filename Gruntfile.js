@@ -19,14 +19,26 @@ module.exports = function(grunt) {
         dest: 'app/app.min.js'
       }
     },
-    clean: ['temp/']
+    clean: ['temp/'],
+    manifest: {
+      generate: {
+        options: {
+          basePath: 'app/',
+          network: ['*'],          
+          verbose: true,
+          timestamp: true
+        },
+        src: ['**/*.min.js', '**/*.css', '**/*.png', '**/*.gif', '**/*.html'],
+        dest: 'app/manifest.appcache'
+      }
+    }
   });
 
-  // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-ngmin');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-manifest');
 
   grunt.registerTask('build', ['concat', 'ngmin', 'uglify', 'clean']);
 };
