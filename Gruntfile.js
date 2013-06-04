@@ -28,7 +28,7 @@ module.exports = function(grunt) {
           verbose: true,
           timestamp: true
         },
-        src: ['**/*.min.js', '**/*.css', '**/*.png', '**/*.gif', '**/*.html'],
+        src: ['**/*.min.js', '**/*.css', '**/*.png', '**/*.gif', '**/*.html', '**/*.json'],
         dest: 'app/manifest.appcache'
       }
     }
@@ -40,5 +40,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-manifest');
 
-  grunt.registerTask('build', ['concat', 'ngmin', 'uglify', 'clean']);
+  grunt.registerTask('build', ['concat', 'ngmin', 'uglify', 'clean', 'manifest']);
 };
