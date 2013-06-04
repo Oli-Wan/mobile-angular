@@ -1,4 +1,4 @@
-mobileAngular.directive('ngFiles', function() {
+angular.module('mobileAngular').directive('ngFiles', function() {
 	return {
 		restrict: 'A',
 		scope: { files: "=ngModel" },

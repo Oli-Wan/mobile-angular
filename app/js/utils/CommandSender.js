@@ -1,4 +1,4 @@
-mobileAngular.run(function($timeout, $http, Command, Backend) {
+angular.module('mobileAngular').run(function($timeout, $http, Command, Backend) {
 	var pollingInterval = 5000;
 	$timeout(function sendingFunction(){
 		Command.getNonSentCommands().then(function(data){

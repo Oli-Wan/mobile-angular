@@ -1,6 +1,6 @@
 
-mobileAngular.controller("EventController", 
-	function EventController($scope, $location, $window, $routeParams, Event){		
+angular.module('mobileAngular').controller("EventController", 
+	function ($scope, $location, $window, $routeParams, Event){		
 		
 		$scope.fetchEvents = function() {
 			Event.getByMissionId($routeParams.missionId).then(function(data) {

@@ -1,1 +1,1 @@
-mobileAngular.value("localStorage", window.localStorage);
+angular.module('mobileAngular').value("localStorage", window.localStorage);

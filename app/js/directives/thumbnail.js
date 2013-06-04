@@ -1,4 +1,4 @@
-mobileAngular.directive('thumbnail', function() {
+angular.module('mobileAngular').directive('thumbnail', function() {
 	return {
 		restrict: 'E',
 		scope: { src: "@" },

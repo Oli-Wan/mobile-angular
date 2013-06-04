@@ -1,6 +1,6 @@
 
-mobileAngular.controller('MissionsController', 
-	function MissionsController($scope, Mission, $location, $window){
+angular.module('mobileAngular').controller('MissionsController', 
+	function ($scope, Mission, $location, $window){
 		Mission.getAll().then(function(data){
 			$scope.missions = data;
 		});

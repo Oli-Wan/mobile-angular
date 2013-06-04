@@ -1,6 +1,6 @@
 
-mobileAngular.controller("NewVehicleController", 
-	function NewVehicleController($scope, $http, $location, $routeParams, Mission, Vehicle, Utils) {
+angular.module('mobileAngular').controller("NewVehicleController", 
+	function ($scope, $http, $location, $routeParams, Mission, Vehicle, Utils) {
 		Mission.get(parseInt($routeParams.missionId)).then(function(data) {
 			$scope.mission = data;
 		});

@@ -1,4 +1,4 @@
-mobileAngular.directive('ngTap', function() {
+angular.module('mobileAngular').directive('ngTap', function() {
 	return function(scope, element, attrs) {
 		var tapping;
 		tapping = false;

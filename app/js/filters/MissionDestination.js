@@ -1,4 +1,4 @@
-mobileAngular.filter('missionDestination', function(){
+angular.module('mobileAngular').filter('missionDestination', function(){
 	return function(events) {
 		if(events === undefined)
 			return;

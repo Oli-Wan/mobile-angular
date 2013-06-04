@@ -1,6 +1,6 @@
 
-mobileAngular.controller('NewMissionController', 
-	function NewMissionController($scope, $location, Mission, Vehicle, Staff, Utils, Command){
+angular.module('mobileAngular').controller('NewMissionController', 
+	function ($scope, $location, Mission, Vehicle, Staff, Utils, Command){
 		$scope.alerts = [];
 
 		Vehicle.getAll().then(function(data){

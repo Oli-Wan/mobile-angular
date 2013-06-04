@@ -1,5 +1,5 @@
-mobileAngular.factory("Command", 
-	function Command($q, $rootScope, $http, $timeout, ClientID, IDBService){
+angular.module('mobileAngular').factory("Command", 
+	function ($q, $rootScope, $http, $timeout, ClientID, IDBService){
 		var storeWrapper = {
 			store: undefined,
 			getStore: function() {

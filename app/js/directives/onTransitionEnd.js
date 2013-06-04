@@ -1,4 +1,4 @@
-mobileAngular.directive('onTransitionEnd', function($parse, transitionEndEvent) {
+angular.module('mobileAngular').directive('onTransitionEnd', function($parse, transitionEndEvent) {
 	return {
 		restrict: 'A',
 		link: function ($scope, element, attrs) {

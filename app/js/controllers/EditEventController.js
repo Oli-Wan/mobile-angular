@@ -1,5 +1,5 @@
-mobileAngular.controller('EditEventController', 
-	function EditEventController($scope, $http, $location, $routeParams, Mission, Event, Vehicle, Utils) {
+angular.module('mobileAngular').controller('EditEventController', 
+	function ($scope, $http, $location, $routeParams, Mission, Event, Vehicle, Utils) {
 		Mission.get(parseInt($routeParams.missionId)).then(function(data) {
 			$scope.mission = data;
 			if($routeParams.eventId) {

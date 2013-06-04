@@ -1,5 +1,5 @@
-mobileAngular.factory("FileSystem", 
-	function FileSystem($q, $rootScope, $window, FileSystemUtils, persistentStorage, requestFileSystem){
+angular.module('mobileAngular').factory("FileSystem", 
+	function ($q, $rootScope, $window, FileSystemUtils, persistentStorage, requestFileSystem){
 	var fileSystemWrapper = {
 		getFileSystem: function() {
 			var deferred = $q.defer();

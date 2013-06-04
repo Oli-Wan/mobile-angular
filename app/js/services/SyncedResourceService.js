@@ -1,5 +1,4 @@
- mobileAngular.service("SyncedResourceService", 
- 	function SyncedResourceService($q, $rootScope, IDBService, Command){
+ angular.module('mobileAngular').service("SyncedResourceService", function ($q, $rootScope, IDBService, Command){
  		return {
  			syncedResourceManager: function(storeWrapper) {
  				var service = IDBService.getIDBCrudObject(storeWrapper);

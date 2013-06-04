@@ -1,5 +1,4 @@
-  mobileAngular.service("StoreProvider", 
- 	function StoreProvider(Mission, Event, Vehicle, Staff){
+  angular.module('mobileAngular').service("StoreProvider", function (Mission, Event, Vehicle, Staff){
  		return {
  			getStoreByName: function(name) {
  				if(name == "mission")

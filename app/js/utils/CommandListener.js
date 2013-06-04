@@ -1,4 +1,4 @@
-mobileAngular.run( function(SocketService, $http, ClientID, CommandUtils, localStorage, Backend, $rootScope) {
+angular.module('mobileAngular').run( function(SocketService, $http, ClientID, CommandUtils, localStorage, Backend, $rootScope) {
 	var fetch = function() {	
 		var lastCmd = localStorage.getItem("LAST_CMD");
 		var getParams = "";

@@ -1,5 +1,5 @@
 
-mobileAngular.directive('cube', function(url, Utils) {
+angular.module('mobileAngular').directive('cube', function(url, Utils) {
 	return {
 		restrict: 'E',
 		templateUrl: '/partials/directives/cube.html',

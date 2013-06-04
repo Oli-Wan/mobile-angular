@@ -1,1 +1,1 @@
-mobileAngular.value("url", window.URL || window.webkitURL);
+angular.module('mobileAngular').value("url", window.URL || window.webkitURL);

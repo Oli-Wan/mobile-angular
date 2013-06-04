@@ -1,5 +1,4 @@
- mobileAngular.service("IDBService", 
- 	function IDBService($q, $rootScope){
+ angular.module('mobileAngular').service("IDBService", function ($q, $rootScope){
  		return {
  			getIDBCrudObject: function(storeWrapper) {
  				return {
