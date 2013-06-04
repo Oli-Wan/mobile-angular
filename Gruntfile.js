@@ -2,29 +2,31 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     concat: {
-      angular: {
+      task: {
         src: ['app/js/**/*.js'],
-        dest: 'built.js'
+        dest: 'temp/built.js'
       }
     },
     ngmin: {
-      angular: {
-        src: 'built.js',
-        dest: 'minifiable.js'
+      task: {
+        src: 'temp/built.js',
+        dest: 'temp/minifiable.js'
       }
     },
     uglify: {
-      angular: {
-        src: 'minifiable.js',
+      task: {
+        src: 'temp/minifiable.js',
         dest: 'app/js/app.min.js'
       }
-    }
+    },
+    clean: ['temp/']
   });
 
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-ngmin');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
-    grunt.registerTask('build', ['concat', 'ngmin', 'uglify']);
+  grunt.registerTask('build', ['concat', 'ngmin', 'uglify']);
 };
