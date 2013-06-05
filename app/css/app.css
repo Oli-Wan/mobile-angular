@@ -37,6 +37,32 @@ div.container-fluid {
 	margin-bottom:10px;
 }
 
+/* Input focus
+-------------------------------------------------- */
+
+#fullscreen-input-container {
+	background-color: black;
+	display: none;
+	position:absolute;
+	top:41px;
+	left:0;
+	right:0;
+	height:100%;
+	z-index:100;
+}
+
+#fullscreen-input-container>button {
+	margin: 10px;
+}
+
+#fullscreen-input-container>textarea {
+	font-size:40px;
+	line-height: 40px;
+	height:30%;
+	width:100%;
+	z-index:200;
+}
+
 /* Fonts
 -------------------------------------------------- */
 .table-activable tbody tr:active > td,

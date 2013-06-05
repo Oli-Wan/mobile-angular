@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="css/bootstrap-responsive.css"/>
 	<link rel="stylesheet" href="css/app.css"/>
 </head>
-<body ng-controller="FullScreenController">
+<body>
 	<div class="navbar navbar-inverse navbar-fixed-top" >
 	 	<div class="navbar-inner" ng-show="fullscreen">
 			<div ng-include="'/partials/misc/notifications.html'">
@@ -27,11 +27,9 @@
     					Quitter
     				</a>
     			</li>
-			</ul>		
+			</ul>
 		</div>
 	</div>
-
-	
 
 	<div id="container" class="container-fluid">
 		<div class="alert top-alert" ng-controller="ConnectionController" ng-show="offline && fullscreen">
@@ -44,14 +42,20 @@
 			<button class="btn btn-primary btn-large" launch>
 				Lancer l'application
 			</button>
+			<div style="height:1000px"></div>
 		</div>
 		<div 
 			class="main-include"
 			ng-include="'/partials/misc/bootstrap.html'"
 			ng-show="fullscreen">
 		</div>
+
+		<div id="fullscreen-input-container">
+			<button class='btn btn-inverse btn-large'>Retour</button>
+			<br />
+			<textarea rows="5"></textarea>
+		</div>
 	</div>
-	
 	<script src="lib/prod/IndexedDBShim.min.js"></script>
 	<script src="lib/dev/idb.filesystem.js"></script>
 	<script src="lib/prod/jquery-1.9.1.min.js"></script>
@@ -73,7 +77,6 @@
 	<script src="js/utils/CommandListener.js"></script>
 	<script src="js/utils/CommandSender.js"></script>
 
-	<script src="js/controllers/FullScreenController.js"></script>
 	<script src="js/controllers/MissionsController.js"></script>
 	<script src="js/controllers/MissionContainerController.js"></script>
 	<script src="js/controllers/NewMissionController.js"></script>
@@ -125,5 +128,6 @@
 	<script src="js/directives/cube.js"></script>	
 	<script src="js/directives/launch.js"></script>
 	<script src="js/directives/exit.js"></script>	
+	<script src="js/directives/fullscreenFocus.js"></script>	
 </body>
 </html>

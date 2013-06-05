@@ -7,7 +7,7 @@
 		<div class="control-group">
 			<label for="reason" class="control-label">Raison</label>
 			<div class="controls">
-				<input type="text" ng-model="mission.reason" id="reason" class="input-xlarge" />
+				<input type="text" ng-model="mission.reason" id="reason" class="input-xlarge" fullscreen-focus:/>
 			</div>
 		</div>
 		<div class="control-group">
@@ -25,25 +25,29 @@
 		<div class="control-group">
 			<label for="lastname" class="control-label">Nom</label>
 			<div class="controls">
-				<input type="text" ng-model="mission.caller.firstname" id="lastname"class="input-xlarge" />
+				<input type="text" ng-model="mission.caller.firstname" id="lastname"class="input-xlarge" fullscreen-focus/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label for="firstname" class="control-label">Prénom</label>
 			<div class="controls">
-				<input type="text" ng-model="mission.caller.lastname" id="firstname" class="input-xlarge"/>
+				<input type="text" ng-model="mission.caller.lastname" id="firstname" class="input-xlarge" fullscreen-focus/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label for="phone" class="control-label">Numéro de téléphone</label>
 			<div class="controls">
-				<input type="text" id="phone" ng-model="mission.caller.phone" class="input-xlarge" />
+				<input type="text" id="phone" ng-model="mission.caller.phone" class="input-xlarge" fullscreen-focus />
 			</div>
 		</div>
 
 		<h3>Observation</h3>
-
-		<textarea rows="5" ng-model="mission.observation" class="input-xxlarge"></textarea>
+		<textarea rows="5"
+			ng-model="mission.observation"
+			class="input-xxlarge"
+			fullscreen-focus>
+		</textarea>
+		
 		<div class="control-group">
 			<label for="lastname" class="control-label">Ajouter une photo</label>
 			<div class="controls">
