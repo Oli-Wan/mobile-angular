@@ -6,19 +6,22 @@ angular.module('mobileAngular').directive('fullscreenFocus', function(Utils) {
 			var textarea = container.children("textarea");
 
 			element.bind('focus', function(){
-				textarea.val(Utils.deepGet(attrs.ngModel, $scope));
-				textarea.focus();
-				container.show();
-				
-				//associate blur
-				textarea.bind('blur', function(){
+				textarea.on('focus', function() {
+					textarea.val(Utils.deepGet(attrs.ngModel, $scope));
+					textarea.off("focus");
+				});
+
+				textarea.on('blur', function(){
 					Utils.deepSet(attrs.ngModel, $scope, textarea.val());
 					$scope.$apply();
-					// cleanup the textarea
-					textarea.unbind('blur');
+
+					textarea.off('blur');
 					textarea.val("");
 					container.hide();
 				});
+
+				container.show();
+				textarea.focus();
 			});
 
 		}

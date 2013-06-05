@@ -1,15 +1,5 @@
 angular.module('mobileAngular').controller("UpdateMissionController", 
-	function ($scope, $window, $routeParams, url, Mission, ImageStorage) {
-		if($scope.mission.caller === undefined) {
-			console.log("init caller")
-			$scope.mission.caller = {
-				firstname: "",
-				lastname: "",
-				phone: ""
-			};
-			console.log($scope.mission);
-		}
-
+	function ($scope, $window, $routeParams, url, Mission, ImageStorage) {	
 		$scope.$watch('mission', function(value){
 			if(!value || !value.image)
 				return;
