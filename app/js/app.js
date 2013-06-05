@@ -60,7 +60,7 @@ angular.module('mobileAngular').config(['$routeProvider', function($routeProvide
     templateUrl: 'partials/misc/command-list.html', 
     controller: 'CommandController'
   });
-    $routeProvider.when('/cube/', 
+  $routeProvider.when('/cube/', 
   {
     templateUrl: 'partials/misc/cube.html'
   });
@@ -87,8 +87,15 @@ angular.module('mobileAngular').run(function($rootScope, $window, $timeout){
     $rootScope.$apply('orientationData');
   });
 
+
+  $rootScope.fullscreen = false;
+  // fallback for non-compatible browsers
+  if(!screenfull.enabled)
+    $rootScope.fullscreen = true;
+
   screenfull.onchange = function() {
+    console.log("fullscreen toggle");
     $rootScope.fullscreen = screenfull.isFullscreen;
-    $rootScope.$apply('fullScreen');
+    $rootScope.$apply('fullscreen');
   };
 });

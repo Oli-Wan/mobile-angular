@@ -70,7 +70,7 @@
 		screenfull = {
 			request: function(elem) {
 				var request = fn.requestFullscreen;
-
+				console.log("request");
 				elem = elem || document.documentElement;
 
 				// Work around Safari 5.1 bug: reports support for

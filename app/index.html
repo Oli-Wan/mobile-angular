@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="mobileAngular" manifest="manifest.appcache">
+<html lang="en" ng-app="mobileAngular">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
@@ -8,17 +8,23 @@
 	<link rel="stylesheet" href="css/bootstrap-responsive.css"/>
 	<link rel="stylesheet" href="css/app.css"/>
 </head>
-<body>
+<body ng-controller="FullScreenController">
 	<div class="navbar navbar-inverse navbar-fixed-top" >
-	 	<div class="navbar-inner">
-			<ng-include src="'/partials/misc/notifications.html'"></ng-include>	
-			<ul class="nav pull-right">
+	 	<div class="navbar-inner" ng-show="fullscreen">
+			<div ng-include="'/partials/misc/notifications.html'">
+			</div>	
+			<ul class="nav pull-right top-bar-background">
     			<li>
     				<a href="/#/storagemanagement">
     					<span class="hidden-phone">
     						Configuration
     					</span>
     					<i class="icon-cog icon-white"></i>
+    				</a>
+    			</li>
+    			<li>
+    				<a exit>
+    					Quitter
     				</a>
     			</li>
 			</ul>		
@@ -28,34 +34,96 @@
 	
 
 	<div id="container" class="container-fluid">
-		<div class="alert top-alert" ng-controller="ConnectionController" ng-show="offline">
+		<div class="alert top-alert" ng-controller="ConnectionController" ng-show="offline && fullscreen">
 			<strong>Vous êtes actuellement déconnecté.</strong>	
 		</div>
 
-		<div class="application-starter">
+		<div class="application-starter" ng-hide="fullscreen">
 			<h1>Angular Mobile</h1>
 			<p>Bienvenue dans l'application mobile Angular</p>
-			<button  class="btn btn-primary btn-large" 
-				hm-tap="requestFullScreen()">Lancer l'application
+			<button class="btn btn-primary btn-large" launch>
+				Lancer l'application
 			</button>
 		</div>
-
-		<ng-include src="'/partials/misc/bootstrap.html'"></ng-include>
+		<div 
+			class="main-include"
+			ng-include="'/partials/misc/bootstrap.html'"
+			ng-show="fullscreen">
+		</div>
 	</div>
 	
 	<script src="lib/prod/IndexedDBShim.min.js"></script>
+	<script src="lib/dev/idb.filesystem.js"></script>
 	<script src="lib/prod/jquery-1.9.1.min.js"></script>
-	<script src="lib/angular/angular.min.js"></script>
-	<script src="lib/angular/angular-resource.min.js"></script>
-	<script src="lib/prod/bootstrap.min.js"></script>
-	<script src="lib/prod/screenfull.min.js"></script>
-	<script src="lib/prod/socket.io.min.js"></script>
-	<script src="lib/prod/idb.filesystem.min.js"></script>
-	<script src="lib/prod/idbstore.min.js"></script>
-	<script src="lib/prod/angular-strap.min.js"></script>
-	<script src="lib/prod/hammer.min.js"></script>
-	<script src="lib/prod/gestures.min.js"></script>
+	
+	<script src="lib/angular/angular.js"></script>
+	<script src="lib/angular/angular-resource.js"></script>
 
-	<script src="app.min.js"></script>
+	<script src="lib/prod/bootstrap.min.js"></script>
+	<script src="lib/dev/idbstore.js"></script>
+	<script src="lib/dev/angular-strap.js"></script>
+	<script src="lib/dev/screenfull.js"></script>
+	<script src="lib/dev/socket.io.js"></script>
+	<script src="lib/dev/hammer.js"></script>
+	<script src="lib/dev/gestures.js"></script>
+
+	<script src="js/app.js"></script>
+
+	<script src="js/utils/css-hooks.js"></script>
+	<script src="js/utils/CommandListener.js"></script>
+	<script src="js/utils/CommandSender.js"></script>
+
+	<script src="js/controllers/FullScreenController.js"></script>
+	<script src="js/controllers/MissionsController.js"></script>
+	<script src="js/controllers/MissionContainerController.js"></script>
+	<script src="js/controllers/NewMissionController.js"></script>
+	<script src="js/controllers/UpdateMissionController.js"></script>	
+	<script src="js/controllers/StaffController.js"></script>
+	<script src="js/controllers/NewStaffController.js"></script>
+	<script src="js/controllers/EventController.js"></script>
+	<script src="js/controllers/EditEventController.js"></script>
+	<script src="js/controllers/VehicleController.js"></script>
+	<script src="js/controllers/NewVehicleController.js"></script>
+	<script src="js/controllers/StorageManagementController.js"></script>
+	<script src="js/controllers/AccelerometerController.js"></script>	
+	<script src="js/controllers/NotificationController.js"></script>	
+	<script src="js/controllers/GesturesController.js"></script>
+	<script src="js/controllers/BootstrapController.js"></script>
+	<script src="js/controllers/ConnectionController.js"></script>
+	<script src="js/controllers/CommandController.js"></script>
+
+	<script src="js/filters/EventDestination.js"></script>
+	
+	<script src="js/services/Utils.js"></script>
+	<script src="js/services/IDBService.js"></script>
+	<script src="js/services/Mission.js"></script>
+	<script src="js/services/Staff.js"></script>
+	<script src="js/services/Event.js"></script>
+	<script src="js/services/URL.js"></script>
+	<script src="js/services/Vehicle.js"></script>
+	<script src="js/services/FileSystem.js"></script>
+	<script src="js/services/FileSystemUtils.js"></script>
+	<script src="js/services/ImageStorage.js"></script>
+	<script src="js/services/requestFileSystem.js"></script>
+	<script src="js/services/persistentStorage.js"></script>
+	<script src="js/services/Command.js"></script>
+	<script src="js/services/CommandUtils.js"></script>
+	<script src="js/services/localStorage.js"></script>
+	<script src="js/services/ClientID.js"></script>
+	<script src="js/services/SocketService.js"></script>
+	<script src="js/services/StoreProvider.js"></script>
+	<script src="js/services/SyncedResourceService.js"></script>
+	<script src="js/services/transitionEndEvent.js"></script>
+	<script src="js/services/Backend.js"></script>
+
+	<script src="js/directives/ngTap.js"></script>
+	<script src="js/directives/ngFiles.js"></script>
+	<script src="js/directives/loader.js"></script>
+	<script src="js/directives/thumbnail.js"></script>
+	<script src="js/directives/ngDrag.js"></script>
+	<script src="js/directives/onTransitionEnd.js"></script>
+	<script src="js/directives/cube.js"></script>	
+	<script src="js/directives/launch.js"></script>
+	<script src="js/directives/exit.js"></script>	
 </body>
 </html>

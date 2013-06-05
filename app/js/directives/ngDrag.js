@@ -53,8 +53,6 @@ angular.module('mobileAngular').directive('ngDrag', function($parse) {
 			$scope.move = function(offset, animate){
 				draggable.removeClass('animate');
 				
-				console.log("Moving");
-
 				if(animate)
 					draggable.addClass('animate');
 
@@ -63,7 +61,7 @@ angular.module('mobileAngular').directive('ngDrag', function($parse) {
 					coordinates = "0,"+offset+"px, 0";
 				else
 					coordinates = offset+"px, 0, 0";
-				console.log(coordinates);
+
 				draggable.css("transform", "translate3d("+coordinates+") scale3d(1,1,1)");
 			};
 
