@@ -1,9 +1,8 @@
 angular.module('mobileAngular').controller("FullScreenController", 
 	function ($scope, $window){
-		if(screenfull.enabled)
-			$scope.fullscreenSupport = true;
-
+		
 		$scope.launch = function(){
+			console.log("launching");
 			screenfull.request();
 		};
 
