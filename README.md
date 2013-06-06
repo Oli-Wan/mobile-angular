@@ -11,13 +11,13 @@
 
 `bower install`
 
-### Construire l'application
-
-`grunt build`
-
 ### Installer les dépendances Node.JS
 
 `npm install`
+
+### Construire l'application
+
+`grunt build`
 
 ### Lancer le serveur
 
