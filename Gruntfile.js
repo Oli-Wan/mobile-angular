@@ -54,9 +54,10 @@ module.exports = function(grunt) {
           cwd: 'app/lib/bootstrap',
           returnOutput: true,
           chained: true,
-          exitSuccess: [0, 2]
+          verbose:true,
+          exitSuccess: [0, 1, 2]
         },
-        commands: ["make", "make bootstrap"]
+        commands: ["npm install", "make bootstrap"]
       }
     }
   });
