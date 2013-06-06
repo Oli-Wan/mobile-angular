@@ -213,13 +213,24 @@ select.input-xlarge {
 -------------------------------------------------- */
 @media (max-width: 400px) {
 	.notification-bar{
-		width:85%;
+		width:70%;
 	}
 	
 	#notification-zone {
 		width:100%;
 	}
+	
+	.pull-right.top-bar-background {
+		width:30%;
+	}
 
+	#notification-toggle.new {
+		-webkit-transform: scale(3);
+		-moz-transform: scale(3);
+		-ms-transform: scale(3);
+		-o-transform: scale(3);
+		transform: scale(3);
+	}
 } 
 
 @media (min-width: 400px) {
@@ -230,24 +241,7 @@ select.input-xlarge {
 	#notification-zone {
 		width:350px;
 	}
-}
 
-.notification-bar {
-	position: relative;
-	z-index:1;
-}
-
-@media (max-width: 400px) {
-	#notification-toggle.new {
-		-webkit-transform: scale(3);
-		-moz-transform: scale(3);
-		-ms-transform: scale(3);
-		-o-transform: scale(3);
-		transform: scale(3);
-	}
-}
-
-@media (min-width: 400px) {
 	#notification-toggle.new {
 		-webkit-transform: scale(2);
 		-moz-transform: scale(2);
@@ -255,6 +249,11 @@ select.input-xlarge {
 		-o-transform: scale(2);
 		transform: scale(2);
 	}
+}
+
+.notification-bar {
+	position: relative;
+	z-index:1;
 }
 
 #notification-zone {

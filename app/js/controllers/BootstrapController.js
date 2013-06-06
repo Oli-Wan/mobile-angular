@@ -1,7 +1,7 @@
 angular.module('mobileAngular').controller('BootstrapController', 
-	function ($scope, $http, ClientID, Backend, localStorage, Command, Vehicle, Staff, $window, StoreProvider, $rootScope, CommandUtils) {
+	function ($scope, $rootScope, $http, ClientID, Backend, localStorage, Command, Vehicle, Staff, $window, StoreProvider, CommandUtils) {
 		var boostrapedKey = "SMUR_BOOSTRAPED";
-		$scope.boostraped = localStorage.getItem(boostrapedKey);
+		$rootScope.boostraped = localStorage.getItem(boostrapedKey);
 		$scope.progress = 0;
 
 		$scope.$watch('progress', function(newValue){

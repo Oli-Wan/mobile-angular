@@ -87,7 +87,6 @@ angular.module('mobileAngular').run(function($rootScope, $window, $timeout){
     $rootScope.$apply('orientationData');
   });
 
-
   $rootScope.fullscreen = false;
   // fallback for non-compatible browsers
   if(!screenfull.enabled)
