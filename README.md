@@ -1,25 +1,25 @@
 ## Pour construire le projet
 
-0. Prérequis
+### Prérequis
 
 - NodeJS v0.8
 - NPM
 - Bower
 - Grunt
 
-1. Chercher les dépendances de l'application web
+### Chercher les dépendances de l'application web
 
 `bower install`
 
-2. Construire l'application
+### Construire l'application
 
 `grunt build`
 
-3. Installer les dépendances Node.JS
+### Installer les dépendances Node.JS
 
 `npm install`
 
-4. Lancer le serveur
+### Lancer le serveur
 
 `node server.js`
 
@@ -28,7 +28,7 @@ Le serveur se lance alors dans la fenêtre courante du terminal. Par défaut, le
 http://localhost:3000
 
 
-## Prérequis
+## Backend
 
 Pour que l'application fonctionne correctement, il faut lancer en parallèle le serveur backend.
 
