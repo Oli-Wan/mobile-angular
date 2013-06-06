@@ -1,6 +1,5 @@
 angular.module('mobileAngular').controller("UpdateMissionController", 
-	function ($scope, $window, $routeParams, url, Mission, ImageStorage) {
-
+	function ($scope, $window, $routeParams, url, Mission, ImageStorage) {	
 		$scope.$watch('mission', function(value){
 			if(!value || !value.image)
 				return;

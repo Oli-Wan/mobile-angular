@@ -39,6 +39,33 @@
  			}
 
  			return new Blob([uInt8Array], {type: contentType});
+ 		},
+ 		deepGet: function(path, object) {
+ 			var pathArray = path.split(".");
+ 			console.log(path, pathArray);
+ 			return this.deepAccess(pathArray, object);
+ 		},
+ 		deepSet: function(path, object, value) {
+ 			var pathArray = path.split(".");
+ 			this.deepAccess(pathArray, object, value);
+ 		},
+ 		deepAccess: function(pathArray, object, value) {
+ 			console.log(pathArray, object);
+ 			if(pathArray.length > 1) {
+ 				var key = pathArray.shift()
+ 				var newObject = object[key];
+ 				
+ 				if(!newObject && value)
+ 					newObject = object[key] = {};
+
+ 				if(newObject)
+ 					return this.deepAccess(pathArray, newObject, value);
+ 			} else {
+ 				if(value)
+ 					object[pathArray[0]] = value;
+ 				else
+ 					return object[pathArray[0]];
+ 			}
  		}
  	};
  });

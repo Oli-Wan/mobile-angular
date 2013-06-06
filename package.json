@@ -11,6 +11,7 @@
     "grunt-ngmin": "0.0.2",
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-clean": "~0.4.1",
-    "grunt-manifest": "~0.4.0"
+    "grunt-manifest": "~0.4.0",
+    "grunt-wxi-shell": "~0.2.0"
   }
 }
