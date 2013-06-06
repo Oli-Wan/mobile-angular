@@ -1,9 +1,25 @@
-## Pour lancer le projet
+## Pour construire le projet
 
-Il faut installer node.js et lancer le serveur avec le fichier server.js après avoir installé les dépendances nécessaires.
-Pour ce faire, il faut se déplacer à la racine du projet puis utiliser ces deux commandes :
+0. Prérequis
+
+- NodeJS v0.8
+- NPM
+- Bower
+- Grunt
+
+1. Chercher les dépendances de l'application web
+
+`bower install`
+
+2. Construire l'application
+
+`grunt build`
+
+3. Installer les dépendances Node.JS
 
 `npm install`
+
+4. Lancer le serveur
 
 `node server.js`
 
