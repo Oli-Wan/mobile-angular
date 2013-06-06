@@ -1,32 +1,32 @@
 <!doctype html>
-<html lang="en" ng-app="mobileAngular" manifest="manifest.appcache">
+<html lang="en" ng-app="mobileAngular">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
 	<title>Angular Mobile</title>
-	<link rel="stylesheet" href="lib/bootstrap/docs/assets/css/bootstrap.css"/>
-	<link rel="stylesheet" href="lib/bootstrap/docs/assets/css/bootstrap-responsive.css"/>
+	<link rel="stylesheet" href="lib/bootstrap-dist/css/bootstrap.css"/>
+	<link rel="stylesheet" href="lib/bootstrap-dist/css/bootstrap-responsive.css"/> 
 	<link rel="stylesheet" href="css/app.css"/>
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top" >
-	 	<div class="navbar-inner" ng-show="fullscreen">
+		<div class="navbar-inner" ng-show="fullscreen">
 			<div ng-include="'/partials/misc/notifications.html'">
 			</div>	
 			<ul class="nav pull-right top-bar-background">
-    			<li>
-    				<a href="/#/storagemanagement">
-    					<span class="hidden-phone">
-    						Configuration
-    					</span>
-    					<i class="icon-cog icon-white"></i>
-    				</a>
-    			</li>
-    			<li>
-    				<a exit>
-    					Quitter
-    				</a>
-    			</li>
+				<li>
+					<a href="/#/storagemanagement">
+						<span class="hidden-phone">
+							Configuration
+						</span>
+						<i class="icon-cog icon-white"></i>
+					</a>
+				</li>
+				<li>
+					<a exit>
+						Quitter
+					</a>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -39,16 +39,38 @@
 		<div class="application-starter" ng-hide="fullscreen">
 			<h1>Angular Mobile</h1>
 			<p>Bienvenue dans l'application mobile Angular</p>
-			<button class="btn btn-primary btn-large" launch>
+			<button class="btn btn-primary btn-large" launch ng-show="boostraped">
 				Lancer l'application
 			</button>
-			<div style="height:1000px"></div>
+			<div id="boostrap" ng-hide="boostraped" 
+				ng-controller="BootstrapController">
+				<h3>Configuration initiale</h3>
+				<div class="alert fade" ng-repeat="alert in alerts" bs-alert="alert"></div>
+				<div class="control-group">
+					<label for="client-id" class="control-label">ClientID</label>
+					<div class="controls">
+						<input type="text" id="client-id" ng-model="clientID" class="input-large" required>
+					</div>
+				</div>
+				<div class="control-group">
+					<label for="backend" class="control-label">Backend</label>
+					<div class="controls">
+						<input type="text" id="backend" ng-model="backend" class="input-large" required>
+					</div>
+				</div>
+				<div class="progress progress-striped">
+					<div class="bar" style="width: {{progress}}%;"></div>
+				</div>
+				<div class="form-actions">
+					<button class="btn btn-primary" ng-disabled="ready" hm-tap="save()">Ok</button>
+					<button class="btn btn-primary" ng-show="ready" hm-tap="continue()">Continuer</button>
+				</div>
+			</div>
 		</div>
-		<div 
-			class="main-include"
-			ng-include="'/partials/misc/bootstrap.html'"
-			ng-show="fullscreen">
-		</div>
+
+		<div ng-show="boostraped && fullscreen"
+		ng-view
+		ng-animate="{ enter: 'view-enter', leave: 'view-leave'}">
 
 		<div id="fullscreen-input-container">
 			<button class='btn btn-inverse btn-large'>Valider</button>
@@ -62,14 +84,76 @@
 	<script src="lib/angular-unstable/angular.min.js"></script>
 	<script src="lib/angular-resource-unstable/angular-resource.min.js"></script>
 	<script src="lib/idbwrapper/idbstore.min.js"></script>
-	<script src="lib/bootstrap/docs/assets/js/bootstrap.min.js"></script>
+	<script src="lib/bootstrap-dist/js/bootstrap.min.js"></script>
 	<script src="lib/angular-strap/dist/angular-strap.min.js"></script>
 	<script src="lib/screenfull/dist/screenfull.min.js"></script>
 	<script src="lib/socket.io-client/dist/socket.io.min.js"></script>
 	<script src="lib/hammerjs/dist/hammer.min.js"></script>
 	<script src="lib/angular-gestures/gestures.min.js"></script>
 
-	<!-- app -->
+	<!-- app prod 
 	<script src="app.min.js"></script>
+-->
+
+<!-- app dev -->
+<script src="js/app.js"></script>
+
+<script src="js/utils/css-hooks.js"></script>
+<script src="js/utils/CommandListener.js"></script>
+<script src="js/utils/CommandSender.js"></script>
+
+<script src="js/controllers/MissionsController.js"></script>
+<script src="js/controllers/MissionContainerController.js"></script>
+<script src="js/controllers/NewMissionController.js"></script>
+<script src="js/controllers/UpdateMissionController.js"></script>	
+<script src="js/controllers/StaffController.js"></script>
+<script src="js/controllers/NewStaffController.js"></script>
+<script src="js/controllers/EventController.js"></script>
+<script src="js/controllers/EditEventController.js"></script>
+<script src="js/controllers/VehicleController.js"></script>
+<script src="js/controllers/NewVehicleController.js"></script>
+<script src="js/controllers/StorageManagementController.js"></script>
+<script src="js/controllers/AccelerometerController.js"></script>	
+<script src="js/controllers/NotificationController.js"></script>	
+<script src="js/controllers/GesturesController.js"></script>
+<script src="js/controllers/BootstrapController.js"></script>
+<script src="js/controllers/ConnectionController.js"></script>
+<script src="js/controllers/CommandController.js"></script>
+
+<script src="js/filters/EventDestination.js"></script>
+
+<script src="js/services/Utils.js"></script>
+<script src="js/services/IDBService.js"></script>
+<script src="js/services/Mission.js"></script>
+<script src="js/services/Staff.js"></script>
+<script src="js/services/Event.js"></script>
+<script src="js/services/URL.js"></script>
+<script src="js/services/Vehicle.js"></script>
+<script src="js/services/FileSystem.js"></script>
+<script src="js/services/FileSystemUtils.js"></script>
+<script src="js/services/ImageStorage.js"></script>
+<script src="js/services/requestFileSystem.js"></script>
+<script src="js/services/persistentStorage.js"></script>
+<script src="js/services/Command.js"></script>
+<script src="js/services/CommandUtils.js"></script>
+<script src="js/services/localStorage.js"></script>
+<script src="js/services/ClientID.js"></script>
+<script src="js/services/SocketService.js"></script>
+<script src="js/services/StoreProvider.js"></script>
+<script src="js/services/SyncedResourceService.js"></script>
+<script src="js/services/transitionEndEvent.js"></script>
+<script src="js/services/Backend.js"></script>
+
+<script src="js/directives/ngTap.js"></script>
+<script src="js/directives/ngFiles.js"></script>
+<script src="js/directives/loader.js"></script>
+<script src="js/directives/thumbnail.js"></script>
+<script src="js/directives/ngDrag.js"></script>
+<script src="js/directives/onTransitionEnd.js"></script>
+<script src="js/directives/cube.js"></script>	
+<script src="js/directives/launch.js"></script>
+<script src="js/directives/exit.js"></script>	
+<script src="js/directives/fullscreenFocus.js"></script>	
+
 </body>
 </html>
