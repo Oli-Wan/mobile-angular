@@ -2,7 +2,7 @@
 
 ### Prérequis
 
-- NodeJS v0.8
+- NodeJS v0.10
 - NPM
 - Bower
 - Grunt

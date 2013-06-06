@@ -47,18 +47,6 @@ module.exports = function(grunt) {
         src: ['**/*.min.js', 'img/**/*.png', 'img/**/*.gif', '**/*.html', '**/*.json', '!**/lib/**'],
         dest: 'app/manifest.appcache'
       }
-    },
-    wxi_shell: {
-      bootstrap: {
-        options: {
-          cwd: 'app/lib/bootstrap',
-          returnOutput: true,
-          chained: true,
-          verbose:true,
-          exitSuccess: [0, 1, 2]
-        },
-        commands: ["npm install", "make bootstrap"]
-      }
     }
   });
 
@@ -67,7 +55,6 @@ grunt.loadNpmTasks('grunt-ngmin');
 grunt.loadNpmTasks('grunt-contrib-concat');
 grunt.loadNpmTasks('grunt-contrib-clean');
 grunt.loadNpmTasks('grunt-manifest');
-grunt.loadNpmTasks('grunt-wxi-shell');
 
-grunt.registerTask('build', ['concat', 'ngmin', 'uglify', 'manifest', 'clean', 'wxi_shell:bootstrap']);
+grunt.registerTask('build', ['concat', 'ngmin', 'uglify', 'manifest', 'clean']);
 };
