@@ -44,7 +44,7 @@ module.exports = function(grunt) {
           verbose: true,
           timestamp: true
         },
-        src: ['**/*.min.js', 'img/**/*.png', 'img/**/*.gif', '**/*.html', '**/*.json', '!**/lib/**'],
+        src: ['**/*.min.js', '**/*.png', '**/*.gif', '**/*.html', '**/*.json', '!**/lib/**'],
         dest: 'app/manifest.appcache'
       }
     }
