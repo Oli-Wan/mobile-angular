@@ -40,5 +40,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-manifest');
 
-  grunt.registerTask('build', ['concat', 'ngmin', 'uglify', 'clean', 'manifest']);
+  grunt.registerTask('build', ['concat', 'ngmin', 'uglify', 'manifest']);
 };

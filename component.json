@@ -1,0 +1,18 @@
+{
+  "name": "mobile-angular",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular-unstable": "~1.1.5",
+    "jquery": "~2.0.2",
+    "idbwrapper": "~1.2.0",
+    "angular-resource-unstable": "~1.1.5",
+    "angular-strap": "~0.7.4",
+    "screenfull": "~1.0.4",
+    "socket.io-client": "~0.9.11",
+    "hammerjs": "~1.0.5",
+    "angular-hammer": "~1.0.1",
+    "idb.filesystem.js": "git://github.com/ebidel/idb.filesystem.js.git",
+    "IndexedDBShim": "git://github.com/axemclion/IndexedDBShim.git",
+    "angular-gestures": "~0.1.0"
+  }
+}
