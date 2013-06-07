@@ -83,7 +83,6 @@ angular.module('mobileAngular').directive('ngDrag', function($parse) {
 			Hammer(draggable[0]).on(events, function(event) {
 				lastDirection = $scope.calculateDirection(lastDelta, event.gesture['delta'+axis]);
                 lastDelta = event.gesture['delta'+axis];
-
 				if($scope.preventDefault)
 					event.gesture.preventDefault();
 
@@ -100,7 +99,7 @@ angular.module('mobileAngular').directive('ngDrag', function($parse) {
 				$scope.move(delta);
 			});
 
-			Hammer(draggable[0]).on('release', function(event){
+			Hammer(draggable[0]).on('dragend', function(event){
 				var test;
 				var bound = $scope.bound;
 
