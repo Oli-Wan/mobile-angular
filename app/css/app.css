@@ -5,12 +5,6 @@ body {
 	margin:0px;
 }
 
-@media (min-width: 767px) {
-	body {
-		padding:0px;
-	}
-}
-
 html, body, div[ng-view], div.main-include, div.container-fluid, .fill-screen-height {
 	-webkit-box-sizing:border-box;
 	-ms-box-sizing:border-box;
@@ -48,11 +42,11 @@ div.container-fluid {
 	background-color: black;
 	display: none;
 	position:absolute;
-	top:41px;
+	top:0;
 	left:0;
 	right:0;
 	height:100%;
-	z-index:100;
+	z-index:1101;
 }
 
 #fullscreen-input-container>button {
@@ -62,9 +56,8 @@ div.container-fluid {
 #fullscreen-input-container>textarea {
 	font-size:40px;
 	line-height: 40px;
-	height:30%;
+	height:20%;
 	width:100%;
-	z-index:200;
 }
 
 /* Fonts
@@ -74,35 +67,8 @@ div.container-fluid {
 	background-color: #f5f5f5;
 }
 
-/* Fonts scaling
--------------------------------------------------- */
-
-@media (min-width: 769px) {
-	.font-large {
-		font-size:18px;
-	}
-
-	.table-large td, .table-large th {
-		padding:10px;
-		vertical-align: middle;
-	}
-}
-
-
 /* Bootstrap overrides
 -------------------------------------------------- */
-
-@media (max-width: 979px) {
-	.navbar-fixed-top,
-	.navbar-fixed-bottom {
-		position: relative;
-		margin-bottom: 0px;
-	}
-	
-	div.container-fluid {
-		padding-top: 0px;
-	}
-}
 
 select.input-xlarge {
 	width:284px;
@@ -125,33 +91,6 @@ select.input-xlarge {
 	border-bottom:1px solid #08c;
 	box-shadow: 0 0 5px gray;
 	background-color: white;
-}
-
-@media (min-width: 768px) {
-	.menu-button {
-		position:absolute;
-		padding:20px  23px;
-		left:0;
-	}
-
-	.mission-description {
-		padding-left: 70px;
-	}
-}
-
-@media (max-width: 768px) {
-	.menu-button>i {
-		float:left;
-	}
-
-	.menu-button {
-		padding: 10px;
-		text-align:center;
-	}
-
-	.mission-description {
-		padding-left: 20px;
-	}
 }
 
 .menu-button:active,
@@ -203,57 +142,8 @@ select.input-xlarge {
 	display: none;
 }
 
-/* Bootstrap overrides
--------------------------------------------------- */
-
-@media (max-width: 979px) {
-	.navbar-fixed-top .navbar-inner,
-	.navbar-fixed-bottom .navbar-inner {
-		padding: 0px;
-	}
-}
-
 /* Notifications
 -------------------------------------------------- */
-@media (max-width: 400px) {
-	.notification-bar{
-		width:70%;
-	}
-	
-	#notification-zone {
-		width:100%;
-	}
-	
-	.pull-right.top-bar-background {
-		width:30%;
-	}
-
-	#notification-toggle.new {
-		-webkit-transform: scale(3);
-		-moz-transform: scale(3);
-		-ms-transform: scale(3);
-		-o-transform: scale(3);
-		transform: scale(3);
-	}
-} 
-
-@media (min-width: 400px) {
-	.notification-bar{
-		width:350px;
-	}
-	
-	#notification-zone {
-		width:350px;
-	}
-
-	#notification-toggle.new {
-		-webkit-transform: scale(2);
-		-moz-transform: scale(2);
-		-ms-transform: scale(2);
-		-o-transform: scale(2);
-		transform: scale(2);
-	}
-}
 
 .notification-bar {
 	position: relative;
@@ -288,6 +178,9 @@ select.input-xlarge {
 	color: rgb(153, 153, 153);
 	text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
 	border-bottom: 1px solid rgb(153, 153, 153);
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 #notification-zone>.notification-container>a.notification:hover {
@@ -594,3 +487,99 @@ select.input-xlarge {
 	-webkit-transition: -webkit-transform 1s;
 }
 
+/* Responsive
+-------------------------------------------------- */
+
+
+@media (min-width: 769px) {
+	body {
+		padding:0px;
+	}
+
+	.font-large {
+		font-size:18px;
+	}
+
+	.table-large td, .table-large th {
+		padding:10px;
+		vertical-align: middle;
+	}
+
+	.menu-button {
+		position:absolute;
+		padding:20px  23px;
+		left:0;
+	}
+
+	.mission-description {
+		padding-left: 70px;
+	}
+
+	.notification-bar{
+		width:350px;
+	}
+	
+	#notification-zone {
+		width:350px;
+	}
+
+	#notification-toggle.new {
+		-webkit-transform: scale(2);
+		-moz-transform: scale(2);
+		-ms-transform: scale(2);
+		-o-transform: scale(2);
+		transform: scale(2);
+	}
+}
+
+@media (max-width: 768px) {
+	.menu-button>i {
+		float:left;
+	}
+
+	.menu-button {
+		padding: 10px;
+		text-align:center;
+	}
+
+	.mission-description {
+		padding-left: 20px;
+	}
+
+	.notification-bar{
+		width:70%;
+	}
+	
+	#notification-zone {
+		width:100%;
+	}
+	
+	.pull-right.top-bar-background {
+		width:30%;
+	}
+
+	#notification-toggle.new {
+		-webkit-transform: scale(3);
+		-moz-transform: scale(3);
+		-ms-transform: scale(3);
+		-o-transform: scale(3);
+		transform: scale(3);
+	}
+}
+
+@media (max-width: 979px) {
+	.navbar-fixed-top,
+	.navbar-fixed-bottom {
+		position: relative;
+		margin-bottom: 0px;
+	}
+	
+	div.container-fluid {
+		padding-top: 0px;
+	}
+
+	.navbar-fixed-top .navbar-inner,
+	.navbar-fixed-bottom .navbar-inner {
+		padding: 0px;
+	}
+}
