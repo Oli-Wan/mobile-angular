@@ -3,7 +3,7 @@ angular.module('mobileAngular').factory("DeviceType",
 		var viewport = $window.innerWidth;
 		if(viewport < 768)
 			return "phone";
-		else if(viewport < 980)
+		else if(viewport < 1300)
 			return "tablet";
 		else
 			return "desktop";
