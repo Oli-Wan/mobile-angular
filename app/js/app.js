@@ -74,7 +74,7 @@ angular.module('mobileAngular').value('$strap.config', {
   }
 });
 
-angular.module('mobileAngular').run(function($rootScope, $window, $timeout){
+angular.module('mobileAngular').run(function($rootScope, $window, $timeout, DeviceType){
   $rootScope.scrollX = $window.scrollX;
 
   angular.element($window).bind('scroll',function(){
@@ -87,14 +87,12 @@ angular.module('mobileAngular').run(function($rootScope, $window, $timeout){
     $rootScope.$apply('orientationData');
   });
 
-  $rootScope.fullscreen = false;
-  // fallback for non-compatible browsers
-  if(!screenfull.enabled)
+  if(DeviceType == "desktop" || !screenfull.enabled)
     $rootScope.fullscreen = true;
-
-  screenfull.onchange = function() {
-    console.log("fullscreen toggle");
-    $rootScope.fullscreen = screenfull.isFullscreen;
-    $rootScope.$apply('fullscreen');
-  };
+  else {
+    screenfull.onchange = function() {
+      $rootScope.fullscreen = screenfull.isFullscreen;
+      $rootScope.$apply('fullscreen');
+    };
+  }
 });
