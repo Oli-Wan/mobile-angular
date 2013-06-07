@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+ 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<title>Angular Mobile</title>
 	<link rel="stylesheet" href="lib/bootstrap-dist/css/bootstrap.css"/>
 	<link rel="stylesheet" href="lib/bootstrap-dist/css/bootstrap-responsive.css"/> 
@@ -30,7 +31,6 @@
 			</ul>
 		</div>
 	</div>
-
 	<div id="container" class="container-fluid">
 		<div class="alert top-alert" ng-controller="ConnectionController" ng-show="offline && fullscreen">
 			<strong>Vous êtes actuellement déconnecté.</strong>	
@@ -42,31 +42,34 @@
 			<button class="btn btn-primary btn-large" launch ng-show="boostraped">
 				Lancer l'application
 			</button>
-			<div id="boostrap" ng-hide="boostraped" 
-				ng-controller="BootstrapController">
-				<h3>Configuration initiale</h3>
-				<div class="alert fade" ng-repeat="alert in alerts" bs-alert="alert"></div>
-				<div class="control-group">
-					<label for="client-id" class="control-label">ClientID</label>
-					<div class="controls">
-						<input type="text" id="client-id" ng-model="clientID" class="input-large" required>
-					</div>
-				</div>
-				<div class="control-group">
-					<label for="backend" class="control-label">Backend</label>
-					<div class="controls">
-						<input type="text" id="backend" ng-model="backend" class="input-large" required>
-					</div>
-				</div>
-				<div class="progress progress-striped">
-					<div class="bar" style="width: {{progress}}%;"></div>
-				</div>
-				<div class="form-actions">
-					<button class="btn btn-primary" ng-disabled="ready" hm-tap="save()">Ok</button>
-					<button class="btn btn-primary" ng-show="ready" hm-tap="continue()">Continuer</button>
+		</div>
+
+		<div id="boostrap" ng-hide="boostraped" 
+			ng-controller="BootstrapController">
+			<h3>Configuration initiale</h3>
+			<div class="alert fade" ng-repeat="alert in alerts" bs-alert="alert"></div>
+			<div class="control-group">
+				<label for="client-id" class="control-label">ClientID</label>
+				<div class="controls">
+					<input type="text" id="client-id" ng-model="clientID" class="input-large" required>
 				</div>
 			</div>
+			<div class="control-group">
+				<label for="backend" class="control-label">Backend</label>
+				<div class="controls">
+					<input type="text" id="backend" ng-model="backend" class="input-large" required>
+				</div>
+			</div>
+			<div class="progress progress-striped">
+				<div class="bar" style="width: {{progress}}%;"></div>
+			</div>
+			<div class="form-actions">
+				<button class="btn btn-primary" ng-disabled="ready" hm-tap="save()">Ok</button>
+				<button class="btn btn-primary" ng-show="ready" hm-tap="continue()">Continuer</button>
+			</div>
 		</div>
+
+		<div ng-hide="fullscreen" style="height:1000px"></div>
 
 		<div ng-show="boostraped && fullscreen"
 		ng-view
@@ -144,6 +147,7 @@
 	<script src="js/services/SyncedResourceService.js"></script>
 	<script src="js/services/transitionEndEvent.js"></script>
 	<script src="js/services/Backend.js"></script>
+	<script src="js/services/DeviceType.js"></script>
 
 	<script src="js/directives/ngTap.js"></script>
 	<script src="js/directives/ngFiles.js"></script>

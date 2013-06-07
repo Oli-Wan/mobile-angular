@@ -10,20 +10,20 @@ angular.module('mobileAngular').directive('ngDrag', function($parse) {
 		},
 		link: function ($scope, element, attrs) {
 			var draggable = element.parent();
-			$scope.thresholdExceeded = false;
+			var thresholdExceeded = false;
 			
 			if(attrs['switch'] === undefined)
-				$scope.thresholdExceeded = $scope.dragSwitch;
+				thresholdExceeded = $scope.dragSwitch;
 
-			$scope.axis = "X";
+			var axis = "X";
 			var events = "dragright dragleft";
+			var lastDelta;
+			var lastDirection;
+
 			if(attrs['axis'] && attrs['axis'].toUpperCase() == "Y") {
-				$scope.axis = "Y";
+				axis = "Y";
 				events = "dragup dragdown";
 			}
-
-			if($scope.bound === undefined)
-				$scope.threshold = 500;
 
 			$scope.isAbove = function(delta, reference) {
 				if(reference < 0) {
@@ -33,11 +33,17 @@ angular.module('mobileAngular').directive('ngDrag', function($parse) {
 				}
 			}
 
-			$scope.isDeltaAboveBound = function(delta) {
-				if($scope.bound < 0) {
-					return $scope.bound >= delta;
+			$scope.calculateDirection = function(oldDelta, newDelta) {
+				if(axis == "Y") {
+					if(newDelta < oldDelta)
+						return "up"
+					else
+						return "down";
 				} else {
-					return delta >= $scope.bound;
+					if(newDelta > oldDelta)
+						return "right"
+					else
+						return "left";
 				}
 			};
 
@@ -57,7 +63,7 @@ angular.module('mobileAngular').directive('ngDrag', function($parse) {
 					draggable.addClass('animate');
 
 				var coordinates;
-				if($scope.axis == "Y")
+				if(axis == "Y")
 					coordinates = "0,"+offset+"px, 0";
 				else
 					coordinates = offset+"px, 0, 0";
@@ -66,23 +72,26 @@ angular.module('mobileAngular').directive('ngDrag', function($parse) {
 			};
 
 			$scope.$watch('dragSwitch', function(newValue){
-				$scope.thresholdExceeded = newValue;
+				thresholdExceeded = newValue;
 				
-				if($scope.thresholdExceeded)
+				if(thresholdExceeded)
 					$scope.move($scope.bound, true);
 				else
 					$scope.move(0, true);
 			});
 
 			Hammer(draggable[0]).on(events, function(event) {
+				lastDirection = $scope.calculateDirection(lastDelta, event.gesture['delta'+axis]);
+                lastDelta = event.gesture['delta'+axis];
+
 				if($scope.preventDefault)
 					event.gesture.preventDefault();
 
 				event.stopPropagation();
 
-				var delta = event.gesture['delta'+$scope.axis];
+				var delta = event.gesture['delta'+axis];
 
-				if($scope.thresholdExceeded)
+				if(thresholdExceeded)
 					delta = delta + parseInt($scope.bound);
 
 				if($scope.bounded && $scope.isAbove(delta, $scope.bound))
@@ -92,19 +101,26 @@ angular.module('mobileAngular').directive('ngDrag', function($parse) {
 			});
 
 			Hammer(draggable[0]).on('release', function(event){
-				var delta = event.gesture['delta'+$scope.axis];
-				if($scope.thresholdExceeded)
-					delta = delta + parseInt($scope.bound);
+				var test;
+				var bound = $scope.bound;
 
-				if( $scope.isAbove(delta, $scope.bound/2) ) {
-					$scope.thresholdExceeded = true;
+				if(axis == "Y") {
+					test = bound >= 0 && lastDirection != Hammer.DIRECTION_UP;
+					test = test ||	(bound <= 0 && lastDirection != Hammer.DIRECTION_DOWN);
+				} else {
+					test = bound >= 0 && lastDirection == Hammer.DIRECTION_RIGHT;
+					test = test ||	(bound <= 0 && lastDirection == Hammer.DIRECTION_LEFT);
+				}
+
+				if( test ) {
+					thresholdExceeded = true;
 					$scope.switch(true);
 					$scope.$apply(function(){
 						$scope.onThreshold();
 					});
 					$scope.move($scope.bound, true);
-				} else if ($scope.thresholdExceeded) {
-					$scope.thresholdExceeded = false;
+				} else if (thresholdExceeded) {
+					thresholdExceeded = false;
 					$scope.switch(false);
 					$scope.$apply();
 					$scope.move("0", true);

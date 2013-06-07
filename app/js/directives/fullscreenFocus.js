@@ -1,4 +1,4 @@
-angular.module('mobileAngular').directive('fullscreenFocus', function(Utils) {
+angular.module('mobileAngular').directive('fullscreenFocus', function($parse) {
 	return {
 		restrict: 'A',
 		link: function ($scope, element, attrs) {			
@@ -6,14 +6,14 @@ angular.module('mobileAngular').directive('fullscreenFocus', function(Utils) {
 			var textarea = container.children("textarea");
 
 			element.bind('focus', function(){
+				var value = $parse(attrs.ngModel);
 				textarea.on('focus', function() {
-					textarea.val(Utils.deepGet(attrs.ngModel, $scope));
+					textarea.val(value($scope));
 					textarea.off("focus");
 				});
 
 				textarea.on('blur', function(){
-					Utils.deepSet(attrs.ngModel, $scope, textarea.val());
-					$scope.$apply();
+					value.assign($scope, textarea.val());
 
 					textarea.off('blur');
 					textarea.val("");
