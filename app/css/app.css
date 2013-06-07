@@ -422,7 +422,8 @@ select.input-xlarge {
 -------------------------------------------------- */
 
 .cube-container {
-	margin:40px;
+	margin-left:500px;
+	margin-top:200px;
 	width: 200px;
 	height: 200px;
 	position: relative;
