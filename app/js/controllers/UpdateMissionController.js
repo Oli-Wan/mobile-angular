@@ -43,4 +43,8 @@ angular.module('mobileAngular').controller("UpdateMissionController",
 				$window.scrollTo(0,0);
 			});
 		};
+
+        $scope.print = function(){
+
+        };
 	});
