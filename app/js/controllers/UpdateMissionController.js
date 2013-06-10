@@ -4,7 +4,10 @@ angular.module('mobileAngular').controller("UpdateMissionController",
 			if(!value || !value.image)
 				return;
 
+            console.log(value.image);
+
  			ImageStorage.getURL(value.image).then(function(url) {
+                console.log(url);
 				$scope.imageUrl = url;
 			});
 		});
@@ -25,6 +28,7 @@ angular.module('mobileAngular').controller("UpdateMissionController",
 					ImageStorage.remove(imageName);
 				}
 
+                console.log('saving image');
 				ImageStorage.save(imageFile.name, imageFile);
 				$scope.mission.image = imageFile.name;	
 			}

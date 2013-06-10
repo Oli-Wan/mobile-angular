@@ -26,6 +26,7 @@ angular.module('mobileAngular').factory("FileSystem",
 			} else if(requestFileSystem) {
 				requestFileSystem(PERSISTENT,  10*1024*1024, onInit, FileSystemUtils.errorHandler);
 			} else {
+                console.log("No FS API");
 				$rootScope.$apply(function(){
 					deferred.reject("Cannot use FS API");
 				});
