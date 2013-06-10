@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="mobileAngular">
+<html lang="en" ng-app="mobileAngular" manifest="manifest.appacache">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
@@ -72,9 +72,6 @@
             <button class="btn btn-primary" ng-show="ready" hm-tap="continue()">Continuer</button>
         </div>
     </div>
-    <div class="controls">
-        <input type="text" id="backend" ng-model="backend" class="input-large" required>
-    </div>
 
     <div ng-hide="fullscreen" style="height:1000px"></div>
 
@@ -95,6 +92,7 @@
 <script src="lib/angular-unstable/angular.min.js"></script>
 <script src="lib/angular-resource-unstable/angular-resource.min.js"></script>
 <script src="lib/IndexedDBShim/dist/IndexedDBShim.min.js"></script>
+<script src="lib/idb.filesystem.js/src/idb.filesystem.min.js"></script>
 <script src="lib/idbwrapper/idbstore.min.js"></script>
 <script src="lib/bootstrap-dist/js/bootstrap.min.js"></script>
 <script src="lib/angular-strap/dist/angular-strap.min.js"></script>
@@ -102,6 +100,7 @@
 <script src="lib/socket.io-client/dist/socket.io.min.js"></script>
 <script src="lib/hammerjs/dist/hammer.min.js"></script>
 <script src="lib/angular-gestures/gestures.min.js"></script>
+<script src="lib/jspdf/dist/jspdf.min.js"></script>
 
 <!-- app prod -->
 <script src="app.min.js"></script>
