@@ -1,38 +1,42 @@
-<div>		
-	<h1 class="pull-left">Missions</h1>
-	
-	<a class="btn btn-large btn-primary btn-add pull-right" 
-			hm-tap="goToNewMission()">
-		Ajouter une nouvelle mission
-	</a>
+<div>
+    <h1 class="pull-left">Missions</h1>
 
-	<div class="clearfix"></div>
-	<table class="table table-hover table-activable font-large table-large">
-		<thead>
-			<tr>
-				<th>Heure</th>
-				<th class="hidden-phone">Type</th>
-				<th>Destination</th>
-				<th class="hidden-phone">Responsable</th>
-				<th class="hidden-phone">Victimes</th>
-				<th class="hidden-phone">Observations</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="mission in missions" >
-				<td hm-tap="navigateTo(mission)" >{{mission.created_at}}</td>
-				<td hm-tap="navigateTo(mission)" class="hidden-phone">{{mission.type}}</td>
-				<td hm-tap="navigateTo(mission)" >{{mission.destination}}</td>
-				<td hm-tap="navigateTo(mission)" class="hidden-phone">{{mission.responsible}}</td>
-				<td hm-tap="navigateTo(mission)" class="hidden-phone">{{mission.victims}}</td>
-				<td hm-tap="navigateTo(mission)" class="hidden-phone">{{mission.observation}}</td>
-				<td>
-					<button class="btn btn-danger btn-large" hm-tap="deleteModal(mission.id)">
-						<i class="icon-trash icon-white"></i>
-					</button>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+    <a class="btn btn-large btn-primary btn-add pull-right"
+       hm-tap="goToNewMission()">
+        Ajouter une nouvelle mission
+    </a>
+
+    <div class="clearfix"></div>
+    <table class="table table-hover table-activable font-large table-large">
+        <thead>
+        <tr>
+            <th>Heure</th>
+            <th class="hidden-phone">Type</th>
+            <th>Destination</th>
+            <th class="hidden-phone">Responsable</th>
+            <th class="hidden-phone">Victimes</th>
+            <th class="hidden-phone">Observations</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="mission in missions">
+            <td hm-tap="navigateTo(mission)">{{mission.created_at}}</td>
+            <td hm-tap="navigateTo(mission)" class="hidden-phone">{{mission.type}}</td>
+            <td hm-tap="navigateTo(mission)">{{mission.destination}}</td>
+            <td hm-tap="navigateTo(mission)" class="hidden-phone">{{mission.responsible}}</td>
+            <td hm-tap="navigateTo(mission)" class="hidden-phone">{{mission.victims}}</td>
+            <td hm-tap="navigateTo(mission)" class="hidden-phone">
+                <p class="observation">
+                    {{mission.observation}}
+                </p>
+            </td>
+            <td>
+                <button class="btn btn-danger btn-large" hm-tap="deleteModal(mission.id)">
+                    <i class="icon-trash icon-white"></i>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>

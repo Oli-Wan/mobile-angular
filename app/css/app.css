@@ -35,6 +35,13 @@ div.container-fluid {
 	text-align: center;
 }
 
+.observation {
+    max-width:300px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 /* Input focus
 -------------------------------------------------- */
 
