@@ -4,7 +4,7 @@ angular.module('mobileAngular').filter('missionDestination', function(){
 			return;
 
 		for(var i = 0; i < events.length; i++) {
-			if(events[i].type == intervention)
+			if(events[i].type == "intervention")
 				return events[i].city;
 		}
 	};

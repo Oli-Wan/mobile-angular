@@ -1,13 +1,13 @@
 angular.module('mobileAngular').factory("ImageStorage", function ($q, $rootScope, FileSystem, FileSystemUtils){
 	return {
 		save: function(fileName, blob) {
-			var deffered = $q.defer();
+			var deferred = $q.defer();
 			FileSystem.getFileSystem().then(function(fs){
 				fs.root.getFile(fileName, {create: true}, function(fileEntry){
 					fileEntry.createWriter(function(fileWriter) {
 						fileWriter.onwriteend = function(e) {
 							$rootScope.$apply(function(){
-								deffered.resolve();
+								deferred.resolve();
 							});
 						};
 
@@ -19,18 +19,18 @@ angular.module('mobileAngular').factory("ImageStorage", function ($q, $rootScope
 					}, FileSystemUtils.errorHandler);
 				}, FileSystemUtils.errorHandler);
 			});
-			return deffered.promise;
+			return deferred.promise;
 		},
 		getURL: function(fileName) {
-			var deffered = $q.defer();
+			var deferred = $q.defer();
 			FileSystem.getFileSystem().then(function(fs){
 				fs.root.getFile(fileName, {}, function(fileEntry) {
 					$rootScope.$apply(function(){
-						deffered.resolve(fileEntry.toURL());
+						deferred.resolve(fileEntry.toURL());
 					});
 				}, FileSystemUtils.errorHandler);
 			});
-			return deffered.promise;
+			return deferred.promise;
 		},
 		remove: function(fileName) {
 			FileSystem.getFileSystem().then(function(fs){

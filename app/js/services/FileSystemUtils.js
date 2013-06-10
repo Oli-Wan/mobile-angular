@@ -1,4 +1,4 @@
-angular.module('mobileAngular').factory("FileSystemUtils", function ($q, $window){
+angular.module('mobileAngular').factory("FileSystemUtils", function (){
 	return {
 		errorHandler: function(e) {
 			var msg = '';
