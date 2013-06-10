@@ -25,7 +25,7 @@ angular.module('mobileAngular').directive('thumbnail', function() {
 			var img = $(element).find("img");
 			Hammer(img[0]).on("tap", function(){
 				var currentHeight = $(window).height();
-				$lightBoxImg = $("#lightBox>img");
+				var $lightBoxImg = $("#lightBox>img");
 				$lightBoxImg.css("max-height", (currentHeight-100).toString()+"px");
 				$lightBoxImg.attr("src", $(this).attr("src"));
 				$lightBoxImg.load(function(){

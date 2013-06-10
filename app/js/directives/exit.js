@@ -2,7 +2,7 @@ angular.module('mobileAngular').directive('exit', function() {
 	return {
 		restrict: 'A',
 		template: '<span class="hidden-phone" ng-transclude></span><i class="icon-off icon-white"></i>',
-		link: function ($scope, element, attrs) {
+		link: function ($scope, element) {
 			var button = angular.element(element);
 			element.bind('click', function(){
 				screenfull.exit();
