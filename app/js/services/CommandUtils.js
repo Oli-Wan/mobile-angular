@@ -1,4 +1,5 @@
- angular.module('mobileAngular').service("CommandUtils", function (StoreProvider, Command, $rootScope){
+ angular.module('mobileAngular').service("CommandUtils",
+     function (StoreProvider, Command, $rootScope){
  	return {
  		handleCommand: function(command, callback, notify, status) {
  			if(status)

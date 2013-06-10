@@ -1,6 +1,6 @@
 angular.module('mobileAngular').controller('AccelerometerController', 
 	function ($scope, $rootScope){
-		$rootScope.$watch('orientationData', function(newVal, oldVal){
+		$rootScope.$watch('orientationData', function(newVal){
 			$scope.orientationData = newVal.originalEvent;
 		});
 	});

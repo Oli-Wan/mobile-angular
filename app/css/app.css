@@ -237,18 +237,6 @@ select.input-xlarge {
 	text-align:center;
 }
 
-.application-starter>h1 {
-	font-size: 120px;
-	letter-spacing: -2px;
-	line-height: 1;
-}
-
-.application-starter>p {
-	font-size: 40px;
-	font-weight: 200;
-	line-height: 1.25;
-}
-
 .application-starter>.btn {
 	border: 0 none;
 	border-radius: 6px 6px 6px 6px;
@@ -515,6 +503,18 @@ select.input-xlarge {
 		-o-transform: scale(2);
 		transform: scale(2);
 	}
+
+    .application-starter>h1 {
+        font-size: 120px;
+        letter-spacing: -2px;
+        line-height: 1;
+    }
+
+    .application-starter>p {
+        font-size: 40px;
+        font-weight: 200;
+        line-height: 1.25;
+    }
 }
 
 @media (max-width: 768px) {

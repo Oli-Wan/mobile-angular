@@ -14,6 +14,7 @@
     "idb.filesystem.js": "git://github.com/ebidel/idb.filesystem.js.git",
     "IndexedDBShim": "git://github.com/axemclion/IndexedDBShim.git",
     "angular-gestures": "~0.1.0",
-    "bootstrap-dist": "http://twitter.github.io/bootstrap/assets/bootstrap.zip"
+    "bootstrap-dist": "http://twitter.github.io/bootstrap/assets/bootstrap.zip",
+    "jspdf": "latest"
   }
 }

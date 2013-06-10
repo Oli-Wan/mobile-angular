@@ -1,5 +1,4 @@
-angular.module('mobileAngular').controller('ConnectionController', 
-	function ($scope, $timeout, $location, $route, Command) {
+angular.module('mobileAngular').controller('ConnectionController', function ($scope) {
 		$scope.offline = false;
 
 		$scope.$on('offline', function() {

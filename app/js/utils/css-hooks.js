@@ -29,7 +29,7 @@
 	
 	if ( transform && transform !== "transform" ) {
 		$.cssHooks.transform = {
-			get: function( elem, computed, extra ) {
+			get: function( elem) {
 				return $.css( elem, transform );
 			},
 			set: function( elem, value) {
