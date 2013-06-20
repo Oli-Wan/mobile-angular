@@ -1,5 +1,5 @@
 angular.module('mobileAngular').controller("StorageManagementController", 
-	function ($scope, $http, Mission, Staff, Event, Vehicle, FileSystem, FileSystemUtils, persistentStorage, Command, localStorage, ClientID, Backend) {
+	function ($scope, $http, Mission, Staff, Event, Vehicle, FileSystem, FileSystemUtils, persistentStorage, Command, localStorage, ClientID, Backend, FullscreenSetting) {
 
 		$scope.alerts = [];
 
@@ -20,6 +20,7 @@ angular.module('mobileAngular').controller("StorageManagementController",
 
 		$scope.clientId = ClientID.get();
 		$scope.backend = Backend.get();
+        $scope.fullscreenEnabled = FullscreenSetting.get();
 
 		$scope.clearMission = function() {
 			Mission.clear().then(function() {
@@ -173,4 +174,11 @@ angular.module('mobileAngular').controller("StorageManagementController",
 			});
 		};
 
+        $scope.setFullscreenSetting = function() {
+            FullscreenSetting.set($scope.fullscreenEnabled);
+            $scope.alerts.push({
+                "type": "success",
+                "title": "Configuration plein écran modifiée."
+            });
+        }
 	});
