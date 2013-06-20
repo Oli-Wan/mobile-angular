@@ -68,6 +68,11 @@ angular.module('mobileAngular').config(['$routeProvider', function ($routeProvid
         {
             templateUrl: 'partials/launch.html'
         });
+    $routeProvider.when('/init',
+        {
+            templateUrl: 'partials/init.html',
+            controller: 'BootstrapController'
+        });
     $routeProvider.otherwise({redirectTo: '/'});
 }]);
 

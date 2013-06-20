@@ -10,9 +10,8 @@ angular.module('mobileAngular').run(function ($rootScope, $location, DeviceType)
     }
 
     $rootScope.$on('$routeChangeStart', function (event, next) {
-        console.log("route change");
         var nextTemplate = next.templateUrl;
-        var launcherUrl = '/partials/launch.html';
+        var launcherUrl = 'partials/launch.html';
         if (!$rootScope.fullscreen && nextTemplate != launcherUrl) {
             $location.path("/launch")
         } else if ($rootScope.fullscreen && (nextTemplate == launcherUrl)) {

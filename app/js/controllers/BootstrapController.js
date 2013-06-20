@@ -1,9 +1,6 @@
 angular.module('mobileAngular').controller('BootstrapController', 
 	function ($scope, $rootScope, $http, ClientID, Backend, localStorage, Command, Vehicle, Staff, $window, StoreProvider, CommandUtils) {
-		var boostrapedKey = "SMUR_BOOSTRAPED";
-		$rootScope.boostraped = localStorage.getItem(boostrapedKey);
 		$scope.progress = 0;
-
 		$scope.$watch('progress', function(newValue){
 			if(newValue >= 100)
 				$scope.ready = true;
@@ -101,7 +98,7 @@ angular.module('mobileAngular').controller('BootstrapController',
 		};
 
 		$scope.continue = function() {
-			localStorage.setItem(boostrapedKey, true);
+			localStorage.setItem("SMUR_BOOSTRAPED", true);
 			$window.location.reload();
 		};
 	});
