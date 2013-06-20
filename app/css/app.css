@@ -1,6 +1,15 @@
 /* General style
 -------------------------------------------------- */
 
+#fps-counter {
+    position: absolute;
+    bottom:0;
+    left:0;
+    background-color: black;
+    color:white;
+    font-size: 15px;
+}
+
 body {
 	margin:0px;
 }
@@ -562,12 +571,9 @@ select.input-xlarge {
 @media (max-width: 979px) {
 	.navbar-fixed-top,
 	.navbar-fixed-bottom {
-		position: relative;
+		position: fixed;
+        padding: 0px 20px;
 		margin-bottom: 0px;
-	}
-	
-	div.container-fluid {
-		padding-top: 0px;
 	}
 
 	.navbar-fixed-top .navbar-inner,

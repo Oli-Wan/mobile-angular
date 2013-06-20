@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body>
+<div id="fps-counter">
+
+</div>
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner" ng-show="fullscreen">
         <div ng-include="'/partials/misc/notifications.html'">
@@ -32,53 +35,11 @@
     </div>
 </div>
 <div id="container" class="container-fluid">
-
     <div class="alert top-alert" ng-controller="ConnectionController" ng-show="offline && fullscreen">
         <strong>Vous êtes actuellement déconnecté.</strong>
     </div>
 
-    <div class="application-starter" ng-hide="fullscreen">
-        <h1>Angular Mobile</h1>
-
-        <p>Bienvenue dans l'application mobile Angular</p>
-
-        <button class="btn btn-primary btn-large" launch ng-show="boostraped">
-            Lancer l'application
-        </button>
-    </div>
-
-    <div id="boostrap" ng-hide="boostraped"
-         ng-controller="BootstrapController">
-        <h3>Configuration initiale</h3>
-
-        <div class="alert fade" ng-repeat="alert in alerts" bs-alert="alert"></div>
-        <div class="control-group">
-            <label for="client-id" class="control-label">ClientID</label>
-
-            <div class="controls">
-                <input type="text" id="client-id" ng-model="clientID" class="input-large" required>
-            </div>
-        </div>
-        <div class="control-group">
-            <label for="backend" class="control-label">Backend</label>
-
-            <div class="controls">
-                <input type="text" id="backend" ng-model="backend" class="input-large" required>
-            </div>
-        </div>
-        <div class="progress progress-striped">
-            <div class="bar" style="width: {{progress}}%;"></div>
-        </div>
-        <div class="form-actions">
-            <button class="btn btn-primary" ng-disabled="ready" hm-tap="save()">Ok</button>
-            <button class="btn btn-primary" ng-show="ready" hm-tap="continue()">Continuer</button>
-        </div>
-    </div>
-
-    <div ng-hide="fullscreen" style="height:1000px"></div>
-
-    <div ng-show="boostraped && fullscreen"
-         ng-view
+    <div ng-view
          ng-animate="{ enter: 'view-enter', leave: 'view-leave'}">
     </div>
 
@@ -87,6 +48,9 @@
         <br/>
         <textarea rows="5"></textarea>
     </div>
+    <button id="bench-runner" class="btn btn-primary">
+        Run benchmark
+    </button>
 </div>
 
 <!-- libs -->
@@ -103,7 +67,7 @@
 <script src="lib/hammerjs/dist/hammer.min.js"></script>
 <script src="lib/angular-gestures/gestures.min.js"></script>
 <script src="lib/jspdf/dist/jspdf.min.js"></script>
-
+<script src="lib/fpsmeter.js"></script>
 <!-- app prod
 <script src="app.min.js"></script>
 -->
@@ -114,6 +78,8 @@
 <script src="js/utils/css-hooks.js"></script>
 <script src="js/utils/CommandListener.js"></script>
 <script src="js/utils/CommandSender.js"></script>
+<script src="js/utils/perfomanceMeter.js"></script>
+<script src="js/utils/FullScreenFilter.js"></script>
 
 <script src="js/controllers/MissionsController.js"></script>
 <script src="js/controllers/MissionContainerController.js"></script>

@@ -10,6 +10,7 @@ angular.module('mobileAngular').directive('ngDrag', function($parse) {
 		},
 		link: function ($scope, element, attrs) {
 			var draggable = element.parent();
+
 			var thresholdExceeded = false;
 			
 			if(attrs['switch'] === undefined)
@@ -68,7 +69,7 @@ angular.module('mobileAngular').directive('ngDrag', function($parse) {
 				else
 					coordinates = offset+"px, 0, 0";
 
-				draggable.css("transform", "translate3d("+coordinates+") scale3d(1,1,1)");
+				draggable.css("transform", "translate3d("+coordinates+")");
 			};
 
 			$scope.$watch('dragSwitch', function(newValue){
@@ -81,7 +82,7 @@ angular.module('mobileAngular').directive('ngDrag', function($parse) {
 			});
 
 			Hammer(draggable[0]).on(events, function(event) {
-				lastDirection = $scope.calculateDirection(lastDelta, event.gesture['delta'+axis]);
+                lastDirection = $scope.calculateDirection(lastDelta, event.gesture['delta'+axis]);
                 lastDelta = event.gesture['delta'+axis];
 				if($scope.preventDefault)
 					event.gesture.preventDefault();
