@@ -42,7 +42,7 @@ angular.module('mobileAngular').config(['$routeProvider', function ($routeProvid
         });
     $routeProvider.when('/storagemanagement',
         {
-            templateUrl: 'partials/misc/storage-management.html',
+            templateUrl: 'partials/misc/configuration.html',
             controller: 'StorageManagementController'
         });
     $routeProvider.when('/accelerometer',
