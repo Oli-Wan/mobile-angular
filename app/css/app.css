@@ -67,6 +67,17 @@ div.container-fluid {
 	width:100%;
 }
 
+/* Benchmark
+-------------------------------------------------- */
+#fps-counter {
+    position: absolute;
+    bottom:0;
+    left:0;
+    background-color: black;
+    color:white;
+    font-size: 15px;
+}
+
 /* Fonts
 -------------------------------------------------- */
 .table-activable tbody tr:active > td,
@@ -334,7 +345,7 @@ select.input-xlarge {
 }
 .bs-docs-sidenav .active .icon-chevron-right,
 .bs-docs-sidenav .active a:hover .icon-chevron-right {
-	background-image: url(../img/glyphicons-halflings-white.png);
+	/*background-image: url(../img/glyphicons-halflings-white.png);*/
 	opacity: 1;
 }
 .bs-docs-sidenav.affix {
@@ -562,12 +573,9 @@ select.input-xlarge {
 @media (max-width: 979px) {
 	.navbar-fixed-top,
 	.navbar-fixed-bottom {
-		position: relative;
+		position: fixed;
+        padding: 0px 20px;
 		margin-bottom: 0px;
-	}
-	
-	div.container-fluid {
-		padding-top: 0px;
 	}
 
 	.navbar-fixed-top .navbar-inner,

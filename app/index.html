@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="mobileAngular" manifest="manifest.appacache">
+<html lang="en" ng-app="mobileAngular">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
@@ -36,47 +36,7 @@
         <strong>Vous êtes actuellement déconnecté.</strong>
     </div>
 
-    <div class="application-starter" ng-hide="fullscreen">
-        <h1>Angular Mobile</h1>
-
-        <p>Bienvenue dans l'application mobile Angular</p>
-        <button class="btn btn-primary btn-large" launch ng-show="boostraped">
-            Lancer l'application
-        </button>
-    </div>
-
-    <div id="boostrap" ng-hide="boostraped"
-         ng-controller="BootstrapController">
-        <h3>Configuration initiale</h3>
-
-        <div class="alert fade" ng-repeat="alert in alerts" bs-alert="alert"></div>
-        <div class="control-group">
-            <label for="client-id" class="control-label">ClientID</label>
-
-            <div class="controls">
-                <input type="text" id="client-id" ng-model="clientID" class="input-large" required>
-            </div>
-        </div>
-        <div class="control-group">
-            <label for="backend" class="control-label">Backend</label>
-
-            <div class="controls">
-                <input type="text" id="backend" ng-model="backend" class="input-large" required>
-            </div>
-        </div>
-        <div class="progress progress-striped">
-            <div class="bar" style="width: {{progress}}%;"></div>
-        </div>
-        <div class="form-actions">
-            <button class="btn btn-primary" ng-disabled="ready" hm-tap="save()">Ok</button>
-            <button class="btn btn-primary" ng-show="ready" hm-tap="continue()">Continuer</button>
-        </div>
-    </div>
-
-    <div ng-hide="fullscreen" style="height:1000px"></div>
-
-    <div ng-show="boostraped && fullscreen"
-         ng-view
+    <div ng-view
          ng-animate="{ enter: 'view-enter', leave: 'view-leave'}">
     </div>
 
@@ -85,6 +45,8 @@
         <br/>
         <textarea rows="5"></textarea>
     </div>
+</div>
+<div id="fps-counter"></div>
 </div>
 
 <!-- libs -->
@@ -101,18 +63,20 @@
 <script src="lib/hammerjs/dist/hammer.min.js"></script>
 <script src="lib/angular-gestures/gestures.min.js"></script>
 <script src="lib/jspdf/dist/jspdf.min.js"></script>
-
+<script src="lib/fpsmeter/fpsmeter.js"></script>
 <!-- app prod -->
 <script src="app.min.js"></script>
+
 
 <!-- app dev
 <script src="js/app.js"></script>
 
-<div ng-hide="fullscreen" style="height:1000px"></div>
-
 <script src="js/utils/css-hooks.js"></script>
 <script src="js/utils/CommandListener.js"></script>
 <script src="js/utils/CommandSender.js"></script>
+<script src="js/utils/perfomanceMeter.js"></script>
+<script src="js/utils/FullScreenFilter.js"></script>
+<script src="js/utils/AppInitializationFilter.js"></script>
 
 <script src="js/controllers/MissionsController.js"></script>
 <script src="js/controllers/MissionContainerController.js"></script>
@@ -124,7 +88,7 @@
 <script src="js/controllers/EditEventController.js"></script>
 <script src="js/controllers/VehicleController.js"></script>
 <script src="js/controllers/NewVehicleController.js"></script>
-<script src="js/controllers/StorageManagementController.js"></script>
+<script src="js/controllers/ConfigurationController.js"></script>
 <script src="js/controllers/AccelerometerController.js"></script>
 <script src="js/controllers/NotificationController.js"></script>
 <script src="js/controllers/GesturesController.js"></script>
@@ -167,5 +131,6 @@
 <script src="js/directives/launch.js"></script>
 <script src="js/directives/exit.js"></script>
 <script src="js/directives/fullscreenFocus.js"></script>
+-->
 </body>
 </html>

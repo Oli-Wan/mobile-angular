@@ -65,11 +65,11 @@ angular.module('mobileAngular').controller("UpdateMissionController",
             doc.setFontSize(16);
             var count = 0;
             var line = 145;
-            while(count < mission.observation.length) {
-                doc.text(10, line, mission.observation.substring(count, count+70).trim());
+            while (count < mission.observation.length) {
+                doc.text(10, line, mission.observation.substring(count, count + 70).trim());
                 count += 70;
                 line += 10;
-                if(line >= 270) {
+                if (line >= 270) {
                     doc.addPage();
                     line = 20;
                 }
