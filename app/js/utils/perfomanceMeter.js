@@ -10,8 +10,6 @@ function showFPS(event) {
 
 document.addEventListener("fps", showFPS, false);
 
-// Framerate benchmark
-
 $(document).on("click", "#bench-runner", function () {
     console.log("Starting benchmark");
     goBackHome();
