@@ -1,22 +1,6 @@
-angular.module('mobileAngular').run(function ($rootScope) {
-    // calculate ngView change duration
-    /*var time;
-    $rootScope.$on('$routeChangeStart', function () {
-        time = Date.now();
-        console.log("starting");
-    });
-    $rootScope.$on("$viewContentLoaded", function () {
-        console.log("loaded in " + (Date.now() - time));
-        time = 0;
-    });*/
-});
-
 var benchmarking = false;
+var started = false;
 var results = [];
-
-$(document).ready(function () {
-    FPSMeter.run(0.5);
-});
 
 function showFPS(event) {
     $("#fps-counter").text(event.fps);
@@ -27,26 +11,47 @@ function showFPS(event) {
 document.addEventListener("fps", showFPS, false);
 
 // Framerate benchmark
-    $("#bench-runner").click(function () {
-        console.log("Starting benchmark");
-        $("#fps-counter").css("background-color", "red");
-        benchmarking = true;
-        scenario();
-    });
+
+$(document).on("click", "#bench-runner", function () {
+    console.log("Starting benchmark");
+    goBackHome();
+    if (!started) {
+        FPSMeter.run(0.5);
+        started = true;
+        $("#fps-counter").show();
+    }
+    $("#fps-counter").css("background-color", "red");
+    setTimeout(scenario, 1000);
+});
+
+$(document).on("click", "#toggle-counter", function () {
+    console.log(started);
+    if (started) {
+        FPSMeter.stop();
+        started = true;
+        $("#fps-counter").hide()
+    }
+    else {
+        FPSMeter.run(0.5);
+        started = true;
+        $("#fps-counter").show();
+    }
+});
 
 function scenario() {
+    benchmarking = true;
     var actions = [clickMission, openMissionMenu, closeMissionMenu, goBackHome];
     var currentAction = 0;
     var numberOfValues = 30;
 
-    var doBench = function() {
+    var doBench = function () {
         console.log("doBench");
-        if(results.length >= numberOfValues) {
+        if (results.length >= numberOfValues) {
             submitResults();
             return;
         }
 
-        if(currentAction >= actions.length)
+        if (currentAction >= actions.length)
             currentAction = 0;
 
         actions[currentAction]();
