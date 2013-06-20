@@ -1,6 +1,7 @@
-angular.module('mobileAngular').run(function ($rootScope, $location, DeviceType) {
+angular.module('mobileAngular').run(function ($rootScope, $location, DeviceType, FullscreenSetting) {
+    var fullscreenDisabled = FullscreenSetting.get() === "false";
 
-    if (DeviceType == "desktop" || !screenfull.enabled)
+    if (DeviceType == "desktop" || !screenfull.enabled || fullscreenDisabled )
         $rootScope.fullscreen = true;
     else {
         screenfull.onchange = function () {
