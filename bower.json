@@ -15,6 +15,7 @@
     "IndexedDBShim": "git://github.com/axemclion/IndexedDBShim.git",
     "angular-gestures": "~0.1.0",
     "bootstrap-dist": "http://twitter.github.io/bootstrap/assets/bootstrap.zip",
-    "jspdf": "latest"
+    "jspdf": "latest",
+    "fpsmeter": "https://github.com/kaizouman/fpsmeter.git"
   }
 }
