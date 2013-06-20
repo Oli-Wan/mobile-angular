@@ -560,6 +560,12 @@ select.input-xlarge {
 
     #notification-zone {
         width: 100%;
+        padding: 0px 20px;
+        -webkit-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        -o-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
     }
 
     .pull-right.top-bar-background {
