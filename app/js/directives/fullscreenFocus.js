@@ -14,7 +14,7 @@ angular.module('mobileAngular').directive('fullscreenFocus', function($parse) {
 
 				textarea.on('blur', function(){
 					value.assign($scope, textarea.val());
-
+                    $scope.$apply();
 					textarea.off('blur');
 					textarea.val("");
 					container.hide();
