@@ -63,4 +63,16 @@ describe("MissionsController", function () {
         $timeout.flush();
         expect(missionDbMock.notifyAndRemove).toHaveBeenCalledWith(1);
     }));
+
+    it("should navigate to mission of id", inject(function ($location) {
+        scope.navigateTo(1);
+        var absUrl = $location.absUrl();
+        expect(absUrl).toContain("/mission/1?page=mission");
+    }));
+
+    it("should navigate to new mission", inject(function ($location) {
+        scope.goToNewMission(1);
+        var absUrl = $location.absUrl();
+        expect(absUrl).toContain("/mission/new");
+    }));
 });

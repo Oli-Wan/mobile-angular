@@ -10,8 +10,8 @@ angular.module('mobileAngular').controller('MissionsController',
             });
         });
 
-        $scope.navigateTo = function (mission) {
-            $location.url("/mission/" + mission.id).search({page: "mission"});
+        $scope.navigateTo = function (id) {
+            $location.url("/mission/" + id).search({page: "mission"});
         };
 
         $scope.goToNewMission = function () {
