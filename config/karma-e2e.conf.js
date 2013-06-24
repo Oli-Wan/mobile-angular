@@ -6,14 +6,14 @@ files = [
   'test/e2e/**/*.js'
 ];
 
-autoWatch = false;
+autoWatch = true;
 
-browsers = ['Chrome'];
+browsers = ['Firefox'];
 
-singleRun = true;
+singleRun = false;
 
 proxies = {
-  '/': 'http://localhost:8000/'
+  '/': 'http://localhost:3000/'
 };
 
 junitReporter = {
