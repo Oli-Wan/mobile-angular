@@ -29,7 +29,6 @@ angular.module('mobileAngular').controller("MissionContainerController",
                 if ($scope.menuItems[i].id == currentPage)
                     return $scope.menuItems[i].templateUrl;
             }
-            ;
             return "";
         };
 
