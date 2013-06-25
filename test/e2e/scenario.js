@@ -4,7 +4,8 @@ describe('angular mobile', function () {
     describe("initialization", function () {
         it('should go to initialization', function () {
             browser().navigateTo('/');
-            expect(1).toEqual(1);
+            var test = browser().window().path();
+            console.log(test);
         });
     });
 

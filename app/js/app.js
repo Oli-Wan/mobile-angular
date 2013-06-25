@@ -83,16 +83,20 @@ angular.module('mobileAngular').value('$strap.config', {
     }
 });
 
-angular.module('mobileAngular').run(function ($rootScope, $window, $timeout, DeviceType) {
-    $rootScope.scrollX = $window.scrollX;
+// initialization and background job run
+angular.module('mobileAngular').run(
+    function ($rootScope, $window, CommandSender) {
+        CommandSender.run();
 
-    angular.element($window).bind('scroll', function () {
         $rootScope.scrollX = $window.scrollX;
-        $rootScope.$apply('scrollX');
-    });
 
-    angular.element($window).bind('deviceorientation', function (data) {
-        $rootScope.orientationData = data;
-        $rootScope.$apply('orientationData');
+        angular.element($window).bind('scroll', function () {
+            $rootScope.scrollX = $window.scrollX;
+            $rootScope.$apply('scrollX');
+        });
+
+        angular.element($window).bind('deviceorientation', function (data) {
+            $rootScope.orientationData = data;
+            $rootScope.$apply('orientationData');
+        });
     });
-});
