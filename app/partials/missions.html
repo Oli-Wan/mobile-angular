@@ -21,12 +21,12 @@
         </thead>
         <tbody>
         <tr ng-repeat="mission in missions">
-            <td hm-tap="navigateTo(mission)">{{mission.created_at}}</td>
-            <td hm-tap="navigateTo(mission)" class="hidden-phone">{{mission.type}}</td>
-            <td hm-tap="navigateTo(mission)">{{mission.destination}}</td>
-            <td hm-tap="navigateTo(mission)" class="hidden-phone">{{mission.responsible}}</td>
-            <td hm-tap="navigateTo(mission)" class="hidden-phone">{{mission.victims}}</td>
-            <td hm-tap="navigateTo(mission)" class="hidden-phone">
+            <td hm-tap="navigateTo(mission.id)">{{mission.created_at}}</td>
+            <td hm-tap="navigateTo(mission.id)" class="hidden-phone">{{mission.type}}</td>
+            <td hm-tap="navigateTo(mission.id)">{{mission.destination}}</td>
+            <td hm-tap="navigateTo(mission.id)" class="hidden-phone">{{mission.responsible}}</td>
+            <td hm-tap="navigateTo(mission.id)" class="hidden-phone">{{mission.victims}}</td>
+            <td hm-tap="navigateTo(mission.id)" class="hidden-phone">
                 <p class="observation">
                     {{mission.observation}}
                 </p>
