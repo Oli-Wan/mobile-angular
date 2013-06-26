@@ -35,9 +35,12 @@ describe('Mission indexedDB service', function () {
             onStoreReady: function () {
                 store.clear();
                 missions.forEach(function (element) {
-                    store.put(element);
+                    var id = element.id;
+                    store.put(element, function () {
+                        if (id == 2)
+                            ready = true;
+                    });
                 });
-                ready = true;
             }
         });
 

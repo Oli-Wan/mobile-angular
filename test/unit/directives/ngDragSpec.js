@@ -8,14 +8,11 @@ function createDragEvent(eventName, gestureEvent, element) {
 }
 
 function checkTranslation(element, expected) {
-    var translate = element.css("transform");
-    if (translate.contains("matrix")) {
+    var translate = element.css("transform").toString();
+    if (translate.search("matrix") != -1) {
         expect(translate).toEqual('matrix(1, 0, 0, 1, 0, ' + expected + ')');
     } else {
-        var unit = ""
-        if (expected != 0)
-            unit = "px";
-        expect(translate).toEqual('translate3d(0, ' + expected + unit + ', 0)');
+        expect(translate).toEqual('translate3d(0, ' + expected + 'px, 0)');
     }
 }
 
