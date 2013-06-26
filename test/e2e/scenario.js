@@ -2,22 +2,19 @@
 
 describe('angular mobile', function () {
 
-    describe("initialization", function () {
-        /*
-         beforeEach(function(){
-         browser()
-         });
+    describe("notification", function () {
+        beforeEach(function () {
+            browser().navigateTo('/');
+        });
 
-         it('should go to initialization', function () {
-         browser().navigateTo('/');
-         pause();
-         expect(browser().location().url()).toBe("/init");
-         //console.log(browser().location().url());
-         //expect(element('[ng-view] h3:first').text()).toMatch("Configuration initiale");
-         });
-         });
+        it("should show on tap", function () {
+            hammer("#notification-toggle").tap();
+            sleep(1);
+            expect(css("#notification-zone").verticalTranslateOffset()).toBe(400);
+            expect(css("#notification-zone").animated()).toBe(true);
+        });
 
-         */
+
     });
 
     describe('missions', function () {
@@ -85,7 +82,7 @@ describe('angular mobile', function () {
             select("mission.responsible").option("Doe John");
             input("password").enter("1234");
             hammer("#submit").tap();
-            expect(element("#missions-table>tbody>tr").count()).toBe(1);
+            expect(element("#missions-table>tbody>tr").count()).toBe(2);
         });
     });
 });
