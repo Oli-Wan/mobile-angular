@@ -15,7 +15,6 @@ function checkTranslation(element, expected) {
         expect(translate).toEqual('translate3d(0, ' + expected + 'px, 0)');
     }
 }
-
 // tests
 describe("ngDrag directive", function () {
     var element, scope;
