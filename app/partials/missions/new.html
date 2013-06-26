@@ -1,39 +1,45 @@
 <div>
-	<h4>Ajouter une nouvelle mission</h4>
-	<form novalidate name="form" class="form-horizontal">
-		<div class="alert fade" ng-repeat="alert in alerts" bs-alert="alert"></div>
-		<div class="control-group">
-			<label for="vehicle" class="control-label">Véhicule</label>
-			<div class="controls">
-				<select ng-model="mission.vehicle" required>
-					<option ng-repeat="vehicle in vehicles" value="{{vehicle.name}}">
-						{{vehicle.name}}
-					</option>
-				</select>
-			</div>
-		</div>
+    <h3>Ajouter une nouvelle mission</h3>
 
-		<div class="control-group">
-			<label for="vehicle" class="control-label">Responsable</label>
-			<div class="controls">
-				<select ng-model="mission.responsible" required>
-					<option ng-repeat="responsible in responsibles" >
-						{{responsible.lastname}} {{responsible.firstname}}
-					</option>
-				</select>
-			</div>
-		</div>
+    <form novalidate name="form" class="form-horizontal">
+        <div class="alert fade" ng-repeat="alert in alerts" bs-alert="alert"></div>
+        <div class="control-group">
+            <label for="vehicle" class="control-label">Véhicule</label>
 
-		<div class="control-group">
-			<label class="control-label" for="password">Mot de passe</label>
-			<div class="controls">
-				<input type="password" id="password" ng-model="password" class="input-normal" required/>
-			</div>
-		</div>
+            <div class="controls">
+                <select ng-model="mission.vehicle" required id="vehicle" name="vehicle">
+                    <option></option>
+                    <option ng-repeat="vehicle in vehicles" value="{{vehicle.name}}">
+                        {{vehicle.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
 
-		<div class="form-actions">
-			<button class="btn btn-large" hm-tap="back()">Annuler</button>
-			<button class="btn btn-primary btn-large" hm-tap="add()" ng-disabled="form.$invalid">Ajouter</button>
-		</div>
-	</form>
+        <div class="control-group">
+            <label for="responsible" class="control-label">Responsable</label>
+
+            <div class="controls">
+                <select ng-model="mission.responsible" required id="responsible" name="responsible">
+                    <option></option>
+                    <option ng-repeat="responsible in responsibles">
+                        {{responsible.lastname}} {{responsible.firstname}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="password">Mot de passe</label>
+
+            <div class="controls">
+                <input type="password" id="password" ng-model="password" class="input-normal" required name="password"/>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn btn-large" hm-tap="back()">Annuler</button>
+            <button id="submit" class="btn btn-primary btn-large" hm-tap="add()" ng-disabled="form.$invalid">Ajouter</button>
+        </div>
+    </form>
 </div>

@@ -1,27 +1,91 @@
 'use strict';
 
 describe('angular mobile', function () {
+
     describe("initialization", function () {
-        it('should go to initialization', function () {
+        /*
+         beforeEach(function(){
+         browser()
+         });
+
+         it('should go to initialization', function () {
+         browser().navigateTo('/');
+         pause();
+         expect(browser().location().url()).toBe("/init");
+         //console.log(browser().location().url());
+         //expect(element('[ng-view] h3:first').text()).toMatch("Configuration initiale");
+         });
+         });
+
+         */
+    });
+
+    describe('missions', function () {
+
+        beforeEach(function () {
             browser().navigateTo('/');
-            expect(1).toEqual(1);
+        });
+
+        it("should be the mission list page", function () {
+            expect(element('[ng-view] h1:first').text()).toMatch("Missions");
+        });
+
+        it('should render the mission table', function () {
+            expect(element("#missions-table").count()).toBe(1);
+        });
+
+        it("should have a new mission link", function () {
+            expect(element("a:contains('Ajouter une nouvelle mission')").count()).toBe(1);
         });
     });
 
-    /*
-     describe('missions', function () {
-     beforeEach(function () {
-     browser().window.localStorage.setItem("boostraped", true);
-     browser().navigateTo('#/');
-     });
+    describe('new mission form', function () {
 
-     it('should render mission list', function () {
-     expect(element('[ng-view] h1:first').text()).toMatch("Missions");
-     expect(element("#missions-table")).toBeDefined();
-     });
+        beforeEach(function () {
+            browser().navigateTo('#/mission/new');
+        });
 
-     it("should have a new mission link", function () {
-     expect(element("a:contains('Ajouter une nouvelle mission')")).toBeDefined();
-     });
-     });*/
+        it("should render new mission form", function () {
+            expect(element('[ng-view] h3:first').text()).toMatch("Ajouter une nouvelle mission");
+        });
+
+        it("should require a responsible", function () {
+            sleep(1);
+            select("mission.responsible").option("");
+            select("mission.vehicle").option("Voiture");
+            input("password").enter("1234");
+            expect(element("#submit[disabled='disabled']").count()).toBe(1);
+        });
+
+        it("should require a vehicle", function () {
+            sleep(1);
+            select("mission.vehicle").option("");
+            select("mission.responsible").option("Doe John");
+            input("password").enter("1234");
+            expect(element("#submit[disabled='disabled']").count()).toBe(1);
+        });
+
+        it("should require a password", function () {
+            sleep(1);
+            select("mission.vehicle").option("Voiture");
+            input("password").enter("");
+            expect(element("#submit[disabled='disabled']").count()).toBe(1);
+        });
+
+        it("should require a true password", function () {
+            input("password").enter("09483");
+            hammer("#submit").tap();
+            expect(element("div.alert.alert-error").count()).toBe(1);
+            expect(element("div.alert.alert-error").text()).toContain("Mauvais mot de passe");
+        });
+
+        it("should create a new mission", function () {
+            sleep(1);
+            select("mission.vehicle").option("Hélicoptère");
+            select("mission.responsible").option("Doe John");
+            input("password").enter("1234");
+            hammer("#submit").tap();
+            expect(element("#missions-table>tbody>tr").count()).toBe(1);
+        });
+    });
 });
