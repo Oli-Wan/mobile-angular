@@ -166,7 +166,7 @@ angular.module('mobileAngular').controller("StorageManagementController",
 			});
 		};
 
-		$scope.setClientId = function() {
+		$scope.setBackend = function() {
 			Backend.set($scope.backend);
 			$scope.alerts.push({
 				"type": "success",
