@@ -18,8 +18,9 @@ angular.module('mobileAngular').directive('ngDrag', function ($parse) {
 
             var axis = "X";
             var events = "dragright dragleft";
-            var lastDelta;
-            var lastDirection;
+
+            var lastDelta = 0;
+            var lastDirection = 0;
 
             if (attrs['axis'] && attrs['axis'].toUpperCase() == "Y") {
                 axis = "Y";
@@ -90,7 +91,6 @@ angular.module('mobileAngular').directive('ngDrag', function ($parse) {
                 event.stopPropagation();
 
                 var delta = event.gesture['delta' + axis];
-
                 if (thresholdExceeded)
                     delta = delta + parseInt($scope.bound);
 
@@ -101,6 +101,7 @@ angular.module('mobileAngular').directive('ngDrag', function ($parse) {
             });
 
             Hammer(draggable[0]).on('dragend', function (event) {
+                event.stopPropagation();
                 var test;
                 var bound = $scope.bound;
 
