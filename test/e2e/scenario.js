@@ -1,7 +1,6 @@
 'use strict';
 
 describe('angular mobile', function () {
-
     describe("notification", function () {
         beforeEach(function () {
             browser().navigateTo('/');
@@ -9,12 +8,18 @@ describe('angular mobile', function () {
 
         it("should show on tap", function () {
             hammer("#notification-toggle").tap();
-            sleep(1);
+            sleep(2);
             expect(css("#notification-zone").verticalTranslateOffset()).toBe(400);
             expect(css("#notification-zone").animated()).toBe(true);
         });
 
-
+        it("should hide notification swipe", function () {
+            hammer("#notification-toggle").tap();
+            sleep(2);
+            hammer(".notification-container>a:first-child").dragRight(400);
+            sleep(2);
+            expect(css(".notification-container>a:first-child").haveClass("hide")).toBe(true);
+        });
     });
 
     describe('missions', function () {
@@ -76,12 +81,13 @@ describe('angular mobile', function () {
             expect(element("div.alert.alert-error").text()).toContain("Mauvais mot de passe");
         });
 
-        it("should create a new mission", function () {
+        it("should create a new mission and redirect to the mission list", function () {
             sleep(1);
             select("mission.vehicle").option("Hélicoptère");
             select("mission.responsible").option("Doe John");
             input("password").enter("1234");
             hammer("#submit").tap();
+            sleep(1);
             expect(element("#missions-table>tbody>tr").count()).toBe(2);
         });
     });
