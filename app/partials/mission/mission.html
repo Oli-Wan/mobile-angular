@@ -1,23 +1,23 @@
 <div class="mission-description-part">
     <form class="form form-horizontal " ng-controller="UpdateMissionController">
         <h3>Mission {{mission.id}}</h3>
+
         <div class="alert fade" ng-repeat="alert in alerts" bs-alert="alert"></div>
 
         <div class="control-group">
-            <label for="reason" class="control-label">Raison</label>
+            <label for="reason" class="control-label hidden-phone">Raison</label>
 
             <div class="controls">
-                <input type="text" ng-model="mission.reason" id="reason" class="input-xlarge" fullscreen-focus/>
+                <input type="text" ng-model="mission.reason" id="reason" class="input-xlarge" fullscreen-focus placeholder="Raison"/>
             </div>
         </div>
         <div class="control-group">
-            <label for="type" class="control-label">Type</label>
+            <label for="type" class="control-label hidden-phone">Type</label>
 
             <div class="controls">
-                <select ng-model="mission.type" class="input-xlarge">
+                <select ng-model="mission.type" id="type" class="input-xlarge">
                     <option>Primaire</option>
                     <option>Secondaire</option>
-                    <option>Jonction</option>
                 </select>
             </div>
         </div>
@@ -25,26 +25,27 @@
         <h3>Appelant</h3>
 
         <div class="control-group">
-            <label for="lastname" class="control-label">Nom</label>
+            <label for="lastname" class="control-label hidden-phone">Nom</label>
 
             <div class="controls">
                 <input type="text" ng-model="mission.caller.firstname" id="lastname" class="input-xlarge"
-                       fullscreen-focus/>
+                       fullscreen-focus placeholder="Nom"/>
             </div>
         </div>
         <div class="control-group">
-            <label for="firstname" class="control-label">Prénom</label>
+            <label for="firstname" class="control-label hidden-phone">Prénom</label>
 
             <div class="controls">
                 <input type="text" ng-model="mission.caller.lastname" id="firstname" class="input-xlarge"
-                       fullscreen-focus/>
+                       fullscreen-focus placeholder="Prénom"/>
             </div>
         </div>
         <div class="control-group">
-            <label for="phone" class="control-label">Numéro de téléphone</label>
+            <label for="phone" class="control-label hidden-phone">Numéro de téléphone</label>
 
             <div class="controls">
-                <input type="text" id="phone" ng-model="mission.caller.phone" class="input-xlarge" fullscreen-focus/>
+                <input type="text" id="phone" ng-model="mission.caller.phone" class="input-xlarge" fullscreen-focus
+                        placeholder="Numéro de téléphone"/>
             </div>
         </div>
 
@@ -55,11 +56,11 @@
         </textarea>
 
         <div class="control-group">
-            <label for="lastname" class="control-label">Ajouter une photo</label>
+            <label for="lastname" class="control-label hidden-phone">Ajouter une photo</label>
 
             <div class="controls">
-                <input type="file" accept="image/*" capture="camera"
-                       ng-model="image" ng-files>
+                <input type="file" accept="image/*" capture="camera" class="input-xlarge"
+                       ng-model="image" ng-files >
                 <ul class="thumbnails">
                     <li class="span2">
                         <thumbnail src="{{imageUrl}}"/>
