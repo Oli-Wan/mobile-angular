@@ -1,5 +1,5 @@
 angular.module('mobileAngular').controller('NotificationController',
-    function ($scope, $timeout, $location, $route, Command) {
+    function ($scope, $timeout, $location, $route, Command, SystemNotificationService) {
         $scope.hideArray = [];
         $scope.removeArray = [];
 
@@ -74,6 +74,12 @@ angular.module('mobileAngular').controller('NotificationController',
                 else
                     $location.path(url).search({page: "mission"});
             }
+        };
+
+        $scope.sendSystemNotif = function () {
+            SystemNotificationService.send("Notif test", "Notification test content", function () {
+                console.log("Notification clicked");
+            });
         };
 
         $scope.goToDetails = function () {
