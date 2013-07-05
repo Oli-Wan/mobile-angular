@@ -85,7 +85,7 @@ angular.module('mobileAngular').value('$strap.config', {
 
 // initialization and background job run
 angular.module('mobileAngular').run(
-    function ($rootScope, $window, CommandSender) {
+    function ($rootScope, $window, CommandSender, SystemNotificationService) {
         CommandSender.run();
 
         $rootScope.scrollX = $window.scrollX;
